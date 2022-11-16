@@ -1,0 +1,113 @@
+Description: UniNav hosting on S3 and CloudFront 
+
+Parameters:
+
+    Stage:
+        Type: String
+        Description: The Environment/Stage for which to create the stack
+
+    Domain:
+        Type: String
+        Description: UniNav Hosting Domain
+        AllowedValues:
+            - topcoder.com
+            - topcoder-dev.com
+
+Conditions: 
+    IsProd: !Equals [ !Ref Domain, topcoder.com ]
+    IsNotFeature: 
+        !Or [!Equals [ !Ref Stage, dev ], Condition: IsProd]
+
+Mappings:
+
+    DomainMap:
+
+        topcoder.com: 
+            CertArn: arn:aws:acm:us-east-1:409275337247:certificate/8cabe19d-6559-41c6-8dfb-66f8080d27d4
+            HostedZoneId: Z1B7U7QS3AAI1X
+            RoleArn: arn:aws:iam::409275337247:role/learning-paths-v5-container-role
+
+        topcoder-dev.com: 
+            CertArn: arn:aws:acm:us-east-1:811668436784:certificate/8e56f24a-1eaf-4289-8c21-db2c0761ecf4
+            HostedZoneId: Z2CIRG3R0ZSGFQ
+            RoleArn: arn:aws:iam::811668436784:role/learning-paths-v5-container-role
+
+Resources:
+
+    Store:
+        Type: AWS::S3::Bucket
+        DeletionPolicy: Delete
+        Properties:
+            AccessControl: PublicRead
+            BucketName: !Sub 'uni-nav-s3-${Stage}'
+
+    StoreBucketPolicy:
+        Type: 'AWS::S3::BucketPolicy'
+        Properties:
+            Bucket: 
+                !Ref Store
+            PolicyDocument:
+                Id: StoreBucketPolicy
+                Version: 2012-10-17
+                Statement:
+                    -   Sid: PublicReadForGetBucketObjects
+                        Effect: Allow
+                        Principal: '*'
+                        Action: 's3:GetObject'
+                        Resource: !Join 
+                            - ''
+                            -   - 'arn:aws:s3:::'
+                                - !Ref Store
+                                - /*
+      
+    Cdn:
+        Type: AWS::CloudFront::Distribution
+        Properties: 
+            DistributionConfig: 
+                Enabled: true
+                Aliases: 
+                    - !If [IsNotFeature, !Sub 'uni-nav.${Domain}', !Sub 'uni-nav-${Stage}.${Domain}']
+                Origins:
+                    -   Id: !Join 
+                            - ''
+                            -   - !Ref Store
+                                - .s3.amazonaws.com
+                        DomainName: !Join 
+                            - ''
+                            -   - !Ref Store
+                                - .s3.amazonaws.com
+                        S3OriginConfig:
+                            OriginAccessIdentity: ""
+                DefaultCacheBehavior:
+                    TargetOriginId: !Join 
+                        - ''
+                        -   - !Ref Store
+                            - .s3.amazonaws.com
+                    ViewerProtocolPolicy: redirect-to-https
+                    ForwardedValues:
+                        QueryString: false
+                        Cookies:
+                            Forward: none
+                ViewerCertificate: 
+                    AcmCertificateArn: !FindInMap
+                        - DomainMap
+                        - !Ref Domain
+                        - CertArn
+                    MinimumProtocolVersion: TLSv1.2_2018
+                    SslSupportMethod: sni-only
+
+    Route:
+        Type: AWS::Route53::RecordSet
+        Properties:
+            HostedZoneId: !FindInMap
+                - DomainMap
+                - !Ref Domain
+                - HostedZoneId
+            Name: 
+                !If [IsNotFeature, !Sub 'uni-nav.${Domain}', !Sub 'uni-nav-${Stage}.${Domain}']
+            Type: A
+            AliasTarget: 
+                # hard-coded zone id for all cloudfront routes
+                # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#cfn-route53-aliastarget-hostedzoneid
+                HostedZoneId: Z2FDTNDATAQYW2 
+                DNSName: !GetAtt Cdn.DomainName
