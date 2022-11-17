@@ -1,0 +1,55 @@
+.ternaryNavbar {
+  position: relative;
+  background: #F4F4F4;
+  padding: 12px 32px;
+
+  display: flex;
+  align-items: center;
+}
+
+.mainNav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.navLink {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  color: #767676;
+
+  &:hover {
+    color: #0C0C0C;
+  }
+  &:global(.active) {
+    color: #0D664E;
+  }
+}
+
+.ctaButtons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navButton {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.008em;
+  text-transform: uppercase;
+
+  color: #E9E9E9;
+  border: 1px solid #AAAAAA;
+  border-radius: 24px;
+
+  padding: 0 16px;
+}
