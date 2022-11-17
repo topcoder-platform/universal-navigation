@@ -1,5 +1,5 @@
 # Topcoder Universal Navigation
-This repo contains all the components specific to the universal navigation for topcoder.com
+Universal Nav for the entire TCO Websphere
 
 ## Gettings started
 Include the main script in your application's main html:
