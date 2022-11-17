@@ -30,7 +30,10 @@
         ['tool', 'tool-nav', {
           toolName: 'Tool Name',
           user,
-          onReady() {console.log('tool nav ready')}
+          onReady() {console.log('tool nav ready')},
+          signIn() {console.log('Sign in was called')},
+          signUp() {console.log('Sign up was called')},
+          signOut() {console.log('Sign out was called')},
         }],
       ]}});
     </script>

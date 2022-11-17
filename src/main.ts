@@ -1,8 +1,21 @@
+import type { AuthUser } from 'lib/functions/auth-user.model'
+
 type NavigationType = (
   |'footer'
   |'marketing'
   |'tool'
 )
+
+export interface NavContext {
+  callbacks: {
+    signIn: () => void
+    signOut: () => void
+    signUp: () => void
+  },
+  auth: {
+    user: AuthUser
+  }
+}
 
 const NavigationLoadersMap = {
   marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
@@ -10,17 +23,12 @@ const NavigationLoadersMap = {
   tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
 }
 
-interface NavigationComponentProps {
+interface NavigationAppProps {
   toolName: string,
 
   onReady: () => void
 
-  user: {
-    photoURL: string
-    userId: string|number
-    initials: string
-    handle: string
-  },
+  user: AuthUser,
   signIn: () => void
   signUp: () => void
   signOut: () => void
@@ -29,7 +37,7 @@ interface NavigationComponentProps {
 async function init(
   navType: NavigationType,
   target: string | Element,
-  config: NavigationComponentProps = {} as NavigationComponentProps
+  config: NavigationAppProps = {} as NavigationAppProps
 ) {
   const loadNavigationFn = NavigationLoadersMap[navType];
 
@@ -45,8 +53,16 @@ async function init(
     throw new Error('[TcUnivNav] `target` must be a valid dom element!');
   }
 
+  // split the contextual props from the navigation's props
+  const {signIn, signOut, signUp, user, ...navProps} = props 
+
   const Navigation = await loadNavigationFn();
-  new Navigation({target: targetEl, props});
+  new Navigation({target: targetEl, props: navProps, context: new Map(Object.entries({
+    callbacks: {
+      signIn, signOut, signUp
+    },
+    auth: {user}
+  }))});
 
   if (typeof readyCallback === 'function') {
     readyCallback()

@@ -1,0 +1,30 @@
+.btn {
+  all: unset;
+  box-sizing: border-box;
+
+  background: none;
+  border: 0 none;
+  outline: none;
+  border-radius: 24px;
+
+  display: block;
+  min-width: 70px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.008em;
+  text-transform: uppercase;
+
+  padding: 0 16px;
+
+  color: #FFFFFF;
+  cursor: pointer;
+
+  &.primary {
+    background: #FFFFFF;
+    color: #137D60;
+  }
+}

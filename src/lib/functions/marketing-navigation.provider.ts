@@ -9,6 +9,6 @@ export function getMainNavItems(): NavMenuItem[] {
   return navMenu.children
 }
 
-export function getActiveRoute(index: number): NavMenuItem {
+export function getActiveRoute(index?: number): NavMenuItem[] {
   return getActiveRouteUtil(navMenu, index);
 }

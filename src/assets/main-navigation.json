@@ -14,7 +14,8 @@
           "children": [
             {
               "label": "Expertise",
-              "path": "/expertise"
+              "path": "/expertise",
+              "description": "Get more detail about expertise, services and global community."
             },
             {
               "label": "Industries",

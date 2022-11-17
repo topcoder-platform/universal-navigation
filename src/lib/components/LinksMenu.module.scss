@@ -1,0 +1,25 @@
+.mainNav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  a {
+    text-decoration: none;
+  }
+
+  :global(.navLink) {
+    text-decoration: none;
+    position: relative;
+  
+    &:global(.hover):before,
+    &:hover:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -18px;
+      bottom: -18px;
+      left: -16px;
+      right: -16px;
+      z-index: 1;
+    }
+  }
+}
