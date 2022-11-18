@@ -1,0 +1,152 @@
+{
+  "defaultHost": "http://localhost:5173",
+  "children": [
+    {
+      "label": "Business",
+      "path": "/business",
+      "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+      "children": [
+        {
+          "label": "Why Topcoder",
+          "path": "/why-topcoder",
+          "shortDesc": "Get more detail about expertise, services and global community.",
+          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "children": [
+            {
+              "label": "Expertise",
+              "path": "/expertise",
+              "description": "Get more detail about expertise, services and global community."
+            },
+            {
+              "label": "Industries",
+              "path": "/industries"
+            },
+            {
+              "label": "Success Stories",
+              "path": "/success-stories"
+            }
+          ]
+        },
+        {
+          "label": "Products",
+          "path": "/products",
+          "shortDesc": "Get more detail about expertise, services and global community.",
+          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "children": [
+            {
+              "label": "Full Service",
+              "path": "/expertise"
+            },
+            {
+              "label": "TopCrowd",
+              "path": "/industries"
+            },
+            {
+              "label": "Self Service Challenges",
+              "path": "/success-stories"
+            }
+          ]
+        },
+        {
+          "label": "Talk to an expert",
+          "path": "/talks-to-expert",
+          "host": "https://topcoder.com",
+          "type": "cta"
+        },
+        {
+          "label": "Book a demo",
+          "path": "/book-demo",
+          "host": "https://topcoder.com",
+          "type": "cta"
+        }
+      ]
+    },
+    {
+      "label": "Community",
+      "path": "/community",
+      "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+      "children": [
+        {
+          "label": "Learn",
+          "path": "/learn",
+          "shortDesc": "Get more detail about expertise, services and global community.",
+          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "children": [
+            {
+              "label": "Expertise",
+              "path": "/expertise"
+            },
+            {
+              "label": "Industries",
+              "path": "/industries"
+            },
+            {
+              "label": "Success Stories",
+              "path": "/success-stories"
+            }
+          ]
+        },
+        {
+          "label": "Earn",
+          "path": "/earn",
+          "shortDesc": "Get more detail about expertise, services and global community.",
+          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "children": [
+            {
+              "label": "Full Service",
+              "path": "/expertise"
+            },
+            {
+              "label": "TopCrowd",
+              "path": "/industries"
+            },
+            {
+              "label": "Self Service Challenges",
+              "path": "/success-stories"
+            }
+          ]
+        },
+        {
+          "label": "Compete",
+          "path": "/compete",
+          "shortDesc": "Get more detail about expertise, services and global community.",
+          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "children": [
+            {
+              "label": "Full Service",
+              "path": "/expertise"
+            },
+            {
+              "label": "TopCrowd",
+              "path": "/industries"
+            },
+            {
+              "label": "Self Service Challenges",
+              "path": "/success-stories"
+            }
+          ]
+        },
+        {
+          "label": "Connect",
+          "path": "/connect",
+          "shortDesc": "Get more detail about expertise, services and global community.",
+          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "children": [
+            {
+              "label": "Full Service",
+              "path": "/expertise"
+            },
+            {
+              "label": "TopCrowd",
+              "path": "/industries"
+            },
+            {
+              "label": "Self Service Challenges",
+              "path": "/success-stories"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

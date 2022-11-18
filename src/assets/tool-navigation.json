@@ -1,0 +1,13 @@
+{
+  "defaultHost": "https://topcoder.com",
+  "children": [
+    {
+      "label": "Business",
+      "path": "/business"
+    },
+    {
+      "label": "Community",
+      "path": "/community"
+    }
+  ]
+}
