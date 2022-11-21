@@ -1,0 +1,23 @@
+.footerWrap {
+  background: #0C0C0C;
+  padding: 12px 32px;
+
+  display: flex;
+  align-items: center;
+  color: #D4D4D4;
+}
+
+.cTopcoder {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.social {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

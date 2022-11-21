@@ -1,0 +1,15 @@
+.iconWrap {
+  display: flex;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+  }
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+}
