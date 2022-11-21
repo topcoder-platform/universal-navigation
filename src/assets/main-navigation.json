@@ -1,5 +1,5 @@
 {
-  "defaultHost": "http://localhost:5173",
+  "defaultHost": "https://topcoder.com",
   "children": [
     {
       "label": "Business",

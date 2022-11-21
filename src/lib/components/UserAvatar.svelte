@@ -7,7 +7,7 @@
 
 </script>
 
-<div class={styles.userAvatarWrap} on:click={onClick}>
+<div class={styles.userAvatarWrap} on:click={onClick} on:keydown={() => {}}>
   {#if user?.photoURL}
     <img src={user.photoURL} alt={user.initials} />
   {:else}

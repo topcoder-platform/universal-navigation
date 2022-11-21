@@ -20,7 +20,8 @@
       }(window,document,"script","//localhost:8080/tc-universal-nav.js","tcUniNav");
 
       // configurations that performed by site-owner
-      tcUniNav('marketing', document.getElementById('ui-nav'), {
+      tcUniNav('init', 'ui-nav', {
+        type: 'marketing',
         onReady() {console.log('marketing nav ready')},
         signIn() {console.log('Sign in was called')},
         signUp() {console.log('Sign up was called')},
