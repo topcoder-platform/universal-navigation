@@ -4,6 +4,8 @@
   import styles from './LinksMenu.module.scss';
   import { classnames } from 'lib/utils/classnames';
 
+  export let ref: Element | undefined = undefined;
+  
   export let className: string;
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
@@ -43,7 +45,11 @@
 
 </script>
 
-<div class={classnames(styles.mainNav, className)} class:disableHover={!!activeRoute}>
+<div
+  class={classnames(styles.mainNav, className)}
+  class:disableHover={!!activeRoute}
+  bind:this={ref}
+>
   {#each menuItems as menuItem}
     <a
       class={getNavItemType(menuItem)}

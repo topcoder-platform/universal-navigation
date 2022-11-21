@@ -10,6 +10,7 @@
   padding: 18px 32px;
 
   .mainNav {
+    flex: 0 0 auto;
     :global(.navLink) {
       color: #AAAAAA;
       text-transform: uppercase;
@@ -32,8 +33,17 @@
   width: 2px;
   height: 60px;
   margin: -18px 0;
-  // TODO: hardcoded value, use JS to calculate
-  margin-left: -178px;
+  margin-left: calc(-1 * var(--margin-left, 180px));
+  z-index: 1;
+  transition: 0.2s ease-in-out;
+
+  &.toggled {
+    margin-left: 35px;
+
+    .toggleBtn svg {
+      transform: rotateZ(180deg);
+    }
+  }
 }
 
 .toolNavWrap {
@@ -53,4 +63,26 @@
   line-height: 24px;
   text-transform: uppercase;
   color: #82EACF;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #767676;
+  border-radius: 25px;
+  background: #2A2A2A;
+
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  cursor: pointer;
+
+  svg {
+    transition: 0.2s ease-in-out;
+  }
 }
