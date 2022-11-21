@@ -4,6 +4,7 @@
   import Button from "./Button.svelte";
   import styles from './UserArea.module.scss'
   import UserAvatar from "./UserAvatar.svelte";
+  import ToolSelector from "./ToolSelector.svelte";
 
   const callbacks: NavContext['callbacks'] = getContext('callbacks')
   
@@ -32,6 +33,7 @@
       <Button variant="primary" label="Sign Up" onClick={onSignUp} />
     </div>
     {:else }
+      <ToolSelector />
       <UserAvatar user={$auth.user} onClick={onSignOut} />
     {/if}
   {/if}

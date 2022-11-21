@@ -16,6 +16,8 @@
   font-size: 14px;
   line-height: 22px;
   color: #2A2A2A;
+
+  animation: fadeInHoverMenu 0.15s ease-in 0s 1 normal both;
 }
 
 .hoverMenuInner {
@@ -72,4 +74,15 @@
   font-weight: 500;
   color: #767676;
   cursor: pointer;
+}
+
+@keyframes fadeInHoverMenu {
+  0% {
+    transform: translateY(5px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

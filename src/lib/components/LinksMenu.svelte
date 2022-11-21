@@ -25,6 +25,7 @@
     }
 
     hoveredMenuItem = menuItem;
+    const target = menuItem;
 
     await tick()
     const wraps: HTMLElement[] = [].slice.call(
@@ -32,6 +33,12 @@
     )
 
     document.addEventListener('mouseover', function mc(ev) {
+      // if target has changed, remove event listener and return
+      if (target !== hoveredMenuItem) {
+        document.removeEventListener('mouseover', mc)
+        return;
+      }
+      
       const isStillHovering = wraps.some(w => w.contains(ev.target as Node))
       if (isStillHovering) {
         return
