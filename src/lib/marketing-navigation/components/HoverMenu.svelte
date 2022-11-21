@@ -4,7 +4,7 @@
   
   export let mainDescription = '';
   export let menuItems: NavMenuItem[] = [];
-  export let key;
+  export let key: string;
 </script>
 
 <div class={styles.hoverMenuWrap} data-key={key}>

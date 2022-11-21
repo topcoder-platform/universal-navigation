@@ -27,10 +27,12 @@
     hoveredMenuItem = menuItem;
 
     await tick()
-    const wraps = [].slice.call(document.querySelectorAll(`[data-key="${menuItem.fullPath}"]`))
+    const wraps: HTMLElement[] = [].slice.call(
+      document.querySelectorAll(`[data-key="${menuItem.fullPath}"]`)
+    )
 
     document.addEventListener('mouseover', function mc(ev) {
-      const isStillHovering = wraps.some(w => w.contains(ev.target))
+      const isStillHovering = wraps.some(w => w.contains(ev.target as Node))
       if (isStillHovering) {
         return
       }

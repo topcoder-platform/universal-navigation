@@ -137,7 +137,7 @@ function update(
   });
 }
 
-function execQueueCall(method: string, ...args) {
+function execQueueCall(method: string, ...args: any[]) {
   if (method === 'init') {
     init.call(null, ...args)
   }
