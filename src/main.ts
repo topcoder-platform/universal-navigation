@@ -18,6 +18,7 @@ export interface NavContext {
     signUp: () => void
   }>
   toolName: Writable<string>
+  toolRoot: Writable<string>
 }
 
 const NavigationLoadersMap = {
@@ -31,6 +32,7 @@ const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
 interface NavigationAppProps {
   type: NavigationType
   toolName: string,
+  toolRoot: string,
 
   onReady: () => void
 
@@ -63,6 +65,7 @@ async function init(
     signUp,
     user,
     toolName,
+    toolRoot,
     type: navType,
     ...navProps
   } = props 
@@ -90,6 +93,7 @@ async function init(
       signIn, signOut, signUp
     }),
     toolName: writable(toolName),
+    toolRoot: writable(toolRoot),
   }));
   
   instancesContextStore[targetId] = ctx;

@@ -10,11 +10,13 @@
   const menuItems = getMainNavItems()
 
   const toolName: NavContext['toolName'] = getContext('toolName');
+  const toolRoot: NavContext['toolRoot'] = getContext('toolRoot');
 </script>
 
 <div class="tc-universal-nav-wrap">
   <TopNav
     menuItems={menuItems}
     toolName={$toolName}
+    toolRoot={$toolRoot}
   />
 </div>

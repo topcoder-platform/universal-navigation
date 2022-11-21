@@ -31,6 +31,7 @@ There are 2 sample integrations in the "demo" folder: `tc-app.html` and `tc-tool
 | config.singOut  | () => void                           | no                  | Called when the user clicks the Log out button            | none          |
 | config.signUp   | () => void                           | no                  | Called when the user clicks sign up/register              | none          |
 | config.toolName | string                               | yes (for  tool nav) | Called when the user clicks sign up/register              | none          |
+| config.toolRoot | string                               | yes (for  tool nav) | The root url for the current tool                         | none          |
 | config.user     | {photoURL, userId, initials, handle} | no                  | The logged in user                                        | {}            |
 
 ## Marketing Navigation
