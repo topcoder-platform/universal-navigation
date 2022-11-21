@@ -11,7 +11,7 @@ The UniNav JS is stored in S3 with the CloudFront CDN.
 
 README TBD
 
-## Gettings started
+## Getting started
 Include the main script in your application's main html:
 
 ```
