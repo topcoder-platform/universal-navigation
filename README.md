@@ -1,6 +1,16 @@
 # Topcoder Universal Navigation
 Universal Nav for the entire TCO Websphere
 
+## Architecture Diagram
+
+![Basic Architecture Diagram](docs/Universal%20Nav%20Diagram.png?raw=true "Universal Nav Architecture Drawing")
+
+## Hosting
+
+The UniNav JS is stored in S3 with the CloudFront CDN. 
+
+README TBD
+
 ## Gettings started
 Include the main script in your application's main html:
 
