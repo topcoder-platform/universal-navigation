@@ -9,12 +9,12 @@ export function parseMenuItem(
   const { children }: NavMenuItem = menuItem;
 
   const updatedChildren: NavMenuItem[] = children?.map((child) => {
-    const fullPath: string = `${parent.fullPath ?? parent.path ?? ''}${child.path}`
+    const fullPath: string = child.fullPath ?? `${parent.fullPath ?? parent.path ?? ''}${child.path ?? ''}`
 
     const updatedChildData: NavMenuItem = {
       ...child,
       fullPath,
-      absUrl: `${child['host'] ?? parent.host ?? defaultHost}${fullPath}`,
+      absUrl: child.absUrl ?? (fullPath ? `${child['host'] ?? parent.host ?? defaultHost}${fullPath}` : ''),
       host: child['host'] ?? defaultHost,
     }
 
