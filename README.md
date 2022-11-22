@@ -46,6 +46,21 @@ There are 2 sample integrations in the "demo" folder: `tc-app.html` and `tc-tool
 | config.toolRoute   | string                               | yes (for tool nav update) | The route to the tool as it should appear in the header   | none          |
 | config.user        | {photoURL, userId, initials, handle} | no                        | The logged in user                                        | {}            |
 
+## Methods
+###### `init`
+The `init` method can be called one single time for the same `targetId`. If the init method is called more than one time, the navigation will throw an error and won't do anything.
+###### `update`
+The `update` needs to be called only after `init` was already called. If it's called before the navigation will throw an error mentioning that init needs to be called first.
+After `init` was called, you should call only `update` for further updates.
+
+>**NOTE**   
+Both methods accept the same config object as mentioned in the previous section (**API for tcUniNav**).
+
+>**NOTE**   
+If no user data is passed to the `init` method, the navigation will hide the right side area (login/logout buttons, and the avatar & tool selector)   
+In this case, you need to specifically send `{user: undefined}` or `{user: UserData}` in a further `update` call for the right side area to show up.  
+This is to prevent the flashing of "login/logout" buttons before the data for the user is ready.
+
 ## Marketing Navigation
 Component rendered on the marketing part of topcoder (eg. topcoder.com/business. topcoder.com/community)
 ```
@@ -61,7 +76,7 @@ Component rendered on any tool part of topcoder (eg. platform-ui.topcoder.com/le
   tcUniNav('update', 'navigation-el', {toolName: 'Work Manager, tool})
 ```
 
->**NOTE** In order to prevent flashing, the user info can only be set using the update method.
+### `init()`
 
 ## Footer Navigation
 The component renders the footer for the page
