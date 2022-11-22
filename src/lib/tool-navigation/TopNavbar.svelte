@@ -1,14 +1,23 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import type { NavigationHandler } from 'lib/app-context';
   import LinksMenu from 'lib/components/LinksMenu.svelte';
   import TcLogo from 'lib/components/TcLogo.svelte';
   import UserArea from 'lib/components/UserArea.svelte';
   import { classnames } from 'lib/utils/classnames';
-  import { onMount } from 'svelte';
   import styles from './TopNavbar.module.scss';
 
   export let menuItems = [];
   export let toolName = '';
   export let toolRoot = '/';
+  export let navigationHandler: NavigationHandler;
+
+  function handleNavigation(ev: MouseEvent) {
+    if (typeof navigationHandler === 'function') {
+      ev.preventDefault()
+      navigationHandler({label: toolName, path: toolRoot});
+    }
+  }
 
   let linksMenuEl: HTMLElement;
   let mainMenuWidth = 0;
@@ -18,10 +27,9 @@
     mainMenuVisible = !mainMenuVisible
   }
 
-  onMount(() => {
-    document.fonts?.ready?.then(() => {
-      mainMenuWidth = linksMenuEl.offsetWidth
-    })
+  onMount(async () => {
+    await document.fonts?.ready
+    mainMenuWidth = linksMenuEl.offsetWidth
   })
 
 </script>
@@ -54,8 +62,8 @@
   </div>
 
 <div class={styles.toolNavWrap}>
-  <a href={toolRoot} class={styles.toolName}>
-    {toolName}
+  <a href={toolRoot} class={styles.toolName} on:click={handleNavigation}>
+    {toolName ?? ''}
   </a>
 </div>
 

@@ -1,40 +1,32 @@
 <script lang="ts">
-  import { getContext, onDestroy } from "svelte";
-  import type { NavContext } from "main";
   import Button from "./Button.svelte";
   import styles from './UserArea.module.scss'
   import UserAvatar from "./UserAvatar.svelte";
   import ToolSelector from "./ToolSelector.svelte";
+  import { getAppContext } from "lib/app-context";
 
-  const callbacks: NavContext['callbacks'] = getContext('callbacks')
+  const ctx = getAppContext()
   
-  const {
+  $: ({
     signIn: onSignIn = () => {},
     signUp: onSignUp = () => {},
     signOut: onSignOut = () => {},
-  } = $callbacks
+    ready: isReady,
+    user,
+  } = $ctx.auth)
 
-  const auth: NavContext['auth'] = getContext('auth')
-
-  let isReady: boolean;
-
-  onDestroy(
-    auth.subscribe((a) => (
-      isReady = Object.prototype.hasOwnProperty.call(a, 'user')
-    ))
-  )
 </script>
 
 <div class={styles.authWrap}>
   {#if isReady}
-    {#if !$auth.user}
+    {#if !user}
     <div class={styles.btnsWrap}>
       <Button label="Log in" onClick={onSignIn} />
       <Button variant="primary" label="Sign Up" onClick={onSignUp} />
     </div>
     {:else }
       <ToolSelector />
-      <UserAvatar user={$auth.user} onClick={onSignOut} />
+      <UserAvatar user={user} onClick={onSignOut} />
     {/if}
   {/if}
 </div>
