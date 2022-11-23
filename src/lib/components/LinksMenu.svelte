@@ -9,7 +9,7 @@
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
   export let hoveredMenuItem: NavMenuItem = undefined;
-  export let hovereElement: HTMLElement = undefined;
+  export let hoveredElement: HTMLElement = undefined;
   export let isPopupMenuActive: boolean = false;
 
   function itemHasHoverMenu(menuItem: NavMenuItem) {
@@ -25,7 +25,7 @@
       return;
     }
 
-    hovereElement = ev.target
+    hoveredElement = ev.target
     hoveredMenuItem = menuItem;
   }
 

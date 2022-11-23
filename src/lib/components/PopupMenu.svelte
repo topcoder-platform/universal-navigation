@@ -37,7 +37,7 @@
     document.addEventListener('mouseover', async function mc(ev) {
       // check to see if user is still hovering the targetEl or the popup
       const isStillHovering = wraps.some(w => w.contains(ev.target as Node))
-      // if user isn't hoverint the target/popup, the popup is about to hide
+      // if user isn't hovering the target/popup, the popup is about to hide
       willHide = !isStillHovering;
 
       // do nothing if user is still hovering
@@ -48,8 +48,8 @@
       // provide a delay before taking any action (better UX)
       await delay(200)
 
-      // if the user changed it's actions and is now still hovering our target elements
-      // of if the targetElement is now different
+      // if the user changed its actions and is now still hovering our target elements
+      // ot if the targetElement is now different
       // do nothing
       if (!willHide || target !== targetEl) {
         return
@@ -97,7 +97,7 @@
   }
   
   // each time the targetEl changes, 
-  // call bindEvents to lisent for mouse events
+  // call bindEvents to listen for mouse events
   $: !!targetEl && bindEvents()
 
   // unbind all events on unmount

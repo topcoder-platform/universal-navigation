@@ -30,7 +30,7 @@
         <a href={`/members/${user.handle}`}>My Profile</a>
       </li>
       <li>
-        <a href="/settins/profile">Settings</a>
+        <a href="/settings/profile">Settings</a>
       </li>
       <li>
         <a href={"javascript:;"} on:click={onSignOut}>Log Out</a>

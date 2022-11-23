@@ -24,7 +24,7 @@
     menuItems={menuItems}
     activeRoute={activeRoute}
     bind:hoveredMenuItem={hoveredMenuItem}
-    bind:hovereElement={hoveredElement}
+    bind:hoveredElement={hoveredElement}
     isPopupMenuActive={popupIsVisible}
   />
 
