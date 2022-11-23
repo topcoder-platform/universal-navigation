@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tc Tool App</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="ui-nav"></div>
+    <script>
+      !function(n,t,e,a,c,i,o){n['TcUnivNavConfig']=c,n[c]=n[c]||function(){
+      (n[c].q=n[c].q??[]).push(arguments)},n[c].l=1*new Date();i=t.createElement(e),
+      o=t.getElementsByTagName(e)[0];i.async=1;i.type="module";i.src=a;o.parentNode.insertBefore(i,o)
+      }(window,document,"script","//localhost:8081/tc-universal-nav.js","tcUniNav");
+
+      const user = {
+        photoURL: 'https://topcoder-prod-media.s3.amazonaws.com/member/profile/vasilica.olariu-1616487120406.png',
+        userId: 11111111,
+        initials: 'JD',
+        handle: 'john.doe'
+      };
+
+      // configurations that performed by site-owner
+      tcUniNav('init', 'ui-nav', {
+        type: 'tool',
+        toolName: 'Tc Tool App',
+        onReady() {console.log('tool nav ready')},
+        signIn() {console.log('Sign in was called')},
+        signUp() {console.log('Sign up was called')},
+        signOut() {console.log('Sign out was called')},
+      });
+
+      setTimeout(() => {tcUniNav('update', 'ui-nav', {user})}, 1500)
+    </script>
+  </body>
+</html>

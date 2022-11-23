@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.min.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topcoder Universal Navigation</title>
+  </head>
+  <body>
+    <div id="marketing-nav"></div>
+    <div id="tool-nav"></div>
+    <div id="footer-el"></div>
+    <script type="module" src="/src/main.ts"></script>
+
+    <script>
+      // sdk include
+      // creates a global variable to delegate, so it will be available before script loaded 
+      window['tcUniNav'] = window['tcUniNav'] || function () {
+          // pushes arguments that were passed to delegate into queue
+          // so they can be accessed later from the main script
+          (window['tcUniNav'].q = window['tcUniNav'].q ?? []).push(arguments)
+      };
+      
+    </script>
+    
+    <script>
+      // mock user data
+      const user = {
+        photoURL: 'https://topcoder-prod-media.s3.amazonaws.com/member/profile/vasilica.olariu-1616487120406.png',
+        userId: 11111111,
+        initials: 'JD',
+        handle: 'john.doe'
+      };
+
+      tcUniNav('init', 'marketing-nav', {
+        type: 'marketing',
+        onReady() {console.log('marketing nav ready')}
+      })
+
+      tcUniNav('init', 'tool-nav', {
+        type: 'tool',
+        toolName: 'Tool Name',
+        onReady() {console.log('tool nav ready')},
+        signIn() {console.log('Sign in was called')},
+        signUp() {console.log('Sign up was called')},
+        signOut() {console.log('Sign out was called')},
+      })
+
+      tcUniNav('init', 'footer-el', {
+        type: 'footer',
+      })
+
+      tcUniNav('update', 'tool-nav', {
+        toolName: 'Topcoder Academy'
+      })
+
+      setTimeout(() => tcUniNav('update', '*', {
+        user
+      }), 3000)
+    </script>
+  </body>
+</html>

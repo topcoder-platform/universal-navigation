@@ -1,0 +1,14 @@
+.wrap {
+  display: flex;
+  position: relative;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  img {
+    display: block;
+  }
+}

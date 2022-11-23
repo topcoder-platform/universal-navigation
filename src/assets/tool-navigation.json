@@ -1,0 +1,12 @@
+{
+  "children": [
+    {
+      "label": "Business",
+      "path": "/business"
+    },
+    {
+      "label": "Community",
+      "path": "/community"
+    }
+  ]
+}
