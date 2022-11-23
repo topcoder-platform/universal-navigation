@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { AuthUser } from 'lib/app-context';
-  import styles from './UserAvatar.module.scss';
-  import PopupMenu from "./PopupMenu.svelte";
   import { classnames } from 'lib/utils/classnames';
+  import { getDefaultHostPath } from 'lib/utils/paths';
+  import styles from './UserAvatar.module.scss';
+  import PopupMenu from './PopupMenu.svelte';
   
   export let user: AuthUser;
   export let onSignOut: () => void;
@@ -27,10 +28,10 @@
   <div class={styles.avatarDropdownMenu}>
     <ul>
       <li>
-        <a href={`/members/${user.handle}`}>My Profile</a>
+        <a href={getDefaultHostPath(`/members/${user.handle}`)}>My Profile</a>
       </li>
       <li>
-        <a href="/settings/profile">Settings</a>
+        <a href={getDefaultHostPath('/settings/profile')}>Settings</a>
       </li>
       <li>
         <a href={"javascript:;"} on:click={onSignOut}>Log Out</a>
