@@ -97,7 +97,7 @@ The component renders the footer for the page
 
 ## Versioning
 
-There are currently dev and prod versions of the library located at:
+There are currently prod and dev versions of the library located at:
 
 https://uni-nav.topcoder.com/tc-universal-nav-#.js
 
