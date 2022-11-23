@@ -24,5 +24,10 @@ export default defineConfig({
       name: 'TcUniversalNav',
       fileName: 'tc-universal-nav'
     },
+    rollupOptions: {
+      output: {
+        manualChunks: () =>  'tc-universal-nav.js'
+      },
+    }
   }
 })
