@@ -4,11 +4,14 @@
   import HoverMenu from './HoverMenu.svelte';
   import LinksMenu from '../../components/LinksMenu.svelte';
   import styles from './NavigationBar.module.scss';
+  import PopupMenu from 'lib/components/PopupMenu.svelte';
 
   export let style: 'primary'|'secondary'|'ternary';
   export let menuItems: NavMenuItem[] = [];
   export let activeRoute: NavMenuItem;
 
+  let popupIsVisible: boolean;
+  let hoveredElement: HTMLElement | undefined;
   let hoveredMenuItem: NavMenuItem;
 
 </script>
@@ -21,15 +24,20 @@
     menuItems={menuItems}
     activeRoute={activeRoute}
     bind:hoveredMenuItem={hoveredMenuItem}
+    bind:hovereElement={hoveredElement}
+    isPopupMenuActive={popupIsVisible}
   />
 
   <slot name="auth"></slot>
 
-  {#if !!hoveredMenuItem}
+  <PopupMenu
+    targetEl={hoveredElement}
+    bind:isVisible={popupIsVisible}
+    class={styles.hoverMenu}
+  >
     <HoverMenu
-      menuItems={hoveredMenuItem.children}
-      mainDescription={hoveredMenuItem.description}
-      key={hoveredMenuItem.fullPath}
+      menuItems={hoveredMenuItem?.children}
+      mainDescription={hoveredMenuItem?.description}
     />
-  {/if}
+  </PopupMenu>
 </nav>

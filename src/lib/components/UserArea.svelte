@@ -26,7 +26,10 @@
     </div>
     {:else }
       <ToolSelector />
-      <UserAvatar user={user} onClick={onSignOut} />
+      <UserAvatar
+        user={user}
+        onSignOut={onSignOut}
+      />
     {/if}
   {/if}
 </div>
