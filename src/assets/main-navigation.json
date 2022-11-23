@@ -4,46 +4,145 @@
     {
       "label": "Business",
       "path": "/business",
-      "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+      "description": "Learn how Topcoder can help your business get work done.",
       "children": [
         {
           "label": "Why Topcoder",
           "path": "/why-topcoder",
-          "shortDesc": "Get more detail about expertise, services and global community.",
-          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "description": "How Topcoder provides hiqh quality, secure solutions.",
           "children": [
             {
+              "label": "The Community",
+              "path": "../the-community",
+              "description": "How the Topcoder community provides value to your business."
+            },
+            {
               "label": "Expertise",
-              "path": "/expertise",
-              "description": "Get more detail about expertise, services and global community."
+              "path": "/../expertise",
+              "description": "The areas in which Topcoder delivers successful solutions.",
+              "children": [
+                {
+                  "label": "Data Science",
+                  "path": "/../data-science",
+                  "description": "See how Topcoder has delivered Data Science solutions."
+                },
+                {
+                  "label": "Design",
+                  "path": "/../design",
+                  "description": "See how Topcoder has delivered Design solutions."
+                },
+                {
+                  "label": "Development",
+                  "path": "/../development",
+                  "description": "See how Topcoder has delivered Development solutions."
+                },
+                {
+                  "label": "QA",
+                  "path": "/../qa",
+                  "description": "See how Topcoder has delivered QA solutions."
+                }
+              ]
             },
             {
               "label": "Industries",
-              "path": "/industries"
+              "path": "/../industries",
+              "description": "The industries in which Topcoder delivers successful solutions.",
+              "children": [
+                {
+                  "label": "BFSI",
+                  "path": "/../../bfsi",
+                  "description": "BFSI solutions, how Topcoder excels, including case studies."
+                },
+                {
+                  "label": "Communications",
+                  "path": "/../communications",
+                  "description": "Communications solutions, how Topcoder excels, including case studies."
+                },
+                {
+                  "label": "Energy / Utilities",
+                  "path": "/../energy-utilities",
+                  "description": "Energy / utilities solutions, how Topcoder excels, including case studies."
+                },
+                {
+                  "label": "Health / Pharma",
+                  "path": "/../health-pharma",
+                  "description": "Health / pharma solutions, how Topcoder excels, including case studies."
+                },
+                {
+                  "label": "Public Sector",
+                  "path": "/../public-sector",
+                  "description": "Public sector solutions, how Topcoder excels, including case studies."
+                },
+                {
+                  "label": "Retail",
+                  "path": "/../retail",
+                  "description": "Retail solutions, how Topcoder excels, including case studies."
+                },
+                {
+                  "label": "Technology",
+                  "path": "/../technology",
+                  "description": "Technology solutions, how Topcoder excels, including case studies."
+                }
+              ]
+            },
+            {
+              "label": "Partners",
+              "path": "/../partners",
+              "description": "Companies Topcoder partners with to deliver high quality solutions."
+            },
+            {
+              "label": "Security",
+              "path": "/../security",
+              "description": "How your IP is protected at Topcoder."
             },
             {
               "label": "Success Stories",
-              "path": "/success-stories"
+              "path": "/../success-stories",
+              "description": "Browse case studies for solutions Topcoder has successfully delivered."
             }
           ]
         },
         {
           "label": "Products",
           "path": "/products",
-          "shortDesc": "Get more detail about expertise, services and global community.",
-          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "description": "How you will engage with the products Topcoder offers.",
           "children": [
             {
               "label": "Full Service",
-              "path": "/expertise"
+              "path": "/../full-service",
+              "description": "Work with Topcoder experts to craft the exact solution you need."
             },
             {
               "label": "TopCrowd",
-              "path": "/industries"
+              "path": "/../topcrowd",
+              "description": "Register your own employees in Topcoder to maximize productivity."
             },
             {
               "label": "Self Service Challenges",
-              "path": "/success-stories"
+              "path": "/../self-service-challenges",
+              "description": "Submit work directly to Topcoder and get results without having to talk to anyone.",
+              "children": [
+                {
+                  "label": "Data Advisory",
+                  "path": "/../data-advisory",
+                  "description": "Submit work to get advice on how to use data science to improve your business."
+                },
+                {
+                  "label": "Find Me Data",
+                  "path": "/../find-me-data",
+                  "description": "Submit work to find data sources that can help your business."
+                },
+                {
+                  "label": "Data Exploration",
+                  "path": "/../data-exploration",
+                  "description": "Submit work to gain insights from your data."
+                },
+                {
+                  "label": "Website Design",
+                  "path": "/../webside-design",
+                  "description": "Work directly with the Topcoder community to design your website."
+                }
+              ]
             }
           ]
         },
@@ -51,98 +150,125 @@
           "label": "Talk to an expert",
           "path": "/talks-to-expert",
           "host": "https://topcoder.com",
-          "type": "cta"
+          "type": "cta",
+          "description": "Speak with a Topcoder expert to get started."
         },
         {
           "label": "Book a demo",
-          "path": "/book-demo",
+          "path": "/demo",
           "host": "https://topcoder.com",
-          "type": "cta"
+          "type": "cta",
+          "description": "See a demo of how Topcoder can best provide for your business."
         }
       ]
     },
     {
       "label": "Community",
       "path": "/community",
-      "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+      "description": "Learn how you can learn, earn, and connect with others in the Topcoder community.",
       "children": [
         {
           "label": "Learn",
           "path": "/learn",
-          "shortDesc": "Get more detail about expertise, services and global community.",
-          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "description": "Learning opportunities provided to Topcoder's members.",
           "children": [
             {
-              "label": "Expertise",
-              "path": "/expertise"
+              "label": "Topcoder Academy",
+              "path": "/../topcoder-academy",
+              "description": "Take courses, earn certificates, and grow your proven skillset to earn at Topcoder."
             },
             {
-              "label": "Industries",
-              "path": "/industries"
-            },
-            {
-              "label": "Success Stories",
-              "path": "/success-stories"
+              "label": "Articles",
+              "path": "/thrive",
+              "description": "Internal articles to help expand your knowledge."
             }
           ]
         },
         {
           "label": "Earn",
           "path": "/earn",
-          "shortDesc": "Get more detail about expertise, services and global community.",
-          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "description": "How to earn money at Topcoder.",
           "children": [
             {
-              "label": "Full Service",
-              "path": "/expertise"
+              "label": "Challenges",
+              "path": "/../challenges",
+              "description": "Compete with others to solve challenges and earn money."
             },
             {
-              "label": "TopCrowd",
-              "path": "/industries"
-            },
-            {
-              "label": "Self Service Challenges",
-              "path": "/success-stories"
+              "label": "Gigs",
+              "path": "/../gigs",
+              "description": "Work directly with customers via time-based contracts."
             }
           ]
         },
         {
           "label": "Compete",
           "path": "/compete",
-          "shortDesc": "Get more detail about expertise, services and global community.",
-          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "description": "Competitive programming for fun and to grow your skills & ranking at Topcoder.",
           "children": [
             {
-              "label": "Full Service",
-              "path": "/expertise"
+              "label": "Marathon Matches",
+              "path": "/../marathon-matches",
+              "description": "Competitions that span days or weeks."
             },
             {
-              "label": "TopCrowd",
-              "path": "/industries"
+              "label": "Rapid Dev Matches",
+              "path": "/rapid-dev-matches",
+              "description": "Quick competitions you can complete in less than one day."
             },
             {
-              "label": "Self Service Challenges",
-              "path": "/success-stories"
+              "label": "Single Round Matches",
+              "path": "/single-round-matches",
+              "description": "Multi-problem algorithmic competitions where you go head-to-head in an arena."
             }
           ]
         },
         {
           "label": "Connect",
           "path": "/connect",
-          "shortDesc": "Get more detail about expertise, services and global community.",
-          "description": "We have a multitude of reasons for why you should work with Topcoder! Get more details about our areas of expertise, the industries we serve and our happy customers.",
+          "description": "Connect with others at Topcoder.",
           "children": [
             {
-              "label": "Full Service",
-              "path": "/expertise"
+              "label": "Announcements",
+              "path": "/../announcements",
+              "description": "Important announcements to the Topcoder community."
             },
             {
-              "label": "TopCrowd",
-              "path": "/industries"
+              "label": "Events",
+              "path": "/../events",
+              "description": "Upcoming Topcoder events."
             },
             {
-              "label": "Self Service Challenges",
-              "path": "/success-stories"
+              "label": "Topcoder Open",
+              "path": "/../topcoder-open",
+              "description": "The utlimate competitive tournament - the big event!"
+            },
+            {
+              "label": "Discord",
+              "path": "/../discord",
+              "description": "Chat with others in the community."
+            },
+            {
+              "label": "Timeline",
+              "path": "/../timeline",
+              "description": "An interactive timeline wall showing Topcoder's history."
+            }
+          ]
+        },
+        {
+          "label": "Benefits",
+          "path": "/benefits",
+          "description": "Benefits members receive at Topcoder.",
+          "children": [
+            {
+              "label": "Health care",
+              "path": "/../health-care",
+              "description": "International (non-US) healthcare."
+            },
+            {
+              "label": "Career Growth",
+              "path": "/../career-growth",
+              "description": "Topcoder's profile captures your proven skills increasing employment opportunities."
             }
           ]
         }
