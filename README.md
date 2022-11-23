@@ -1,6 +1,18 @@
 # Topcoder Universal Navigation
 Universal Nav for the entire TCO Websphere
 
+## Clients
+
+The following clients use the uni-nav for the MVP:
+
+- [Platform UI](https://github.com/topcoder-platform/platform-ui)
+- [PACTS](https://github.com/topcoder-platform/tc-website)
+- [Forums](https://github.com/topcoder-platform/forums)
+- [Online Review](https://github.com/topcoder-platform/tc-online-review)
+- [TopCrowd](https://github.com/topcoder-platform/private-talent-cloud)
+- [Customer Marketing](https://www.topcoder.com) - Wordpress
+- [Member Marketing](https://github.com/topcoder-platform/community-app)
+
 ## Architecture Diagram
 
 ![Basic Architecture Diagram](docs/Universal%20Nav%20Diagram.png?raw=true "Universal Nav Architecture Drawing")
@@ -19,7 +31,7 @@ Include the main script in your application's main html:
   !function(n,t,e,a,c,i,o){n['TcUnivNavConfig']=c,n[c]=n[c]||function(){
   (n[c].q=n[c].q??[]).push(arguments)},n[c].l=1*new Date();i=t.createElement(e),
   o=t.getElementsByTagName(e)[0];i.async=1;i.type="module";i.src=a;o.parentNode.insertBefore(i,o)
-  }(window,document,"script","//uni-nav.topcoder.com/tc-universal-nav.js","tcUniNav");
+  }(window,document,"script","//uni-nav.topcoder.com/tc-universal-nav-1.js","tcUniNav");
 </script>
 ```
 
@@ -27,7 +39,7 @@ Once included the above script, you can immediately call `tcUniNav()` to initial
 
 There are 2 sample integrations in the "demo" folder: `tc-app.html` and `tc-tool-app.html`.
 
->**NOTE** Each application will need to determine which version of the nav it uses by setting the URL for the script. For example, non-production environments will probably want to point to `//uni-nav.topcoder-dev.com/tc-universal-nav.js`
+>**NOTE** Each application will need to determine which version of the nav it uses by setting the URL for the script. See [Versioning](#versioning) for more info.
 
 ## API for tcUniNav
 `tcUniNav(method, targetId, config)`
@@ -81,3 +93,26 @@ The component renders the footer for the page
 
 ## Recommended IDE Setup   
 [VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+
+
+## Versioning
+
+There are currently dev and prod versions of the library located at:
+
+https://uni-nav.topcoder.com/tc-universal-nav-#.js
+
+https://uni-nav.topcoder-dev.com/tc-universal-nav-#.js
+
+Each application will need to determine which version of the nav it uses by setting the URL for the script.
+
+For example, non-production environments will probably want to point to the script hosted on  `//uni-nav.topcoder-dev.com`
+
+### Minor Version upgrades
+
+Minor version updates will be rolled out silently to all clients.
+
+### Major Version upgrades
+
+Major changes will be versioned for incremental rollout using the script path (e.g. `tc-universal-nav-2.js`).
+
+Information regarding the changes will be disseminated to all clients, and each client will be responsible for migrating to the new version before the prior version is deprecated.
