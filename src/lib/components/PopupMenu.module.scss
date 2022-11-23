@@ -1,0 +1,16 @@
+.popupMenuWrap {
+  background: #FFFFFF;
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 24px 32px;
+
+  position: absolute;
+  z-index: 9;
+
+  top: calc(100% + 4px);
+  right: 0;
+}
+
+.popupMenuInner {
+  position: relative;
+}

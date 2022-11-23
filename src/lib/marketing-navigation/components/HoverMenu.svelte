@@ -4,10 +4,9 @@
   
   export let mainDescription = '';
   export let menuItems: NavMenuItem[] = [];
-  export let key: string;
 </script>
 
-<div class={styles.hoverMenuWrap} data-key={key}>
+<div class={styles.hoverMenuWrap}>
   <div class={styles.hoverMenuInner}>
     <p class={styles.mainDesc}>
       {mainDescription}
