@@ -32,18 +32,35 @@ There are 2 sample integrations in the "demo" folder: `tc-app.html` and `tc-tool
 ## API for tcUniNav
 `tcUniNav(method, targetId, config)`
 
-| Parameter       | Type                                 | Required            | Description                                               | Default value |
-|-----------------|--------------------------------------|---------------------|-----------------------------------------------------------|---------------|
-| method          | Enum: 'init'\|'update'               | yes                 | The method to be called                                   |               |
-| targetId        | string(html element id)              | yes                 | target element for the navigation to be rendered on       | none          |
-| config          | object                               | no                  | The config object for the specific navigation type        | {}            |
-| config.type     | Enum: 'marketing'\|'tool'\|'footer'  | yes                 | The type of navigation to render                          |               |
-| config.onReady  | () => void                           | no                  | Callback function called when the navigation was rendered | none          |
-| config.user     | {photoURL, userId, initials, handle} | no                  | The logged in user                                        | {}            |
-| config.signIn   | () => void                           | no                  | Called when the user clicks the Log in button             | none          |
-| config.singOut  | () => void                           | no                  | Called when the user clicks the Log out button            | none          |
-| config.signUp   | () => void                           | no                  | Called when the user clicks sign up/register              | none          |
-| config.toolName | string                               | yes (for  tool nav) | Called when the user clicks sign up/register              | none          |
+| Parameter               | Type                                 | Required                  | Description                                                                | Default value |
+|-------------------------|--------------------------------------|---------------------------|----------------------------------------------------------------------------|---------------|
+| method                  | Enum: 'init' \| 'update'             | yes                       | The method to be called                                                    |               |
+| targetId                | string(html element id)              | yes                       | target element for the navigation to be rendered on                        | none          |
+| config                  | object                               | no                        | The config object for the specific navigation type                         | {}            |
+| config.type             | Enum: 'marketing'\|'tool'\|'footer'  | yes                       | The type of navigation to render                                           |               |
+| config.onReady          | () => void                           | no                        | Callback function called when the navigation was rendered                  | none          |
+| config.signIn           | () => void                           | no                        | Called when the user clicks the Log in button                              | none          |
+| config.signOut          | () => void                           | no                        | Called when the user clicks the Log out button                             | none          |
+| config.signUp           | () => void                           | no                        | Called when the user clicks sign up/register                               | none          |
+| config.toolName         | string                               | yes (for tool nav update) | The name of the tool as it should appear in the header                     | none          |
+| config.toolRoute        | string                               | yes (for tool nav update) | The route to the tool as it should appear in the header                    | none          |
+| config.user             | {photoURL, userId, initials, handle} | no                        | The logged in user                                                         | {}            |
+| config.handleNavigation | (route: {path, label}) => void       | no                        | Allow for external handling of route navigation (eg. via react-router-dom) | none          |
+
+## Methods
+###### `init`
+The `init` method can be called one single time for the same `targetId`. If the init method is called more than one time, the navigation will throw an error and won't do anything.
+###### `update`
+The `update` needs to be called only after `init` was already called. If it's called before the navigation will throw an error mentioning that init needs to be called first.
+After `init` was called, you should call only `update` for further updates.
+
+>**NOTE**   
+Both methods accept the same config object as mentioned in the previous section (**API for tcUniNav**).
+
+>**NOTE**   
+If no user data is passed to the `init` method, the navigation will hide the right side area (login/logout buttons, and the avatar & tool selector)   
+In this case, you need to specifically send `{user: undefined}` or `{user: UserData}` in a further `update` call for the right side area to show up.  
+This is to prevent the flashing of "login/logout" buttons before the data for the user is ready.
 
 ## Marketing Navigation
 Component rendered on the marketing part of topcoder (eg. topcoder.com/business. topcoder.com/community)
@@ -60,7 +77,7 @@ Component rendered on any tool part of topcoder (eg. platform-ui.topcoder.com/le
   tcUniNav('update', 'navigation-el', {toolName: 'Work Manager, tool})
 ```
 
->**NOTE** In order to prevent flashing, the user info can only be set using the update method.
+### `init()`
 
 ## Footer Navigation
 The component renders the footer for the page
