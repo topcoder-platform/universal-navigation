@@ -2,21 +2,21 @@
   /**
    * This is the navigation component as seen on any tool for the topcoder
   */
- import { getContext } from 'svelte';
   import TopNav from './TopNavbar.svelte';
   import { getMainNavItems } from 'lib/functions/tool-navigation.provider'
-  import type { NavContext } from 'main';
+  import { getAppContext } from 'lib/app-context';
 
   const menuItems = getMainNavItems()
+  const ctx = getAppContext()
 
-  const toolName: NavContext['toolName'] = getContext('toolName');
-  const toolRoot: NavContext['toolRoot'] = getContext('toolRoot');
+  $: ({toolConfig, navigationHandler} = $ctx)
 </script>
 
 <div class="tc-universal-nav-wrap">
   <TopNav
     menuItems={menuItems}
-    toolName={$toolName}
-    toolRoot={$toolRoot}
+    toolName={toolConfig.name}
+    toolRoot={toolConfig.root}
+    navigationHandler={navigationHandler}
   />
 </div>

@@ -1,25 +1,12 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
-import type { AuthUser } from 'lib/functions/auth-user.model'
+import { buildContext, type AuthUser, type NavigationHandler } from 'lib/app-context'
 
 type NavigationType = (
   |'footer'
   |'marketing'
   |'tool'
 )
-
-export interface NavContext {
-  auth: Writable<{
-    user: AuthUser
-  }>
-  callbacks: Writable<{
-    signIn: () => void
-    signOut: () => void
-    signUp: () => void
-  }>
-  toolName: Writable<string>
-  toolRoot: Writable<string>
-}
 
 const NavigationLoadersMap = {
   marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
@@ -29,10 +16,11 @@ const NavigationLoadersMap = {
 
 const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
 
-interface NavigationAppProps {
+export interface NavigationAppProps {
   type: NavigationType
   toolName: string,
   toolRoot: string,
+  handleNavigation: NavigationHandler
 
   onReady: () => void
 
@@ -66,6 +54,7 @@ async function init(
     user,
     toolName,
     toolRoot,
+    handleNavigation,
     type: navType,
     ...navProps
   } = props 
@@ -87,15 +76,10 @@ async function init(
   }
 
   // build context for the navigation
-  const ctx = new Map(Object.entries({
-    auth: writable(user ? {user} : {}),
-    callbacks: writable({
-      signIn, signOut, signUp
-    }),
-    toolName: writable(toolName),
-    toolRoot: writable(toolRoot),
-  }));
-  
+  const ctx = new Map([
+    ['appContext', writable(buildContext(props, {}))]
+  ]);
+
   instancesContextStore[targetId] = ctx;
 
   // load the navigation component
@@ -129,16 +113,8 @@ function update(
     throw new Error(`Navigation #${targetId} was not initialized!`);
   }
 
-  // update the navigation instance
-  Object.entries(config).forEach(([key, value]) => {
-    if (key === 'user') {
-      // make sure we don't overwrite the whole auth context
-      // only user needs to be updated
-      ctx.get('auth')?.update((prev) => ({...prev, user: value}))
-    } else {
-      ctx.get(key)?.set(value)
-    }
-  });
+  const appContext = ctx.get('appContext');
+  appContext.update(buildContext.bind(null, config))
 }
 
 function execQueueCall(method: string, ...args: any[]) {

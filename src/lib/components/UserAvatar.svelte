@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AuthUser } from "lib/functions/auth-user.model";
+  import type { AuthUser } from 'lib/app-context';
   import styles from './UserAvatar.module.scss';
 
   export let onClick: () => void = () => {};

@@ -32,19 +32,20 @@ There are 2 sample integrations in the "demo" folder: `tc-app.html` and `tc-tool
 ## API for tcUniNav
 `tcUniNav(method, targetId, config)`
 
-| Parameter          | Type                                 | Required                  | Description                                               | Default value |
-|--------------------|--------------------------------------|---------------------------|-----------------------------------------------------------|---------------|
-| method             | Enum: 'init' \| 'update'             | yes                       | The method to be called                                   |               |
-| targetId           | string(html element id)              | yes                       | target element for the navigation to be rendered on       | none          |
-| config             | object                               | no                        | The config object for the specific navigation type        | {}            |
-| config.type        | Enum: 'marketing'\|'tool'\|'footer'  | yes                       | The type of navigation to render                          |               |
-| config.onReady     | () => void                           | no                        | Callback function called when the navigation was rendered | none          |
-| config.signIn      | () => void                           | no                        | Called when the user clicks the Log in button             | none          |
-| config.signOut     | () => void                           | no                        | Called when the user clicks the Log out button            | none          |
-| config.signUp      | () => void                           | no                        | Called when the user clicks sign up/register              | none          |
-| config.toolName    | string                               | yes (for tool nav update) | The name of the tool as it should appear in the header    | none          |
-| config.toolRoute   | string                               | yes (for tool nav update) | The route to the tool as it should appear in the header   | none          |
-| config.user        | {photoURL, userId, initials, handle} | no                        | The logged in user                                        | {}            |
+| Parameter               | Type                                 | Required                  | Description                                                                | Default value |
+|-------------------------|--------------------------------------|---------------------------|----------------------------------------------------------------------------|---------------|
+| method                  | Enum: 'init' \| 'update'             | yes                       | The method to be called                                                    |               |
+| targetId                | string(html element id)              | yes                       | target element for the navigation to be rendered on                        | none          |
+| config                  | object                               | no                        | The config object for the specific navigation type                         | {}            |
+| config.type             | Enum: 'marketing'\|'tool'\|'footer'  | yes                       | The type of navigation to render                                           |               |
+| config.onReady          | () => void                           | no                        | Callback function called when the navigation was rendered                  | none          |
+| config.signIn           | () => void                           | no                        | Called when the user clicks the Log in button                              | none          |
+| config.signOut          | () => void                           | no                        | Called when the user clicks the Log out button                             | none          |
+| config.signUp           | () => void                           | no                        | Called when the user clicks sign up/register                               | none          |
+| config.toolName         | string                               | yes (for tool nav update) | The name of the tool as it should appear in the header                     | none          |
+| config.toolRoute        | string                               | yes (for tool nav update) | The route to the tool as it should appear in the header                    | none          |
+| config.user             | {photoURL, userId, initials, handle} | no                        | The logged in user                                                         | {}            |
+| config.handleNavigation | (route: {path, label}) => void       | no                        | Allow for external handling of route navigation (eg. via react-router-dom) | none          |
 
 ## Methods
 ###### `init`

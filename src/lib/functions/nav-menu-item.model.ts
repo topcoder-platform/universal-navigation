@@ -11,5 +11,4 @@ export interface NavMenuItem {
   // the above and parent props
   fullPath: string
   absUrl: string
-
 }
