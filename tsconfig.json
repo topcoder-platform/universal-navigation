@@ -18,7 +18,9 @@
     "paths": {
       "assets/*": ["./assets/*"],
       "lib/*": ["./lib/*"]
-    }
+    },
+    "declaration": true,
+    "declarationDir": "./types"
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }],
