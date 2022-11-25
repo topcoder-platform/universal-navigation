@@ -16,8 +16,8 @@
     "checkJs": true,
     "isolatedModules": true,
     "paths": {
-      "assets/*": ["assets/*"],
-      "lib/*": ["lib/*"]
+      "assets/*": ["./assets/*"],
+      "lib/*": ["./lib/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
