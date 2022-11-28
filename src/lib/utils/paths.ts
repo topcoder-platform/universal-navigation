@@ -10,7 +10,8 @@ import * as pkg from '../../../package.json'
 export function getPublicPath(assetPath: string): string {
 
   // inject the version number
-  return new URL(`/v${pkg.version.split('.')[0]}/${assetPath}`, import.meta.url).href
+  const versionPath: string = `/v${pkg.version.split('.')[0]}${assetPath}`
+  return new URL(versionPath, import.meta.url).href
 }
 
 /**
