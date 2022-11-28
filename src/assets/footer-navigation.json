@@ -176,7 +176,7 @@
         },
         {
           "label": "Support",
-          "absUrl": "mailto:support@topcoder.com"
+          "url": "mailto:support@topcoder.com"
         }
       ]
     },
