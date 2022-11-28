@@ -2,7 +2,7 @@
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { navUrl } from 'lib/utils/paths';
   import styles from './HoverMenu.module.scss';
-  
+
   export let mainDescription = '';
   export let menuItems: NavMenuItem[] = [];
 </script>
@@ -13,7 +13,7 @@
       {mainDescription}
     </p>
 
-    {#if menuItems?.length} 
+    {#if menuItems?.length}
       <ul class={styles.menuSections}>
         {#each menuItems as menuItem}
           <li class={styles.menuSectionItem}>

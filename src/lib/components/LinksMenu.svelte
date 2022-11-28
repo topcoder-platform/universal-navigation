@@ -5,7 +5,7 @@
   import { navUrl } from 'lib/utils/paths';
 
   export let ref: Element | undefined = undefined;
-  
+
   export let className: string;
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
@@ -16,7 +16,7 @@
   function itemHasHoverMenu(menuItem: NavMenuItem) {
     return menuItem.children?.length || menuItem.description
   }
-  
+
   const handleMouseover = (menuItem: NavMenuItem) => async (ev) => {
     if (activeRoute) {
       return

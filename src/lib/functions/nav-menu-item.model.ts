@@ -1,8 +1,11 @@
 export interface NavMenuItem {
-  children: NavMenuItem[]
-  description: string
-  host: string
-  label: string
-  path: string
-  type?: 'cta'
+    children: NavMenuItem[]
+    description: string
+    host: string
+    label: string
+    path: string
+    type?: 'cta'
+
+    // tool selector only has urls, no path
+    url?: string
 }
