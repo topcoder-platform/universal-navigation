@@ -13,7 +13,6 @@
   let popupIsVisible: boolean;
   let hoveredElement: HTMLElement | undefined;
   let hoveredMenuItem: NavMenuItem;
-
 </script>
 
 <nav class={classnames(styles.navbar, styles[style])}>

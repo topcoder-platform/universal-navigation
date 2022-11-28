@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { DEFAULT_HOST_URL } from 'lib/config';
   import { getPublicPath } from 'lib/utils/paths';
   import styles from './TcLogo.module.scss';
   
@@ -7,6 +8,6 @@
   const imgUrl = getPublicPath(`/assets/logo${minVersion ? '.min' : ''}.svg`);
 </script>
 
-<a class={styles.logo} href="https://topcoder.com" target="_top">
-  <img src={imgUrl} class="full-logo" alt="Topcoder.com" />
+<a class={styles.logo} href={DEFAULT_HOST_URL} target="_top">
+  <img src={imgUrl} class="full-logo" alt="Topcoder" />
 </a>

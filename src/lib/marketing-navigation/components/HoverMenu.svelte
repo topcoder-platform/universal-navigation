@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
+  import { navUrl } from 'lib/utils/paths';
   import styles from './HoverMenu.module.scss';
   
   export let mainDescription = '';
@@ -19,7 +20,7 @@
             <a
               class={styles.menuSectionHeading}
               target="_top"
-              href={menuItem.absUrl}
+              href={navUrl(menuItem)}
             >
               {menuItem.label}
             </a>
@@ -34,7 +35,7 @@
                     <a
                       class={styles.menuSectionChild}
                       target="_top"
-                      href={child.absUrl}
+                      href={navUrl(child)}
                     >{child.label}</a>
                   </li>
                 {/each}
