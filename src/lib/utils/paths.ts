@@ -1,4 +1,7 @@
 import { DEFAULT_HOST_URL } from 'lib/config'
+import type { NavMenuItem } from 'lib/functions/nav-menu-item.model'
+
+import * as pkg from '../../../package.json'
 
 /**
  * Gets the absolute path hosted on the same domain as the main script is
@@ -6,7 +9,10 @@ import { DEFAULT_HOST_URL } from 'lib/config'
  * @returns string
  */
 export function getPublicPath(assetPath: string): string {
-  return new URL(assetPath, import.meta.url).href
+
+  // inject the version number
+  const versionPath: string = `/v${pkg.version.split('.')[0]}${assetPath}`
+  return new URL(versionPath, import.meta.url).href
 }
 
 /**
@@ -16,4 +22,13 @@ export function getPublicPath(assetPath: string): string {
  */
 export function getDefaultHostPath(path: string): string {
   return `${DEFAULT_HOST_URL}${path}`
+}
+
+/**
+ * Gets the absolute path hosted on the DEFAULT_HOST
+ * @params path
+ * @returns string
+ */
+export function navUrl(item: NavMenuItem): string {
+  return `${item.host ?? DEFAULT_HOST_URL}${item.path}`
 }

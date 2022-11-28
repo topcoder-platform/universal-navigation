@@ -2,7 +2,7 @@ import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
 import { escapeRegExp } from "./regex";
 
 const routeMatchesPath = (path: string, route: NavMenuItem): boolean => (
-  !!path.match(new RegExp(`^${escapeRegExp(route.fullPath)}(\\?|#|$)`, 'i'))
+  !!path.match(new RegExp(`^${escapeRegExp(route.path)}(\\?|#|$)`, 'i'))
 )
 
 /**

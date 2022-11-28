@@ -10,7 +10,7 @@
         "build": "vite build && npx rimraf ./types && npm run types",
         "check": "svelte-check --tsconfig ./tsconfig.json",
         "deploy-stack": "cd iac && sh deploy-stack.sh",
-        "dev": "vite",
+        "dev": "vite --host",
         "preview": "vite preview",
         "types": "./node_modules/typescript/bin/tsc -p ./tsconfig.json --declaration --emitDeclarationOnly --outDir types"
     },

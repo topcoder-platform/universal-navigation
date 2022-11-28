@@ -2,9 +2,9 @@
   import { getPublicPath } from 'lib/utils/paths';
   import styles from './ToolMenu.module.scss';
   import { classnames } from 'lib/utils/classnames';
-  import { getToolMenuItems } from 'lib/functions/tool-menu.provider';
+  import { getToolSelectorItems } from 'lib/functions/tool-selector-menu.provider';
 
-  const navMenuItems = getToolMenuItems()
+  const navMenuItems = getToolSelectorItems()
   const toolIcon = getPublicPath('/assets/icon-tool.svg');
 
 </script>
@@ -15,7 +15,7 @@
       <div class={styles.toolSectionTitle}>
         {section.label}
       </div>
-      
+
       <div class={styles.toolGroups}>
         {#each section.children as group}
           <div class={styles.toolGroup}>

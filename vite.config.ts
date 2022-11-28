@@ -17,11 +17,6 @@ export default defineConfig({
             lib: resolve(__dirname, './src/lib'),
         }
     },
-    rollupOptions: {
-        output: {
-            manualChunks: () => 'tc-universal-nav.js'
-        },
-    },
     build: {
         minify: true,
         // cssCodeSplit: true,
@@ -31,6 +26,11 @@ export default defineConfig({
             name: 'TcUniversalNav',
             fileName: `tc-universal-nav`
         },
-        outDir: `dist/v${pkg.version.split('.')[0]}`
-    }
+        outDir: `dist/v${pkg.version.split('.')[0]}`,
+        rollupOptions: {
+            output: {
+                manualChunks: () => 'tc-universal-nav.js'
+            },
+        },
+    },
 })

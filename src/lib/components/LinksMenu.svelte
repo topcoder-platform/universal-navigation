@@ -2,9 +2,10 @@
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import styles from './LinksMenu.module.scss';
   import { classnames } from 'lib/utils/classnames';
+  import { navUrl } from 'lib/utils/paths';
 
   export let ref: Element | undefined = undefined;
-  
+
   export let className: string;
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
@@ -15,7 +16,7 @@
   function itemHasHoverMenu(menuItem: NavMenuItem) {
     return menuItem.children?.length || menuItem.description
   }
-  
+
   const handleMouseover = (menuItem: NavMenuItem) => async (ev) => {
     if (activeRoute) {
       return
@@ -43,14 +44,14 @@
   {#each menuItems as menuItem}
     <a
       class={getNavItemType(menuItem)}
-      class:active={activeRoute?.fullPath === menuItem.fullPath}
+      class:active={activeRoute?.path === menuItem.path}
       class:hover={
         isPopupMenuActive &&
-        hoveredMenuItem?.fullPath === menuItem.fullPath
+        hoveredMenuItem?.path === menuItem.path
       }
-      href={menuItem.url}
+      href={navUrl(menuItem)}
       target="_top"
-      data-key={menuItem.fullPath}
+      data-key={menuItem.path}
       on:mouseover={handleMouseover(menuItem)}
       on:focus={handleMouseover(menuItem)}
     >
