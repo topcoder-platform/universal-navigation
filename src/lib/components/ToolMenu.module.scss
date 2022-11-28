@@ -1,0 +1,131 @@
+.toolMenuWrap {
+  width: 472px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 14px;
+  color: #767676;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+}
+
+.title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.toolSection {
+  &Title {
+    @extend .title;
+    margin-bottom: 16px;
+  }
+}
+
+.toolGroups {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.toolGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex: 1 1 calc(50% - 24px);
+
+  &Title {
+    @extend .title;
+    font-weight: 400;
+
+    margin-bottom: 12px;
+  }
+}
+
+.toolNavItems {
+  width: 100%;
+}
+
+.toolNavItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  & + & {
+    margin-top: 16px;
+  }
+
+  a {
+    line-height: 22px;
+  }
+
+  &:global(.navButton) {
+    display: inline-flex;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0.008em;
+    text-transform: uppercase;
+  
+    color: #137D60;
+    border: 2px solid #137D60;
+    border-radius: 24px;
+  
+    padding: 0 16px;
+    width: auto;
+
+    &:hover {
+      color: #219174;
+      border-color: #219174;
+    }
+  }
+
+  &:hover {
+    font-weight: 700;
+    color: #0c0c0c;
+
+    .navItemDescription {
+      opacity: 1;
+      pointer-events:unset;
+      font-weight: 400;
+      color: #767676;
+    }
+  }
+}
+
+.navItemContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.navItemDescription {
+  font-style: italic;
+  font-size: 10px;
+  line-height: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease-in-out;
+  margin-top: -4px;
+}
+
+.toolMenuSpacer {
+  border: 0 solid #D4D4D4;
+  border-bottom-width: 1px;
+  margin: 24px -32px;
+}
