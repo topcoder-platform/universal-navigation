@@ -1,40 +1,36 @@
 <script lang="ts">
+  import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
+  import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
-  import SocialIcon from './SocialIcon.svelte';
 
-  const atYear = (new Date).getFullYear()
+  const menuItems = getFooterNavItems()
+
 </script>
 
 <footer class={styles.footerWrap}>
-  <span class={styles.cTopcoder}>
-    © {atYear} Topcoder
-  </span>
+  <div class={styles.footerNavigation}>
+    <ul class={styles.menuSections}>
+      {#each menuItems as menuItem}
+        <li class={styles.menuSection}>
+          <div class={styles.menuSectionHeading}>
+            {menuItem.label}
+          </div>
 
-  <div class={styles.social}>
-    <SocialIcon
-      icon='icon-fb.svg'
-      alt='Facebook'
-      href='https://www.facebook.com/topcoder'
-    />
-    <SocialIcon
-      icon='icon-yt.svg'
-      alt='YouTube'
-      href='https://www.youtube.com/channel/UCFv29ANLT2FQmtvS9DRixNA'
-    />
-    <SocialIcon
-      icon='icon-ln.svg'
-      alt='LinkedIn'
-      href='https://www.linkedin.com/company/topcoder'
-    />
-    <SocialIcon
-      icon='icon-tw.svg'
-      alt='Twitter'
-      href='https://twitter.com/topcoder'
-    />
-    <SocialIcon
-      icon='icon-insta.svg'
-      alt='Instagram'
-      href='https://www.instagram.com/topcoder'
-    />
+          {#if menuItem.children?.length}
+            <ul class={styles.menuSectionEntries}>
+              {#each menuItem.children as child}
+                <li class={styles.menuSectionEntry}>
+                  <a target="_top" href={child.absUrl}>
+                    {child.label}
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          {/if}
+        </li>
+      {/each}
+    </ul>
   </div>
+
+  <FooterBottomBar />
 </footer>
