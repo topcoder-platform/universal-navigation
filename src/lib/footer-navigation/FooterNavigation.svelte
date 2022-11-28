@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
+  import { navUrl } from 'lib/utils/paths';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
 
@@ -20,7 +21,7 @@
             <ul class={styles.menuSectionEntries}>
               {#each menuItem.children as child}
                 <li class={styles.menuSectionEntry}>
-                  <a target="_top" href={child.url}>
+                  <a target="_top" href={navUrl(child)}>
                     {child.label}
                   </a>
                 </li>

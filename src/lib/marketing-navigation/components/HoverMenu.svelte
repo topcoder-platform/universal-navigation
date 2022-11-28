@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
+  import { navUrl } from 'lib/utils/paths';
   import styles from './HoverMenu.module.scss';
-  
+
   export let mainDescription = '';
   export let menuItems: NavMenuItem[] = [];
 </script>
@@ -12,14 +13,14 @@
       {mainDescription}
     </p>
 
-    {#if menuItems?.length} 
+    {#if menuItems?.length}
       <ul class={styles.menuSections}>
         {#each menuItems as menuItem}
           <li class={styles.menuSectionItem}>
             <a
               class={styles.menuSectionHeading}
               target="_top"
-              href={menuItem.url}
+              href={navUrl(menuItem)}
             >
               {menuItem.label}
             </a>
@@ -34,7 +35,7 @@
                     <a
                       class={styles.menuSectionChild}
                       target="_top"
-                      href={child.url}
+                      href={navUrl(child)}
                     >{child.label}</a>
                   </li>
                 {/each}
