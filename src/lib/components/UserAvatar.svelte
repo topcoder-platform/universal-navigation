@@ -17,8 +17,8 @@
   class={classnames(styles.userAvatarWrap, popupIsVisible && styles.popupVisible)}
   bind:this={elRef}
 >
-  {#if user?.photoURL}
-    <img src={user.photoURL} alt={user.initials} />
+  {#if user?.photoUrl}
+    <img src={user.photoUrl} alt={user.initials} />
   {:else}
     <span>{user.initials}</span>
   {/if}
