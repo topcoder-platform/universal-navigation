@@ -5,7 +5,6 @@ export interface NavMenuItem {
     label: string;
     path: string;
     type?: 'cta';
-    shortDesc: string;
     fullPath: string;
     absUrl: string;
 }

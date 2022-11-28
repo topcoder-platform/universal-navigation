@@ -4,3 +4,9 @@
  * @returns string
  */
 export declare function getPublicPath(assetPath: string): string;
+/**
+ * Gets the absolute path hosted on the DEFAULT_HOST
+ * @params path
+ * @returns string
+ */
+export declare function getDefaultHostPath(path: string): string;
