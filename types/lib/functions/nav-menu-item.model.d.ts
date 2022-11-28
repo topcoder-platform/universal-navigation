@@ -6,5 +6,5 @@ export interface NavMenuItem {
     path: string;
     type?: 'cta';
     fullPath: string;
-    absUrl: string;
+    url: string;
 }
