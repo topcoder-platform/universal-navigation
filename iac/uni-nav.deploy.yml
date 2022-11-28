@@ -23,11 +23,13 @@ Mappings:
     DomainMap:
 
         topcoder.com: 
+            CdnArnPrefix: arn:aws:cloudfront::409275337247:distribution/
             CertArn: arn:aws:acm:us-east-1:409275337247:certificate/8cabe19d-6559-41c6-8dfb-66f8080d27d4
             HostedZoneId: Z1B7U7QS3AAI1X
             RoleArn: arn:aws:iam::409275337247:role/learning-paths-v5-container-role
 
         topcoder-dev.com: 
+            CdnArnPrefix: arn:aws:cloudfront::811668436784:distribution/
             CertArn: arn:aws:acm:us-east-1:811668436784:certificate/8e56f24a-1eaf-4289-8c21-db2c0761ecf4
             HostedZoneId: Z2CIRG3R0ZSGFQ
             RoleArn: arn:aws:iam::811668436784:role/learning-paths-v5-container-role
@@ -38,28 +40,23 @@ Resources:
         Type: AWS::S3::Bucket
         DeletionPolicy: Delete
         Properties:
-            AccessControl: PublicRead
+            AccessControl: Private
             BucketName: !Sub 'uni-nav-s3-${Stage}'
+            PublicAccessBlockConfiguration:
+                BlockPublicAcls: true
+                IgnorePublicAcls: true
+                BlockPublicPolicy: true
+                RestrictPublicBuckets: true
 
-    StoreBucketPolicy:
-        Type: 'AWS::S3::BucketPolicy'
-        Properties:
-            Bucket: 
-                !Ref Store
-            PolicyDocument:
-                Id: StoreBucketPolicy
-                Version: 2012-10-17
-                Statement:
-                    -   Sid: PublicReadForGetBucketObjects
-                        Effect: Allow
-                        Principal: '*'
-                        Action: 's3:GetObject'
-                        Resource: !Join 
-                            - ''
-                            -   - 'arn:aws:s3:::'
-                                - !Ref Store
-                                - /*
-      
+    OriginAccessControl:
+        Type: AWS::CloudFront::OriginAccessControl
+        Properties: 
+            OriginAccessControlConfig: 
+                Name: !Sub 's3-always-sigv4-${Stage}'
+                OriginAccessControlOriginType: s3
+                SigningBehavior: always
+                SigningProtocol: sigv4
+
     Cdn:
         Type: AWS::CloudFront::Distribution
         Properties: 
@@ -76,6 +73,7 @@ Resources:
                             - ''
                             -   - !Ref Store
                                 - .s3.amazonaws.com
+                        OriginAccessControlId: !Ref OriginAccessControl
                         S3OriginConfig:
                             OriginAccessIdentity: ""
                 DefaultCacheBehavior:
@@ -95,6 +93,35 @@ Resources:
                         - CertArn
                     MinimumProtocolVersion: TLSv1.2_2018
                     SslSupportMethod: sni-only
+
+    StoreBucketPolicy:
+        Type: 'AWS::S3::BucketPolicy'
+        Properties:
+            Bucket: 
+                !Ref Store
+            PolicyDocument:
+                Id: StoreBucketPolicy
+                Version: 2012-10-17
+                Statement:
+                    -   Sid: AllowCloudFrontServicePrincipalReadOnly
+                        Effect: Allow
+                        Principal:
+                            Service: cloudfront.amazonaws.com
+                        Action: 's3:GetObject'
+                        Resource: !Join 
+                            - ''
+                            -   - 'arn:aws:s3:::'
+                                - !Ref Store
+                                - /*
+                        Condition:
+                            ArnEquals:
+                                aws:SourceArn: !Join 
+                                    - ''
+                                    -   - !FindInMap
+                                            - DomainMap
+                                            - !Ref Domain
+                                            - CdnArnPrefix
+                                        - !Ref Cdn
 
     Route:
         Type: AWS::Route53::RecordSet

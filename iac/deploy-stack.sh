@@ -2,7 +2,7 @@
 
 # load in the environment variables
 set -a
-. ../.env
+. .env
 set +a
 
 # validate the environment variables
