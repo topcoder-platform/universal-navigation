@@ -20,7 +20,7 @@
             <ul class={styles.menuSectionEntries}>
               {#each menuItem.children as child}
                 <li class={styles.menuSectionEntry}>
-                  <a target="_top" href={child.absUrl}>
+                  <a target="_top" href={child.url}>
                     {child.label}
                   </a>
                 </li>

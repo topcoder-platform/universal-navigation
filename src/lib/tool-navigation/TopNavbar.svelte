@@ -61,11 +61,11 @@
     </span>
   </div>
 
-<div class={styles.toolNavWrap}>
-  <a href={toolRoot} class={styles.toolName} on:click={handleNavigation}>
-    {toolName ?? ''}
-  </a>
-</div>
+  <div class={styles.toolNavWrap}>
+    <a href={toolRoot} class={styles.toolName} on:click={handleNavigation}>
+      {toolName ?? ''}
+    </a>
+  </div>
 
-<UserArea />
+  <UserArea />
 </nav>
