@@ -48,7 +48,7 @@
         isPopupMenuActive &&
         hoveredMenuItem?.fullPath === menuItem.fullPath
       }
-      href={menuItem.absUrl}
+      href={menuItem.url}
       target="_top"
       data-key={menuItem.fullPath}
       on:mouseover={handleMouseover(menuItem)}

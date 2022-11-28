@@ -19,7 +19,7 @@
             <a
               class={styles.menuSectionHeading}
               target="_top"
-              href={menuItem.absUrl}
+              href={menuItem.url}
             >
               {menuItem.label}
             </a>
@@ -34,7 +34,7 @@
                     <a
                       class={styles.menuSectionChild}
                       target="_top"
-                      href={child.absUrl}
+                      href={child.url}
                     >{child.label}</a>
                   </li>
                 {/each}

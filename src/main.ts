@@ -1,12 +1,36 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
-import { buildContext, type AuthUser, type NavigationHandler } from 'lib/app-context'
+import { buildContext, type AuthUser, type NavigationHandler } from './lib/app-context'
 
-type NavigationType = (
+export * from './lib/app-context'
+
+export type NavigationType = (
   |'footer'
   |'marketing'
   |'tool'
 )
+
+export type NavigationAppProps = {
+  type?: NavigationType
+  toolName?: string,
+  toolRoot?: string,
+  handleNavigation?: NavigationHandler
+
+  onReady?: () => void
+
+  user?: AuthUser,
+  signIn?: () => void
+  signUp?: () => void
+  signOut?: () => void
+}
+
+export type TcUniNavMethods = 'init'|'update'
+
+export type TcUniNavFn = (
+  method: TcUniNavMethods,
+  targetId: string,
+  config: NavigationAppProps,
+) => void
 
 const NavigationLoadersMap = {
   marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
@@ -15,20 +39,6 @@ const NavigationLoadersMap = {
 }
 
 const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
-
-export interface NavigationAppProps {
-  type: NavigationType
-  toolName: string,
-  toolRoot: string,
-  handleNavigation: NavigationHandler
-
-  onReady: () => void
-
-  user: AuthUser,
-  signIn: () => void
-  signUp: () => void
-  signOut: () => void
-}
 
 /**
  * Initialize the navigation component
@@ -117,7 +127,7 @@ function update(
   appContext.update(buildContext.bind(null, config))
 }
 
-function execQueueCall(method: string, ...args: any[]) {
+function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
   if (method === 'init') {
     init.call(null, ...args)
   }
@@ -146,6 +156,3 @@ function execQueueCall(method: string, ...args: any[]) {
   // with a direct exec call
   window[globalName] = execQueueCall.bind(null)
 })()
-
-// add an export for the file to be considered a module and to be compiled as one
-export {}
