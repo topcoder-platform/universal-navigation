@@ -17,6 +17,11 @@ export default defineConfig({
             lib: resolve(__dirname, './src/lib'),
         }
     },
+    rollupOptions: {
+        output: {
+            manualChunks: () => 'tc-universal-nav.js'
+        },
+    },
     build: {
         minify: true,
         // cssCodeSplit: true,
