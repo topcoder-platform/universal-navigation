@@ -24,7 +24,8 @@ export default defineConfig({
             entry: resolve(__dirname, 'src/main.ts'),
             formats: ['es'],
             name: 'TcUniversalNav',
-            fileName: `tc-universal-nav-${pkg.version.split('.')[0]}`
+            fileName: `tc-universal-nav`
         },
+        outDir: `dist/v${pkg.version.split('.')[0]}`
     }
 })

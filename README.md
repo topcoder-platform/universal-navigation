@@ -31,7 +31,7 @@ Include the main script in your application's main html:
   !function(n,t,e,a,c,i,o){n['TcUnivNavConfig']=c,n[c]=n[c]||function(){
   (n[c].q=n[c].q??[]).push(arguments)},n[c].l=1*new Date();i=t.createElement(e),
   o=t.getElementsByTagName(e)[0];i.async=1;i.type="module";i.src=a;o.parentNode.insertBefore(i,o)
-  }(window,document,"script","//uni-nav.topcoder.com/tc-universal-nav-1.js","tcUniNav");
+  }(window,document,"script","//uni-nav.topcoder.com/v1/tc-universal-nav.js","tcUniNav");
 </script>
 ```
 
@@ -99,9 +99,9 @@ The component renders the footer for the page
 
 There are currently prod and dev versions of the library located at:
 
-https://uni-nav.topcoder.com/tc-universal-nav-#.js
+https://uni-nav.topcoder.com/v#/tc-universal-nav.js
 
-https://uni-nav.topcoder-dev.com/tc-universal-nav-#.js
+https://uni-nav.topcoder-dev.com/v#/tc-universal-nav.js
 
 Each application will need to determine which version of the nav it uses by setting the URL for the script.
 
@@ -113,6 +113,6 @@ Minor version updates will be rolled out silently to all clients.
 
 ### Major Version upgrades
 
-Major changes will be versioned for incremental rollout using the script path (e.g. `tc-universal-nav-2.js`).
+Major changes will be versioned for incremental rollout using the script path (e.g. `/v2/tc-universal-nav.js`).
 
 Information regarding the changes will be disseminated to all clients, and each client will be responsible for migrating to the new version before the prior version is deprecated.
