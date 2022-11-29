@@ -9,7 +9,10 @@
     "scripts": {
         "dev": "vite --host",
         "build": "vite build && npx rimraf ./types && npm run types",
-        "preview": "vite preview",
+        "demo:dist": "npx http-server --cors --host localhost --port 8080 ./dist",
+        "demo:marketing": "npx http-server --host localhost --port 8081 ./demo/marketing -P http://localhost:8081? -o /",
+        "demo:tool": "npx http-server --host localhost --port 8082 ./demo/tool -P http://localhost:8081? -o /",
+        "demo": "npx npm-run-all -p demo:*",
         "check": "svelte-check --tsconfig ./tsconfig.json",
         "types": "./node_modules/typescript/bin/tsc -p ./tsconfig.json --declaration --emitDeclarationOnly --outDir types"
     },
