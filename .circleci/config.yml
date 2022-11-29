@@ -139,7 +139,6 @@ workflows:
             branches:
               only:
                 - dev
-                # temporarily deploy master to the dev env
                 - master
 
       # - deployProd:
