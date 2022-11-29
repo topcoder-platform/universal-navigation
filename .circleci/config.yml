@@ -40,6 +40,7 @@ save_cache_settings: &save_cache_settings
 running_npm_build: &running_npm_build
     name: Running npm Build
     command: |
+      npm install
       npm run build
 
 workspace_persist: &workspace_persist
@@ -138,6 +139,7 @@ workflows:
             branches:
               only:
                 - dev
+                - PROD-3205_deploy-script
 
       - deployProd:
           context : org-global
