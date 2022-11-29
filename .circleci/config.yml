@@ -135,6 +135,7 @@ workflows:
           context : org-global
           requires:
             - build-dev
+            - build-prod
           filters: 
             branches:
               only:
