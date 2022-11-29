@@ -8,7 +8,11 @@
     "repository": "https://github.com/topcoder-platform/universal-navigation.git",
     "scripts": {
         "dev": "vite --host",
-        "build": "vite build && npx rimraf ./types && npm run types",
+        "build:footer": "APP_BUILD_TARGET=footer vite build",
+        "build:marketing": "APP_BUILD_TARGET=marketing vite build",
+        "build:tool": "APP_BUILD_TARGET=tool vite build",
+        "build:navs": "npm run build:marketing & npm run build:footer && npm run build:tool",
+        "build": "npm run build:navs && vite build && npx rimraf ./types && npm run types",
         "preview": "vite preview",
         "check": "svelte-check --tsconfig ./tsconfig.json",
         "types": "./node_modules/typescript/bin/tsc -p ./tsconfig.json --declaration --emitDeclarationOnly --outDir types"
