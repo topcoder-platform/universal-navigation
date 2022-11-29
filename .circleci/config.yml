@@ -139,7 +139,8 @@ workflows:
             branches:
               only:
                 - dev
-                - PROD-3205_deploy-script
+                # temporarily deploy master to the dev env
+                - master
 
       - deployProd:
           context : org-global
