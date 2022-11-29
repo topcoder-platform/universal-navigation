@@ -21,6 +21,10 @@ The following clients use the uni-nav for the MVP:
 
 The UniNav JS is stored in S3 with the CloudFront CDN. 
 
+See [IAC README](./iac/README.md) for more details.
+
+## Svelte App
+
 README TBD
 
 ## Getting started
