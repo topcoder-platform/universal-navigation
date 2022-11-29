@@ -135,13 +135,16 @@ workflows:
           context : org-global
           requires:
             - build-dev
+            # temporarily permit prod builds
             - build-prod
           filters: 
             branches:
               only:
                 - dev
+                # temporarily deploy master to prod
                 - master
 
+      # temporarily turn off prod deployments
       # - deployProd:
       #     context : org-global
       #     requires:
