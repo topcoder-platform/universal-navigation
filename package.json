@@ -7,10 +7,11 @@
     "types": "./types/main.d.ts",
     "repository": "https://github.com/topcoder-platform/universal-navigation.git",
     "scripts": {
-        "dev": "vite --host",
         "build": "vite build && npx rimraf ./types && npm run types",
-        "preview": "vite preview",
         "check": "svelte-check --tsconfig ./tsconfig.json",
+        "deploy-stack": "cd iac && sh deploy-stack.sh",
+        "dev": "vite --host",
+        "preview": "vite preview",
         "types": "./node_modules/typescript/bin/tsc -p ./tsconfig.json --declaration --emitDeclarationOnly --outDir types"
     },
     "devDependencies": {
