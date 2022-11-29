@@ -10,9 +10,11 @@ import * as pkg from '../../../package.json'
  */
 export function getPublicPath(assetPath: string): string {
 
-  // inject the version number
-  const versionPath: string = `/v${pkg.version.split('.')[0]}${assetPath}`
-  return new URL(versionPath, import.meta.url).href
+    // for PRODuction inject the version number
+    // for local development, keep assets at root
+    const version = APP_IS_PROD ? `/v${pkg.version.split('.')[0]}` : ''
+    const versionPath: string = `${version}${assetPath}`
+    return new URL(versionPath, import.meta.url).href
 }
 
 /**
@@ -21,7 +23,7 @@ export function getPublicPath(assetPath: string): string {
  * @returns string
  */
 export function getDefaultHostPath(path: string): string {
-  return `${DEFAULT_HOST_URL}${path}`
+    return `${DEFAULT_HOST_URL}${path}`
 }
 
 /**
@@ -30,5 +32,5 @@ export function getDefaultHostPath(path: string): string {
  * @returns string
  */
 export function navUrl(item: NavMenuItem): string {
-  return `${item.host ?? DEFAULT_HOST_URL}${item.path}`
+    return `${item.host ?? DEFAULT_HOST_URL}${item.path}`
 }
