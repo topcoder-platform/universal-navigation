@@ -32,7 +32,21 @@ export type TcUniNavFn = (
   config: NavigationAppProps,
 ) => void
 
-const NavigationLoadersMap = {
+const loadModule = (module: string) => {
+    return import(/* @vite-ignore */ module).then(d => d.default)
+}
+
+// Serve the manually built files only when in production
+// otherwise serve the local files
+// this logic is "magically" cleaned up on build time, so this won't exist in the prod build,
+// only the manually built files exist in the prod build
+//
+// FOR clarificaiton: this is needed to run serve/dev commands
+const NavigationLoadersMap = APP_IS_PROD ? {
+  marketing: () => loadModule('./marketing-nav.js'),
+  tool: () => loadModule('./tool-nav.js'),
+  footer: () => loadModule('./footer-nav.js'),
+} : {
   marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
   footer: () => import('./lib/footer-navigation/FooterNavigation.svelte').then(d => d.default),
   tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
@@ -53,7 +67,7 @@ async function init(
   if (instancesContextStore[targetId]) {
     throw new Error(`A navigation component with an id of '${targetId}' was already initialized!`)
   }
-  
+
   const {onReady: readyCallback, ...props} = config
 
   // split the contextual props from the navigation's props
@@ -67,7 +81,7 @@ async function init(
     handleNavigation,
     type: navType,
     ...navProps
-  } = props 
+  } = props
 
   const loadNavigationFn = NavigationLoadersMap[navType];
 
@@ -78,9 +92,9 @@ async function init(
   if (typeof targetId !== 'string') {
     throw new Error(`'targetId' should be a string`);
   }
-  
+
   const targetEl: Element | null = document.getElementById(targetId);
-  
+
   if (targetEl?.nodeType !== Node.ELEMENT_NODE) {
     throw new Error(`[TcUnivNav] 'target' must be a valid dom element with an id of #${targetId}!`);
   }
@@ -135,7 +149,7 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
   else if (method === 'update') {
     update.call(null, ...args)
   }
-  
+
   else {
     throw new Error(`Invalid method '${method}' called!`)
   }
