@@ -122,7 +122,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
+                - dev
 
       - build-prod:
           context : org-global
@@ -142,12 +142,12 @@ workflows:
                 # temporarily deploy master to the dev env
                 - master
 
-      - deployProd:
-          context : org-global
-          requires:
-            - build-prod
-          filters: 
-            branches:
-              only:
-                - master
+      # - deployProd:
+      #     context : org-global
+      #     requires:
+      #       - build-prod
+      #     filters: 
+      #       branches:
+      #         only:
+      #           - master
 
