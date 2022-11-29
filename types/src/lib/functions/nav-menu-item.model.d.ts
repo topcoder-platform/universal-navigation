@@ -5,6 +5,5 @@ export interface NavMenuItem {
     label: string;
     path: string;
     type?: 'cta';
-    fullPath: string;
-    url: string;
+    url?: string;
 }
