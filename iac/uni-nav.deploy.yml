@@ -106,6 +106,10 @@ Resources:
                         S3OriginConfig:
                             OriginAccessIdentity: ""
                 DefaultCacheBehavior:
+                    # This is the managed cache policy ID for the CachingOptimized policy.
+                    # See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html
+                    CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+                    Compress: true
                     TargetOriginId: !Join 
                         - ''
                         -   - !Ref Store
