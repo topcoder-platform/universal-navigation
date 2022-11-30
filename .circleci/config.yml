@@ -100,7 +100,7 @@ jobs:
     environment:
       DEPLOY_ENV: "DEV"
       LOGICAL_ENV: "dev"
-      ENABLE_CACHE: false
+      ENABLE_CACHE: true
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
@@ -109,7 +109,7 @@ jobs:
     environment:
       DEPLOY_ENV: "PROD"
       LOGICAL_ENV: "prod"
-      ENABLE_CACHE: false
+      ENABLE_CACHE: true
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
