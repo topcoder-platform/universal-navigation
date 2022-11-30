@@ -1,0 +1,55 @@
+on: # event list
+  push: # on every push to master (basically when PR's are merged into master) / or the target branch
+    branches:
+      - master
+
+env: # environment variables (available in any part of the action)
+  NODE_VERSION: 16
+
+jobs: # list of things to do
+  linting:
+    name: Update Types # job name (unique id)
+    runs-on: ubuntu-latest # on which machine to run
+    steps: # list of steps
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Update types declarations
+        run: npm run types
+
+      - name: Check types diff
+        id: types_status
+        run: |
+          diffstatus=$(git status --porcelain)
+          echo DIFF=$diffstatus >> $GITHUB_OUTPUT
+
+      - name: Stage Types changes
+        if: ${{ steps.types_status.outputs.DIFF }}
+        run: |
+          git add types
+
+      - name: Create Pull Request
+        if: ${{ steps.types_status.outputs.DIFF }}
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Update types declarations
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: update-types-declarations
+          delete-branch: true
+          title: '[TASK] Update types declarations'
+          body: |
+            Updates the type declarations after latest PR merge
+          labels: |
+            automated pr
+          assignees: vas3a
+          draft: false
