@@ -100,7 +100,7 @@ jobs:
     environment:
       DEPLOY_ENV: "DEV"
       LOGICAL_ENV: "dev"
-      ENABLE_CACHE: true
+      ENABLE_CACHE: false
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
@@ -109,7 +109,7 @@ jobs:
     environment:
       DEPLOY_ENV: "PROD"
       LOGICAL_ENV: "prod"
-      ENABLE_CACHE: true
+      ENABLE_CACHE: false
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
@@ -135,13 +135,16 @@ workflows:
           context : org-global
           requires:
             - build-dev
+            # temporarily permit prod builds
             - build-prod
           filters: 
             branches:
               only:
                 - dev
+                # temporarily deploy master to prod
                 - master
 
+      # temporarily turn off prod deployments
       # - deployProd:
       #     context : org-global
       #     requires:
