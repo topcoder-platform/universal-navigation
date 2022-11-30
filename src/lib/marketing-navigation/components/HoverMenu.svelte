@@ -1,13 +1,30 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { navUrl } from 'lib/utils/paths';
+    import { onMount } from 'svelte';
   import styles from './HoverMenu.module.scss';
 
   export let mainDescription = '';
   export let menuItems: NavMenuItem[] = [];
+  export let isHovering: boolean = false;
+
+  let elWrap: HTMLElement | undefined;
+
+  function handleMouseEv(ev: MouseEvent) {
+    isHovering = ev.type === 'mouseenter'
+  }
+
+  onMount(() => {
+    elWrap?.addEventListener('mouseenter', handleMouseEv)
+    elWrap?.addEventListener('mouseleave', handleMouseEv)
+    return () => {
+        elWrap?.removeEventListener('mouseenter', handleMouseEv)
+        elWrap?.removeEventListener('mouseleave', handleMouseEv)
+    }
+  })
 </script>
 
-<div class={styles.hoverMenuWrap}>
+<div class={styles.hoverMenuWrap} bind:this={elWrap}>
   <div class={styles.hoverMenuInner}>
     <p class={styles.mainDesc}>
       {mainDescription}
