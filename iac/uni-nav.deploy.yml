@@ -57,6 +57,35 @@ Resources:
                 SigningBehavior: always
                 SigningProtocol: sigv4
 
+    ResponseHeadersPolicy:
+        Type: AWS::CloudFront::ResponseHeadersPolicy
+        Properties:
+            ResponseHeadersPolicyConfig:
+                Name: !Sub ${AWS::StackName}-security-response-headers-policy
+                CorsConfig:
+                    AccessControlAllowCredentials: false
+                    AccessControlAllowHeaders:
+                        Items:
+                            - '*'
+                    AccessControlAllowMethods:
+                        Items: 
+                            - GET
+                            - HEAD
+                            - OPTIONS
+                    AccessControlAllowOrigins:
+                        # TODO: figure out a way to load this in from a shared config
+                        # so that we don't have to manually deploy any time we add a
+                        # new tool
+                        Items:
+                            - !Sub https://${Domain}
+                            - !Sub https://community.${Domain}
+                            - !Sub https://discussions.${Domain}
+                            - !Sub https://local.${Domain}
+                            - !Sub https://platform-ui.${Domain}
+                            - !Sub https://software.${Domain}
+                            - !If [IsProd, https://topcoder.privatetalent.cloud, https://topcoder.privatetalent-dev.cloud]
+                    OriginOverride: true
+
     Cdn:
         Type: AWS::CloudFront::Distribution
         Properties: 
@@ -77,6 +106,10 @@ Resources:
                         S3OriginConfig:
                             OriginAccessIdentity: ""
                 DefaultCacheBehavior:
+                    # This is the managed cache policy ID for the CachingOptimized policy.
+                    # See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html
+                    CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+                    Compress: true
                     TargetOriginId: !Join 
                         - ''
                         -   - !Ref Store
@@ -86,6 +119,7 @@ Resources:
                         QueryString: false
                         Cookies:
                             Forward: none
+                    ResponseHeadersPolicyId: !Ref ResponseHeadersPolicy
                 ViewerCertificate: 
                     AcmCertificateArn: !FindInMap
                         - DomainMap

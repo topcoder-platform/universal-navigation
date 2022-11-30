@@ -58,4 +58,5 @@
       {menuItem.label}
     </a>
   {/each}
+  <slot />
 </div>

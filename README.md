@@ -120,3 +120,21 @@ Minor version updates will be rolled out silently to all clients.
 Major changes will be versioned for incremental rollout using the script path (e.g. `/v2/tc-universal-nav.js`).
 
 Information regarding the changes will be disseminated to all clients, and each client will be responsible for migrating to the new version before the prior version is deprecated.
+
+## Development
+### `npm run dev`
+Run `npm run dev` to start a local development server. This will build the application and will serve `index.html`'s contents.
+At the moment of writing, `index.html` will instantiate all 3 types of navigation: marketing, tool, footer, and will pass the user data to them after 3 seconds.
+
+### `npm run build`
+Run `npm run build` to build the files for production. The output is to be found in the `dist` folder.
+
+### Using the demo files
+The `demo` files are just basic (bare minimum) example of how to integrate the navigation in a simple html file.
+
+Run `npm run demo`. This will spin up 3 `http-server`s:
+- localhost:8080 will serve the dist files
+- localhost:8081 will serve the marketing navigation demo file
+- localhost:8082 will serve the tool navigation demo file
+>**NOTE** you need to run `npm run build` to build the navigation files before running the demo files.
+
