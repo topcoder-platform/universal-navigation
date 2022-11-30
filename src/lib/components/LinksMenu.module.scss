@@ -9,9 +9,8 @@
   :global(.navLink) {
     text-decoration: none;
     position: relative;
-  
-    &:global(.hover):before,
-    &:hover:before {
+
+    &:before {
       content: "";
       display: block;
       position: absolute;
