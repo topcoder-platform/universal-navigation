@@ -18,7 +18,7 @@ For information on how to develop/maintain the UniNav component itself, please s
 - [Futher Reading](#further-reading)
     - [Versioning](#versioning)
     - [API for tcUniNav](#api-for-tcuninav)
-    - [tcUniNav Methods](#tcuninav-methods)### Typescript support
+    - [tcUniNav Methods](#tcuninav-methods)
     - [Typescript Support](#typescript-support)
 
 ## Introduction
