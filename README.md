@@ -198,17 +198,17 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.toolRoot         | string                               | yes (for tool nav update) | The route to the tool as it should appear in the header                    | none          |
 | config.user             | {photoURL, userId, initials, handle} | no                        | The logged in user                                                         | {}            |
 
+
 ### tcUniNav Methods
 
-#### `init`
 The `init` method can only be called one single time for the same `targetId`. If the init method is called more than one time, the navigation will throw an error and won't do anything.
 
-#### `update`
 The `update` needs to be called only after `init` was already called. If it's called before initialization, the navigation will throw an error mentioning that init needs to be called first.
 
 After `init` is called, you should call only `update` for further updates.
 
 >**NOTE** Both methods accept the same config object as mentioned in the previous section [API for tcUniNav](#api-for-tcuninav).
+
 
 ### Typescript Support
 
