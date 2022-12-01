@@ -12,7 +12,7 @@ install_build_dependency: &install_build_dependency
     name: Installation of build and deployment dependencies.
     command: |
       apt-get update -y && apt-get install -qq -y python-pip libpython-dev
-      curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && sudo python get-pip.py
+      curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
       #installing awscli
       pip install awscli --upgrade
       apt install jq -y
