@@ -9,7 +9,7 @@ The following README offers instructions for integrating the UniNav into a web p
 For information on how to develop/maintain the UniNav component itself, please see the [UniNav README](./src/README.md).
 
 - [Introduction](#introduction)
-    - [Web Properties Using UniNav](#web-properties-using-universal-navigation)
+    - [Web Properties Using UniNav](#web-properties-using-uninav)
     - [Navigation Types](#navigation-types)
 - [Instructions](#instructions)
     - [1. Include tcUniNav JS Snippet](#1-include-tcuninav-js-snippet)
