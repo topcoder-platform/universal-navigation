@@ -4,6 +4,8 @@ This IAC stack includes an S3 bucket and Cloudfront Instance to host the Uni-Nav
 
 ## Deploying the Stack
 
+The stack is _NOT_ auto-deployed during the CI/CD process and must be manually deployed by a user with credentials for the environment to which the stack is deploying.
+
 The yaml located at `./uni-nav.deploy.yml` is the CloudFormation resources configuration and includes all the requirements for creating the stack on AWS.
 
 There is a helper bash script at [`./deploy-stack.sh`](./deploy-stack.sh) that will generate the `aws cloudformation` command for the stage specified.
