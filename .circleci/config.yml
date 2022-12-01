@@ -16,8 +16,6 @@ install_build_dependency: &install_build_dependency
       #installing awscli
       pip install awscli --upgrade
       apt install jq -y
-      #apt install python3-pip -y
-      #pip3 install awscli --upgrade
 
 install_dependency: &install_dependency
     name: Installation of build and deployment dependencies.
