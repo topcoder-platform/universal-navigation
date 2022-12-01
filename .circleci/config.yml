@@ -141,16 +141,14 @@ workflows:
             branches:
               only:
                 - dev
-                # temporarily deploy master to prod
+                # temporarily deploy master to dev
                 - master
 
-      # temporarily turn off prod deployments
-      # - deployProd:
-      #     context : org-global
-      #     requires:
-      #       - build-prod
-      #     filters: 
-      #       branches:
-      #         only:
-      #           - master
-
+      - deployProd:
+          context : org-global
+          requires:
+            - build-prod
+          filters: 
+            branches:
+              only:
+                - master
