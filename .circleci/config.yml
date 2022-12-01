@@ -11,9 +11,12 @@ deploy_defaults: &deploy_defaults
 install_build_dependency: &install_build_dependency
     name: Installation of build and deployment dependencies.
     command: |
-      apt update
+# apt update
       apt install jq -y
+      apt-get update && apt-get install -y python-dev
+      apt install python3 -y
       apt install python3-pip -y
+      export LC_ALL=C.UTF-8
       pip3 install awscli --upgrade
 
 install_dependency: &install_dependency
