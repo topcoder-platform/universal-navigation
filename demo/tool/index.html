@@ -30,6 +30,8 @@
       tcUniNav('init', 'ui-nav', {
         type: 'tool',
         toolName: 'Tc Tool App',
+        toolRoot: '/',
+        handleNavigation({ route: {label: string, path: string}, }){ console.log(`navigated to`, route) },
         onReady() {console.log('tool nav ready')},
         signIn() {console.log('Sign in was called')},
         signUp() {console.log('Sign up was called')},
