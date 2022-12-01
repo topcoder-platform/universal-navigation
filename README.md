@@ -41,7 +41,7 @@ The UniNav comprises 3 parts, `'marketing' | 'tool' | 'footer'`, which are descr
 
 #### Marketing Navigation
 
-This navigation is rendered only on the marketing part of topcoder (eg. https://www.topcoder.com/how-it-works/).
+This navigation is rendered only on the marketing part of topcoder (eg. https://www.topcoder.com/how-it-works/, https://www.topcoder.com/the-community/).
 
 The configuration is static and is defined in [marketing-nav-items.ts](./src/lib/config/nav-menu/marketing-nav-items.ts).
 
