@@ -1,13 +1,10 @@
-on: # event list
-  push: # on every push to master (basically when PR's are merged into master) / or the target branch
-    branches:
-      - github-workflow
-
+# do not run this w/a trigger
+  
 env: # environment variables (available in any part of the action)
   NODE_VERSION: 16
 
 jobs: # list of things to do
-  update-types:
+  linting:
     name: Update Types # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
     steps: # list of steps
@@ -16,13 +13,13 @@ jobs: # list of things to do
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Checkout latest code
+      - name: Code Checkout
         uses: actions/checkout@v3
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Update types declarations
+      - name: Update types
         run: npm run types
 
       - name: Check types diff
@@ -30,17 +27,16 @@ jobs: # list of things to do
         run: |
           diffstatus=$(git status --porcelain)
           echo DIFF=$diffstatus >> $GITHUB_OUTPUT
-
-      - name: Stage Types changes
+      
+      - name: Add Types changes
         if: ${{ steps.types_status.outputs.DIFF }}
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add types
 
       - name: Commit Changes
         if: ${{ steps.types_status.outputs.DIFF }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with: 
-          commit-message: Update types declarations
-
-      # - name: Increment version
-      #   run: npm version patch
+          commit_message: Update types declarations
