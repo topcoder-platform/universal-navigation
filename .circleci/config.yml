@@ -11,10 +11,11 @@ deploy_defaults: &deploy_defaults
 install_build_dependency: &install_build_dependency
     name: Installation of build and deployment dependencies.
     command: |
-      apt update
+      apt-get update -y && apt-get install -qq -y python-pip libpython-dev
+      curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
+      #installing awscli
+      pip install awscli --upgrade
       apt install jq -y
-      apt install python3-pip -y
-      pip3 install awscli --upgrade
 
 install_dependency: &install_dependency
     name: Installation of build and deployment dependencies.
@@ -100,7 +101,7 @@ jobs:
     environment:
       DEPLOY_ENV: "DEV"
       LOGICAL_ENV: "dev"
-      ENABLE_CACHE: true
+      ENABLE_CACHE: false
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
@@ -109,7 +110,7 @@ jobs:
     environment:
       DEPLOY_ENV: "PROD"
       LOGICAL_ENV: "prod"
-      ENABLE_CACHE: true
+      ENABLE_CACHE: false
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
@@ -173,11 +174,13 @@ workflows:
           context : org-global
           requires:
             - build-dev
+            # temporarily permit prod builds
             - build-prod
           filters: 
             branches:
               only:
                 - dev
+                # temporarily deploy master to dev
                 - master
 
       # - deployProd:
@@ -189,11 +192,9 @@ workflows:
       #         only:
       #           - master
 
-
       - check-types:
           context : org-global
           filters: 
             branches:
               only:
                 - github-workflows
-

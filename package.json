@@ -4,7 +4,7 @@
     "version": "1.0.2",
     "type": "module",
     "main": "./src/main.ts",
-    "types": "./types/main.d.ts",
+    "types": "./types/src/main.d.ts",
     "repository": "https://github.com/topcoder-platform/universal-navigation.git",
     "scripts": {
         "build:footer": "APP_BUILD_TARGET=footer vite build",

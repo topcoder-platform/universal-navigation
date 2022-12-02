@@ -22,6 +22,7 @@
       // configurations that performed by site-owner
       tcUniNav('init', 'ui-nav', {
         type: 'marketing',
+        handleNavigation({ route: {label: string, path: string}, }){ console.log(`navigated to`, route) },
         onReady() {console.log('marketing nav ready')},
         signIn() {console.log('Sign in was called')},
         signUp() {console.log('Sign up was called')},
