@@ -121,7 +121,7 @@ jobs:
     steps: *deploy_steps
 
   checkTypes:
-    name: Check Types
+    <<: *defaults
     steps: *check_types
 
 
@@ -130,6 +130,13 @@ workflows:
   version: 2
   build:
     jobs:
+      - checkTypes:
+          context : org-global
+          filters: 
+            branches:
+              only:
+                - github-workflows
+
       - build-dev:
           context : org-global
           filters:
@@ -165,10 +172,3 @@ workflows:
       #       branches:
       #         only:
       #           - master
-
-      - checkTypes:
-          context : org-global
-          filters: 
-            branches:
-              only:
-                - github-workflows
