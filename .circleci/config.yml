@@ -114,7 +114,7 @@ jobs:
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
-  checkTypes:
+  check-types:
     name: Check Types # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
     steps: # list of steps
