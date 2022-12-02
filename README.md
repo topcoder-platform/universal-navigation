@@ -194,7 +194,7 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.signOut          | () => void                           | yes (except for footer) | Called when the user clicks the Log out button                             | none          |
 | config.signUp           | () => void                           | yes (except for footer) | Called when the user clicks sign up/register                               | none          |
 | config.toolName         | string                               | yes (tool nav only)     | The name of the tool as it should appear in the header                     | none          |
-| config.toolRoute        | string                               | yes (tool nav only)     | The route to the tool as it should appear in the header                    | none          |
+| config.toolRoot        | string                               | yes (tool nav only)     | The route to the tool as it should appear in the header                    | none          |
 | config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                  | The type of navigation to render                                           |               |
 | config.user             | {photoURL, userId, initials, handle} | no                      | The logged in user                                                         | {}            |
 
