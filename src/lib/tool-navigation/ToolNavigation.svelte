@@ -69,5 +69,5 @@
     </a>
   </div>
 
-  <UserArea />
+  <UserArea slot="right" />
 </TopNavbar>
