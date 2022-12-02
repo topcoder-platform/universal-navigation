@@ -80,7 +80,8 @@ Resources:
                             - !Sub https://${Domain}
                             - !Sub https://community.${Domain}
                             - !Sub https://discussions.${Domain}
-                            - !Sub https://local.${Domain}
+                            - !If [IsProd, '', !Sub https://local.${Domain}]
+                            - !If [IsProd, '', !Sub http://local.tc.cloud.topcoder.com]
                             - !Sub https://platform-ui.${Domain}
                             - !Sub https://software.${Domain}
                             - !If [IsProd, https://topcoder.privatetalent.cloud, https://topcoder.privatetalent-dev.cloud]

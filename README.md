@@ -1,9 +1,34 @@
 # Topcoder Universal Navigation
-Universal Nav for the entire TCO Websphere
 
-## Clients
+Universal Navigation (UniNav) for the entire Topcoder websphere.
 
-The following clients use the uni-nav for the MVP:
+In order to create a unified user experience for all Topcoder properties, common navigation components are integrated into all of them.
+
+The following README offers instructions for integrating the UniNav into a web property.
+
+For information on how to develop/maintain the UniNav component itself, please see the [UniNav README](./src/README.md).
+
+- [Introduction](#introduction)
+    - [Web Properties Using UniNav](#web-properties-using-uninav)
+    - [Navigation Types](#navigation-types)
+- [CORS](#cors)
+    - [Development CORS](#development-cors)
+    - [Production CORS](#production-cors)
+- [Instructions](#instructions)
+    - [1. Include tcUniNav JS Snippet](#1-include-tcuninav-js-snippet)
+    - [2. Initialize tcUniNav](#2-initialize-tcuninav)
+    - [3. Update tcUniNav](#3-update-tcuninav)
+- [Futher Reading](#further-reading)
+    - [Versioning](#versioning)
+    - [API for tcUniNav](#api-for-tcuninav)
+    - [tcUniNav Methods](#tcuninav-methods)
+    - [Typescript Support](#typescript-support)
+
+## Introduction
+
+### Web Properties using UniNav
+
+The following properties use the UniNav for the MVP:
 
 - [Platform UI](https://github.com/topcoder-platform/platform-ui)
 - [PACTS](https://github.com/topcoder-platform/tc-website)
@@ -13,21 +38,66 @@ The following clients use the uni-nav for the MVP:
 - [Customer Marketing](https://www.topcoder.com) - Wordpress
 - [Member Marketing](https://github.com/topcoder-platform/community-app)
 
-## Architecture Diagram
+### Navigation Types
 
-![Basic Architecture Diagram](docs/Universal%20Nav%20Diagram.png?raw=true "Universal Nav Architecture Drawing")
+The UniNav comprises 3 parts, `'marketing' | 'tool' | 'footer'`, which are described here.
 
-## Hosting
+#### Marketing Navigation
 
-The UniNav JS is stored in S3 with the CloudFront CDN. 
+This navigation is rendered only on the marketing part of topcoder (eg. https://www.topcoder.com/how-it-works/, https://www.topcoder.com/the-community/).
 
-See [IAC README](./iac/README.md) for more details.
+The configuration is static and is defined in [marketing-nav-items.ts](./src/lib/config/nav-menu/marketing-nav-items.ts).
 
-## Svelte App
+#### Tool Navigation
 
-README TBD
+This navigation is rendered for all non-marketing web properites (e.g https://platform-ui.topcoder.com/learn, https://platform-ui.topcoder.com/work).
 
-## Getting started
+The navigation configuration is supplied upon initialization by the tool itself. See [2. Initialize tcUnNav](#2-initialize-tcuninav) for more info.
+
+#### Footer Navigation
+
+This navigation is rendered for all web properties, regardless if they're marketing sites or tools.
+
+The navigation is static and is defined in [footer-nav-items.ts](./src/lib/config/nav-menu/footer-nav-items.ts).
+
+## CORS
+
+CORS will need to be set up for the origin that's using the UniNav script.
+
+The allowed origins for the dev instance of the script are different from the prod instance.
+
+CORS origins are configured in the IAC deployment config [../iac/uni-nav.deploy.yml](../iac/uni-nav.deploy.yml).
+
+See the [IAC README](../iac/README.md) for instructions for deploying the stack.
+
+### Development CORS
+
+The dev version of the UniNav script allows the following origins. 
+
+- https://topcoder-dev.com
+- https://community.topcoder-dev.com
+- https://discussions.topcoder-dev.com
+- https://local.topcoder-dev.com
+- http://local.tc.cloud.topcoder.com]
+- https://platform-ui.topcoder-dev.com
+- https://software.topcoder-dev.com
+- https://topcoder.privatetalent-dev.cloud
+
+### Production CORS
+
+The dev version of the UniNav script allows the following origins. 
+
+- https://topcoder.com
+- https://community.topcoder.com
+- https://discussions.topcoder.com
+- https://platform-ui.topcoder.com
+- https://software.topcoder.com
+- https://topcoder.privatetalent.cloud
+
+## Instructions
+
+### 1. Include tcUniNav JS Snippet
+
 Include the main script in your application's main html:
 
 ```
@@ -39,102 +109,148 @@ Include the main script in your application's main html:
 </script>
 ```
 
-Once included the above script, you can immediately call `tcUniNav()` to initialize the navigation.
-
-There are 2 sample integrations in the "demo" folder: `tc-app.html` and `tc-tool-app.html`.
-
 >**NOTE** Each application will need to determine which version of the nav it uses by setting the URL for the script. See [Versioning](#versioning) for more info.
 
-## API for tcUniNav
-`tcUniNav(method, targetId, config)`
+### 2. Initialize tcUniNav
 
-| Parameter               | Type                                 | Required                  | Description                                                                | Default value |
-|-------------------------|--------------------------------------|---------------------------|----------------------------------------------------------------------------|---------------|
-| method                  | Enum: 'init' \| 'update'             | yes                       | The method to be called                                                    |               |
-| targetId                | string(html element id)              | yes                       | target element for the navigation to be rendered on                        | none          |
-| config                  | object                               | no                        | The config object for the specific navigation type                         | {}            |
-| config.type             | Enum: 'marketing' \| 'tool' \| 'footer'  | yes                   | The type of navigation to render                                           |               |
-| config.onReady          | () => void                           | no                        | Callback function called when the navigation was rendered                  | none          |
-| config.signIn           | () => void                           | no                        | Called when the user clicks the Log in button                              | none          |
-| config.signOut          | () => void                           | no                        | Called when the user clicks the Log out button                             | none          |
-| config.signUp           | () => void                           | no                        | Called when the user clicks sign up/register                               | none          |
-| config.toolName         | string                               | yes (for tool nav update) | The name of the tool as it should appear in the header                     | none          |
-| config.toolRoute        | string                               | yes (for tool nav update) | The route to the tool as it should appear in the header                    | none          |
-| config.user             | {photoURL, userId, initials, handle} | no                        | The logged in user                                                         | {}            |
-| config.handleNavigation | (route: {path, label}) => void       | no                        | Allow for external handling of route navigation (eg. via react-router-dom) | none          |
+Once the above script is included, you can immediately call `tcUniNav()` to initialize the navigation.
 
-## Methods
-
-###### `init`
-The `init` method can be called one single time for the same `targetId`. If the init method is called more than one time, the navigation will throw an error and won't do anything.
-
-###### `update`
-The `update` needs to be called only after `init` was already called. If it's called before the navigation will throw an error mentioning that init needs to be called first.
-After `init` was called, you should call only `update` for further updates.
-
->**NOTE** Both methods accept the same config object as mentioned in the previous section [API for tcUniNav](#api-for-tcuninav).
-
-## Marketing Navigation
-Component rendered on the marketing part of topcoder (eg. topcoder.com/business. topcoder.com/community)
+#### Init Marketing Nav
 ```
-  tcUniNav('init', 'navigation-el', {...config, type: 'marketing'})
-  tcUniNav('update', 'navigation-el', {user})
+tcUniNav(
+    'init', 
+    'ui-nav', 
+    {
+        handleNavigation({ route: {label: string, path: string} }){ ... },
+        onReady() {...},
+        signIn() {...},
+        signUp() {...},
+        signOut() {...},
+        type: 'marketing',
+        user: {...},
+    },
+);
+
 ```
 
-## Tool Navigation
-Component rendered on any tool part of topcoder (eg. platform-ui.topcoder.com/learn)
+#### Init Tool Nav
 ```
-  tcUniNav('init', 'navigation-el', {...config, type: 'tool', toolName: 'Topcoder Academy'})
-  tcUniNav('update', 'navigation-el', {user})
-  tcUniNav('update', 'navigation-el', {toolName: 'Self-service Challenges', toolRoot: '/work'})
+tcUniNav(
+    'init', 
+    'ui-nav', 
+    {
+        handleNavigation({ route: {label: string, path: string} }){ ... },
+        onReady() {...},
+        signIn() {...},
+        signUp() {...},
+        signOut() {...},
+        toolName: 'Tc Tool App',
+        toolRoot: '/',
+        type: 'tool',
+        user: {...},
+    },
+);
+
 ```
 
-## Footer Navigation
-The component renders the footer for the page
+#### Init Footer Nav
 ```
-  tcUniNav('init', 'footer-navigation-el', {...config, type: 'footer'})
+tcUniNav(
+    'init', 
+    'ui-nav', 
+    {
+        type: 'footer',
+    },
+);
+
 ```
 
-## Recommended IDE Setup   
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+### 3. Update tcUniNav
 
+If your application supports multiple tools or retrieves the user info after the page is rendered, you can use the `update` method to reconfigure the UniNav dynamically.
 
-## Versioning
+```
+tcUniNav(
+    'update', 
+    'ui-nav', 
+    {
+        toolName: 'Tc Tool App',
+        toolRoot: '/',
+    }
+)
 
-There are currently prod and dev versions of the library located at:
+tcUniNav(
+    'update', 
+    'ui-nav', 
+    {
+        user: {
+            photoURL: 'https://topcoder-prod-media.s3.amazonaws.com/member/profile/vasilica.olariu-1616487120406.png',
+            userId: 11111111,
+            initials: 'JD',
+            handle: 'john.doe'
+        }
+    }
+)
+```
 
-https://uni-nav.topcoder.com/v#/tc-universal-nav.js
+## Further Reading
 
-https://uni-nav.topcoder-dev.com/v#/tc-universal-nav.js
+### Versioning
 
-Each application will need to determine which version of the nav it uses by setting the URL for the script.
+There are currently prod and dev instances of the library located at:
+
+https://uni-nav.topcoder.com/v1/tc-universal-nav.js
+
+https://uni-nav.topcoder-dev.com/v1/tc-universal-nav.js
+
+Each application will need to determine which instance of the nav it uses by setting the URL for the script.
 
 For example, non-production environments will probably want to point to the script hosted on  `//uni-nav.topcoder-dev.com`
 
-### Minor Version upgrades
+#### Minor Version upgrades
 
-Minor version updates will be rolled out silently to all clients.
+Minor versions are tested in the dev environment for affected properties (i.e. changes to the marketing nav don't need to be tested in the tools) then rolled out silently to all clients in production. 
 
-### Major Version upgrades
+#### Major Version upgrades
 
-Major changes will be versioned for incremental rollout using the script path (e.g. `/v2/tc-universal-nav.js`).
+Major changes are versioned for incremental rollout using the script path (e.g. `/v2/tc-universal-nav.js`).
 
-Information regarding the changes will be disseminated to all clients, and each client will be responsible for migrating to the new version before the prior version is deprecated.
+Information regarding the changes will be disseminated to the owners of all properties, and each owner will be responsible for migrating to the new version before the prior version is deprecated.
 
-## Development
-### `npm run dev`
-Run `npm run dev` to start a local development server. This will build the application and will serve `index.html`'s contents.
-At the moment of writing, `index.html` will instantiate all 3 types of navigation: marketing, tool, footer, and will pass the user data to them after 3 seconds.
+### API for tcUniNav
+`tcUniNav(method, targetId, config)`
 
-### `npm run build`
-Run `npm run build` to build the files for production. The output is to be found in the `dist` folder.
+| Parameter               | Type                                 | Required                | Description                                                                | Default value |
+|-------------------------|--------------------------------------|-------------------------|----------------------------------------------------------------------------|---------------|
+| method                  | Enum: 'init' \| 'update'             | yes                     | The method to be called                                                    |               |
+| targetId                | string(html element id)              | yes                     | target element for the navigation to be rendered on                        | none          |
+| config                  | object                               | no                      | The config object for the specific navigation type                         | {}            |
+| config.handleNavigation | (route: {path, label}) => void       | no                      | Allow for external handling of route navigation (eg. via react-router-dom) | none          |
+| config.onReady          | () => void                           | no                      | Callback function called when the navigation was rendered                  | none          |
+| config.signIn           | () => void                           | yes (except for footer) | Called when the user clicks the Log in button                              | none          |
+| config.signOut          | () => void                           | yes (except for footer) | Called when the user clicks the Log out button                             | none          |
+| config.signUp           | () => void                           | yes (except for footer) | Called when the user clicks sign up/register                               | none          |
+| config.toolName         | string                               | yes (tool nav only)     | The name of the tool as it should appear in the header                     | none          |
+| config.toolRoot        | string                               | yes (tool nav only)     | The route to the tool as it should appear in the header                    | none          |
+| config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                  | The type of navigation to render                                           |               |
+| config.user             | {photoURL, userId, initials, handle} | no                      | The logged in user                                                         | {}            |
 
-### Using the demo files
-The `demo` files are just basic (bare minimum) example of how to integrate the navigation in a simple html file.
 
-Run `npm run demo`. This will spin up 3 `http-server`s:
-- localhost:8080 will serve the dist files
-- localhost:8081 will serve the marketing navigation demo file
-- localhost:8082 will serve the tool navigation demo file
->**NOTE** you need to run `npm run build` to build the navigation files before running the demo files.
+### tcUniNav Methods
 
+The `init` method can only be called one single time for the same `targetId`. If the init method is called more than one time, the navigation will throw an error and won't do anything.
+
+The `update` needs to be called only after `init` was already called. If it's called before initialization, the navigation will throw an error mentioning that init needs to be called first.
+
+After `init` is called, you should call only `update` for further updates.
+
+>**NOTE** Both methods accept the same config object as mentioned in the previous section [API for tcUniNav](#api-for-tcuninav).
+
+
+### Typescript Support
+
+Typescript type declarations (i.e. `*.d.ts`) can be sourced from the Github repo in the devDependencies of your package.json:
+
+`        "universal-navigation": "https://github.com/topcoder-platform/universal-navigation", `
+
+This package acts the same as any other npm package re updates/upgrades. You can update to pull the latest version (i.e `npm run update` or `yarn upgrade`). 
