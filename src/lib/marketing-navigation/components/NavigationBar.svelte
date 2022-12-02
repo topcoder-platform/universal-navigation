@@ -1,9 +1,7 @@
 <script type="ts">
     import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
-    import { classnames } from 'lib/utils/classnames';
     import HoverMenu from './HoverMenu.svelte';
     import LinksMenu from '../../components/LinksMenu.svelte';
-    import styles from './NavigationBar.module.scss';
     import TopNavbar from 'lib/components/TopNavbar.svelte';
 
     export let style: 'primary'|'secondary'|'ternary';
@@ -15,14 +13,14 @@
     let hoveredMenuItem: NavMenuItem;
 </script>
 
-<TopNavbar class={classnames(styles.navbar, styles[style])}>
+<TopNavbar style={style}>
   <LinksMenu
-      className={styles.mainNav}
       menuItems={menuItems}
       activeRoute={activeRoute}
       bind:hoveredMenuItem={hoveredMenuItem}
       bind:hoveredElement={hoveredElement}
       isPopupMenuActive={popupIsVisible}
+      style={style}
   >
       {#if !activeRoute}
           <HoverMenu

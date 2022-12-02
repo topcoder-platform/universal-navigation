@@ -1,0 +1,61 @@
+.togglerSeparator {
+  position: relative;
+  background: #767676;
+  width: 2px;
+  height: 60px;
+  margin: -18px 0;
+  margin-left: calc(-1 * var(--margin-left, 180px));
+  z-index: 1;
+  transition: 0.2s ease-in-out;
+
+  &.toggled {
+    margin-left: 35px;
+
+    .toggleBtn svg {
+      transform: rotateZ(180deg);
+    }
+  }
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #767676;
+  border-radius: 25px;
+  background: #2A2A2A;
+
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  cursor: pointer;
+
+  svg {
+    transition: 0.2s ease-in-out;
+  }
+}
+
+.toolNavWrap {
+  position: relative;
+  background: #0C0C0C;
+  width: 100%;
+  padding: 18px 48px;
+  margin: -18px 0;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.toolName {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #82EACF;
+}
