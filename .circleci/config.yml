@@ -52,6 +52,12 @@ workspace_persist: &workspace_persist
 workspace_attach: &workspace_attach
     at: ./workspace
 
+check_types: &check_types
+  name: Check Types
+  command: |
+    npm run types
+    diffstatus=$(git status --porcelain)
+    echo DIFF=$diffstatus >> $GITHUB_OUTPUT
 
 build_steps: &build_steps
     # Initialization.
@@ -114,12 +120,11 @@ jobs:
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
-  check-types:
+  checkTypes:
     name: Check Types
-    command: |
-      npm run types
-      diffstatus=$(git status --porcelain)
-      echo DIFF=$diffstatus >> $GITHUB_OUTPUT
+    steps: *check_types
+
+
 
 workflows:
   version: 2
@@ -161,7 +166,7 @@ workflows:
       #         only:
       #           - master
 
-      - check-types:
+      - checkTypes:
           context : org-global
           filters: 
             branches:
