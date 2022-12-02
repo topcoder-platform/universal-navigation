@@ -25,7 +25,7 @@ For information re how to integrate the UniNav into a web property, see the main
 
 The UniNav JS is stored in S3 with a CloudFront CDN, and the JS files are cached and compressed.
 
-See [IAC README](./iac/README.md) for more details.
+See [IAC README](../iac/README.md) for more details.
 
 ## CORS
 
