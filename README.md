@@ -11,13 +11,13 @@ For information on how to develop/maintain the UniNav component itself, please s
 - [Introduction](#introduction)
     - [Web Properties Using UniNav](#web-properties-using-uninav)
     - [Navigation Types](#navigation-types)
+- [CORS](#cors)
+    - [Development CORS](#development-cors)
+    - [Production CORS](#production-cors)
 - [Instructions](#instructions)
     - [1. Include tcUniNav JS Snippet](#1-include-tcuninav-js-snippet)
     - [2. Initialize tcUniNav](#2-initialize-tcuninav)
     - [3. Update tcUniNav](#3-update-tcuninav)
-- [CORS](#cors)
-    - [Development CORS](#development-cors)
-    - [Production CORS](#production-cors)
 - [Futher Reading](#further-reading)
     - [Versioning](#versioning)
     - [API for tcUniNav](#api-for-tcuninav)
@@ -59,6 +59,40 @@ The navigation configuration is supplied upon initialization by the tool itself.
 This navigation is rendered for all web properties, regardless if they're marketing sites or tools.
 
 The navigation is static and is defined in [footer-nav-items.ts](./src/lib/config/nav-menu/footer-nav-items.ts).
+
+## CORS
+
+CORS will need to be set up for the origin that's using the UniNav script.
+
+The allowed origins for the dev instance of the script are different from the prod instance.
+
+CORS origins are configured in the IAC deployment config [../iac/uni-nav.deploy.yml](../iac/uni-nav.deploy.yml).
+
+See the [IAC README](../iac/README.md) for instructions for deploying the stack.
+
+### Development CORS
+
+The dev version of the UniNav script allows the following origins. 
+
+- https://topcoder-dev.com
+- https://community.topcoder-dev.com
+- https://discussions.topcoder-dev.com
+- https://local.topcoder-dev.com
+- http://local.tc.cloud.topcoder.com]
+- https://platform-ui.topcoder-dev.com
+- https://software.topcoder-dev.com
+- https://topcoder.privatetalent-dev.cloud
+
+### Production CORS
+
+The dev version of the UniNav script allows the following origins. 
+
+- https://topcoder.com
+- https://community.topcoder.com
+- https://discussions.topcoder.com
+- https://platform-ui.topcoder.com
+- https://software.topcoder.com
+- https://topcoder.privatetalent.cloud
 
 ## Instructions
 
@@ -158,40 +192,6 @@ tcUniNav(
     }
 )
 ```
-
-## CORS
-
-CORS will need to be set up for the origin that's using the UniNav script.
-
-The allowed origins for the dev instance of the script are different from the prod instance.
-
-CORS origins are configured in the IAC deployment config [../iac/uni-nav.deploy.yml](../iac/uni-nav.deploy.yml).
-
-See the [IAC README](../iac/README.md) for instructions for deploying the stack.
-
-### Development CORS
-
-The dev version of the UniNav script allows the following origins. 
-
-- https://topcoder-dev.com
-- https://community.topcoder-dev.com
-- https://discussions.topcoder-dev.com
-- https://local.topcoder-dev.com
-- http://local.tc.cloud.topcoder.com]
-- https://platform-ui.topcoder-dev.com
-- https://software.topcoder-dev.com
-- https://topcoder.privatetalent-dev.cloud
-
-### Production CORS
-
-The dev version of the UniNav script allows the following origins. 
-
-- https://topcoder.com
-- https://community.topcoder.com
-- https://discussions.topcoder.com
-- https://platform-ui.topcoder.com
-- https://software.topcoder.com
-- https://topcoder.privatetalent.cloud
 
 ## Further Reading
 
