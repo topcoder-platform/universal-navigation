@@ -6,7 +6,7 @@
   import { getAppContext } from "lib/app-context";
 
   const ctx = getAppContext()
-  
+
   $: ({
     signIn: onSignIn = () => {},
     signUp: onSignUp = () => {},

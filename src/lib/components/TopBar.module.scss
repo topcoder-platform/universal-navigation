@@ -1,0 +1,15 @@
+.navbar {
+  height: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #0C0C0C;
+  color: #AAAAAA;
+  padding: 12px 16px;
+}
+
+.right {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}

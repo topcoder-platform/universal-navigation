@@ -1,0 +1,17 @@
+.mobileNavWrap {
+  position: relative;
+}
+
+.menuBtn {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  margin: -4px;
+
+  img {
+    display: block;
+    width: 24px;
+    height: 20px;
+    margin: auto;
+  }
+}

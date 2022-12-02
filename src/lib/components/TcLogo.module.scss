@@ -1,6 +1,19 @@
+@import 'lib/styles/mixins.scss';
 
 .logo {
   display: flex;
   margin-right: 48px;
   flex: 0 0 auto;
+
+  img {
+    display: block;
+    height: 22px;
+  }
+
+  @include mobile {
+    margin-right: 20px;
+    img {
+      height: 17px;
+    }
+  }
 }
