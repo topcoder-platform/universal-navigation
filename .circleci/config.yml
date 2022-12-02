@@ -59,6 +59,11 @@ check_types: &check_types
     diffstatus=$(git status --porcelain)
     echo DIFF=$diffstatus >> $GITHUB_OUTPUT
 
+check_types_steps: &check_types_steps
+    - checkout
+    - setup_remote_docker
+    - run: *check_types
+
 build_steps: &build_steps
     # Initialization.
     - checkout
@@ -122,7 +127,7 @@ jobs:
 
   checkTypes:
     <<: *defaults
-    steps: *check_types
+    steps: *check_type_steps
 
 
 
