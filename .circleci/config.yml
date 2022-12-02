@@ -127,7 +127,7 @@ jobs:
 
   checkTypes:
     <<: *defaults
-    steps: *check_type_steps
+    steps: *check_types_steps
 
 
 
