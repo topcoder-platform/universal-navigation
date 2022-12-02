@@ -19,7 +19,7 @@ For information re how to integrate the UniNav into a web property, see the main
 
 ## Architecture Diagram
 
-![Basic Architecture Diagram](docs/UniNav_Diagram.png "Universal Nav Architecture Drawing")
+![Basic Architecture Diagram](../docs/UniNav_Diagram.png "Universal Nav Architecture Drawing")
 
 ## Infrastructure
 
