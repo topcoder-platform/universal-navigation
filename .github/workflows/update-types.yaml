@@ -36,23 +36,11 @@ jobs: # list of things to do
         run: |
           git add types
 
-      - name: Create Pull Request
+      - name: Commit Changes
         if: ${{ steps.types_status.outputs.DIFF }}
-        uses: peter-evans/create-pull-request@v4
-        with:
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with: 
           commit-message: Update types declarations
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          branch: update-types-declarations
-          delete-branch: true
-          title: '[TASK] Update types declarations'
-          body: |
-            Updates the type declarations after latest PR merge
-          labels: |
-            automated pr
-          assignees: vas3a
-          draft: false
 
       - name: Increment version
         run: npm version patch
