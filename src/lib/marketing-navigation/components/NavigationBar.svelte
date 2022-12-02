@@ -4,6 +4,7 @@
     import HoverMenu from './HoverMenu.svelte';
     import LinksMenu from '../../components/LinksMenu.svelte';
     import styles from './NavigationBar.module.scss';
+    import TopNavbar from 'lib/components/TopNavbar.svelte';
 
     export let style: 'primary'|'secondary'|'ternary';
     export let menuItems: NavMenuItem[] = [];
@@ -14,25 +15,23 @@
     let hoveredMenuItem: NavMenuItem;
 </script>
 
-<nav class={classnames(styles.navbar, styles[style])}>
-    <slot name="logo"></slot>
+<TopNavbar class={classnames(styles.navbar, styles[style])}>
+  <LinksMenu
+      className={styles.mainNav}
+      menuItems={menuItems}
+      activeRoute={activeRoute}
+      bind:hoveredMenuItem={hoveredMenuItem}
+      bind:hoveredElement={hoveredElement}
+      isPopupMenuActive={popupIsVisible}
+  >
+      {#if !activeRoute}
+          <HoverMenu
+              menuItems={hoveredMenuItem?.children}
+              mainDescription={hoveredMenuItem?.description}
+              bind:isHovering={popupIsVisible}
+          />
+      {/if}
+  </LinksMenu>
 
-    <LinksMenu
-        className={styles.mainNav}
-        menuItems={menuItems}
-        activeRoute={activeRoute}
-        bind:hoveredMenuItem={hoveredMenuItem}
-        bind:hoveredElement={hoveredElement}
-        isPopupMenuActive={popupIsVisible}
-    >
-        {#if !activeRoute}
-            <HoverMenu
-                menuItems={hoveredMenuItem?.children}
-                mainDescription={hoveredMenuItem?.description}
-                bind:isHovering={popupIsVisible}
-            />
-        {/if}
-    </LinksMenu>
-
-    <slot name="auth"></slot>
-</nav>
+  <slot name="auth" slot="right"></slot>
+</TopNavbar>

@@ -163,13 +163,15 @@ export const websiteDesignMenuItem = {
 export const talkToAnExpertMenuItem = {
   label: 'Talk to an expert',
   description: 'Speak with a Topcoder expert to get started.',
-  path: '/business/talks-to-expert'
+  path: '/business/talks-to-expert',
+  type: 'cta'
 };
 
 export const bookADemoMenuItem = {
   label: 'Book a demo',
   description: 'See a demo of how Topcoder can best provide for your business.',
-  path: '/business/demo'
+  path: '/business/demo',
+  type: 'cta'
 };
 
 export const communityMenuItem = {
