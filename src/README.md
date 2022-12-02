@@ -89,8 +89,8 @@ There are 2 sample integrations in the [/demo](./demo/) folder:
     - http://localhost:8080
 
 3. Navigate to the specific nav:
-    - Marketing Nav: https://localhost:8081
-    - Tool Nav: https://localhost:8082
+    - Marketing Nav: http://localhost:8081
+    - Tool Nav: http://localhost:8082
 
 ## Production Distribution
 
