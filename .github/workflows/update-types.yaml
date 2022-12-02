@@ -42,6 +42,5 @@ jobs: # list of things to do
         with: 
           commit-message: Update types declarations
 
-      - name: Increment version
-        run: npm version patch
-
+      # - name: Increment version
+      #   run: npm version patch
