@@ -14,6 +14,9 @@
   padding: 16px 40px;
 
   &Item {
+    &.isActive {
+      color: #0D664E;
+    }
     & + & {
       margin-top: 16px;
     }

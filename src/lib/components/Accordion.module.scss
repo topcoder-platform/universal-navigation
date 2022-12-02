@@ -20,6 +20,12 @@
       border-top: 0;
     }
   }
+
+  &.isActive {
+    .itemLabel {
+      color: #82EACF;
+    }
+  }
 }
 
 .itemHead {
@@ -32,7 +38,7 @@
 
   line-height: 16px;
 
-  .item.isActive > & .itemTrigger{
+  .item.isToggled > & .itemTrigger{
     transform: rotateZ(180deg);
   }
 }

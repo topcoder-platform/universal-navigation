@@ -1,24 +1,46 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { getActiveRoute, getMainNavItems } from 'lib/functions/marketing-navigation.provider'
-  import styles from './MobileNav.module.scss';
   import MobileMenu from 'lib/components/MobileMenu.svelte';
   import Accordion from 'lib/components/Accordion.svelte';
-  import { children } from 'svelte/internal';
   import { navUrl } from 'lib/utils/paths';
+  import { classnames } from 'lib/utils/classnames';
+
+  import styles from './MobileNav.module.scss';
 
   const menuItems = getMainNavItems()
-  const activeRoute: NavMenuItem[] = getActiveRoute()
+  const activeRoutes: NavMenuItem[] = getActiveRoute()
 
+  export let isVisible = false;
 </script>
 
-<MobileMenu >
+{#if isVisible}
+<MobileMenu direction="x" handleClose={() => isVisible = false}>
   <div class={styles.mobileNavWrap}>
-    <Accordion items={menuItems} let:item style="primary">
-      <Accordion items={item.children} style="secondary" let:item={subItem}>
+    <Accordion
+      items={menuItems}
+      activeRoute={activeRoutes[0]}
+      style="primary"
+
+      let:item
+    >
+      <Accordion
+        items={item.children}
+        style="secondary"
+        activeRoute={activeRoutes[1]}
+
+        let:item={subItem}
+      >
         <ul class={styles.list}>
           {#each subItem.children as child}
-            <li class={styles.listItem}>
+            <li
+              class={
+                classnames(
+                  styles.listItem,
+                  activeRoutes[2]?.path === child.path && styles.isActive
+                )
+              }
+            >
               <a href={child.url ?? navUrl(child)}>
                 {child.label}
               </a>
@@ -30,3 +52,4 @@
     </Accordion>
   </div>
 </MobileMenu>
+{/if}

@@ -7,15 +7,18 @@
   import TopNavbar from 'lib/components/TopNavbar.svelte';
 
   const toggleMenuIcon = getPublicPath(`/assets/icon-menu.svg`);
+
+  let menuIsVisible = false;
+
 </script>
 
 <div class={styles.mobileNavWrap}>
-  <TopNavbar minLogoVersion>
-    <div class={styles.menuBtn}>
+  <TopNavbar minLogoVersion style="primary">
+    <div class={styles.menuBtn} on:click={() => menuIsVisible = true} on:keydown={() => {}}>
       <img src={toggleMenuIcon} alt='' />
     </div>
 
     <UserArea slot="right" />
   </TopNavbar>
-  <MobileMenu />
+  <MobileMenu bind:isVisible={menuIsVisible} />
 </div>

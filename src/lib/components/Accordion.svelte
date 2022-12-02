@@ -4,10 +4,11 @@
   import { getPublicPath, navUrl } from 'lib/utils/paths';
   import styles from './Accordion.module.scss';
 
+  export let activeRoute: NavMenuItem = undefined;
   export let items: NavMenuItem[];
   export let style: 'primary'|'secondary'|undefined = undefined;
 
-  const activeItems: {[key: string]: boolean} = {};
+  const toggledItems: {[key: string]: boolean} = {};
   const iconUrl = getPublicPath(`/assets/icon-dropdown.svg`);
 
   function key(item: NavMenuItem) {
@@ -15,8 +16,10 @@
   }
 
   function toggleItem(item: NavMenuItem, toggle?: boolean) {
-    activeItems[key(item)] = typeof toggle === 'boolean' ? toggle : !activeItems[item.label];
+    toggledItems[key(item)] = typeof toggle === 'boolean' ? toggle : !toggledItems[item.label];
   }
+
+  $: activeRoute && toggleItem(activeRoute)
 </script>
 
 <ul class={classnames(styles.accordionWrap, 'uni-accordion', style)}>
@@ -24,9 +27,10 @@
     <li class={
       classnames(
         styles.item,
-        activeItems[key(item)] && styles.isActive,
+        toggledItems[key(item)] && styles.isToggled,
         'uni-accordion-item',
-        item.type === 'cta' && 'cta-type'
+        item.type === 'cta' && 'cta-type',
+        activeRoute?.path === item.path && styles.isActive
       )
     }>
       {#if item.type !== 'cta'}
@@ -48,7 +52,7 @@
       {/if}
     </li>
 
-    {#if activeItems[key(item)]}
+    {#if toggledItems[key(item)]}
       <slot {item}></slot>
     {/if}
   {/each}
