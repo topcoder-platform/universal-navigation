@@ -8,6 +8,7 @@
   import TcLogo from 'lib/components/TcLogo.svelte';
   import UserArea from 'lib/components/UserArea.svelte';
   import NavigationBar from './components/NavigationBar.svelte';
+  import { isMobile } from 'lib/utils/window-size.store';
 
   const menuItems = getMainNavItems()
   const activeRoute: NavMenuItem[] = getActiveRoute()
@@ -19,24 +20,27 @@
     activeRoute={primaryRoute}
     style='primary'
     menuItems={menuItems}
+    isMobile={$isMobile}
   >
     <TcLogo slot="logo" />
     <UserArea slot="auth" />
   </NavigationBar>
-  
-  {#if primaryRoute?.children?.length}
-    <NavigationBar
-      activeRoute={secondaryRoute}
-      style='secondary'
-      menuItems={primaryRoute.children}
-    />
-  {/if}
-  
-  {#if secondaryRoute?.children?.length}
-    <NavigationBar
-      activeRoute={ternaryRoute}
-      style='ternary'
-      menuItems={secondaryRoute.children}
-    />
+
+  {#if !$isMobile}
+    {#if primaryRoute?.children?.length}
+      <NavigationBar
+        activeRoute={secondaryRoute}
+        style='secondary'
+        menuItems={primaryRoute.children}
+      />
+    {/if}
+
+    {#if secondaryRoute?.children?.length}
+      <NavigationBar
+        activeRoute={ternaryRoute}
+        style='ternary'
+        menuItems={secondaryRoute.children}
+      />
+    {/if}
   {/if}
 </div>
