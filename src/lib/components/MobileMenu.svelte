@@ -30,6 +30,7 @@
 
   function toggleOverflow(toggle) {
     Object.assign(document.body.style, {overflow: toggle ? 'hidden' : ''});
+    window.scrollTo(0, 0);
   }
 
   // toggle body overflow when menu is visible

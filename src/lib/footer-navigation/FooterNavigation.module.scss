@@ -1,3 +1,5 @@
+@import 'lib/styles/mixins.scss';
+
 .footerWrap {
   position: relative;
 
@@ -11,6 +13,11 @@
   max-height: 290px;
   display: flex;
   box-sizing: border-box;
+
+  @include mobile {
+    padding: 0;
+    max-height: none;
+  }
 }
 
 .menuSections {
@@ -20,6 +27,11 @@
   width: 100%;
 
   gap: 32px;
+
+  @include mobile {
+    gap: 0;
+    max-height: none;
+  }
 }
 
 .menuSection {
@@ -40,5 +52,19 @@
     font-size: 14px;
     line-height: 22px;
     margin-top: 4px;
+  }
+
+  @include mobile {
+    padding: 16px;
+    border-bottom: 1px solid #767676;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &Entry {
+      flex: 1 1 50%;
+    }
   }
 }
