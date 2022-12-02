@@ -1,13 +1,13 @@
 on: # event list
   push: # on every push to master (basically when PR's are merged into master) / or the target branch
     branches:
-      - master
+      - github-workflow
 
 env: # environment variables (available in any part of the action)
   NODE_VERSION: 16
 
 jobs: # list of things to do
-  linting:
+  update-types:
     name: Update Types # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
     steps: # list of steps
@@ -53,3 +53,7 @@ jobs: # list of things to do
             automated pr
           assignees: vas3a
           draft: false
+
+      - name: Increment version
+        run: npm version patch
+
