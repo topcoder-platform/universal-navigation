@@ -3,4 +3,5 @@ export interface AuthUser {
   userId: string | number
   initials: string
   handle: string
+  fun: string
 }
