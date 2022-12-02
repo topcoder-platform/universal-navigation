@@ -111,3 +111,5 @@ After pushing changes to Github, Github builds the app and automatically runs th
 If there are any differences, Github automatically commits those into the branch.
 
 If a PR exists for a branch that has out of date types, the PR will display an error until the types are generated and committed, but it will not pervent the merging of the PR.
+
+>**NOTE** In order to disseminate updates to the types via npm, you must increment the version number in the [../package.json](../package.json).
