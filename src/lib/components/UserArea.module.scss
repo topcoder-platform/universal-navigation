@@ -10,6 +10,7 @@
 
   @include mobile {
     gap: 14px;
+    position: static;
   }
 }
 
@@ -17,4 +18,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @include mobile {
+    > :first-child {
+      display: none;
+    }
+  }
 }

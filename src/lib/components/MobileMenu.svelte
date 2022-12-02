@@ -1,17 +1,17 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { fly, fade, type FlyParams } from 'svelte/transition';
+  import { getPublicPath } from 'lib/utils/paths';
   import styles from './MobileMenu.module.scss';
   import TopNavbar from './TopNavbar.svelte';
-  import { getPublicPath } from 'lib/utils/paths';
-  import { fly, type FlyParams } from 'svelte/transition';
-  import { onMount } from 'svelte';
 
   const closeMenuIcon = getPublicPath(`/assets/icon-close.svg`);
 
   export let direction: 'x'|'y';
-  export let handleClose = () => {}
+  export let handleClose = () => {};
 
-  let animParams: FlyParams = {duration: 200}
-  $: animParams[direction] = direction === 'x' ? -320 : 50
+  let animParams: FlyParams = {duration: 200};
+  $: animParams[direction] = direction === 'x' ? -320 : 50;
 
   // Mobile VH unit fix
   // @see: https://css-tricks.com/the-trick-to-viewport-units-on-mobile
@@ -27,15 +27,25 @@
 
     return () => window.removeEventListener('resize', updateVh);
   })
+
+  function toggleOverflow(toggle) {
+    Object.assign(document.body.style, {overflow: toggle ? 'hidden' : ''});
+  }
+
+  // toggle body overflow when menu is visible
+  onMount(() => {
+    toggleOverflow(true);
+    return () => toggleOverflow(false);
+  });
 </script>
 
-<div class={styles.mobileMenuWrap} transition:fly={animParams}>
+<div class={styles.mobileMenuWrap} transition:fade={{duration: 200}}>
   <TopNavbar minLogoVersion style="primary">
     <div class={styles.closeIcon} slot="right" on:click={handleClose} on:keydown={() => {}}>
       <img src={closeMenuIcon} alt="close" />
     </div>
   </TopNavbar>
-  <div class={styles.mobileMenuContentWrap}>
+  <div class={styles.mobileMenuContentWrap} transition:fly={animParams}>
     <slot />
   </div>
 </div>

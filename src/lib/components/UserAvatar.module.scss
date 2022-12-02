@@ -59,27 +59,3 @@
     }
   }
 }
-
-.avatarDropdownMenu {
-  li {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    color: #767676;
-    width: 190px;
-    + li {
-      margin-top: 8px;
-    }
-
-    &:hover {
-      color: #0C0C0C;
-      font-weight: 700;
-    }
-  }
-
-  a {
-    display: block;
-  }
-}

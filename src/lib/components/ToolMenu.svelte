@@ -3,10 +3,14 @@
   import styles from './ToolMenu.module.scss';
   import { classnames } from 'lib/utils/classnames';
   import { getToolSelectorItems } from 'lib/functions/tool-selector-menu.provider';
+  import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
 
   const navMenuItems = getToolSelectorItems()
   const toolIcon = getPublicPath('/assets/icon-tool.svg');
 
+  function hasCtas(item: NavMenuItem) {
+    return !!item.children.some(d => d.type === 'cta');
+  }
 </script>
 
 <div class={styles.toolMenuWrap}>
@@ -18,7 +22,7 @@
 
       <div class={styles.toolGroups}>
         {#each section.children as group}
-          <div class={styles.toolGroup}>
+          <div class={classnames(styles.toolGroup, hasCtas(group) && styles.hasCtas)}>
             {#if group.label}
               <div class={styles.toolGroupTitle}>
                 {group.label}

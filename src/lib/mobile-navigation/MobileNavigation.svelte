@@ -13,13 +13,6 @@
   const toggleMenuIcon = getPublicPath(`/assets/icon-menu.svg`);
 
   let menuIsVisible = false;
-
-  function toggleOverflow(toggle) {
-    Object.assign(document.body.style, {overflow: toggle ? 'hidden' : ''})
-  }
-
-  // toggle body overflow when menu is visible
-  $: toggleOverflow(menuIsVisible)
 </script>
 
 <div class={styles.menuBtn} on:click={() => menuIsVisible = true} on:keydown={() => {}}>
