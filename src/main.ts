@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 import { buildContext, type AuthUser, type NavigationHandler } from './lib/app-context'
+import 'lib/styles/main.scss';
 
 export * from './lib/app-context'
 
@@ -110,6 +111,7 @@ async function init(
   const Navigation = await loadNavigationFn();
   // instantiate the navigation component
   new Navigation({target: targetEl, props: navProps, context: ctx});
+  targetEl.classList.add('tc-universal-nav')
 
   if (typeof readyCallback === 'function') {
     readyCallback()

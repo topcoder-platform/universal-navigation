@@ -2,12 +2,8 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  a {
-    text-decoration: none;
-  }
 
   :global(.navLink) {
-    text-decoration: none;
     position: relative;
 
     &:before {
