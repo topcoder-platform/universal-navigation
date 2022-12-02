@@ -4,7 +4,7 @@ env: # environment variables (available in any part of the action)
   NODE_VERSION: 16
 
 jobs: # list of things to do
-  linting:
+  update-types:
     name: Update Types # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
     steps: # list of steps
