@@ -75,9 +75,9 @@ The `demo` files are just basic (bare minimum) example of how to integrate the n
 
 There are 2 sample integrations in the [/demo](./demo/) folder: 
 
-[Marketing Navigation](./demo/marketing/index.html)
+[Marketing Navigation](../demo/marketing/index.html)
 
-[Tool Navigation](./demo/tool/index.html)
+[Tool Navigation](../demo/tool/index.html)
 
 #### Instructions for using the Demo Apps
 
