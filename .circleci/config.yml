@@ -55,6 +55,7 @@ workspace_attach: &workspace_attach
 check_types: &check_types
   name: Check Types
   command: |
+    npm ci
     npm run types
     diffstatus=$(git status --porcelain)
     echo DIFF=$diffstatus >> $GITHUB_OUTPUT
