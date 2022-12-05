@@ -1,3 +1,5 @@
+@import 'lib/styles/mixins.scss';
+
 .footerWrap {
   position: relative;
 
@@ -12,15 +14,14 @@
   display: flex;
   box-sizing: border-box;
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  @include tabletOnly {
+    max-height: none;
+    padding: 16px;
   }
 
-  a {
-    text-decoration: none;
-    color: inherit;
+  @include mobile {
+    padding: 0;
+    max-height: none;
   }
 }
 
@@ -31,6 +32,16 @@
   width: 100%;
 
   gap: 32px;
+
+  @include tabletOnly {
+    gap: 0;
+    flex-direction: row;
+  }
+
+  @include mobile {
+    gap: 0;
+    max-height: none;
+  }
 }
 
 .menuSection {
@@ -51,5 +62,23 @@
     font-size: 14px;
     line-height: 22px;
     margin-top: 4px;
+  }
+
+  @include tabletOnly {
+    flex: 1 1 25%;
+  }
+
+  @include mobile {
+    padding: 16px;
+    border-bottom: 1px solid #767676;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &Entry {
+      flex: 1 1 50%;
+    }
   }
 }

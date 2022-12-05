@@ -1,0 +1,31 @@
+.mobileMenuWrap {
+  position: absolute;
+  z-index: 19;
+
+  width: 100%;
+
+  height: 100vh;
+  // Mobile VH unit fix
+  // @see: https://css-tricks.com/the-trick-to-viewport-units-on-mobile
+  height: calc(var(--vh, 1vh) * 100);
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+
+  > :global(.top-navbar) {
+    flex: 0 0 auto;
+  }
+}
+
+.mobileMenuContentWrap {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  position: relative;
+}

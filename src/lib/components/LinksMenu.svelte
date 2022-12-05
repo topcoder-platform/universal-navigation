@@ -6,7 +6,7 @@
 
   export let ref: Element | undefined = undefined;
 
-  export let className: string;
+  export let style: 'primary'|'secondary'|'tertiary';
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
   export let hoveredMenuItem: NavMenuItem = undefined;
@@ -37,13 +37,12 @@
 </script>
 
 <div
-  class={classnames(styles.mainNav, className)}
-  class:disableHover={!!activeRoute}
+  class={styles.linksMenuWrap}
   bind:this={ref}
 >
   {#each menuItems as menuItem}
     <a
-      class={getNavItemType(menuItem)}
+      class={classnames(getNavItemType(menuItem), styles[style])}
       class:active={activeRoute?.path === menuItem.path}
       class:hover={
         isPopupMenuActive &&

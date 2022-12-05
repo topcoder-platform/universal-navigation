@@ -1,0 +1,38 @@
+.mobileNavWrap {
+  flex: 1 1 auto;
+  background: #0C0C0C;
+}
+
+.list {
+  background: #fff;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #767676;
+
+  padding: 16px 40px;
+
+  &Item {
+    &.isActive {
+      color: #0D664E;
+    }
+    & + & {
+      margin-top: 16px;
+    }
+  }
+}
+
+.menuBtn {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  margin: -4px;
+
+  img {
+    display: block;
+    width: 24px;
+    height: 20px;
+    margin: auto;
+  }
+}

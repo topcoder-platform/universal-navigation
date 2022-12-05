@@ -1,29 +1,31 @@
 <script type="ts">
     import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
-    import { classnames } from 'lib/utils/classnames';
     import HoverMenu from './HoverMenu.svelte';
     import LinksMenu from '../../components/LinksMenu.svelte';
-    import styles from './NavigationBar.module.scss';
+    import TopNavbar from 'lib/components/TopNavbar.svelte';
+    import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
 
-    export let style: 'primary'|'secondary'|'ternary';
+    export let style: 'primary'|'secondary'|'tertiary';
     export let menuItems: NavMenuItem[] = [];
     export let activeRoute: NavMenuItem;
+    export let isMobile: boolean = false;
 
     let popupIsVisible: boolean;
     let hoveredElement: HTMLElement | undefined;
     let hoveredMenuItem: NavMenuItem;
 </script>
 
-<nav class={classnames(styles.navbar, styles[style])}>
-    <slot name="logo"></slot>
-
+<TopNavbar style={style} minLogoVersion={isMobile}>
+  {#if isMobile}
+    <MobileNavigation />
+  {:else}
     <LinksMenu
-        className={styles.mainNav}
         menuItems={menuItems}
         activeRoute={activeRoute}
         bind:hoveredMenuItem={hoveredMenuItem}
         bind:hoveredElement={hoveredElement}
         isPopupMenuActive={popupIsVisible}
+        style={style}
     >
         {#if !activeRoute}
             <HoverMenu
@@ -33,6 +35,7 @@
             />
         {/if}
     </LinksMenu>
+  {/if}
 
-    <slot name="auth"></slot>
-</nav>
+  <slot name="auth" slot="right"></slot>
+</TopNavbar>

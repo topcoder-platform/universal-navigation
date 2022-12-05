@@ -1,10 +1,12 @@
 <script lang="ts">
   import type { AuthUser } from 'lib/app-context';
   import { classnames } from 'lib/utils/classnames';
-  import { getDefaultHostPath } from 'lib/utils/paths';
+  import { isMobile } from 'lib/utils/window-size.store';
   import styles from './UserAvatar.module.scss';
   import PopupMenu from './PopupMenu.svelte';
-  
+  import MobileMenu from './MobileMenu.svelte';
+  import UserMenu from './UserMenu.svelte';
+
   export let user: AuthUser;
   export let onSignOut: () => void;
 
@@ -16,6 +18,8 @@
 <div
   class={classnames(styles.userAvatarWrap, popupIsVisible && styles.popupVisible)}
   bind:this={elRef}
+  on:click={() => popupIsVisible = true}
+  on:keydown={() => {}}
 >
   {#if user?.photoUrl}
     <img src={user.photoUrl} alt={user.initials} />
@@ -24,18 +28,12 @@
   {/if}
 </div>
 
+{#if !$isMobile}
 <PopupMenu targetEl={elRef} bind:isVisible={popupIsVisible}>
-  <div class={styles.avatarDropdownMenu}>
-    <ul>
-      <li>
-        <a href={getDefaultHostPath(`/members/${user.handle}`)}>My Profile</a>
-      </li>
-      <li>
-        <a href={getDefaultHostPath('/settings/profile')}>Settings</a>
-      </li>
-      <li>
-        <a href={"javascript:;"} on:click={onSignOut}>Log Out</a>
-      </li>
-    </ul>
-  </div>
+  <UserMenu onSignOut={onSignOut} user={user} />
 </PopupMenu>
+{:else if popupIsVisible}
+  <MobileMenu direction="y" handleClose={() => popupIsVisible = false}>
+    <UserMenu onSignOut={onSignOut} user={user} />
+  </MobileMenu>
+{/if}
