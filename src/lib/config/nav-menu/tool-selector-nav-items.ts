@@ -9,11 +9,13 @@ export const toolSelectorNavItems = {
                         {
                             label: "Self Service Challenges",
                             url: "http://platform-ui.topcoder.com/work",
+                            icon: "self-service",
                             description: "Hover description text"
                         },
                         {
                             label:"Top Crowd",
                             url: "",
+                            icon: "topcrowd",
                             description: "Hover description text"
                         }
                     ]
@@ -44,10 +46,12 @@ export const toolSelectorNavItems = {
                         {
                             label: "Topcoder Academy",
                             url: "http://platform-ui.topcoder.com/learn",
+                            icon: "tcacademy",
                             description: "Hover description text"
                         },
                         {
                             label:"Dev Center",
+                            icon: "dev-center",
                             url: "http://platform-ui.topcoder.com/dev-center",
                             description: "Hover description text"
                         }
@@ -59,11 +63,13 @@ export const toolSelectorNavItems = {
                         {
                             label: "MMs & RDMs",
                             url: "",
+                            icon: "mm",
                             description: "Hover description text"
                         },
                         {
                             label:"SRMs (Arena)",
                             url: "http://topcoder.com/community/arena",
+                            icon: "mm",
                             description: "Hover description text"
                         }
                     ]
@@ -74,26 +80,31 @@ export const toolSelectorNavItems = {
                         {
                             label: "Challenges",
                             url: "",
+                            icon: "challenges",
                             description: "Hover description text"
                         },
                         {
                             label:"Gigs",
                             url: "http://topcoder.com/gigs",
+                            icon: "gigs",
                             description: "Hover description text"
                         },
                         {
                             label:"Review",
                             url: "http://software.topcoder.com",
+                            icon: "review",
                             description: "Hover description text"
                         },
                         {
                             label:"Discussion",
                             url: "http://discussions.topcoder.com",
+                            icon: "discussions",
                             description: "Hover description text"
                         },
                         {
                             label:"Payments",
                             url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
+                            icon: "payments",
                             description: "Hover description text"
                         }
                     ]
@@ -104,6 +115,7 @@ export const toolSelectorNavItems = {
                         {
                             label: "Discord",
                             url: "http://discord.com/invite/topcoder",
+                            icon: "discord",
                             description: "Hover description text"
                         }
                     ]
