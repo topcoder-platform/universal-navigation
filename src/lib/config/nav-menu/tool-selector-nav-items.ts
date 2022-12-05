@@ -12,7 +12,7 @@ export const toolSelectorNavItems = {
                             description: "Hover description text"
                         },
                         {
-                            label:"Top Crowd",
+                            label:"TopCrowd",
                             url: "",
                             description: "Hover description text"
                         }
@@ -73,7 +73,7 @@ export const toolSelectorNavItems = {
                     children: [
                         {
                             label: "Challenges",
-                            url: "",
+                            url: "http://topcoder.com/challenges",
                             description: "Hover description text"
                         },
                         {
