@@ -78,13 +78,26 @@ Resources:
                         # new tool
                         Items:
                             - !Sub https://${Domain}
-                            - !Sub https://community.${Domain}
+                            - !If 
+                                - IsProd
+                                - !Sub 'https://community.${Domain}'
+                                - !Sub 'https://qa-community-app.${Domain}'
                             - !Sub https://discussions.${Domain}
-                            - !If [IsProd, '', !Sub https://local.${Domain}]
-                            - !If [IsProd, '', !Sub http://local.tc.cloud.topcoder.com]
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://local.${Domain}'
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub http://local.tc.cloud.topcoder.com
                             - !Sub https://platform-ui.${Domain}
                             - !Sub https://software.${Domain}
-                            - !If [IsProd, https://topcoder.privatetalent.cloud, https://topcoder.privatetalent-dev.cloud]
+                            - !If 
+                                - IsProd
+                                - https://topcoder.privatetalent.cloud
+                                - !Ref AWS::NoValue
+                            - !Sub https://www.${Domain}
                     OriginOverride: true
 
     Cdn:
