@@ -74,25 +74,31 @@ See the [IAC README](../iac/README.md) for instructions for deploying the stack.
 
 The dev version of the UniNav script allows the following origins. 
 
-- https://topcoder-dev.com
-- https://community.topcoder-dev.com
+- http://127.0.0.1:3000
+- https://qa-community-app.topcoder-dev.com
 - https://discussions.topcoder-dev.com
 - https://local.topcoder-dev.com
-- http://local.tc.cloud.topcoder.com]
+- http://local.tc.cloud.topcoder.com
+- http://localhost:3000
 - https://platform-ui.topcoder-dev.com
 - https://software.topcoder-dev.com
-- https://topcoder.privatetalent-dev.cloud
+- https://qa.dev.privatetalent.cloud
+- https://topcrowd.dev.topcoder.com
+- https://topcoder-dev.com
+- https://www.topcoder-dev.com 
 
 ### Production CORS
 
 The dev version of the UniNav script allows the following origins. 
 
-- https://topcoder.com
 - https://community.topcoder.com
 - https://discussions.topcoder.com
 - https://platform-ui.topcoder.com
 - https://software.topcoder.com
 - https://topcoder.privatetalent.cloud
+- https://topcrowd.topcoder.com
+- https://topcoder.com
+- https://www.topcoder.com 
 
 ## Instructions
 
