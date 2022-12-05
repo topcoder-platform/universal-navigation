@@ -5,7 +5,7 @@
     import TopNavbar from 'lib/components/TopNavbar.svelte';
     import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
 
-    export let style: 'primary'|'secondary'|'ternary';
+    export let style: 'primary'|'secondary'|'tertiary';
     export let menuItems: NavMenuItem[] = [];
     export let activeRoute: NavMenuItem;
     export let isMobile: boolean = false;

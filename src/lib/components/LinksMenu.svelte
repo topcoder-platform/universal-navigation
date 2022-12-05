@@ -6,7 +6,7 @@
 
   export let ref: Element | undefined = undefined;
 
-  export let style: 'primary'|'secondary'|'ternary';
+  export let style: 'primary'|'secondary'|'tertiary';
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
   export let hoveredMenuItem: NavMenuItem = undefined;

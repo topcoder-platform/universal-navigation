@@ -12,7 +12,7 @@
 
   const menuItems = getMainNavItems()
   const activeRoute: NavMenuItem[] = getActiveRoute()
-  const [primaryRoute, secondaryRoute, ternaryRoute] = activeRoute
+  const [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
 </script>
 
 <div class="tc-universal-nav-wrap">
@@ -37,8 +37,8 @@
 
     {#if secondaryRoute?.children?.length}
       <NavigationBar
-        activeRoute={ternaryRoute}
-        style='ternary'
+        activeRoute={tertiaryRoute}
+        style='tertiary'
         menuItems={secondaryRoute.children}
       />
     {/if}

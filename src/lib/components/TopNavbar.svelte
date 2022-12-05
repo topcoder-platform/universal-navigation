@@ -7,7 +7,7 @@
   export {className as class};
   export let minLogoVersion = false;
   export let showLogo = false;
-  export let style: 'primary'|'secondary'|'ternary';
+  export let style: 'primary'|'secondary'|'tertiary';
 
 </script>
 
