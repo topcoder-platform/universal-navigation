@@ -1,55 +1,55 @@
 export const businessMenuItem = {
   label: 'Business',
   description: 'Learn how Topcoder can help your business get work done.',
-  path: '/business',
+  path: '/customer',
 };
 
 export const whyTopcoderMenuItem = {
   label: 'Why Topcoder',
   description: 'How Topcoder provides hiqh quality, secure solutions.',
-  path: '/business/why-topcoder',
+  path: '/customer/why-topcoder',
 };
 
 export const theCommunityMenuItem = {
   label: 'The Community',
   description: 'How the Topcoder community provides value to your business.',
-  path: '/business/why-topcoder/the-community',
+  path: '/customer/why-topcoder/the-community',
 };
 
 export const expertiseMenuItem = {
   label: 'Expertise',
   description: 'The areas in which Topcoder delivers successful solutions.',
-  path: '/business/expertise',
+  path: '/customer/expertise',
 };
 
 export const dataScienceMenuItem = {
   label: 'Data Science',
   description: 'See how Topcoder has delivered Data Science solutions.',
-  path: '/business/data-science',
+  path: '/customer/data-science',
 };
 
 export const designMenuItem = {
   label: 'Design',
   description: 'See how Topcoder has delivered Design solutions.',
-  path: '/business/design',
+  path: '/customer/design',
 };
 
 export const developmentMenuItem = {
   label: 'Development',
   description: 'See how Topcoder has delivered Development solutions.',
-  path: '/business/development',
+  path: '/customer/development',
 };
 
 export const qaMenuItem = {
   label: 'QA',
   description: 'See how Topcoder has delivered QA solutions.',
-  path: '/business/qa',
+  path: '/customer/qa',
 };
 
 export const industriesMenuItem = {
   label: 'Industries',
   description: 'The industries in which Topcoder delivers successful solutions.',
-  path: '/business/industries',
+  path: '/customer/industries',
 };
 
 export const bfsiMenuItem = {
@@ -61,116 +61,116 @@ export const bfsiMenuItem = {
 export const communicationsMenuItem = {
   label: 'Communications',
   description: 'Communications solutions, how Topcoder excels, including case studies.',
-  path: '/business/communications',
+  path: '/customer/communications',
 };
 
 export const energyUtilitiesMenuItem = {
   label: 'Energy / Utilities',
   description: 'Energy / utilities solutions, how Topcoder excels, including case studies.',
-  path: '/business/energy-utilities',
+  path: '/customer/energy-utilities',
 };
 
 export const healthPharmaMenuItem = {
   label: 'Health / Pharma',
   description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
-  path: '/business/health-pharma',
+  path: '/customer/health-pharma',
 };
 
 export const publicSectorMenuItem = {
   label: 'Public Sector',
   description: 'Public sector solutions, how Topcoder excels, including case studies.',
-  path: '/business/public-sector',
+  path: '/customer/public-sector',
 };
 
 export const retailMenuItem = {
   label: 'Retail',
   description: 'Retail solutions, how Topcoder excels, including case studies.',
-  path: '/business/retail',
+  path: '/customer/retail',
 };
 
 export const technologyMenuItem = {
   label: 'Technology',
   description: 'Technology solutions, how Topcoder excels, including case studies.',
-  path: '/business/technology',
+  path: '/customer/technology',
 };
 
 export const partnersMenuItem = {
   label: 'Partners',
   description: 'Companies Topcoder partners with to deliver high quality solutions.',
-  path: '/business/partners',
+  path: '/customer/partners',
 };
 
 export const securityMenuItem = {
   label: 'Security',
   description: 'How your IP is protected at Topcoder.',
-  path: '/business/security',
+  path: '/customer/security',
 };
 
 export const successStoriesMenuItem = {
   label: 'Success Stories',
   description: 'Browse case studies for solutions Topcoder has successfully delivered.',
-  path: '/business/success-stories',
+  path: '/customer/success-stories',
 };
 
 export const productsMenuItem = {
   label: 'Products',
   description: 'How you will engage with the products Topcoder offers.',
-  path: '/business/products',
+  path: '/customer/products',
 };
 
 export const fullServiceMenuItem = {
   label: 'Full Service',
   description: 'Work with Topcoder experts to craft the exact solution you need.',
-  path: '/business/full-service',
+  path: '/customer/full-service',
 };
 
 export const topcrowdMenuItem = {
   label: 'TopCrowd',
   description: 'Register your own employees in Topcoder to maximize productivity.',
-  path: '/business/topcrowd',
+  path: '/customer/topcrowd',
 };
 
 export const selfServiceChallengesMenuItem = {
   label: 'Self Service Challenges',
   description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
-  path: '/business/self-service-challenges',
+  path: '/customer/self-service-challenges',
 };
 
 export const dataAdvisoryMenuItem = {
   label: 'Data Advisory',
   description: 'Submit work to get advice on how to use data science to improve your business.',
-  path: '/business/data-advisory',
+  path: '/customer/data-advisory',
 };
 
 export const findMeDataMenuItem = {
   label: 'Find Me Data',
   description: 'Submit work to find data sources that can help your business.',
-  path: '/business/find-me-data',
+  path: '/customer/find-me-data',
 };
 
 export const dataExplorationMenuItem = {
   label: 'Data Exploration',
   description: 'Submit work to gain insights from your data.',
-  path: '/business/data-exploration',
+  path: '/customer/data-exploration',
 };
 
 export const websiteDesignMenuItem = {
   label: 'Website Design',
   description: 'Work directly with the Topcoder community to design your website.',
-  path: '/business/webside-design',
+  path: '/customer/webside-design',
 };
 
 export const talkToAnExpertMenuItem = {
   label: 'Talk to an expert',
   description: 'Speak with a Topcoder expert to get started.',
-  path: '/business/talks-to-expert',
+  path: '/customer/talks-to-expert',
   type: 'cta'
 };
 
 export const bookADemoMenuItem = {
   label: 'Book a demo',
   description: 'See a demo of how Topcoder can best provide for your business.',
-  path: '/business/demo',
+  path: '/customer/demo',
   type: 'cta'
 };
 
