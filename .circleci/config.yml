@@ -101,7 +101,10 @@ jobs:
     environment:
       DEPLOY_ENV: "DEV"
       LOGICAL_ENV: "dev"
-      ENABLE_CACHE: false
+      # Currently, enabling the cache actually disables it.
+      # And we need it disabled bc the when cache is enabled,
+      # it doesn't invalidate the cloudfront distribution.
+      ENABLE_CACHE: true
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
@@ -110,7 +113,10 @@ jobs:
     environment:
       DEPLOY_ENV: "PROD"
       LOGICAL_ENV: "prod"
-      ENABLE_CACHE: false
+      # Currently, enabling the cache actually disables it.
+      # And we need it disabled bc the when cache is enabled,
+      # it doesn't invalidate the cloudfront distribution.
+      ENABLE_CACHE: true
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
