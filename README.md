@@ -85,6 +85,7 @@ Customer Mktg
 
 Forum
 - https://discussions.topcoder-dev.com
+- https://vanilla.topcoder-dev.com
 
 Online Review
 - https://software.topcoder-dev.com
@@ -113,6 +114,7 @@ Customer Mktg
 
 Forum
 - https://discussions.topcoder.com
+- https://vanilla.topcoder.com
 
 Online Review
 - https://software.topcoder.com

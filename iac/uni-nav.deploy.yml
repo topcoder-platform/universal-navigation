@@ -97,6 +97,7 @@ Resources:
 
                             # Forum Prod & Dev
                             - !Sub https://discussions.${Domain} 
+                            - !Sub https://vanilla.${Domain}
 
                             # Online Review Prod & Dev
                             - !Sub https://software.${Domain}
