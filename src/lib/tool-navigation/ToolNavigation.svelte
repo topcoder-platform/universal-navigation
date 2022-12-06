@@ -10,9 +10,10 @@
   import { classnames } from 'lib/utils/classnames';
   import UserArea from 'lib/components/UserArea.svelte';
   import { isMobile } from 'lib/utils/window-size.store';
+  import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
+  import { checkAndLoadFonts } from 'lib/utils/fonts';
 
   import styles from './ToolNavigation.module.scss';
-  import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
 
   const menuItems = getMainNavItems()
   const ctx = getAppContext()
@@ -35,7 +36,7 @@
   }
 
   async function setMainMenuWidth() {
-    await document.fonts?.ready
+    await checkAndLoadFonts()
     mainMenuWidth = linksMenuEl?.offsetWidth
   }
 
