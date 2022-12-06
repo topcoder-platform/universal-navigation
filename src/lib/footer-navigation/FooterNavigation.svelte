@@ -1,11 +1,14 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
+  import { checkAndLoadFonts } from 'lib/utils/fonts';
   import { navUrl } from 'lib/utils/paths';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
 
   const menuItems = getFooterNavItems()
 
+  onMount(checkAndLoadFonts)
 </script>
 
 <footer class={styles.footerWrap}>
