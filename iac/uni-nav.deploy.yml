@@ -79,13 +79,13 @@ Resources:
                         # TODO: figure out the best way to support wildcard origins
                         Items:
 
-                            # Community App Prod & QA
+                            # Community App/PACTS Prod & QA
                             - !If 
                                 - IsProd
                                 - !Sub 'https://community.${Domain}'
                                 - !Sub 'https://qa-community-app.${Domain}'
 
-                            # Community App Local
+                            # Community App/PACTS Local
                             - !If 
                                 - IsProd
                                 - !Ref AWS::NoValue
