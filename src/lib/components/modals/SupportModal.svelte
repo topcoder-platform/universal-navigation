@@ -1,5 +1,9 @@
 <script lang="ts">
   import { getAppContext, type AuthUser } from 'lib/app-context';
+  import { sendSupportRequest } from 'lib/functions/support/support.service';
+  import { classnames } from 'lib/utils/classnames';
+  import { delay } from 'lib/utils/delay';
+  import Button from '../Button.svelte';
   import Input from '../forms/Input.svelte';
   import Modal from './Modal.svelte';
   import styles from './SupportModal.module.scss';
@@ -9,11 +13,42 @@
   $: ({user = {} as AuthUser} = $ctx.auth)
 
   export let isVisible = false;
-  let userMessage: string = '';
+  let submitted = false;
 
-  function handleSubmit(ev: SubmitEvent) {
+  async function handleSubmit(ev: MouseEvent | SubmitEvent) {
     ev.preventDefault()
+
+    await sendSupportRequest({...formValue});
+
+    submitted = true;
+    await delay(1500);
+    isVisible = false;
   }
+
+  const formValue = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    question: '',
+  };
+
+  function initUserData() {
+    if (!user) {
+      return;
+    }
+
+    formValue.firstName = user?.firstName;
+    formValue.lastName = user?.lastName;
+    formValue.email = user?.email;
+  }
+
+  function validate(values) {
+    return Object.values(values).every(v => v);
+  }
+
+  let isValid = false;
+  $: isValid = validate(formValue);
+  $: user && initUserData();
 </script>
 
 <Modal
@@ -22,29 +57,44 @@
   title="WE'RE HERE TO HELP"
   size="sm"
 >
-  <div class={styles.intro}>
-    <p>
-      Hi <strong>{user.firstName}</strong>, we're here to help.
-    </p>
-    <p>
-      Please describe what you 'd like to discuss, and a Topcoder Solutions Expert
-      will email you back at&nbsp;
-      {user.email}
-      &nbsp;within one business day.
-    </p>
+  <p>
+    Hi <strong>{user.firstName}</strong>, we're here to help.
+  </p>
+  <p>
+    Please describe what you 'd like to discuss, and a Topcoder Solutions Expert
+    will email you back at&nbsp;
+    <strong>{user.email}</strong>
+    &nbsp;within one business day.
+  </p>
+  <div class={classnames(styles.form, submitted && styles.submitted)}>
     <form on:submit={handleSubmit}>
       <p>
-        <Input label="First Name" value={user.firstName} required />
+        <Input label="First Name" value={formValue.firstName} required />
       </p>
       <p>
-        <Input label="Last Name" value={user.lastName} required />
+        <Input label="Last Name" value={formValue.lastName} required />
       </p>
       <p>
-        <Input label="Email" type="email" value={user.email} required />
+        <Input label="Email" type="email" value={formValue.email} required />
       </p>
       <p>
-        <Input label="How can we help you?" type="textarea" bind:value={userMessage} required />
+        <Input
+          label="How can we help you?"
+          type="textarea"
+          bind:value={formValue.question}
+          required
+        />
       </p>
+
+      <span class="modalSpacer"></span>
+      <div class="modalFooter">
+        <Button
+          label="Submit"
+          variant="outline"
+          size="md"
+          disabled={!isValid || submitted}
+        />
+      </div>
     </form>
   </div>
 </Modal>

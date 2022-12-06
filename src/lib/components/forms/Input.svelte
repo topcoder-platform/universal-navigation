@@ -21,7 +21,11 @@
   }
 </script>
 
-<InputWrap {label} error={hasError ? 'Required' : ''} class={styles.inputEl}>
+<InputWrap
+  label={label}
+  error={hasError ? 'Required' : ''}
+  class={styles.inputEl}
+>
   {#if type === 'textarea'}
     <textarea value={value} on:keyup={handleChange} />
   {:else}

@@ -30,6 +30,7 @@
   background: #fff;
   box-shadow: 0 12px 15px 0 rgb(0 0 0 / 25%);
   max-width: 800px;
+  max-height: 93vh;
   overflow-y: auto;
   position: relative;
   text-align: left;
@@ -41,13 +42,31 @@
   margin: auto;
   color: #2a2a2a;
 
+  display: flex;
+  flex-direction: column;
+
   .modalWrap:global(.size-sm) & {
     width: 450px;
   }
+
+  :global(.modalSpacer) {
+    border: 1px solid;
+    border-radius: 1px;
+    color: #e9e9e9;
+    margin: 24px 0;
+    width: 100%;
+    display: block;
+  }
+
+  :global(.modalFooter) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
-
 .modalHeader {
+  flex: 0 0 auto;
 }
 
 .modalTitle {
@@ -73,11 +92,9 @@
   color: inherit;
 }
 
-.spacer {
-  border: 1px solid;
-  border-radius: 1px;
-  color: #e9e9e9;
-  margin: 24px 0;
-  width: 100%;
-  display: block;
+.modalBody {
+  flex: 1 1 auto;
+  overflow: auto;
+  margin: 0 -32px;
+  padding: 0 32px;
 }

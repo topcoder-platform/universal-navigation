@@ -35,9 +35,10 @@
             </svg>
           </button>
         </div>
-        <span class={styles.spacer}></span>
-        <slot></slot>
-        <span class={styles.spacer}></span>
+        <span class="modalSpacer"></span>
+        <div class={styles.modalBody}>
+          <slot></slot>
+        </div>
       </div>
     </div>
   </div>
