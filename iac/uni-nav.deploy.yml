@@ -102,6 +102,9 @@ Resources:
                             # Online Review Prod & Dev
                             - !Sub https://software.${Domain}
 
+                            # Online Review Local
+                            - http://local.topcoder-dev.com:8080
+
                             # Platform UI Prod & Dev
                             - !Sub https://platform-ui.${Domain}
 
