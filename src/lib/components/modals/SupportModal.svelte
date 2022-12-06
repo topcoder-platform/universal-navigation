@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getAppContext, type AuthUser } from 'lib/app-context';
+  import { getAppContext, type AuthUser, type SupportMeta } from 'lib/app-context';
   import { sendSupportRequest } from 'lib/functions/support/support.service';
   import { classnames } from 'lib/utils/classnames';
   import { delay } from 'lib/utils/delay';
@@ -11,6 +11,7 @@
   const ctx = getAppContext()
 
   $: ({user = {} as AuthUser} = $ctx.auth)
+  $: ({supportMeta: meta = {} as SupportMeta} = $ctx)
 
   export let isVisible = false;
   let submitted = false;
@@ -18,7 +19,7 @@
   async function handleSubmit(ev: MouseEvent | SubmitEvent) {
     ev.preventDefault()
 
-    await sendSupportRequest({...formValue});
+    await sendSupportRequest({...meta, ...formValue});
 
     submitted = true;
     await delay(1500);

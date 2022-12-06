@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
-import { buildContext, type AuthUser, type NavigationHandler } from './lib/app-context'
+import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import 'lib/styles/main.scss';
 
 export * from './lib/app-context'
@@ -23,6 +23,8 @@ export type NavigationAppProps = {
   signIn?: () => void
   signUp?: () => void
   signOut?: () => void
+
+  supportMeta: SupportMeta
 }
 
 export type TcUniNavMethods = 'init'|'update'
@@ -80,6 +82,7 @@ async function init(
     toolName,
     toolRoot,
     handleNavigation,
+    supportMeta,
     type: navType,
     ...navProps
   } = props
