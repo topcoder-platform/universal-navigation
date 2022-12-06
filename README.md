@@ -89,6 +89,7 @@ Forum
 
 Online Review
 - https://software.topcoder-dev.com
+- http://local.topcoder-dev.com:8080
 
 Platform UI
 - https://platform-ui.topcoder-dev.com
