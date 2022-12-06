@@ -8,11 +8,12 @@
   import TopNavbar from 'lib/components/TopNavbar.svelte';
   import LinksMenu from 'lib/components/LinksMenu.svelte';
   import { classnames } from 'lib/utils/classnames';
-  import UserArea from 'lib/components/UserArea.svelte';
+  import UserArea from 'lib/components/user-area/UserArea.svelte';
   import { isMobile } from 'lib/utils/window-size.store';
 
   import styles from './ToolNavigation.module.scss';
   import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
+  import { delay } from 'lib/utils/delay';
 
   const menuItems = getMainNavItems()
   const ctx = getAppContext()
@@ -36,6 +37,8 @@
 
   async function setMainMenuWidth() {
     await document.fonts?.ready
+    // delay 1 frame to be sure the font is rendered before we handle el width
+    await delay(25)
     mainMenuWidth = linksMenuEl?.offsetWidth
   }
 

@@ -105,6 +105,7 @@ export const footerNavItems = {
         navItems.bookADemoMenuItem,
         {
           label: "Support",
+          action: "uninav:modals:support",
           absUrl: "mailto:support@topcoder.com"
         }
       ]

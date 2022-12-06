@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Button from "./Button.svelte";
+  import { getAppContext } from 'lib/app-context';
+  import ToolSelector from '../tool-selector/ToolSelector.svelte';
+  import Button from '../Button.svelte';
+  import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
-  import UserAvatar from "./UserAvatar.svelte";
-  import ToolSelector from "./ToolSelector.svelte";
-  import { getAppContext } from "lib/app-context";
 
   const ctx = getAppContext()
 

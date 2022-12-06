@@ -3,8 +3,8 @@
   import { classnames } from 'lib/utils/classnames';
   import { isMobile } from 'lib/utils/window-size.store';
   import styles from './UserAvatar.module.scss';
-  import PopupMenu from './PopupMenu.svelte';
-  import MobileMenu from './MobileMenu.svelte';
+  import PopupMenu from '../PopupMenu.svelte';
+  import MobileMenu from '../MobileMenu.svelte';
   import UserMenu from './UserMenu.svelte';
 
   export let user: AuthUser;

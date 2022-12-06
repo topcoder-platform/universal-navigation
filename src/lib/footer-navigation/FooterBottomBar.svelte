@@ -1,13 +1,16 @@
 <script lang="ts">
-  import styles from './FooterBottomBar.module.scss'
+  import SupportModal from 'lib/components/modals/SupportModal.svelte';
+import styles from './FooterBottomBar.module.scss'
   import SocialIcon from './SocialIcon.svelte';
 
   const atYear = (new Date).getFullYear()
+  let supportVisible=false;
 </script>
 
 
 <div class={styles.footerBar}>
-  <span class={styles.cTopcoder}>
+  <SupportModal bind:isVisible={supportVisible} />
+  <span class={styles.cTopcoder} on:click={() => supportVisible=true}>
     © {atYear} Topcoder
   </span>
 
