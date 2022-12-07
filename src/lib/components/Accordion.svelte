@@ -36,7 +36,7 @@
       {#if item.type !== 'cta'}
         <div class={classnames(styles.itemHead, 'uni-accordion-item--head')}>
           <a
-            href={item.url ?? navUrl(item)}
+            href={navUrl(item)}
             class={classnames(styles.itemLabel, 'uni-accordion-item--label')}
           >
             {item.label}
@@ -46,7 +46,7 @@
           </span>
         </div>
       {:else}
-        <a class={styles.navButton} href={item.url ?? navUrl(item)}>
+        <a class={styles.navButton} href={navUrl(item)}>
           {item.label}
         </a>
       {/if}

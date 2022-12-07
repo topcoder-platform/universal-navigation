@@ -3,15 +3,28 @@
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import { navUrl } from 'lib/utils/paths';
+  import SupportModal from 'lib/components/modals/SupportModal.svelte';
+  import { supportMenuItem } from 'lib/config/nav-menu/menu-item';
+  import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
 
   const menuItems = getFooterNavItems()
+  let supportVisible = false;
+  let footerEl: Element | undefined = undefined;
+
+  function toggleSupportModal() {
+    supportVisible = true;
+  }
 
   onMount(checkAndLoadFonts)
+
+  onMount(() => {
+    footerEl.addEventListener(supportMenuItem.action, toggleSupportModal);
+  })
 </script>
 
-<footer class={styles.footerWrap}>
+<footer class={styles.footerWrap} bind:this={footerEl}>
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
@@ -24,7 +37,7 @@
             <ul class={styles.menuSectionEntries}>
               {#each menuItem.children as child}
                 <li class={styles.menuSectionEntry}>
-                  <a target="_top" href={navUrl(child)}>
+                  <a target="_top" use:handleNavItemAction={child} href={navUrl(child)}>
                     {child.label}
                   </a>
                 </li>
@@ -37,4 +50,8 @@
   </div>
 
   <FooterBottomBar />
+
+  {#if supportVisible}
+  <SupportModal bind:isVisible={supportVisible} />
+  {/if}
 </footer>

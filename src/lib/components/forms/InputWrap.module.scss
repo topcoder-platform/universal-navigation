@@ -1,0 +1,36 @@
+.inputWrap {
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  min-height: 48px;
+  padding: 8px 10px 5px;
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &:focus-within, &:hover {
+    border-color: #137d60;
+  }
+
+  &:focus-within, &.hasError {
+    padding: 7px 9px 4px;
+    border-width: 2px;
+  }
+
+  &.hasError {
+    border-color: #ef3a3a;
+    color: #ef3a3a;
+  }
+}
+
+.inputLabel {
+  color: #137d60;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 10px;
+  white-space: nowrap;
+  font-family: Roboto;
+  font-size: 11px;
+}

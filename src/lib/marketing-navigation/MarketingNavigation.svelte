@@ -6,7 +6,7 @@
  import { onMount } from 'svelte';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { getActiveRoute, getMainNavItems } from 'lib/functions/marketing-navigation.provider'
-  import UserArea from 'lib/components/UserArea.svelte';
+  import UserArea from 'lib/components/user-area/UserArea.svelte';
   import { isMobile } from 'lib/utils/window-size.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';

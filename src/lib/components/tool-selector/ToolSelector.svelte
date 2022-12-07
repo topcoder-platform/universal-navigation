@@ -1,12 +1,10 @@
 <script lang="ts">
   import PopupMenu from 'lib/components/PopupMenu.svelte';
-  import { getPublicPath } from "lib/utils/paths";
+  import { getPublicPath } from 'lib/utils/paths';
   import { isMobile } from 'lib/utils/window-size.store';
-  import MobileMenu from './MobileMenu.svelte';
+  import MobileMenu from '../MobileMenu.svelte';
   import ToolMenu from './ToolMenu.svelte';
   import styles from './ToolSelector.module.scss';
-  import TopNavbar from './TopNavbar.svelte';
-
 
   const imgUrl = getPublicPath('/assets/tool-trigger.svg');
 

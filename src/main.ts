@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
-import { buildContext, type AuthUser, type NavigationHandler } from './lib/app-context'
+import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import 'lib/styles/main.scss';
 
 export * from './lib/app-context'
@@ -23,6 +23,8 @@ export type NavigationAppProps = {
   signIn?: () => void
   signUp?: () => void
   signOut?: () => void
+
+  supportMeta: SupportMeta
 }
 
 export type TcUniNavMethods = 'init'|'update'
@@ -48,9 +50,9 @@ const NavigationLoadersMap = APP_IS_PROD ? {
   tool: () => loadModule('./tool-nav.js'),
   footer: () => loadModule('./footer-nav.js'),
 } : {
-  marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
-  footer: () => import('./lib/footer-navigation/FooterNavigation.svelte').then(d => d.default),
-  tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
+  marketing: () => loadModule('./lib/marketing-navigation/MarketingNavigation.svelte'),
+  footer: () => loadModule('./lib/footer-navigation/FooterNavigation.svelte'),
+  tool: () => loadModule('./lib/tool-navigation/ToolNavigation.svelte'),
 }
 
 const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
@@ -80,6 +82,7 @@ async function init(
     toolName,
     toolRoot,
     handleNavigation,
+    supportMeta,
     type: navType,
     ...navProps
   } = props
