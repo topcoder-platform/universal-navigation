@@ -87,6 +87,12 @@ Forum
 - https://discussions.topcoder-dev.com
 - https://vanilla.topcoder-dev.com
 
+Member Marketing Dev
+- https://test-community-app.topcoder-dev.com
+- https://staging-community-app.topcoder.com
+- https://beta-community-app.topcoder.com
+- https://community-app.topcoder-dev.com
+
 Online Review
 - https://software.topcoder-dev.com
 

@@ -99,6 +99,13 @@ Resources:
                             - !Sub https://discussions.${Domain} 
                             - !Sub https://vanilla.${Domain}
 
+
+                            # Member Marketing Dev
+                            - https://test-community-app.topcoder-dev.com
+                            - https://staging-community-app.topcoder.com
+                            - https://beta-community-app.topcoder.com
+                            - https://community-app.topcoder-dev.com
+
                             # Online Review Prod & Dev
                             - !Sub https://software.${Domain}
 
