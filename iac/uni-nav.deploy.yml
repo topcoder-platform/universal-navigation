@@ -76,15 +76,65 @@ Resources:
                         # TODO: figure out a way to load this in from a shared config
                         # so that we don't have to manually deploy any time we add a
                         # new tool
+                        # TODO: figure out the best way to support wildcard origins
                         Items:
-                            - !Sub https://${Domain}
-                            - !Sub https://community.${Domain}
-                            - !Sub https://discussions.${Domain}
-                            - !If [IsProd, '', !Sub https://local.${Domain}]
-                            - !If [IsProd, '', !Sub http://local.tc.cloud.topcoder.com]
-                            - !Sub https://platform-ui.${Domain}
+
+                            # Community App/PACTS Prod & QA
+                            - !If 
+                                - IsProd
+                                - !Sub 'https://community.${Domain}'
+                                - !Sub 'https://qa-community-app.${Domain}'
+
+                            # Community App/PACTS Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub http://local.tc.cloud.topcoder.com
+
+                            # Customer Mktg Prod & Dev
+                            - !Sub https://${Domain} 
+                            - !Sub https://www.${Domain}
+
+                            # Forum Prod & Dev
+                            - !Sub https://discussions.${Domain} 
+                            - !Sub https://vanilla.${Domain}
+
+                            # Online Review Prod & Dev
                             - !Sub https://software.${Domain}
-                            - !If [IsProd, https://topcoder.privatetalent.cloud, https://topcoder.privatetalent-dev.cloud]
+
+                            # Platform UI Prod & Dev
+                            - !Sub https://platform-ui.${Domain}
+
+                            # Platform UI Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://local.${Domain}'
+
+                            # PTC Prod & QA
+                            - !If 
+                                - IsProd
+                                - https://topcoder.privatetalent.cloud
+                                - https://qa.dev.privatetalent.cloud
+
+                            # TopCrowd Prod & QA
+                            - !If 
+                                - IsProd
+                                - https://topcrowd.topcoder.com
+                                - https://topcrowd.dev.topcoder.com
+
+                            # TopCrowd Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://127.0.0.1:3000
+
+                            # TopCrowd Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://localhost:3000
+
                     OriginOverride: true
 
     Cdn:

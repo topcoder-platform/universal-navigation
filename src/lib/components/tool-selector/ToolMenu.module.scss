@@ -99,6 +99,7 @@
 
   a {
     line-height: 22px;
+    font: inherit;
   }
 
   &:global(.navButton) {
@@ -132,6 +133,12 @@
       font-weight: 400;
       color: #767676;
     }
+  }
+
+  svg {
+    display: block;
+    width: 32px;
+    height: 32px;
   }
 }
 

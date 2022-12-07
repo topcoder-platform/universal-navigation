@@ -1,294 +1,296 @@
-export const businessMenuItem = {
+import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
+
+export const businessMenuItem: Partial<NavMenuItem> = {
   label: 'Business',
   description: 'Learn how Topcoder can help your business get work done.',
-  path: '/business',
+  path: '/customer',
 };
 
-export const whyTopcoderMenuItem = {
+export const whyTopcoderMenuItem: Partial<NavMenuItem> = {
   label: 'Why Topcoder',
   description: 'How Topcoder provides hiqh quality, secure solutions.',
-  path: '/business/why-topcoder',
+  path: '/customer/why-topcoder',
 };
 
-export const theCommunityMenuItem = {
+export const theCommunityMenuItem: Partial<NavMenuItem> = {
   label: 'The Community',
   description: 'How the Topcoder community provides value to your business.',
-  path: '/business/why-topcoder/the-community',
+  path: '/customer/why-topcoder/the-community',
 };
 
-export const expertiseMenuItem = {
+export const expertiseMenuItem: Partial<NavMenuItem> = {
   label: 'Expertise',
   description: 'The areas in which Topcoder delivers successful solutions.',
-  path: '/business/expertise',
+  path: '/customer/expertise',
 };
 
-export const dataScienceMenuItem = {
+export const dataScienceMenuItem: Partial<NavMenuItem> = {
   label: 'Data Science',
   description: 'See how Topcoder has delivered Data Science solutions.',
-  path: '/business/data-science',
+  path: '/customer/data-science',
 };
 
-export const designMenuItem = {
+export const designMenuItem: Partial<NavMenuItem> = {
   label: 'Design',
   description: 'See how Topcoder has delivered Design solutions.',
-  path: '/business/design',
+  path: '/customer/design',
 };
 
-export const developmentMenuItem = {
+export const developmentMenuItem: Partial<NavMenuItem> = {
   label: 'Development',
   description: 'See how Topcoder has delivered Development solutions.',
-  path: '/business/development',
+  path: '/customer/development',
 };
 
-export const qaMenuItem = {
+export const qaMenuItem: Partial<NavMenuItem> = {
   label: 'QA',
   description: 'See how Topcoder has delivered QA solutions.',
-  path: '/business/qa',
+  path: '/customer/qa',
 };
 
-export const industriesMenuItem = {
+export const industriesMenuItem: Partial<NavMenuItem> = {
   label: 'Industries',
   description: 'The industries in which Topcoder delivers successful solutions.',
-  path: '/business/industries',
+  path: '/customer/industries',
 };
 
-export const bfsiMenuItem = {
+export const bfsiMenuItem: Partial<NavMenuItem> = {
   label: 'BFSI',
   description: 'BFSI solutions, how Topcoder excels, including case studies.',
   path: '/bfsi',
 };
 
-export const communicationsMenuItem = {
+export const communicationsMenuItem: Partial<NavMenuItem> = {
   label: 'Communications',
   description: 'Communications solutions, how Topcoder excels, including case studies.',
-  path: '/business/communications',
+  path: '/customer/communications',
 };
 
-export const energyUtilitiesMenuItem = {
+export const energyUtilitiesMenuItem: Partial<NavMenuItem> = {
   label: 'Energy / Utilities',
   description: 'Energy / utilities solutions, how Topcoder excels, including case studies.',
-  path: '/business/energy-utilities',
+  path: '/customer/energy-utilities',
 };
 
-export const healthPharmaMenuItem = {
+export const healthPharmaMenuItem: Partial<NavMenuItem> = {
   label: 'Health / Pharma',
   description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
-  path: '/business/health-pharma',
+  path: '/customer/health-pharma',
 };
 
-export const publicSectorMenuItem = {
+export const publicSectorMenuItem: Partial<NavMenuItem> = {
   label: 'Public Sector',
   description: 'Public sector solutions, how Topcoder excels, including case studies.',
-  path: '/business/public-sector',
+  path: '/customer/public-sector',
 };
 
-export const retailMenuItem = {
+export const retailMenuItem: Partial<NavMenuItem> = {
   label: 'Retail',
   description: 'Retail solutions, how Topcoder excels, including case studies.',
-  path: '/business/retail',
+  path: '/customer/retail',
 };
 
-export const technologyMenuItem = {
+export const technologyMenuItem: Partial<NavMenuItem> = {
   label: 'Technology',
   description: 'Technology solutions, how Topcoder excels, including case studies.',
-  path: '/business/technology',
+  path: '/customer/technology',
 };
 
-export const partnersMenuItem = {
+export const partnersMenuItem: Partial<NavMenuItem> = {
   label: 'Partners',
   description: 'Companies Topcoder partners with to deliver high quality solutions.',
-  path: '/business/partners',
+  path: '/customer/partners',
 };
 
-export const securityMenuItem = {
+export const securityMenuItem: Partial<NavMenuItem> = {
   label: 'Security',
   description: 'How your IP is protected at Topcoder.',
-  path: '/business/security',
+  path: '/customer/security',
 };
 
-export const successStoriesMenuItem = {
+export const successStoriesMenuItem: Partial<NavMenuItem> = {
   label: 'Success Stories',
   description: 'Browse case studies for solutions Topcoder has successfully delivered.',
-  path: '/business/success-stories',
+  path: '/customer/success-stories',
 };
 
-export const productsMenuItem = {
+export const productsMenuItem: Partial<NavMenuItem> = {
   label: 'Products',
   description: 'How you will engage with the products Topcoder offers.',
-  path: '/business/products',
+  path: '/customer/products',
 };
 
-export const fullServiceMenuItem = {
+export const fullServiceMenuItem: Partial<NavMenuItem> = {
   label: 'Full Service',
   description: 'Work with Topcoder experts to craft the exact solution you need.',
-  path: '/business/full-service',
+  path: '/customer/full-service',
 };
 
-export const topcrowdMenuItem = {
+export const topcrowdMenuItem: Partial<NavMenuItem> = {
   label: 'TopCrowd',
   description: 'Register your own employees in Topcoder to maximize productivity.',
-  path: '/business/topcrowd',
+  path: '/customer/topcrowd',
 };
 
-export const selfServiceChallengesMenuItem = {
+export const selfServiceChallengesMenuItem: Partial<NavMenuItem> = {
   label: 'Self Service Challenges',
   description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
-  path: '/business/self-service-challenges',
+  path: '/customer/self-service-challenges',
 };
 
-export const dataAdvisoryMenuItem = {
+export const dataAdvisoryMenuItem: Partial<NavMenuItem> = {
   label: 'Data Advisory',
   description: 'Submit work to get advice on how to use data science to improve your business.',
-  path: '/business/data-advisory',
+  path: '/customer/data-advisory',
 };
 
-export const findMeDataMenuItem = {
+export const findMeDataMenuItem: Partial<NavMenuItem> = {
   label: 'Find Me Data',
   description: 'Submit work to find data sources that can help your business.',
-  path: '/business/find-me-data',
+  path: '/customer/find-me-data',
 };
 
-export const dataExplorationMenuItem = {
+export const dataExplorationMenuItem: Partial<NavMenuItem> = {
   label: 'Data Exploration',
   description: 'Submit work to gain insights from your data.',
-  path: '/business/data-exploration',
+  path: '/customer/data-exploration',
 };
 
-export const websiteDesignMenuItem = {
+export const websiteDesignMenuItem: Partial<NavMenuItem> = {
   label: 'Website Design',
   description: 'Work directly with the Topcoder community to design your website.',
-  path: '/business/webside-design',
+  path: '/customer/webside-design',
 };
 
-export const talkToAnExpertMenuItem = {
+export const talkToAnExpertMenuItem: Partial<NavMenuItem> = {
   label: 'Talk to an expert',
   description: 'Speak with a Topcoder expert to get started.',
-  path: '/business/talks-to-expert',
+  path: '/customer/talks-to-expert',
   type: 'cta'
 };
 
-export const bookADemoMenuItem = {
+export const bookADemoMenuItem: Partial<NavMenuItem> = {
   label: 'Book a demo',
   description: 'See a demo of how Topcoder can best provide for your business.',
-  path: '/business/demo',
+  path: '/customer/demo',
   type: 'cta'
 };
 
-export const communityMenuItem = {
+export const communityMenuItem: Partial<NavMenuItem> = {
   label: 'Community',
   description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
   path: '/community',
 };
 
-export const learnMenuItem = {
+export const learnMenuItem: Partial<NavMenuItem> = {
   label: 'Learn',
   description: 'Learning opportunities provided to Topcoder\'s members.',
   path: '/community/learn',
 };
 
-export const topcoderAcademyMenuItem = {
+export const topcoderAcademyMenuItem: Partial<NavMenuItem> = {
   label: 'Topcoder Academy',
   description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
   path: '/community/topcoder-academy',
 };
 
-export const articlesMenuItem = {
+export const articlesMenuItem: Partial<NavMenuItem> = {
   label: 'Articles',
   description: 'Internal articles to help expand your knowledge.',
   path: '/community/learn/thrive',
 };
 
-export const earnMenuItem = {
+export const earnMenuItem: Partial<NavMenuItem> = {
   label: 'Earn',
   description: 'How to earn money at Topcoder.',
   path: '/community/earn',
 };
 
-export const challengesMenuItem = {
+export const challengesMenuItem: Partial<NavMenuItem> = {
   label: 'Challenges',
   description: 'Compete with others to solve challenges and earn money.',
   path: '/community/challenges',
 };
 
-export const gigsMenuItem = {
+export const gigsMenuItem: Partial<NavMenuItem> = {
   label: 'Gigs',
   description: 'Work directly with customers via time-based contracts.',
   path: '/community/gigs',
 };
 
-export const competeMenuItem = {
+export const competeMenuItem: Partial<NavMenuItem> = {
   label: 'Compete',
   description: 'Competitive programming for fun and to grow your skills & ranking at Topcoder.',
   path: '/community/compete',
 };
 
-export const marathonMatchesMenuItem = {
+export const marathonMatchesMenuItem: Partial<NavMenuItem> = {
   label: 'Marathon Matches',
   description: 'Competitions that span days or weeks.',
   path: '/community/marathon-matches',
 };
 
-export const rapidDevMatchesMenuItem = {
+export const rapidDevMatchesMenuItem: Partial<NavMenuItem> = {
   label: 'Rapid Dev Matches',
   description: 'Quick competitions you can complete in less than one day.',
   path: '/community/compete/rapid-dev-matches',
 };
 
-export const singleRoundMatchesMenuItem = {
+export const singleRoundMatchesMenuItem: Partial<NavMenuItem> = {
   label: 'Single Round Matches',
   description: 'Multi-problem algorithmic competitions where you go head-to-head in an arena.',
   path: '/community/compete/single-round-matches',
 };
 
-export const connectMenuItem = {
+export const connectMenuItem: Partial<NavMenuItem> = {
   label: 'Connect',
   description: 'Connect with others at Topcoder.',
   path: '/community/connect',
 };
 
-export const announcementsMenuItem = {
+export const announcementsMenuItem: Partial<NavMenuItem> = {
   label: 'Announcements',
   description: 'Important announcements to the Topcoder community.',
   path: '/community/announcements',
 };
 
-export const eventsMenuItem = {
+export const eventsMenuItem: Partial<NavMenuItem> = {
   label: 'Events',
   description: 'Upcoming Topcoder events.',
   path: '/community/events',
 };
 
-export const topcoderOpenMenuItem = {
+export const topcoderOpenMenuItem: Partial<NavMenuItem> = {
   label: 'Topcoder Open',
   description: 'The utlimate competitive tournament - the big event!',
   path: '/community/topcoder-open',
 };
 
-export const discordMenuItem = {
+export const discordMenuItem: Partial<NavMenuItem> = {
   label: 'Discord',
   description: 'Chat with others in the community.',
   path: '/community/discord',
 };
 
-export const timelineMenuItem = {
+export const timelineMenuItem: Partial<NavMenuItem> = {
   label: 'Timeline',
   description: 'An interactive timeline wall showing Topcoder\'s history.',
   path: '/community/timeline',
 };
 
-export const benefitsMenuItem = {
+export const benefitsMenuItem: Partial<NavMenuItem> = {
   label: 'Benefits',
   description: 'Benefits members receive at Topcoder.',
   path: '/community/benefits',
 };
 
-export const healthCareMenuItem = {
+export const healthCareMenuItem: Partial<NavMenuItem> = {
   label: 'Health care',
   description: 'International (non-US) healthcare.',
   path: '/community/health-care',
 };
 
-export const careerGrowthMenuItem = {
+export const careerGrowthMenuItem: Partial<NavMenuItem> = {
   label: 'Career Growth',
   description: 'Topcoder\'s profile captures your proven skills increasing employment opportunities.',
   path: '/community/career-growth',

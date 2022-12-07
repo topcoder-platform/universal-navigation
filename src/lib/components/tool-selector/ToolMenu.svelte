@@ -3,6 +3,7 @@
   import { classnames } from 'lib/utils/classnames';
   import { getToolSelectorItems } from 'lib/functions/tool-selector-menu.provider';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
+  import InlineSvg from '../InlineSvg.svelte';
   import styles from './ToolMenu.module.scss';
 
   const navMenuItems = getToolSelectorItems()
@@ -14,6 +15,7 @@
 </script>
 
 <div class={styles.toolMenuWrap}>
+  <InlineSvg src="/assets/tools/sprite.svg" />
   {#each navMenuItems as section, sectionIndex}
     <div class={styles.toolSection}>
       <div class={styles.toolSectionTitle}>
@@ -33,7 +35,13 @@
               {#each group.children as navItem}
                 <li class={classnames(styles.toolNavItem, navItem.type === 'cta' && 'navButton')}>
                   {#if navItem.type !== 'cta'}
-                    <img src={toolIcon} alt={navItem.label} />
+                    {#if navItem.icon}
+                      <svg class="icon">
+                        <use xlink:href={`#${navItem.icon}`}></use>
+                      </svg>
+                    {:else}
+                      <img src={toolIcon} alt={navItem.label} />
+                    {/if}
                   {/if}
                   <div class={styles.navItemContent}>
                     <a href={navItem.url}>{navItem.label}</a>
