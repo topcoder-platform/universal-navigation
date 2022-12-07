@@ -11,6 +11,7 @@
 
   const menuItems = getFooterNavItems()
   let supportVisible = false;
+  let footerEl: Element | undefined = undefined;
 
   function toggleSupportModal() {
     supportVisible = true;
@@ -19,12 +20,11 @@
   onMount(checkAndLoadFonts)
 
   onMount(() => {
-    document.addEventListener(supportMenuItem.action, toggleSupportModal);
-    return () => document.removeEventListener(supportMenuItem.action, toggleSupportModal);
+    footerEl.addEventListener(supportMenuItem.action, toggleSupportModal);
   })
 </script>
 
-<footer class={styles.footerWrap}>
+<footer class={styles.footerWrap} bind:this={footerEl}>
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}

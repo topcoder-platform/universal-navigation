@@ -299,4 +299,5 @@ export const careerGrowthMenuItem: Partial<NavMenuItem> = {
 export const supportMenuItem: Partial<NavMenuItem> = {
   label: 'Support',
   action: "uninav:modals:support",
+  url: "mailto:support@topcoder.com"
 };
