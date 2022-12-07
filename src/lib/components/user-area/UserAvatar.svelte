@@ -14,7 +14,9 @@
   let popupIsVisible: boolean;
 
   let initials: string = '';
-  $: initials = `${user.firstName?.charAt(0) ?? ''}${user.lastName?.charAt(0) ?? ''}`
+  $: initials = user['initials'] ?? (
+    `${user.firstName?.charAt(0) ?? ''}${user.lastName?.charAt(0) ?? ''}`
+  );
 
 </script>
 
