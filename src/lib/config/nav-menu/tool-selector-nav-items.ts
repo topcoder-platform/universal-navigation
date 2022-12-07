@@ -97,7 +97,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"Discussion",
-                            url: "http://discussions.topcoder.com",
+                            url: "https://discussions.topcoder.com/groups/mine?filter=challenge",
                             icon: "discussions",
                             description: "Hover description text"
                         },
