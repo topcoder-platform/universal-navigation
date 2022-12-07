@@ -89,7 +89,7 @@ Resources:
                             - !If 
                                 - IsProd
                                 - !Ref AWS::NoValue
-                                - !Sub http://community.topcoder-dev.com
+                                - !Sub https://community.topcoder-dev.com
 
                             # Community App/PACTS Local
                             - !If 

@@ -75,7 +75,7 @@ See the [IAC README](../iac/README.md) for instructions for deploying the stack.
 The dev version of the UniNav script allows the following origins. 
 
 Community App/PACTS
-- http://community.topcoder-dev.com
+- https://community.topcoder-dev.com
 - https://qa-community-app.topcoder-dev.com
 - https://local.topcoder-dev.com
 - http://local.tc.cloud.topcoder.com
