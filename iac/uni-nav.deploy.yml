@@ -89,6 +89,12 @@ Resources:
                             - !If 
                                 - IsProd
                                 - !Ref AWS::NoValue
+                                - !Sub http://community.topcoder-dev.com
+
+                            # Community App/PACTS Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
                                 - !Sub http://local.tc.cloud.topcoder.com
 
                             # Customer Mktg Prod & Dev
