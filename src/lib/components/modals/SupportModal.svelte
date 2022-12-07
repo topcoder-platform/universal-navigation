@@ -10,7 +10,7 @@
 
   const ctx = getAppContext()
 
-  $: ({user = {} as AuthUser} = $ctx.auth)
+  $: ({user} = $ctx.auth)
   $: ({supportMeta: meta = {} as SupportMeta} = $ctx)
 
   export let isVisible = false;
@@ -38,9 +38,9 @@
       return;
     }
 
-    formValue.firstName = user?.firstName;
-    formValue.lastName = user?.lastName;
-    formValue.email = user?.email;
+    formValue.firstName = user?.firstName ?? '';
+    formValue.lastName = user?.lastName ?? '';
+    formValue.email = user?.email ?? '';
   }
 
   function validate(values) {
@@ -59,24 +59,32 @@
   size="sm"
 >
   <p>
-    Hi <strong>{user.firstName}</strong>, we're here to help.
+    Hi
+    {#if user?.firstName}
+      <strong>{user.firstName}</strong>,
+    {:else}
+      there,
+    {/if}
+    we're here to help.
   </p>
   <p>
-    Please describe what you 'd like to discuss, and a Topcoder Solutions Expert
-    will email you back at&nbsp;
-    <strong>{user.email}</strong>
+    Please describe what you'd like to discuss, and a Topcoder Solutions Expert
+    will email you back
+    {#if user?.email}
+      at&nbsp;<strong>{user.email}</strong>
+    {/if}
     &nbsp;within one business day.
   </p>
   <div class={classnames(styles.form, submitted && styles.submitted)}>
     <form on:submit={handleSubmit}>
       <p>
-        <Input label="First Name" value={formValue.firstName} required />
+        <Input label="First Name" bind:value={formValue.firstName} required />
       </p>
       <p>
-        <Input label="Last Name" value={formValue.lastName} required />
+        <Input label="Last Name" bind:value={formValue.lastName} required />
       </p>
       <p>
-        <Input label="Email" type="email" value={formValue.email} required />
+        <Input label="Email" type="email" bind:value={formValue.email} required />
       </p>
       <p>
         <Input
