@@ -50,9 +50,9 @@ const NavigationLoadersMap = APP_IS_PROD ? {
   tool: () => loadModule('./tool-nav.js'),
   footer: () => loadModule('./footer-nav.js'),
 } : {
-  marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
-  footer: () => import('./lib/footer-navigation/FooterNavigation.svelte').then(d => d.default),
-  tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
+  marketing: () => loadModule('./lib/marketing-navigation/MarketingNavigation.svelte'),
+  footer: () => loadModule('./lib/footer-navigation/FooterNavigation.svelte'),
+  tool: () => loadModule('./lib/tool-navigation/ToolNavigation.svelte'),
 }
 
 const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
