@@ -17,8 +17,8 @@
 
 {#if isVisible}
   <div class={classnames(styles.modalWrap, $$props.class, size && `size-${size}`)}>
-    <div class={styles.modalOverlay} transition:fade={{duration: 200}} on:click={() => isVisible = false} on:keydown={() => {}} />
     <div class={styles.modalContainer}>
+      <div class={styles.modalOverlay} transition:fade={{duration: 200}} on:click={() => isVisible = false} on:keydown={() => {}} />
       <div class={styles.modalWindow} transition:fly={{y: 45, duration: 300}}>
         <div class={styles.modalHeader}>
           <h3 class={styles.modalTitle}>

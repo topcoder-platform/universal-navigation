@@ -1,3 +1,5 @@
+@import 'lib/styles/mixins.scss';
+
 .modalWrap {
   position: fixed;
   z-index: 1000;
@@ -14,7 +16,6 @@
   position: absolute;
   right: 0;
   top: 0;
-  z-index: -1;
 }
 
 .modalContainer {
@@ -62,6 +63,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  @include mobile {
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
   }
 }
 
