@@ -13,6 +13,9 @@
   let elRef: HTMLElement;
   let popupIsVisible: boolean;
 
+  let initials: string = '';
+  $: initials = `${user.firstName?.charAt(0)}${user.lastName?.charAt(0)}`
+
 </script>
 
 <div
@@ -22,9 +25,9 @@
   on:keydown={() => {}}
 >
   {#if user?.photoUrl}
-    <img src={user.photoUrl} alt={user.initials} />
+    <img src={user.photoUrl} alt={initials} />
   {:else}
-    <span>{user.initials}</span>
+    <span>{initials}</span>
   {/if}
 </div>
 
