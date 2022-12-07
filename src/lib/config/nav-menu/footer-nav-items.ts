@@ -103,11 +103,7 @@ export const footerNavItems = {
       children: [
         navItems.talkToAnExpertMenuItem,
         navItems.bookADemoMenuItem,
-        {
-          label: "Support",
-          action: "uninav:modals:support",
-          absUrl: "mailto:support@topcoder.com"
-        }
+        navItems.supportMenuItem,
       ]
     },
     {

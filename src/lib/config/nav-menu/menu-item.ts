@@ -295,3 +295,8 @@ export const careerGrowthMenuItem: Partial<NavMenuItem> = {
   description: 'Topcoder\'s profile captures your proven skills increasing employment opportunities.',
   path: '/community/career-growth',
 };
+
+export const supportMenuItem: Partial<NavMenuItem> = {
+  label: 'Support',
+  action: "uninav:modals:support",
+};
