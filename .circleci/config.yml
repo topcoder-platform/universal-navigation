@@ -79,11 +79,14 @@ running_version_patch: &running_version_patch
 #     - run: *check_types
 
 patch_version_steps: &patch_version_steps
+    # Initialization.
     - checkout
-    # - setup_remote_docker
-    # - run: *install_build_dependency
-    # - run: *install_deploysuite   
+    - setup_remote_docker
+    - run: *install_build_dependency
+    - run: *install_deploysuite
     - run: *running_version_patch
+    - run: *running_npm_build
+    - persist_to_workspace: *workspace_persist 
 
 build_steps: &build_steps
     # Initialization.
@@ -110,9 +113,9 @@ deploy_steps: &deploy_steps
 
 jobs:
 
-    increment-patch:
-        <<: *deploy_defaults
-        steps: *patch_version_steps
+    # increment-patch:
+    #     <<: *deploy_defaults
+    #     steps: *patch_version_steps
     
     build-dev:
         <<: *defaults
@@ -128,7 +131,7 @@ jobs:
             DEPLOY_ENV: "PROD"
             LOGICAL_ENV: "prod"
             APPNAME: "universal-navigation"
-        steps: *build_steps
+        steps: *patch_version_steps
 
     # Just tests commited code.
     deployDev:
@@ -165,12 +168,12 @@ workflows:
     #           only:
     #             - github-workflows
 
-            - increment-patch:
-                context : org-global
-                filters:
-                    branches:
-                        only:
-                            - master
+            # - increment-patch:
+            #     context : org-global
+            #     filters:
+            #         branches:
+            #             only:
+            #                 - master
 
             - build-dev:
                 context : org-global
@@ -181,8 +184,8 @@ workflows:
 
             - build-prod:
                 context : org-global
-                requires: 
-                    - increment-patch
+                # requires: 
+                #     - increment-patch
                 filters:
                     branches:
                         only:
