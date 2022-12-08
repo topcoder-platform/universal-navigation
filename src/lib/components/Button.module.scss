@@ -11,7 +11,6 @@
   min-width: 70px;
 
   font-family: 'Roboto';
-  font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 24px;
@@ -23,8 +22,28 @@
   color: #FFFFFF;
   cursor: pointer;
 
+  &.md {
+    font-size: 14px;
+    padding: 8px 24px;
+  }
+
   &.primary {
     background: #FFFFFF;
     color: #137D60;
+  }
+
+  &.outline {
+    border: 2px solid;
+    background-color: #fff;
+    border-color: #137d60;
+    color: #137d60;
+  }
+
+  &[disabled][disabled] {
+    pointer-events: none;
+    background-color: #f4f4f4;
+    border-color: #f4f4f4;
+    color: #7f7f7f;
+    cursor: default;
   }
 }

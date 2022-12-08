@@ -72,7 +72,7 @@ See the [IAC README](../iac/README.md) for instructions for deploying the stack.
 
 ### Development CORS
 
-The dev version of the UniNav script allows the following origins. 
+The dev version of the UniNav script allows the following origins.
 
 Community App/PACTS
 - https://community.topcoder-dev.com
@@ -96,6 +96,7 @@ Member Marketing Dev
 
 Online Review
 - https://software.topcoder-dev.com
+- http://local.topcoder-dev.com:8080
 
 Platform UI
 - https://platform-ui.topcoder-dev.com
@@ -110,7 +111,7 @@ TopCrowd
 
 ### Production CORS
 
-The dev version of the UniNav script allows the following origins. 
+The dev version of the UniNav script allows the following origins.
 
 Community App/PACTS
 - https://community.topcoder.com
@@ -157,8 +158,8 @@ Once the above script is included, you can immediately call `tcUniNav()` to init
 #### Init Marketing Nav
 ```
 tcUniNav(
-    'init', 
-    'ui-nav', 
+    'init',
+    'ui-nav',
     {
         handleNavigation({ route: {label: string, path: string} }){ ... },
         onReady() {...},
@@ -175,8 +176,8 @@ tcUniNav(
 #### Init Tool Nav
 ```
 tcUniNav(
-    'init', 
-    'ui-nav', 
+    'init',
+    'ui-nav',
     {
         handleNavigation({ route: {label: string, path: string} }){ ... },
         onReady() {...},
@@ -195,10 +196,15 @@ tcUniNav(
 #### Init Footer Nav
 ```
 tcUniNav(
-    'init', 
-    'ui-nav', 
+    'init',
+    'ui-nav',
     {
         type: 'footer',
+    },
+
+    supportMeta: {
+      challengeId: '<challenge-uuid>',
+      isSelfService: false,
     },
 );
 
@@ -210,8 +216,8 @@ If your application supports multiple tools or retrieves the user info after the
 
 ```
 tcUniNav(
-    'update', 
-    'ui-nav', 
+    'update',
+    'ui-nav',
     {
         toolName: 'Tc Tool App',
         toolRoot: '/',
@@ -219,8 +225,8 @@ tcUniNav(
 )
 
 tcUniNav(
-    'update', 
-    'ui-nav', 
+    'update',
+    'ui-nav',
     {
         user: {
             photoURL: 'https://topcoder-prod-media.s3.amazonaws.com/member/profile/vasilica.olariu-1616487120406.png',
@@ -248,7 +254,7 @@ For example, non-production environments will probably want to point to the scri
 
 #### Minor Version upgrades
 
-Minor versions are tested in the dev environment for affected properties (i.e. changes to the marketing nav don't need to be tested in the tools) then rolled out silently to all clients in production. 
+Minor versions are tested in the dev environment for affected properties (i.e. changes to the marketing nav don't need to be tested in the tools) then rolled out silently to all clients in production.
 
 #### Major Version upgrades
 
@@ -259,20 +265,21 @@ Information regarding the changes will be disseminated to the owners of all prop
 ### API for tcUniNav
 `tcUniNav(method, targetId, config)`
 
-| Parameter               | Type                                 | Required                | Description                                                                | Default value |
-|-------------------------|--------------------------------------|-------------------------|----------------------------------------------------------------------------|---------------|
-| method                  | Enum: 'init' \| 'update'             | yes                     | The method to be called                                                    |               |
-| targetId                | string(html element id)              | yes                     | target element for the navigation to be rendered on                        | none          |
-| config                  | object                               | no                      | The config object for the specific navigation type                         | {}            |
-| config.handleNavigation | (route: {path, label}) => void       | no                      | Allow for external handling of route navigation (eg. via react-router-dom) | none          |
-| config.onReady          | () => void                           | no                      | Callback function called when the navigation was rendered                  | none          |
-| config.signIn           | () => void                           | yes (except for footer) | Called when the user clicks the Log in button                              | none          |
-| config.signOut          | () => void                           | yes (except for footer) | Called when the user clicks the Log out button                             | none          |
-| config.signUp           | () => void                           | yes (except for footer) | Called when the user clicks sign up/register                               | none          |
-| config.toolName         | string                               | yes (tool nav only)     | The name of the tool as it should appear in the header                     | none          |
-| config.toolRoot        | string                               | yes (tool nav only)     | The route to the tool as it should appear in the header                    | none          |
-| config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                  | The type of navigation to render                                           |               |
-| config.user             | {photoURL, userId, initials, handle} | no                      | The logged in user                                                         | {}            |
+| Parameter               | Type                                    | Required                | Description                                                                       | Default value |
+|-------------------------|-----------------------------------------|-------------------------|-----------------------------------------------------------------------------------|---------------|
+| method                  | Enum: 'init' \| 'update'                | yes                     | The method to be called                                                           |               |
+| targetId                | string(html element id)                 | yes                     | target element for the navigation to be rendered on                               | none          |
+| config                  | object                                  | no                      | The config object for the specific navigation type                                | {}            |
+| config.handleNavigation | (route: {path, label}) => void          | no                      | Allow for external handling of route navigation (eg. via react-router-dom)        | none          |
+| config.onReady          | () => void                              | no                      | Callback function called when the navigation was rendered                         | none          |
+| config.signIn           | () => void                              | yes (except for footer) | Called when the user clicks the Log in button                                     | none          |
+| config.signOut          | () => void                              | yes (except for footer) | Called when the user clicks the Log out button                                    | none          |
+| config.signUp           | () => void                              | yes (except for footer) | Called when the user clicks sign up/register                                      | none          |
+| config.toolName         | string                                  | yes (tool nav only)     | The name of the tool as it should appear in the header                            | none          |
+| config.toolRoot         | string                                  | yes (tool nav only)     | The route to the tool as it should appear in the header                           | none          |
+| config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                     | The type of navigation to render                                                  |               |
+| config.user             | {photoURL, userId, initials, handle}    | no                      | The logged in user                                                                | {}            |
+| config.supportMeta      | {challengeId, isSelfService}            | no                      | Additional meta data to be sent along with any support ticket created by the user |               |
 
 
 ### tcUniNav Methods
@@ -292,4 +299,4 @@ Typescript type declarations (i.e. `*.d.ts`) can be sourced from the Github repo
 
 `        "universal-navigation": "https://github.com/topcoder-platform/universal-navigation", `
 
-This package acts the same as any other npm package re updates/upgrades. You can update to pull the latest version (i.e `npm run update` or `yarn upgrade`). 
+This package acts the same as any other npm package re updates/upgrades. You can update to pull the latest version (i.e `npm run update` or `yarn upgrade`).

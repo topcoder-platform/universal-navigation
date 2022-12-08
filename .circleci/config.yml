@@ -25,7 +25,7 @@ install_dependency: &install_dependency
 install_deploysuite: &install_deploysuite
     name: Installation of install_deploysuite.
     command: |
-      git clone --branch v1.4.12 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
+      git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
       cp ./../buildscript/master_deploy.sh .
       cp ./../buildscript/buildenv.sh .
       cp ./../buildscript/awsconfiguration.sh .
@@ -101,9 +101,6 @@ jobs:
     environment:
       DEPLOY_ENV: "DEV"
       LOGICAL_ENV: "dev"
-      # Currently, enabling the cache actually disables it.
-      # And we need it disabled bc the when cache is enabled,
-      # it doesn't invalidate the cloudfront distribution.
       ENABLE_CACHE: true
       APPNAME: "universal-navigation"
     steps: *deploy_steps
@@ -113,9 +110,6 @@ jobs:
     environment:
       DEPLOY_ENV: "PROD"
       LOGICAL_ENV: "prod"
-      # Currently, enabling the cache actually disables it.
-      # And we need it disabled bc the when cache is enabled,
-      # it doesn't invalidate the cloudfront distribution.
       ENABLE_CACHE: true
       APPNAME: "universal-navigation"
     steps: *deploy_steps

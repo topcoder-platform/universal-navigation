@@ -1,3 +1,5 @@
+@import 'lib/styles/mixins.scss';
+
 .hoverMenuWrap {
   position: absolute;
   top: 100%;
@@ -7,7 +9,6 @@
   background: #fff;
   box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.1);
   border-radius: 0px 0px 8px 8px;
-  padding: 32px;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -43,6 +44,9 @@
 
 .hoverMenuInner {
   position: relative;
+  padding: 32px;
+  @include maxViewWidth;
+  margin: 0 auto;
 }
 
 .mainDesc {

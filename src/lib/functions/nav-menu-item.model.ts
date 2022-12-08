@@ -7,6 +7,8 @@ export interface NavMenuItem {
     type?: 'cta'
     icon?: string
 
+    action?: string
+
     // tool selector only has urls, no path
     url?: string
 }
