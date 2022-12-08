@@ -14,7 +14,7 @@
       <a href={getDefaultHostPath(`/members/${user.handle}`)}>My Profile</a>
     </li>
     <li>
-      <a href={getDefaultHostPath('/settings/profile')}>Settings</a>
+      <a href={getDefaultHostPath('/settings/profile')}>Account Settings</a>
     </li>
     <li>
       <a href={"javascript:;"} on:click={onSignOut}>Log Out</a>
