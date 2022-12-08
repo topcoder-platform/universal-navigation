@@ -114,7 +114,10 @@ Resources:
                             - !Sub https://software.${Domain}
 
                             # Online Review Local
-                            - http://local.topcoder-dev.com:8080
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://local.topcoder-dev.com:8080
 
                             # PACTS Prod & Dev
                             - !Sub https://community.${Domain}
