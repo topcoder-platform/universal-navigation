@@ -167,11 +167,9 @@ workflows:
 
             - increment-patch:
                 context : org-global
-                requires: increment-patch
                 filters:
                     branches:
                         only:
-                            - PROD-3277_version
                             - master
 
             - build-dev:
