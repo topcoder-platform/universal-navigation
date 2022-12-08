@@ -4,6 +4,8 @@ defaults: &defaults
     docker:
       - image: node:16.14
 
+# DEFINE INDIVIDUAL STEPS
+
 deploy_defaults: &deploy_defaults
     docker:
       - image: cimg/python:3.10.2
@@ -11,24 +13,24 @@ deploy_defaults: &deploy_defaults
 install_build_dependency: &install_build_dependency
     name: Installation of build and deployment dependencies.
     command: |
-      apt-get update -y && apt-get install -qq -y python-pip libpython-dev
-      curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
-      #installing awscli
-      pip install awscli --upgrade
-      apt install jq -y
+        apt-get update -y && apt-get install -qq -y python-pip libpython-dev
+        curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
+        #installing awscli
+        pip install awscli --upgrade
+        apt install jq -y
 
 install_dependency: &install_dependency
     name: Installation of build and deployment dependencies.
     command: |
-      pip3 install awscli --upgrade
+        pip3 install awscli --upgrade
 
 install_deploysuite: &install_deploysuite
     name: Installation of install_deploysuite.
     command: |
-      git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
-      cp ./../buildscript/master_deploy.sh .
-      cp ./../buildscript/buildenv.sh .
-      cp ./../buildscript/awsconfiguration.sh .
+        git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
+        cp ./../buildscript/master_deploy.sh .
+        cp ./../buildscript/buildenv.sh .
+        cp ./../buildscript/awsconfiguration.sh .
 
 restore_cache_settings_for_build: &restore_cache_settings_for_build
     key: connect-node-modules-{{ checksum package-lock.json" }}
@@ -36,22 +38,52 @@ restore_cache_settings_for_build: &restore_cache_settings_for_build
 save_cache_settings: &save_cache_settings
     key: connect-node-modules-{{ checksum "package-lock.json" }}
     paths:
-      - node_modules
+        - node_modules
 
 running_npm_build: &running_npm_build
     name: Running npm Build
     command: |
-      npm install
-      npm run build
+        npm install
+        npm run build
 
 workspace_persist: &workspace_persist
     root: .
     paths:
-      - dist
+        - dist
 
 workspace_attach: &workspace_attach
     at: ./workspace
 
+# check_types: &check_types
+#     name: Check Types
+#     command: |
+#         npm ci
+#         npm run types
+#         diffstatus=$(git status --porcelain)
+#         echo DIFF=$diffstatus >> $GITHUB_OUTPUT
+
+running_version_patch: &running_version_patch
+    name: Patching Version
+    command: |
+        npm install     
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        npm version patch -m "[ci skip]"
+        git push
+
+# DEFINE STEPS FOR JOBS
+
+# check_types_steps: &check_types_steps
+#     - checkout
+#     - setup_remote_docker
+#     - run: *check_types
+
+patch_version_steps: &patch_version_steps
+    - checkout
+    - setup_remote_docker
+    - run: *install_build_dependency
+    - run: *install_deploysuite   
+    - run: *running_version_patch
 
 build_steps: &build_steps
     # Initialization.
@@ -62,7 +94,6 @@ build_steps: &build_steps
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
 
-
 deploy_steps: &deploy_steps
     - checkout
     - attach_workspace: *workspace_attach
@@ -71,85 +102,110 @@ deploy_steps: &deploy_steps
     - deploy:
         name: Running MasterScript
         command: |
-          ./awsconfiguration.sh $DEPLOY_ENV
-          source awsenvconf
-          ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-deployvar
-          source buildenvvar
-          ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
+            ./awsconfiguration.sh $DEPLOY_ENV
+            source awsenvconf
+            ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-deployvar
+            source buildenvvar
+            ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
+
+    increment-patch:
+        <<: *deploy_defaults
+        steps: *patch_version_steps
     
-  build-dev:
-    <<: *defaults
-    environment:
-      DEPLOY_ENV: "DEV"
-      LOGICAL_ENV: "dev"
-      APPNAME: "universal-navigation"
-    steps: *build_steps
+    build-dev:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            APPNAME: "universal-navigation"
+        steps: *build_steps
 
-  build-prod:
-    <<: *defaults
-    environment:
-      DEPLOY_ENV: "PROD"
-      LOGICAL_ENV: "prod"
-      APPNAME: "universal-navigation"
-    steps: *build_steps
-  
-  # Just tests commited code.
-  deployDev:
-    <<: *deploy_defaults
-    environment:
-      DEPLOY_ENV: "DEV"
-      LOGICAL_ENV: "dev"
-      ENABLE_CACHE: true
-      APPNAME: "universal-navigation"
-    steps: *deploy_steps
+    build-prod:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "PROD"
+            LOGICAL_ENV: "prod"
+            APPNAME: "universal-navigation"
+        steps: *build_steps
 
-  deployProd:
-    <<: *deploy_defaults
-    environment:
-      DEPLOY_ENV: "PROD"
-      LOGICAL_ENV: "prod"
-      ENABLE_CACHE: true
-      APPNAME: "universal-navigation"
-    steps: *deploy_steps
+    # Just tests commited code.
+    deployDev:
+        <<: *deploy_defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            ENABLE_CACHE: true
+            APPNAME: "universal-navigation"
+        steps: *deploy_steps
+
+    deployProd:
+        <<: *deploy_defaults
+        environment:
+            DEPLOY_ENV: "PROD"
+            LOGICAL_ENV: "prod"
+            ENABLE_CACHE: true
+            APPNAME: "universal-navigation"
+        steps: *deploy_steps
+
+    # checkTypes:
+    #     <<: *defaults
+    #     steps: *check_types_steps
+
 
 workflows:
-  version: 2
-  build:
-    jobs:
-      - build-dev:
-          context : org-global
-          filters:
-            branches:
-              ignore:
-                - master
+    version: 2
+    build:
+        jobs:
+    #   - checkTypes:
+    #       context : org-global
+    #       filters: 
+    #         branches:
+    #           only:
+    #             - github-workflows
 
-      - build-prod:
-          context : org-global
-          filters:
-            branches:
-              only:
-                - master
+            - increment-patch:
+                context : org-global
+                filters:
+                    branches:
+                        only:
+                            - master
 
-      - deployDev:
-          context : org-global
-          requires:
-            - build-dev
-            # temporarily permit prod builds
-            - build-prod
-          filters: 
-            branches:
-              only:
-                - dev
-                # temporarily deploy master to dev
-                - master
+            - build-dev:
+                context : org-global
+                filters:
+                    branches:
+                        ignore:
+                            - master
 
-      - deployProd:
-          context : org-global
-          requires:
-            - build-prod
-          filters: 
-            branches:
-              only:
-                - master
+            - build-prod:
+                context : org-global
+                requires: 
+                    - increment-patch
+                filters:
+                    branches:
+                        only:
+                            - master
+
+            # - deployDev:
+            #     context : org-global
+            #     requires:
+            #         - build-dev
+            #         # temporarily permit prod builds
+            #         - build-prod
+            #     filters: 
+            #         branches:
+            #         only:
+            #             - dev
+            #             # temporarily deploy master to dev
+            #             - master
+
+            - deployProd:
+                context : org-global
+                requires:
+                    - build-prod
+                filters: 
+                    branches:
+                        only:
+                            - master
