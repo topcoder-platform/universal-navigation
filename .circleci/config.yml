@@ -69,6 +69,8 @@ running_version_patch: &running_version_patch
         npm version patch -m "[ci skip]"
         git push
 
+
+
 # DEFINE STEPS FOR JOBS
 
 # check_types_steps: &check_types_steps
@@ -82,7 +84,7 @@ patch_version_steps: &patch_version_steps
     - setup_remote_docker
     - run: *install_build_dependency
     - run: *install_deploysuite
-    - run: *running_version_patch
+    # - run: *running_version_patch
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist 
 
