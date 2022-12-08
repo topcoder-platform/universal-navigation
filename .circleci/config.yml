@@ -4,6 +4,8 @@ defaults: &defaults
     docker:
       - image: node:16.14
 
+# DEFINE INDIVIDUAL STEPS
+
 deploy_defaults: &deploy_defaults
     docker:
       - image: cimg/python:3.10.2
@@ -60,10 +62,28 @@ check_types: &check_types
     diffstatus=$(git status --porcelain)
     echo DIFF=$diffstatus >> $GITHUB_OUTPUT
 
+running_version_patch: &running_version_patch
+    name: Patching Version
+    command: |
+        npm install     
+# git config user.name github-actions
+# git config user.email github-actions@github.com
+        npm version patch -m "[ci skip]"
+        git push
+
+# DEFINE STEPS FOR JOBS
+
 check_types_steps: &check_types_steps
     - checkout
     - setup_remote_docker
     - run: *check_types
+
+patch_version_steps: &patch_version_steps
+    - checkout
+    - setup_remote_docker
+    - run: *install_build_dependency
+    - run: *install_deploysuite   
+    - run: *running_version_patch
 
 build_steps: &build_steps
     # Initialization.
@@ -73,7 +93,6 @@ build_steps: &build_steps
     - run: *install_deploysuite
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
-
 
 deploy_steps: &deploy_steps
     - checkout
@@ -90,91 +109,103 @@ deploy_steps: &deploy_steps
           ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
+
+    increment-patch:
+        <<: *deploy_defaults
+        steps: *patch_version_steps
     
-  build-dev:
-    <<: *defaults
-    environment:
-      DEPLOY_ENV: "DEV"
-      LOGICAL_ENV: "dev"
-      APPNAME: "universal-navigation"
-    steps: *build_steps
+    build-dev:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            APPNAME: "universal-navigation"
+        steps: *build_steps
 
-  build-prod:
-    <<: *defaults
-    environment:
-      DEPLOY_ENV: "PROD"
-      LOGICAL_ENV: "prod"
-      APPNAME: "universal-navigation"
-    steps: *build_steps
-  
-  # Just tests commited code.
-  deployDev:
-    <<: *deploy_defaults
-    environment:
-      DEPLOY_ENV: "DEV"
-      LOGICAL_ENV: "dev"
-      ENABLE_CACHE: true
-      APPNAME: "universal-navigation"
-    steps: *deploy_steps
+    build-prod:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "PROD"
+            LOGICAL_ENV: "prod"
+            APPNAME: "universal-navigation"
+        steps: *build_steps
 
-  deployProd:
-    <<: *deploy_defaults
-    environment:
-      DEPLOY_ENV: "PROD"
-      LOGICAL_ENV: "prod"
-      ENABLE_CACHE: true
-      APPNAME: "universal-navigation"
-    steps: *deploy_steps
+    # Just tests commited code.
+    deployDev:
+        <<: *deploy_defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            ENABLE_CACHE: true
+            APPNAME: "universal-navigation"
+        steps: *deploy_steps
 
-  checkTypes:
-    <<: *defaults
-    steps: *check_types_steps
+    deployProd:
+        <<: *deploy_defaults
+        environment:
+            DEPLOY_ENV: "PROD"
+            LOGICAL_ENV: "prod"
+            ENABLE_CACHE: true
+            APPNAME: "universal-navigation"
+        steps: *deploy_steps
 
+    checkTypes:
+        <<: *defaults
+        steps: *check_types_steps
 
 
 workflows:
-  version: 2
-  build:
-    jobs:
-      - checkTypes:
-          context : org-global
-          filters: 
-            branches:
-              only:
-                - github-workflows
+    version: 2
+    build:
+        jobs:
+    #   - checkTypes:
+    #       context : org-global
+    #       filters: 
+    #         branches:
+    #           only:
+    #             - github-workflows
 
-      - build-dev:
-          context : org-global
-          filters:
-            branches:
-              ignore:
-                - master
+            - increment-patch:
+                context : org-global
+                requires: increment-patch
+                filters:
+                    branches:
+                    only:
+                        - master
 
-      - build-prod:
-          context : org-global
-          filters:
-            branches:
-              only:
-                - master
+            - build-dev:
+                context : org-global
+                filters:
+                    branches:
+                    ignore:
+                        - master
 
-      - deployDev:
-          context : org-global
-          requires:
-            - build-dev
-            # temporarily permit prod builds
-            - build-prod
-          filters: 
-            branches:
-              only:
-                - dev
-                # temporarily deploy master to dev
-                - master
+            - build-prod:
+                context : org-global
+                requires: increment-patch
+                filters:
+                    branches:
+                    only:
+                        - master
 
-      # - deployProd:
-      #     context : org-global
-      #     requires:
-      #       - build-prod
-      #     filters: 
-      #       branches:
-      #         only:
-      #           - master
+            # - deployDev:
+            #     context : org-global
+            #     requires:
+            #         - build-dev
+            #         # temporarily permit prod builds
+            #         - build-prod
+            #     filters: 
+            #         branches:
+            #         only:
+            #             - dev
+            #             # temporarily deploy master to dev
+            #             - master
+
+            - deployProd:
+                context : org-global
+                requires:
+                    - build-prod
+                filters: 
+                    branches:
+                    only:
+                        - master
