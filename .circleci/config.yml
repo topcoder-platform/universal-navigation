@@ -52,6 +52,18 @@ workspace_persist: &workspace_persist
 workspace_attach: &workspace_attach
     at: ./workspace
 
+check_types: &check_types
+  name: Check Types
+  command: |
+    npm ci
+    npm run types
+    diffstatus=$(git status --porcelain)
+    echo DIFF=$diffstatus >> $GITHUB_OUTPUT
+
+check_types_steps: &check_types_steps
+    - checkout
+    - setup_remote_docker
+    - run: *check_types
 
 build_steps: &build_steps
     # Initialization.
@@ -114,10 +126,23 @@ jobs:
       APPNAME: "universal-navigation"
     steps: *deploy_steps
 
+  checkTypes:
+    <<: *defaults
+    steps: *check_types_steps
+
+
+
 workflows:
   version: 2
   build:
     jobs:
+      - checkTypes:
+          context : org-global
+          filters: 
+            branches:
+              only:
+                - github-workflows
+
       - build-dev:
           context : org-global
           filters:
@@ -145,11 +170,11 @@ workflows:
                 # temporarily deploy master to dev
                 - master
 
-      - deployProd:
-          context : org-global
-          requires:
-            - build-prod
-          filters: 
-            branches:
-              only:
-                - master
+      # - deployProd:
+      #     context : org-global
+      #     requires:
+      #       - build-prod
+      #     filters: 
+      #       branches:
+      #         only:
+      #           - master
