@@ -149,9 +149,9 @@ jobs:
             APPNAME: "universal-navigation"
         steps: *deploy_steps
 
-    checkTypes:
-        <<: *defaults
-        steps: *check_types_steps
+    # checkTypes:
+    #     <<: *defaults
+    #     steps: *check_types_steps
 
 
 workflows:
