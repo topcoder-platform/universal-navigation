@@ -46,7 +46,7 @@
                 )
               }
             >
-              <a href={child.url ?? navUrl(child)}>
+              <a href={navUrl(child)}>
                 {child.label}
               </a>
             </li>

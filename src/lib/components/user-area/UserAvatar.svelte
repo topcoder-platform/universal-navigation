@@ -3,8 +3,8 @@
   import { classnames } from 'lib/utils/classnames';
   import { isMobile } from 'lib/utils/window-size.store';
   import styles from './UserAvatar.module.scss';
-  import PopupMenu from './PopupMenu.svelte';
-  import MobileMenu from './MobileMenu.svelte';
+  import PopupMenu from '../PopupMenu.svelte';
+  import MobileMenu from '../MobileMenu.svelte';
   import UserMenu from './UserMenu.svelte';
 
   export let user: AuthUser;
@@ -12,6 +12,11 @@
 
   let elRef: HTMLElement;
   let popupIsVisible: boolean;
+
+  let initials: string = '';
+  $: initials = user['initials'] ?? (
+    `${user.firstName?.charAt(0) ?? ''}${user.lastName?.charAt(0) ?? ''}`
+  );
 
 </script>
 
@@ -22,9 +27,9 @@
   on:keydown={() => {}}
 >
   {#if user?.photoUrl}
-    <img src={user.photoUrl} alt={user.initials} />
+    <img src={user.photoUrl} alt={initials} />
   {:else}
-    <span>{user.initials}</span>
+    <span>{initials}</span>
   {/if}
 </div>
 

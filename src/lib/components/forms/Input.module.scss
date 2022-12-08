@@ -1,0 +1,25 @@
+.inputEl {
+  input, textarea {
+    border-radius: 0;
+    color: #7f7f7f;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+
+    &, &:focus {
+      border: 0 none;
+      box-shadow: none;
+      color: #2a2a2a;
+      outline: none;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}

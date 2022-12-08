@@ -8,7 +8,7 @@
   import TopNavbar from 'lib/components/TopNavbar.svelte';
   import LinksMenu from 'lib/components/LinksMenu.svelte';
   import { classnames } from 'lib/utils/classnames';
-  import UserArea from 'lib/components/UserArea.svelte';
+  import UserArea from 'lib/components/user-area/UserArea.svelte';
   import { isMobile } from 'lib/utils/window-size.store';
   import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
   import { checkAndLoadFonts } from 'lib/utils/fonts';

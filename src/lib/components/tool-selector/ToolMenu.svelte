@@ -3,7 +3,7 @@
   import { classnames } from 'lib/utils/classnames';
   import { getToolSelectorItems } from 'lib/functions/tool-selector-menu.provider';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
-  import InlineSvg from './InlineSvg.svelte';
+  import InlineSvg from '../InlineSvg.svelte';
   import styles from './ToolMenu.module.scss';
 
   const navMenuItems = getToolSelectorItems()

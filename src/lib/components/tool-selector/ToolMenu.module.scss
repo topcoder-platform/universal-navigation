@@ -11,6 +11,10 @@
   @include mobile {
     width: auto;
   }
+
+  > svg {
+    display: flex;
+  }
 }
 
 .title {
