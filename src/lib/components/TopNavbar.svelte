@@ -12,12 +12,14 @@
 </script>
 
 <nav class={classnames(styles.topNavbarWrap, className, styles[style], 'uni-topNavbar')}>
-  {#if showLogo || style === 'primary'}
-    <TcLogo minVersion={minLogoVersion} />
-  {/if}
-  <slot />
+  <div class={styles.topNavbarInner}>
+    {#if showLogo || style === 'primary'}
+      <TcLogo minVersion={minLogoVersion} />
+    {/if}
+    <slot />
 
-  <div class={styles.right}>
-    <slot name="right" />
+    <div class={styles.right}>
+      <slot name="right" />
+    </div>
   </div>
 </nav>

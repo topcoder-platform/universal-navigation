@@ -14,6 +14,9 @@
   display: flex;
   box-sizing: border-box;
 
+  @include maxViewWidth;
+  margin: 0 auto;
+
   @include tabletOnly {
     max-height: none;
     padding: 16px;

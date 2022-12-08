@@ -6,7 +6,6 @@
   align-items: center;
   background: #0C0C0C;
   color: #AAAAAA;
-  padding: 18px 32px;
 
   &.primary {
     background: #0C0C0C;
@@ -16,14 +15,27 @@
   &.secondary {
     background: #2A2A2A;
     color: #AAAAAA;
-    padding: 12px 32px;
+    .topNavbarInner {
+      padding: 12px 32px;
+    }
   }
 
   &.tertiary {
     background: #F4F4F4;
     color: #AAAAAA;
-    padding: 12px 32px;
+    .topNavbarInner {
+      padding: 12px 32px;
+    }
   }
+}
+
+.topNavbarInner {
+  @include maxViewWidth;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  margin: 0 auto;
 
   @include mobile {
     height: 48px;
