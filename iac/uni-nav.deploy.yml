@@ -116,8 +116,8 @@ Resources:
                             # Online Review Local
                             - http://local.topcoder-dev.com:8080
 
-                            # PACTS Prod & QA
-                            - https://community.${Domain}
+                            # PACTS Prod & Dev
+                            - !Sub https://community.${Domain}
 
                             # PACTS Local
                             - !If 
