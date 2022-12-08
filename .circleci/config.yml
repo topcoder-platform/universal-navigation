@@ -181,7 +181,8 @@ workflows:
 
             - build-prod:
                 context : org-global
-                requires: increment-patch
+                requires: 
+                    - increment-patch
                 filters:
                     branches:
                         only:
