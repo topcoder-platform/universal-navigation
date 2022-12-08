@@ -13,24 +13,24 @@ deploy_defaults: &deploy_defaults
 install_build_dependency: &install_build_dependency
     name: Installation of build and deployment dependencies.
     command: |
-      apt-get update -y && apt-get install -qq -y python-pip libpython-dev
-      curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
-      #installing awscli
-      pip install awscli --upgrade
-      apt install jq -y
+        apt-get update -y && apt-get install -qq -y python-pip libpython-dev
+        curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
+        #installing awscli
+        pip install awscli --upgrade
+        apt install jq -y
 
 install_dependency: &install_dependency
     name: Installation of build and deployment dependencies.
     command: |
-      pip3 install awscli --upgrade
+        pip3 install awscli --upgrade
 
 install_deploysuite: &install_deploysuite
     name: Installation of install_deploysuite.
     command: |
-      git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
-      cp ./../buildscript/master_deploy.sh .
-      cp ./../buildscript/buildenv.sh .
-      cp ./../buildscript/awsconfiguration.sh .
+        git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
+        cp ./../buildscript/master_deploy.sh .
+        cp ./../buildscript/buildenv.sh .
+        cp ./../buildscript/awsconfiguration.sh .
 
 restore_cache_settings_for_build: &restore_cache_settings_for_build
     key: connect-node-modules-{{ checksum package-lock.json" }}
@@ -38,29 +38,29 @@ restore_cache_settings_for_build: &restore_cache_settings_for_build
 save_cache_settings: &save_cache_settings
     key: connect-node-modules-{{ checksum "package-lock.json" }}
     paths:
-      - node_modules
+        - node_modules
 
 running_npm_build: &running_npm_build
     name: Running npm Build
     command: |
-      npm install
-      npm run build
+        npm install
+        npm run build
 
 workspace_persist: &workspace_persist
     root: .
     paths:
-      - dist
+        - dist
 
 workspace_attach: &workspace_attach
     at: ./workspace
 
-check_types: &check_types
-  name: Check Types
-  command: |
-    npm ci
-    npm run types
-    diffstatus=$(git status --porcelain)
-    echo DIFF=$diffstatus >> $GITHUB_OUTPUT
+# check_types: &check_types
+#     name: Check Types
+#     command: |
+#         npm ci
+#         npm run types
+#         diffstatus=$(git status --porcelain)
+#         echo DIFF=$diffstatus >> $GITHUB_OUTPUT
 
 running_version_patch: &running_version_patch
     name: Patching Version
@@ -102,11 +102,11 @@ deploy_steps: &deploy_steps
     - deploy:
         name: Running MasterScript
         command: |
-          ./awsconfiguration.sh $DEPLOY_ENV
-          source awsenvconf
-          ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-deployvar
-          source buildenvvar
-          ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
+            ./awsconfiguration.sh $DEPLOY_ENV
+            source awsenvconf
+            ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-deployvar
+            source buildenvvar
+            ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
 
