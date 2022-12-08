@@ -1,7 +1,7 @@
-on: # event list
-  push: # on a pull request to each of these branches
-    branches:
-      - master
+# on: # event list
+#   push: # on a pull request to each of these branches
+#     branches:
+#       - master
   
 env: # environment variables (available in any part of the action)
   NODE_VERSION: 16
