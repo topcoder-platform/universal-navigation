@@ -1,7 +1,3 @@
 export declare const toolNavItems: {
-    children: {
-        label: string;
-        description: string;
-        path: string;
-    }[];
+    children: Partial<import("../../functions/nav-menu-item.model").NavMenuItem>[];
 };

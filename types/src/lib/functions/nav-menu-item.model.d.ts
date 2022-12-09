@@ -5,5 +5,7 @@ export interface NavMenuItem {
     label: string;
     path: string;
     type?: 'cta';
+    icon?: string;
+    action?: string;
     url?: string;
 }

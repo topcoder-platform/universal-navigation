@@ -14,5 +14,6 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
         name: any;
         root: any;
     };
+    supportMeta: any;
 };
 export declare const getAppContext: () => Writable<AppContext>;
