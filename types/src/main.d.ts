@@ -12,7 +12,7 @@ export declare type NavigationAppProps = {
     signIn?: () => void;
     signUp?: () => void;
     signOut?: () => void;
-    supportMeta: SupportMeta;
+    supportMeta?: SupportMeta;
 };
 export declare type TcUniNavMethods = 'init' | 'update';
 export declare type TcUniNavFn = (method: TcUniNavMethods, targetId: string, config: NavigationAppProps) => void;
