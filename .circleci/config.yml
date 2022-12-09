@@ -66,9 +66,10 @@ running_version_patch: &running_version_patch
     name: Patching Version
     command: |
         npm install
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         npm version patch -m "[ci skip]"
         git push
-
 
 
 # DEFINE STEPS FOR JOBS
@@ -84,7 +85,7 @@ patch_version_steps: &patch_version_steps
     - setup_remote_docker
     - run: *install_build_dependency
     - run: *install_deploysuite
-    # - run: *running_version_patch
+    - run: *running_version_patch
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist 
 
@@ -189,7 +190,8 @@ workflows:
                 filters:
                     branches:
                         only:
-                            - master
+                            # - master
+                            - PROD-3277_version
 
             # - deployDev:
             #     context : org-global
