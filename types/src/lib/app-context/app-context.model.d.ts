@@ -6,5 +6,5 @@ export interface AppContext {
     auth: AuthConfig;
     toolConfig: ToolConfig;
     navigationHandler: NavigationHandler;
-    supportMeta: SupportMeta;
+    supportMeta?: SupportMeta;
 }

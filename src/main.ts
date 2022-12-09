@@ -24,7 +24,7 @@ export type NavigationAppProps = {
   signUp?: () => void
   signOut?: () => void
 
-  supportMeta: SupportMeta
+  supportMeta?: SupportMeta
 }
 
 export type TcUniNavMethods = 'init'|'update'
