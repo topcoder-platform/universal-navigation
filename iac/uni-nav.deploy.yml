@@ -79,19 +79,7 @@ Resources:
                         # TODO: figure out the best way to support wildcard origins
                         Items:
 
-                            # Community App/PACTS Prod & QA
-                            - !If 
-                                - IsProd
-                                - !Sub 'https://community.${Domain}'
-                                - !Sub 'https://qa-community-app.${Domain}'
-
-                            # Community App/PACTS Local
-                            - !If 
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub http://local.tc.cloud.topcoder.com
-
-                            # Customer Mktg Prod & Dev
+                            # Customer & Member Marketing Prod & Dev
                             - !Sub https://${Domain} 
                             - !Sub https://www.${Domain}
 
@@ -99,11 +87,46 @@ Resources:
                             - !Sub https://discussions.${Domain} 
                             - !Sub https://vanilla.${Domain}
 
+                            # Member Marketing Prod & Dev
+                            - !Sub https://community-app.${Domain}
+                            
+                            # Member Marketing Beta & Staging
+                            - !If 
+                                - IsProd
+                                - https://beta-community-app.topcoder.com
+                                - !Ref AWS::NoValue
+                            - !If 
+                                - IsProd
+                                - https://staging-community-app.topcoder.com
+                                - !Ref AWS::NoValue
+
+                            # Member Marketing QA
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://qa-community-app.topcoder-dev.com
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://test-community-app.topcoder-dev.com
+
                             # Online Review Prod & Dev
                             - !Sub https://software.${Domain}
 
                             # Online Review Local
-                            - http://local.topcoder-dev.com:8080
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://local.topcoder-dev.com:8080
+
+                            # PACTS Prod & Dev
+                            - !Sub https://community.${Domain}
+
+                            # PACTS Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub http://local.tc.cloud.topcoder.com
 
                             # Platform UI Prod & Dev
                             - !Sub https://platform-ui.${Domain}
