@@ -6,6 +6,7 @@ export declare const toolSelectorNavItems: {
             children: {
                 label: string;
                 url: string;
+                icon: string;
                 description: string;
             }[];
         } | {

@@ -1,30 +1,33 @@
 export declare const marketingNavItems: {
     children: {
-        children: ({
-            label: string;
-            description: string;
-            path: string;
-        } | {
-            children: ({
-                label: string;
-                description: string;
-                path: string;
-            } | {
-                children: {
-                    label: string;
-                    description: string;
-                    path: string;
-                }[];
-                label: string;
-                description: string;
-                path: string;
+        children: (Partial<import("../../functions/nav-menu-item.model").NavMenuItem> | {
+            children: (Partial<import("../../functions/nav-menu-item.model").NavMenuItem> | {
+                children: Partial<import("../../functions/nav-menu-item.model").NavMenuItem>[];
+                description?: string;
+                host?: string;
+                label?: string;
+                path?: string;
+                type?: "cta";
+                icon?: string;
+                action?: string;
+                url?: string;
             })[];
-            label: string;
-            description: string;
-            path: string;
+            description?: string;
+            host?: string;
+            label?: string;
+            path?: string;
+            type?: "cta";
+            icon?: string;
+            action?: string;
+            url?: string;
         })[];
-        label: string;
-        description: string;
-        path: string;
+        description?: string;
+        host?: string;
+        label?: string;
+        path?: string;
+        type?: "cta";
+        icon?: string;
+        action?: string;
+        url?: string;
     }[];
 };
