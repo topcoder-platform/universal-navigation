@@ -1,7 +1,7 @@
 export const toolSelectorNavItems = {
     children: [
         {
-            label: "Business",
+            label: "Customer",
             children: [
                 {
                     label: "",
@@ -38,7 +38,7 @@ export const toolSelectorNavItems = {
             ]
         },
         {
-            label: "Community",
+            label: "Talent",
             children: [
                 {
                     label:"Learn",
@@ -80,8 +80,8 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"SRMs (Arena)",
-                            url: "http://topcoder.com/community/arena",
-                            icon: "srm",
+                            url: "http://topcoder.com/talent/arena",
+                            // icon: "srm",
                             description: "Start competitive programming"
                         }
                     ]
@@ -109,7 +109,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"Payments",
-                            url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
+                            url: "http://talent.topcoder.com/PactsMemberServlet?module=PaymentHistory",
                             icon: "payments",
                             description: "Get paid"
                         }
@@ -121,7 +121,7 @@ export const toolSelectorNavItems = {
                         {
                             label:"Forums",
                             url: "https://discussions.topcoder.com",
-                            icon: "forums",
+                            // icon: "forums",
                             description: "Discuss challenges or questions"
                         },
                         {
