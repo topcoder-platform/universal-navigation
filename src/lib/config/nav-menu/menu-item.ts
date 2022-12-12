@@ -1,7 +1,7 @@
 import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
 
 export const businessMenuItem: Partial<NavMenuItem> = {
-  label: 'Business',
+  label: 'Customer',
   description: 'Learn how Topcoder can help your business get work done.',
   path: '/customer',
 };
@@ -177,123 +177,123 @@ export const bookADemoMenuItem: Partial<NavMenuItem> = {
 };
 
 export const communityMenuItem: Partial<NavMenuItem> = {
-  label: 'Community',
+  label: 'Talent',
   description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
-  path: '/community',
+  path: '/talent',
 };
 
 export const learnMenuItem: Partial<NavMenuItem> = {
   label: 'Learn',
   description: 'Learning opportunities provided to Topcoder\'s members.',
-  path: '/community/learn',
+  path: '/talent/learn',
 };
 
 export const topcoderAcademyMenuItem: Partial<NavMenuItem> = {
   label: 'Topcoder Academy',
   description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-  path: '/community/topcoder-academy',
+  path: '/talent/topcoder-academy',
 };
 
 export const articlesMenuItem: Partial<NavMenuItem> = {
   label: 'Articles',
   description: 'Internal articles to help expand your knowledge.',
-  path: '/community/learn/thrive',
+  path: '/talent/learn/thrive',
 };
 
 export const earnMenuItem: Partial<NavMenuItem> = {
   label: 'Earn',
   description: 'How to earn money at Topcoder.',
-  path: '/community/earn',
+  path: '/talent/earn',
 };
 
 export const challengesMenuItem: Partial<NavMenuItem> = {
   label: 'Challenges',
   description: 'Compete with others to solve challenges and earn money.',
-  path: '/community/challenges',
+  path: '/talent/challenges',
 };
 
 export const gigsMenuItem: Partial<NavMenuItem> = {
   label: 'Gigs',
   description: 'Work directly with customers via time-based contracts.',
-  path: '/community/gigs',
+  path: '/talent/gigs',
 };
 
 export const competeMenuItem: Partial<NavMenuItem> = {
   label: 'Compete',
   description: 'Competitive programming for fun and to grow your skills & ranking at Topcoder.',
-  path: '/community/compete',
+  path: '/talent/compete',
 };
 
 export const marathonMatchesMenuItem: Partial<NavMenuItem> = {
   label: 'Marathon Matches',
   description: 'Competitions that span days or weeks.',
-  path: '/community/marathon-matches',
+  path: '/talent/marathon-matches',
 };
 
 export const rapidDevMatchesMenuItem: Partial<NavMenuItem> = {
   label: 'Rapid Dev Matches',
   description: 'Quick competitions you can complete in less than one day.',
-  path: '/community/compete/rapid-dev-matches',
+  path: '/talent/compete/rapid-dev-matches',
 };
 
 export const singleRoundMatchesMenuItem: Partial<NavMenuItem> = {
   label: 'Single Round Matches',
   description: 'Multi-problem algorithmic competitions where you go head-to-head in an arena.',
-  path: '/community/compete/single-round-matches',
+  path: '/talent/compete/single-round-matches',
 };
 
 export const connectMenuItem: Partial<NavMenuItem> = {
   label: 'Connect',
   description: 'Connect with others at Topcoder.',
-  path: '/community/connect',
+  path: '/talent/connect',
 };
 
 export const announcementsMenuItem: Partial<NavMenuItem> = {
   label: 'Announcements',
   description: 'Important announcements to the Topcoder community.',
-  path: '/community/announcements',
+  path: '/talent/announcements',
 };
 
 export const eventsMenuItem: Partial<NavMenuItem> = {
   label: 'Events',
   description: 'Upcoming Topcoder events.',
-  path: '/community/events',
+  path: '/talent/events',
 };
 
 export const topcoderOpenMenuItem: Partial<NavMenuItem> = {
   label: 'Topcoder Open',
   description: 'The utlimate competitive tournament - the big event!',
-  path: '/community/topcoder-open',
+  path: '/talent/topcoder-open',
 };
 
 export const discordMenuItem: Partial<NavMenuItem> = {
   label: 'Discord',
   description: 'Chat with others in the community.',
-  path: '/community/discord',
+  path: '/talent/discord',
 };
 
 export const timelineMenuItem: Partial<NavMenuItem> = {
   label: 'Timeline',
   description: 'An interactive timeline wall showing Topcoder\'s history.',
-  path: '/community/timeline',
+  path: '/talent/timeline',
 };
 
 export const benefitsMenuItem: Partial<NavMenuItem> = {
   label: 'Benefits',
   description: 'Benefits members receive at Topcoder.',
-  path: '/community/benefits',
+  path: '/talent/benefits',
 };
 
 export const healthCareMenuItem: Partial<NavMenuItem> = {
   label: 'Health care',
   description: 'International (non-US) healthcare.',
-  path: '/community/health-care',
+  path: '/talent/health-care',
 };
 
 export const careerGrowthMenuItem: Partial<NavMenuItem> = {
   label: 'Career Growth',
   description: 'Topcoder\'s profile captures your proven skills increasing employment opportunities.',
-  path: '/community/career-growth',
+  path: '/talent/career-growth',
 };
 
 export const supportMenuItem: Partial<NavMenuItem> = {

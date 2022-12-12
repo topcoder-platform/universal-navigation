@@ -1,7 +1,7 @@
 export const toolSelectorNavItems = {
     children: [
         {
-            label: "Business",
+            label: "Customer",
             children: [
                 {
                     label: "",
@@ -38,7 +38,7 @@ export const toolSelectorNavItems = {
             ]
         },
         {
-            label: "Community",
+            label: "Talent",
             children: [
                 {
                     label:"Learn",
@@ -68,7 +68,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"SRMs (Arena)",
-                            url: "http://topcoder.com/community/arena",
+                            url: "http://topcoder.com/talent/arena",
                             icon: "mm",
                             description: "Hover description text"
                         }
@@ -103,7 +103,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"Payments",
-                            url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
+                            url: "http://talent.topcoder.com/PactsMemberServlet?module=PaymentHistory",
                             icon: "payments",
                             description: "Hover description text"
                         }
