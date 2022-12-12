@@ -3,7 +3,7 @@ import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
 export const businessMenuItem: Partial<NavMenuItem> = {
   label: 'Customer',
   description: 'Learn how Topcoder can help your business get work done.',
-  path: '/customer',
+  path: '/',
 };
 
 export const whyTopcoderMenuItem: Partial<NavMenuItem> = {
@@ -179,7 +179,7 @@ export const bookADemoMenuItem: Partial<NavMenuItem> = {
 export const communityMenuItem: Partial<NavMenuItem> = {
   label: 'Talent',
   description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
-  path: '/talent',
+  path: '/the-community',
 };
 
 export const learnMenuItem: Partial<NavMenuItem> = {
