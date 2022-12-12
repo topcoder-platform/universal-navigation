@@ -10,14 +10,14 @@ export const toolSelectorNavItems = {
                             label: "Self Service Challenges",
                             url: "http://platform-ui.topcoder.com/work",
                             icon: "self-service",
-                            description: "Hover description text"
+                            description: "Launch and manage work"
                         },
-                        {
-                            label:"TopCrowd",
-                            url: "",
-                            icon: "topcrowd",
-                            description: "Hover description text"
-                        }
+                        // {
+                        //     label:"TopCrowd",
+                        //     url: "",
+                        //     icon: "topcrowd",
+                        //     description: "Hover description text"
+                        // }
                     ]
                 },
                 {
@@ -47,13 +47,19 @@ export const toolSelectorNavItems = {
                             label: "Topcoder Academy",
                             url: "http://platform-ui.topcoder.com/learn",
                             icon: "tcacademy",
-                            description: "Hover description text"
+                            description: "Learn new skills"
                         },
                         {
                             label:"Dev Center",
                             icon: "dev-center",
                             url: "http://platform-ui.topcoder.com/dev-center",
-                            description: "Hover description text"
+                            description: "Get help for Topcoder tools"
+                        },
+                        {
+                            label:"Practice",
+                            // icon: "practice",
+                            url: "https://www.topcoder.com/challenges?search=practice&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
+                            description: "Learn to compete"
                         }
                     ]
                 },
@@ -61,16 +67,22 @@ export const toolSelectorNavItems = {
                     label:"Compete",
                     children: [
                         {
-                            label: "MMs & RDMs",
-                            url: "",
+                            label: "Marathon Matches (MM)",
+                            url: "https://www.topcoder.com/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
                             icon: "mm",
-                            description: "Hover description text"
+                            description: "Solve hard algorithm problems"
+                        },
+                        {
+                            label: "Rapid Dev Matches (RDM)",
+                            url: "https://www.topcoder.com/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true",
+                            icon: "mm",
+                            description: "Join fast, fun competitions"
                         },
                         {
                             label:"SRMs (Arena)",
                             url: "http://topcoder.com/community/arena",
-                            icon: "mm",
-                            description: "Hover description text"
+                            icon: "srm",
+                            description: "Start competitive programming"
                         }
                     ]
                 },
@@ -79,33 +91,27 @@ export const toolSelectorNavItems = {
                     children: [
                         {
                             label: "Challenges",
-                            url: "http://topcoder.com/challenges",
+                            url: "https://www.topcoder.com/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
                             icon: "challenges",
-                            description: "Hover description text"
+                            description: "Compete and earn money"
                         },
                         {
                             label:"Gigs",
                             url: "http://topcoder.com/gigs",
                             icon: "gigs",
-                            description: "Hover description text"
+                            description: "Find freelance gigs"
                         },
                         {
                             label:"Review",
                             url: "http://software.topcoder.com",
                             icon: "review",
-                            description: "Hover description text"
-                        },
-                        {
-                            label:"Discussion",
-                            url: "https://discussions.topcoder.com/groups/mine?filter=challenge",
-                            icon: "discussions",
-                            description: "Hover description text"
+                            description: "Review submissions"
                         },
                         {
                             label:"Payments",
                             url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
                             icon: "payments",
-                            description: "Hover description text"
+                            description: "Get paid"
                         }
                     ]
                 },
@@ -113,11 +119,23 @@ export const toolSelectorNavItems = {
                     label:"Connect",
                     children: [
                         {
+                            label:"Forums",
+                            url: "https://discussions.topcoder.com",
+                            icon: "forums",
+                            description: "Discuss challenges or questions"
+                        },
+                        {
+                            label: "Articles",
+                            url: "https://www.topcoder.com/thrive",
+                            // icon: "articles",
+                            description: "Get inspired"
+                        },
+                        {
                             label: "Discord",
                             url: "http://discord.com/invite/topcoder",
                             icon: "discord",
-                            description: "Hover description text"
-                        }
+                            description: "Chat live with members"
+                        },
                     ]
                 }
             ]
