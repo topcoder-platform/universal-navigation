@@ -24,6 +24,7 @@
 
     // We listen to the resize event
     window.addEventListener('resize', updateVh);
+    updateVh();
 
     return () => window.removeEventListener('resize', updateVh);
   })
