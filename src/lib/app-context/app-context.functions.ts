@@ -14,7 +14,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
     toolRoot = prevContext.toolConfig?.root,
     handleNavigation = prevContext.navigationHandler,
     supportMeta = prevContext.supportMeta,
-    minFooter = prevContext.minFooter ?? prevContext.toolConfig?.minFooter,
+    fullFooter = prevContext.toolConfig?.fullFooter,
   } = newConfig
 
   const hasUserProp = hasOwnProperty(newConfig, 'user')
@@ -31,7 +31,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
     toolConfig: {
       name: toolName,
       root: toolRoot,
-      minFooter: minFooter,
+      fullFooter,
     },
     supportMeta,
   }

@@ -11,7 +11,7 @@
   import styles from './FooterNavigation.module.scss'
 
   const ctx = getAppContext()
-  $: ({minFooter} = $ctx.toolConfig)
+  $: ({fullFooter} = $ctx.toolConfig)
 
   const menuItems = getFooterNavItems()
   let supportVisible = false;
@@ -29,7 +29,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  {#if minFooter !== true}
+  {#if fullFooter === true}
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
