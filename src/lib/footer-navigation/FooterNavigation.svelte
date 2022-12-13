@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { getAppContext } from 'lib/app-context';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import { navUrl } from 'lib/utils/paths';
@@ -8,6 +9,9 @@
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
+
+  const ctx = getAppContext()
+  $: ({minFooter} = $ctx.toolConfig)
 
   const menuItems = getFooterNavItems()
   let supportVisible = false;
@@ -25,6 +29,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
+  {#if minFooter !== true}
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
@@ -48,6 +53,7 @@
       {/each}
     </ul>
   </div>
+  {/if}
 
   <FooterBottomBar />
 
