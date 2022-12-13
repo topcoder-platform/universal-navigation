@@ -10,7 +10,7 @@ const routeMatchesPath = (path: string, route: NavMenuItem): boolean => (
  * based on the `isAuthenticated` param
  * activates the `authenticatedPath` for a nav menu item
  * @param isAuthenticated
- * @param param1
+ * @param navigationItem
  * @param depth
  * @returns NavMenuItem.children
  */
