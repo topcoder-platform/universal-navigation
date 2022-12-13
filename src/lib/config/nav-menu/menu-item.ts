@@ -180,6 +180,7 @@ export const communityMenuItem: Partial<NavMenuItem> = {
   label: 'Talent',
   description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
   path: '/the-community',
+  authenticatedPath: '/home',
 };
 
 export const learnMenuItem: Partial<NavMenuItem> = {

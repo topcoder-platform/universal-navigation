@@ -6,11 +6,37 @@ const routeMatchesPath = (path: string, route: NavMenuItem): boolean => (
 )
 
 /**
- * Matches the current route to a navigation menu item 
+ * Parses the passed nav menu items and
+ * based on the `isAuthenticated` param
+ * activates the `authenticatedPath` for a nav menu item
+ * @param isAuthenticated
+ * @param param1
+ * @param depth
+ * @returns NavMenuItem.children
+ */
+export const activateAuthenticatedRoutes = (isAuthenticated: boolean, {children = []}: NavMenuItem, depth?: number) => {
+  // safe escape if things get out of control
+  if (depth >= 9) {
+    return
+  }
+
+  for(let child of children) {
+    if (isAuthenticated && child.authenticatedPath) {
+      child.path = child.authenticatedPath
+    }
+
+    activateAuthenticatedRoutes(isAuthenticated, child, depth + 1);
+  }
+
+  return children;
+}
+
+/**
+ * Matches the current route to a navigation menu item
  *  and returns the full trail to the matched route (eg. [parent, matchedRoute])
  * @param navMenu The full navigation menu to be parsed and to search for a matched route
  * @param path Path to match agains
- * @returns 
+ * @returns
  */
 export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] => {
 
@@ -37,7 +63,7 @@ export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] =
  * Get the active route
  * @param navMenu The full navigation menu
  * @param trailLevel The trail level of the active route to return
- * @returns 
+ * @returns
  */
 export function getActiveRoute(navMenu: NavMenuItem, trailLevel?: number): NavMenuItem[] {
   const locationHref = `${location.pathname}`
