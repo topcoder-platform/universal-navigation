@@ -20,7 +20,7 @@
   let menuItems: NavMenuItem[];
   $: menuItems = getFooterNavItems(isAuthenticated)
 
-  $: ({minFooter} = $ctx.toolConfig)
+  $: ({fullFooter} = $ctx.toolConfig)
 
   let supportVisible = false;
   let footerEl: Element | undefined = undefined;
@@ -37,7 +37,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  {#if minFooter !== true}
+  {#if fullFooter === true}
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}

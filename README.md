@@ -76,7 +76,7 @@ The dev version of the UniNav script allows the following origins.
 
 Customer & Member Mktg
 - https://topcoder-dev.com
-- https://www.topcoder-dev.com 
+- https://www.topcoder-dev.com
 
 Forum
 - https://discussions.topcoder-dev.com
@@ -112,7 +112,7 @@ The dev version of the UniNav script allows the following origins.
 
 Customer & Member Mktg
 - https://topcoder.com
-- https://www.topcoder.com 
+- https://www.topcoder.com
 
 Forum
 - https://discussions.topcoder.com
@@ -281,6 +281,7 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.signUp           | () => void                              | yes (except for footer) | Called when the user clicks sign up/register                                      | none          |
 | config.toolName         | string                                  | yes (tool nav only)     | The name of the tool as it should appear in the header                            | none          |
 | config.toolRoot         | string                                  | yes (tool nav only)     | The route to the tool as it should appear in the header                           | none          |
+| config.fullFooter       | boolean                                 | no                      | Shows the full footer navigation when it is true                                  | false         |
 | config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                     | The type of navigation to render                                                  |               |
 | config.user             | {photoURL, userId, initials, handle}    | no                      | The logged in user                                                                | {}            |
 | config.supportMeta      | {challengeId, isSelfService}            | no                      | Additional meta data to be sent along with any support ticket created by the user |               |
