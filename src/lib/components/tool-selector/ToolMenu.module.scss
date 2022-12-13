@@ -104,6 +104,8 @@
   a {
     line-height: 22px;
     font: inherit;
+    margin-bottom: -4px;
+    margin-top: 4px;
   }
 
   &:global(.navButton) {
@@ -125,6 +127,11 @@
       color: #219174;
       border-color: #219174;
     }
+
+    a {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   &:hover {
@@ -138,8 +145,10 @@
       color: #767676;
     }
   }
+}
 
-  svg {
+.toolIcon {
+  img, svg {
     display: block;
     width: 32px;
     height: 32px;
@@ -158,7 +167,6 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.2s ease-in-out;
-  margin-top: -4px;
 }
 
 .toolMenuSpacer {

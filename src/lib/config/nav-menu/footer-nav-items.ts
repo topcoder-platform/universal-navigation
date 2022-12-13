@@ -7,7 +7,7 @@ export const footerNavItems = {
       children: [
         {
           label: "About Topcoder",
-          path: "/business"
+          path: "/customer"
         }
       ]
     },

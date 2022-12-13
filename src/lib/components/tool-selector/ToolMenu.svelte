@@ -34,15 +34,17 @@
             <ul class={styles.toolNavItems}>
               {#each group.children as navItem}
                 <li class={classnames(styles.toolNavItem, navItem.type === 'cta' && 'navButton')}>
-                  {#if navItem.type !== 'cta'}
-                    {#if navItem.icon}
-                      <svg class="icon">
-                        <use xlink:href={`#${navItem.icon}`}></use>
-                      </svg>
-                    {:else}
-                      <img src={toolIcon} alt={navItem.label} />
+                  <div class={styles.toolIcon}>
+                    {#if navItem.type !== 'cta'}
+                      {#if navItem.icon}
+                        <svg>
+                          <use xlink:href={`#${navItem.icon}`}></use>
+                        </svg>
+                      {:else}
+                        <img src={toolIcon} alt={navItem.label} />
+                      {/if}
                     {/if}
-                  {/if}
+                  </div>
                   <div class={styles.navItemContent}>
                     <a href={navItem.url}>{navItem.label}</a>
                     {#if navItem.type !== 'cta' && navItem.description}
