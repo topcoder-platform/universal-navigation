@@ -57,7 +57,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"Practice",
-                            // icon: "practice",
+                            icon: "practice",
                             url: "https://www.topcoder.com/challenges?search=practice&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
                             description: "Learn to compete"
                         }
@@ -67,21 +67,21 @@ export const toolSelectorNavItems = {
                     label:"Compete",
                     children: [
                         {
-                            label: "Marathon Matches (MM)",
+                            label: "Marathon Matches",
                             url: "https://www.topcoder.com/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
                             icon: "mm",
                             description: "Solve hard algorithm problems"
                         },
                         {
-                            label: "Rapid Dev Matches (RDM)",
+                            label: "Rapid Dev Matches",
                             url: "https://www.topcoder.com/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true",
-                            icon: "mm",
+                            icon: "rdm",
                             description: "Join fast, fun competitions"
                         },
                         {
                             label:"SRMs (Arena)",
                             url: "http://topcoder.com/talent/arena",
-                            // icon: "srm",
+                            icon: "srm",
                             description: "Start competitive programming"
                         }
                     ]
@@ -121,13 +121,13 @@ export const toolSelectorNavItems = {
                         {
                             label:"Forums",
                             url: "https://discussions.topcoder.com",
-                            // icon: "forums",
+                            icon: "forums",
                             description: "Discuss challenges or questions"
                         },
                         {
                             label: "Articles",
                             url: "https://www.topcoder.com/thrive",
-                            // icon: "articles",
+                            icon: "articles",
                             description: "Get inspired"
                         },
                         {
