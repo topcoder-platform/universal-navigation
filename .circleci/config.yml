@@ -199,10 +199,10 @@ workflows:
                     - build-prod
                 filters: 
                     branches:
-                    only:
-                        - dev
-                        # temporarily deploy master to dev
-                        - master
+                        only:
+                            - dev
+                            # temporarily deploy master to dev
+                            - master
 
             - deployProd:
                 context : org-global
