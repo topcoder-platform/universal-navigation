@@ -11,4 +11,7 @@ export interface NavMenuItem {
 
     // tool selector only has urls, no path
     url?: string
+
+    // path used when user is authenticated
+    authenticatedPath?: string
 }

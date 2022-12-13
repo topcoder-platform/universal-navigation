@@ -7,13 +7,21 @@
   import SupportModal from 'lib/components/modals/SupportModal.svelte';
   import { supportMenuItem } from 'lib/config/nav-menu/menu-item';
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
+  import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
 
   const ctx = getAppContext()
+  $: ({auth} = $ctx)
+
+  let isAuthenticated: boolean;
+  $: isAuthenticated = auth.ready && !!auth.user;
+
+  let menuItems: NavMenuItem[];
+  $: menuItems = getFooterNavItems(isAuthenticated)
+
   $: ({minFooter} = $ctx.toolConfig)
 
-  const menuItems = getFooterNavItems()
   let supportVisible = false;
   let footerEl: Element | undefined = undefined;
 

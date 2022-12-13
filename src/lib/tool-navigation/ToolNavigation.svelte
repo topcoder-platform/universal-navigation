@@ -14,11 +14,16 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
 
   import styles from './ToolNavigation.module.scss';
+  import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
 
-  const menuItems = getMainNavItems()
   const ctx = getAppContext()
+  $: ({toolConfig, navigationHandler, auth} = $ctx)
 
-  $: ({toolConfig, navigationHandler} = $ctx)
+  let isAuthenticated: boolean;
+  $: isAuthenticated = auth.ready && !!auth.user;
+
+  let menuItems: NavMenuItem[];
+  $: menuItems = getMainNavItems(isAuthenticated)
 
   function handleNavigation(ev: MouseEvent) {
     if (typeof navigationHandler === 'function') {
