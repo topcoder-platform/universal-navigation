@@ -15,6 +15,7 @@ export type NavigationAppProps = {
   type?: NavigationType
   toolName?: string,
   toolRoot?: string,
+  minFooter?: boolean,
   handleNavigation?: NavigationHandler
 
   onReady?: () => void
@@ -56,6 +57,10 @@ const NavigationLoadersMap = APP_IS_PROD ? {
 }
 
 const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
+
+function checkIsToolFooter(ctxStore: typeof instancesContextStore): boolean {
+  return Object.values(ctxStore).some(ctx => (ctx.get('type') as unknown as string) === 'tool')
+}
 
 /**
  * Initialize the navigation component
@@ -105,7 +110,10 @@ async function init(
 
   // build context for the navigation
   const ctx = new Map([
-    ['appContext', writable(buildContext(props, {}))]
+    ['type', navType as unknown as Writable<any>],
+    ['appContext', writable(buildContext(props, {
+      minFooter: navType === 'footer' ? checkIsToolFooter(instancesContextStore) : undefined
+    }))]
   ]);
 
   instancesContextStore[targetId] = ctx;
@@ -143,7 +151,10 @@ function update(
   }
 
   const appContext = ctx.get('appContext');
-  appContext.update(buildContext.bind(null, config))
+  appContext.update(buildContext.bind(null, {
+    ...config,
+    minFooter: checkIsToolFooter(instancesContextStore),
+  }))
 }
 
 function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
