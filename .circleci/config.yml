@@ -191,18 +191,18 @@ workflows:
                         only:
                             - master
 
-            # - deployDev:
-            #     context : org-global
-            #     requires:
-            #         - build-dev
-            #         # temporarily permit prod builds
-            #         - build-prod
-            #     filters: 
-            #         branches:
-            #         only:
-            #             - dev
-            #             # temporarily deploy master to dev
-            #             - master
+            - deployDev:
+                context : org-global
+                requires:
+                    - build-dev
+                    # temporarily permit prod builds
+                    - build-prod
+                filters: 
+                    branches:
+                    only:
+                        - dev
+                        # temporarily deploy master to dev
+                        - master
 
             - deployProd:
                 context : org-global
