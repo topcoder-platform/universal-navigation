@@ -14,4 +14,7 @@ export interface NavMenuItem {
 
     // path used when user is authenticated
     authenticatedPath?: string
+
+    // for tools groups ordering
+    groupOrder?: number
 }

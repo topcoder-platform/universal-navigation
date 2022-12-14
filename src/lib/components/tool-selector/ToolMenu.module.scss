@@ -74,6 +74,7 @@
 
   @include mobile {
     padding: 16px;
+    order: var(--order);
 
     &.hasCtas {
       border-top: 1px solid #D4D4D4;

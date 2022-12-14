@@ -42,6 +42,7 @@ export const toolSelectorNavItems = {
             children: [
                 {
                     label:"Learn",
+                    groupOrder: 1,
                     children: [
                         {
                             label: "Topcoder Academy",
@@ -65,6 +66,7 @@ export const toolSelectorNavItems = {
                 },
                 {
                     label:"Compete",
+                    groupOrder: 3,
                     children: [
                         {
                             label: "Marathon Matches",
@@ -88,6 +90,7 @@ export const toolSelectorNavItems = {
                 },
                 {
                     label:"Earn",
+                    groupOrder: 2,
                     children: [
                         {
                             label: "Challenges",
@@ -117,6 +120,7 @@ export const toolSelectorNavItems = {
                 },
                 {
                     label:"Connect",
+                    groupOrder: 4,
                     children: [
                         {
                             label:"Forums",
