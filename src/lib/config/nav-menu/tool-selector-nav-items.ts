@@ -109,7 +109,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"Payments",
-                            url: "http://talent.topcoder.com/PactsMemberServlet?module=PaymentHistory",
+                            url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
                             icon: "payments",
                             description: "Get paid"
                         }
