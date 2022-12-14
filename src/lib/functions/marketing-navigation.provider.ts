@@ -9,6 +9,6 @@ export function getMainNavItems(isAuthenticated: boolean): NavMenuItem[] {
   return activateAuthenticatedRoutes(isAuthenticated, menu);
 }
 
-export function getActiveRoute(index?: number): NavMenuItem[] {
-  return getActiveRouteUtil(navMenu, index);
+export function getActiveRoute(navItems: NavMenuItem[], index?: number): NavMenuItem[] {
+  return getActiveRouteUtil(navItems, index);
 }

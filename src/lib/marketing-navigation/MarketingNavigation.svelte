@@ -21,7 +21,8 @@
   let menuItems: NavMenuItem[];
   $: menuItems = getMainNavItems(isAuthenticated)
 
-  const activeRoute: NavMenuItem[] = getActiveRoute()
+  let activeRoute: NavMenuItem[] = [];
+  $: activeRoute = getActiveRoute(menuItems)
   const [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
 
   onMount(checkAndLoadFonts)
@@ -29,6 +30,7 @@
 
 <div class="tc-universal-nav-wrap">
   <NavigationBar
+    activeRoutePath={activeRoute}
     activeRoute={primaryRoute}
     style='primary'
     menuItems={menuItems}

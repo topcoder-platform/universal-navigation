@@ -7,6 +7,7 @@
 
     export let style: 'primary'|'secondary'|'tertiary';
     export let menuItems: NavMenuItem[] = [];
+    export let activeRoutePath: NavMenuItem[] = [];
     export let activeRoute: NavMenuItem;
     export let isMobile: boolean = false;
 
@@ -17,7 +18,10 @@
 
 <TopNavbar style={style} minLogoVersion={isMobile}>
   {#if isMobile}
-    <MobileNavigation />
+    <MobileNavigation
+      menuItems={menuItems}
+      activeRoutes={activeRoutePath}
+    />
   {:else}
     <LinksMenu
         menuItems={menuItems}
