@@ -140,6 +140,8 @@ workflows:
                     branches:
                         ignore:
                             - master
+                            # temporarily ignore this version branch
+                            - PROD-3277_version
 
             - build-prod:
                 context : org-global
