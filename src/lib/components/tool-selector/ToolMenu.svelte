@@ -24,7 +24,10 @@
 
       <div class={styles.toolGroups}>
         {#each section.children as group}
-          <div class={classnames(styles.toolGroup, hasCtas(group) && styles.hasCtas)}>
+          <div
+            class={classnames(styles.toolGroup, hasCtas(group) && styles.hasCtas)}
+            style:--order={group.groupOrder ?? ''}
+          >
             {#if group.label}
               <div class={styles.toolGroupTitle}>
                 {group.label}
