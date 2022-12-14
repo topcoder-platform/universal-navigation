@@ -107,7 +107,7 @@ jobs:
             DEPLOY_ENV: "PROD"
             LOGICAL_ENV: "prod"
             APPNAME: "universal-navigation"
-        steps: *patch_version_steps
+        steps: *build_steps
 
     # Just tests commited code.
     deployDev:
