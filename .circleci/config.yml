@@ -126,7 +126,7 @@ jobs:
             LOGICAL_ENV: "prod"
             ENABLE_CACHE: true
             APPNAME: "universal-navigation"
-        steps: *deploy_step
+        steps: *deploy_steps
 
 
 workflows:
