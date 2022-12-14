@@ -80,7 +80,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"SRMs (Arena)",
-                            url: "http://topcoder.com/talent/arena",
+                            url: "https://www.topcoder.com/community/arena?ref=nav",
                             icon: "srm",
                             description: "Start competitive programming"
                         }
