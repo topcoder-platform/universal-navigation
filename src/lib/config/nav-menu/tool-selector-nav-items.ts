@@ -80,7 +80,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"SRMs (Arena)",
-                            url: "http://topcoder.com/talent/arena",
+                            url: "https://www.topcoder.com/community/arena?ref=nav",
                             icon: "srm",
                             description: "Start competitive programming"
                         }
@@ -109,7 +109,7 @@ export const toolSelectorNavItems = {
                         },
                         {
                             label:"Payments",
-                            url: "http://talent.topcoder.com/PactsMemberServlet?module=PaymentHistory",
+                            url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
                             icon: "payments",
                             description: "Get paid"
                         }
