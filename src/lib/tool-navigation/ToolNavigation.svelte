@@ -55,7 +55,9 @@
 
 <TopNavbar minLogoVersion class={styles.navbar} style="primary">
   {#if $isMobile}
-    <MobileNavigation />
+    <MobileNavigation
+      menuItems={menuItems}
+    />
   {:else}
     <LinksMenu
       menuItems={menuItems}

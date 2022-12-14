@@ -65,8 +65,8 @@ export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] =
  * @param trailLevel The trail level of the active route to return
  * @returns
  */
-export function getActiveRoute(navMenu: NavMenuItem, trailLevel?: number): NavMenuItem[] {
+export function getActiveRoute(navMenuItems: NavMenuItem[], trailLevel?: number): NavMenuItem[] {
   const locationHref = `${location.pathname}`
-  const activeRouteTrail = [].concat(matchRoutes(navMenu, locationHref))
+  const activeRouteTrail = [].concat(matchRoutes({children: navMenuItems} as NavMenuItem, locationHref))
   return typeof trailLevel === 'number' ? activeRouteTrail?.slice(trailLevel, 1) : activeRouteTrail
 }

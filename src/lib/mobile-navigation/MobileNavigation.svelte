@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
-  import { getActiveRoute, getMainNavItems } from 'lib/functions/marketing-navigation.provider'
   import MobileMenu from 'lib/components/MobileMenu.svelte';
   import Accordion from 'lib/components/Accordion.svelte';
   import { getPublicPath, navUrl } from 'lib/utils/paths';
@@ -8,8 +7,8 @@
 
   import styles from './MobileNavigation.module.scss';
 
-  const menuItems = getMainNavItems()
-  const activeRoutes: NavMenuItem[] = getActiveRoute()
+  export let menuItems: NavMenuItem[];
+  export let activeRoutes: NavMenuItem[] = [];
   const toggleMenuIcon = getPublicPath(`/assets/icon-menu.svg`);
 
   let menuIsVisible = false;
