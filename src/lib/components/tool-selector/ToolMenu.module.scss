@@ -173,6 +173,9 @@
   border: 0 solid #D4D4D4;
   border-bottom-width: 1px;
   margin: 24px -32px;
+  &.toolMenuSpacer {
+    width: auto;
+  }
   @include mobile {
     display: none;
   }

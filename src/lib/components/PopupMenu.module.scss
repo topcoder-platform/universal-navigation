@@ -2,15 +2,21 @@
   background: #FFFFFF;
   box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 24px 32px;
+  padding: 24px 0;
 
   position: absolute;
   z-index: 9;
 
   top: calc(100% + 4px);
   right: 0;
+
+  max-height: calc(100vh - 60px);
+  display: flex;
 }
 
 .popupMenuInner {
   position: relative;
+  padding: 0 32px;
+  overflow: auto;
+  height: 100%;
 }
