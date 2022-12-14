@@ -54,14 +54,6 @@ workspace_persist: &workspace_persist
 workspace_attach: &workspace_attach
     at: ./workspace
 
-# check_types: &check_types
-#     name: Check Types
-#     command: |
-#         npm ci
-#         npm run types
-#         diffstatus=$(git status --porcelain)
-#         echo DIFF=$diffstatus >> $GITHUB_OUTPUT
-
 running_version_patch: &running_version_patch
     name: Patching Version
     command: |
@@ -74,27 +66,14 @@ running_version_patch: &running_version_patch
 
 # DEFINE STEPS FOR JOBS
 
-# check_types_steps: &check_types_steps
-#     - checkout
-#     - setup_remote_docker
-#     - run: *check_types
-
-patch_version_steps: &patch_version_steps
-    # Initialization.
-    - checkout
-    - setup_remote_docker
-    - run: *install_build_dependency
-    - run: *install_deploysuite
-    - run: *running_version_patch
-    - run: *running_npm_build
-    - persist_to_workspace: *workspace_persist 
-
 build_steps: &build_steps
     # Initialization.
     - checkout
     - setup_remote_docker
     - run: *install_build_dependency
     - run: *install_deploysuite
+    # Temporarily run the version patch step
+    - run: *running_version_patch
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
 
@@ -114,10 +93,6 @@ deploy_steps: &deploy_steps
 
 jobs:
 
-    # increment-patch:
-    #     <<: *deploy_defaults
-    #     steps: *patch_version_steps
-    
     build-dev:
         <<: *defaults
         environment:
@@ -151,30 +126,13 @@ jobs:
             LOGICAL_ENV: "prod"
             ENABLE_CACHE: true
             APPNAME: "universal-navigation"
-        steps: *deploy_steps
-
-    # checkTypes:
-    #     <<: *defaults
-    #     steps: *check_types_steps
+        steps: *deploy_step
 
 
 workflows:
     version: 2
     build:
         jobs:
-    #   - checkTypes:
-    #       context : org-global
-    #       filters: 
-    #         branches:
-    #           only:
-    #             - github-workflows
-
-            # - increment-patch:
-            #     context : org-global
-            #     filters:
-            #         branches:
-            #             only:
-            #                 - master
 
             - build-dev:
                 context : org-global
@@ -185,26 +143,25 @@ workflows:
 
             - build-prod:
                 context : org-global
-                # requires: 
-                #     - increment-patch
                 filters:
                     branches:
                         only:
-                            # - master
+                            - master
+                            # temporarily build this version branch
                             - PROD-3277_version
 
-            # - deployDev:
-            #     context : org-global
-            #     requires:
-            #         - build-dev
-            #         # temporarily permit prod builds
-            #         - build-prod
-            #     filters: 
-            #         branches:
-            #         only:
-            #             - dev
-            #             # temporarily deploy master to dev
-            #             - master
+            - deployDev:
+                context : org-global
+                requires:
+                    - build-dev
+                    # temporarily permit prod builds
+                    - build-prod
+                filters: 
+                    branches:
+                    only:
+                        - dev
+                        # temporarily deploy master to dev
+                        - master
 
             - deployProd:
                 context : org-global
