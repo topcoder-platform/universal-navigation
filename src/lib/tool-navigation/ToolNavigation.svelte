@@ -12,13 +12,19 @@
   import { isMobile } from 'lib/utils/window-size.store';
   import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
+  import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
+  import { useSessionStorage } from 'lib/utils/use-storage';
 
   import styles from './ToolNavigation.module.scss';
 
-  const menuItems = getMainNavItems()
   const ctx = getAppContext()
+  $: ({toolConfig, navigationHandler, auth} = $ctx)
 
-  $: ({toolConfig, navigationHandler} = $ctx)
+  let isAuthenticated: boolean;
+  $: isAuthenticated = auth.ready && !!auth.user;
+
+  let menuItems: NavMenuItem[];
+  $: menuItems = getMainNavItems(isAuthenticated)
 
   function handleNavigation(ev: MouseEvent) {
     if (typeof navigationHandler === 'function') {
@@ -28,7 +34,7 @@
   }
 
   let linksMenuEl: HTMLElement;
-  let mainMenuWidth = 0;
+  let mainMenuWidth = useSessionStorage<Number>('mm-width', 157);
   let mainMenuVisible = false;
 
   function toggleMainMenu() {
@@ -37,7 +43,8 @@
 
   async function setMainMenuWidth() {
     await checkAndLoadFonts()
-    mainMenuWidth = linksMenuEl?.offsetWidth
+    $mainMenuWidth = linksMenuEl?.offsetWidth
+
   }
 
   onMount(setMainMenuWidth)
@@ -48,7 +55,9 @@
 
 <TopNavbar minLogoVersion class={styles.navbar} style="primary">
   {#if $isMobile}
-    <MobileNavigation />
+    <MobileNavigation
+      menuItems={menuItems}
+    />
   {:else}
     <LinksMenu
       menuItems={menuItems}
@@ -58,7 +67,7 @@
 
     <div
       class={classnames(styles.togglerSeparator, mainMenuVisible && styles.toggled)}
-      style="--margin-left: {mainMenuWidth}px"
+      style="--margin-left: {$mainMenuWidth}px"
     >
       <span class={styles.toggleBtn} on:click={toggleMainMenu} on:keydown={toggleMainMenu}>
         <svg width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">

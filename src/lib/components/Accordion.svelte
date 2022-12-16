@@ -41,9 +41,11 @@
           >
             {item.label}
           </a>
-          <span class={styles.itemTrigger} on:click={() => toggleItem(item)} on:keydown={() => {}}>
-            <img src={iconUrl} alt="^" />
-          </span>
+          {#if item.children?.length}
+            <span class={styles.itemTrigger} on:click={() => toggleItem(item)} on:keydown={() => {}}>
+              <img src={iconUrl} alt="^" />
+            </span>
+          {/if}
         </div>
       {:else}
         <a class={styles.navButton} href={navUrl(item)}>

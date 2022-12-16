@@ -7,6 +7,7 @@
   import styles from './ToolSelector.module.scss';
 
   const imgUrl = getPublicPath('/assets/tool-trigger.svg');
+  const toolsIcons = getPublicPath('/assets/tools/sprite.svg');
 
   let elRef: HTMLElement;
   let popupIsVisible: boolean;
@@ -19,6 +20,7 @@
   on:click={() => popupIsVisible = true}
   on:keydown={() => {}}
 >
+  <link rel="prefetch" href={toolsIcons}>
   <a href={'javascript:;'}>
     <img src={imgUrl} alt="Tool" width="24" height="24" />
   </a>

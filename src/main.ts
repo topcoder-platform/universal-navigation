@@ -15,6 +15,7 @@ export type NavigationAppProps = {
   type?: NavigationType
   toolName?: string,
   toolRoot?: string,
+  fullFooter?: boolean,
   handleNavigation?: NavigationHandler
 
   onReady?: () => void
@@ -24,7 +25,7 @@ export type NavigationAppProps = {
   signUp?: () => void
   signOut?: () => void
 
-  supportMeta: SupportMeta
+  supportMeta?: SupportMeta
 }
 
 export type TcUniNavMethods = 'init'|'update'

@@ -74,6 +74,7 @@
 
   @include mobile {
     padding: 16px;
+    order: var(--order);
 
     &.hasCtas {
       border-top: 1px solid #D4D4D4;
@@ -104,6 +105,8 @@
   a {
     line-height: 22px;
     font: inherit;
+    margin-bottom: -4px;
+    margin-top: 4px;
   }
 
   &:global(.navButton) {
@@ -125,6 +128,11 @@
       color: #219174;
       border-color: #219174;
     }
+
+    a {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   &:hover {
@@ -138,8 +146,10 @@
       color: #767676;
     }
   }
+}
 
-  svg {
+.toolIcon {
+  img, svg {
     display: block;
     width: 32px;
     height: 32px;
@@ -158,13 +168,15 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.2s ease-in-out;
-  margin-top: -4px;
 }
 
 .toolMenuSpacer {
   border: 0 solid #D4D4D4;
   border-bottom-width: 1px;
   margin: 24px -32px;
+  &.toolMenuSpacer {
+    width: auto;
+  }
   @include mobile {
     display: none;
   }

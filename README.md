@@ -74,22 +74,27 @@ See the [IAC README](../iac/README.md) for instructions for deploying the stack.
 
 The dev version of the UniNav script allows the following origins.
 
-Community App/PACTS
-- https://qa-community-app.topcoder-dev.com
-- https://local.topcoder-dev.com
-- http://local.tc.cloud.topcoder.com
-
-Customer Mktg
+Customer & Member Mktg
 - https://topcoder-dev.com
-- https://www.topcoder-dev.com 
+- https://www.topcoder-dev.com
 
 Forum
 - https://discussions.topcoder-dev.com
 - https://vanilla.topcoder-dev.com
 
+Member Marketing
+- https://community-app.topcoder-dev.com
+- https://test-community-app.topcoder-dev.com
+- https://qa-community-app.topcoder-dev.com
+
 Online Review
 - https://software.topcoder-dev.com
 - http://local.topcoder-dev.com:8080
+
+PACTS
+- https://community.topcoder-dev.com
+- https://local.topcoder-dev.com
+- http://local.tc.cloud.topcoder.com
 
 Platform UI
 - https://platform-ui.topcoder-dev.com
@@ -98,27 +103,31 @@ Platform UI
 TopCrowd
 - http://127.0.0.1:3000
 - http://localhost:3000
-- https://qa.dev.privatetalent.cloud
 - https://topcrowd.dev.topcoder.com
-
+- https://qa.dev.privatetalent.cloud
 
 ### Production CORS
 
 The dev version of the UniNav script allows the following origins.
 
-Community App/PACTS
-- https://community.topcoder.com
-
-Customer Mktg
+Customer & Member Mktg
 - https://topcoder.com
-- https://www.topcoder.com 
+- https://www.topcoder.com
 
 Forum
 - https://discussions.topcoder.com
 - https://vanilla.topcoder.com
 
+Member Marketing Prod, Beta, & Staging
+- https://community-app.topcoder.com
+- https://beta-community-app.topcoder.com
+- https://staging-community-app.topcoder.com
+
 Online Review
 - https://software.topcoder.com
+
+PACTS
+- https://community.topcoder.com
 
 Platform UI
 - https://platform-ui.topcoder.com
@@ -224,8 +233,10 @@ tcUniNav(
         user: {
             photoURL: 'https://topcoder-prod-media.s3.amazonaws.com/member/profile/vasilica.olariu-1616487120406.png',
             userId: 11111111,
-            initials: 'JD',
-            handle: 'john.doe'
+            handle: 'john.doe',
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john.doe@topcoder.com'
         }
     }
 )
@@ -270,9 +281,26 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.signUp           | () => void                              | yes (except for footer) | Called when the user clicks sign up/register                                      | none          |
 | config.toolName         | string                                  | yes (tool nav only)     | The name of the tool as it should appear in the header                            | none          |
 | config.toolRoot         | string                                  | yes (tool nav only)     | The route to the tool as it should appear in the header                           | none          |
+| config.fullFooter       | boolean                                 | no                      | Shows the full footer navigation when it is true                                  | false         |
 | config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                     | The type of navigation to render                                                  |               |
 | config.user             | {photoURL, userId, initials, handle}    | no                      | The logged in user                                                                | {}            |
 | config.supportMeta      | {challengeId, isSelfService}            | no                      | Additional meta data to be sent along with any support ticket created by the user |               |
+
+### User Model
+
+```
+export interface AuthUser {
+  photoUrl?: string
+  userId: string | number
+  handle: string
+
+  // first & last names used to compose & render
+  // the user avatar when the user has no avatar
+  firstName: string
+  lastName: string
+  email: string
+}
+```
 
 
 ### tcUniNav Methods

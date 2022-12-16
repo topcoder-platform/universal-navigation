@@ -1,15 +1,27 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { getAppContext } from 'lib/app-context';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import { navUrl } from 'lib/utils/paths';
   import SupportModal from 'lib/components/modals/SupportModal.svelte';
   import { supportMenuItem } from 'lib/config/nav-menu/menu-item';
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
+  import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
 
-  const menuItems = getFooterNavItems()
+  const ctx = getAppContext()
+  $: ({auth} = $ctx)
+
+  let isAuthenticated: boolean;
+  $: isAuthenticated = auth.ready && !!auth.user;
+
+  let menuItems: NavMenuItem[];
+  $: menuItems = getFooterNavItems(isAuthenticated)
+
+  $: ({fullFooter} = $ctx.toolConfig)
+
   let supportVisible = false;
   let footerEl: Element | undefined = undefined;
 
@@ -25,6 +37,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
+  {#if fullFooter === true}
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
@@ -48,6 +61,7 @@
       {/each}
     </ul>
   </div>
+  {/if}
 
   <FooterBottomBar />
 
