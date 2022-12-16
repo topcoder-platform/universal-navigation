@@ -58,8 +58,7 @@ running_version_patch: &running_version_patch
     name: Patching Version
     command: |
         npm install
-        git config user.name brooketopcoder
-        git config user.email brooke.souza@topcoder.com
+        git config user.name $CIRCLE_USERNAME
         npm version patch -m "[ci skip]"
         git push --set-upstream origin PROD-3277_version
 
