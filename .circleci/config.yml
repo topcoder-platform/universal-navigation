@@ -73,9 +73,6 @@ build_steps: &build_steps
     - run: *install_build_dependency
     - run: *install_deploysuite
     # Temporarily run the version patch step
-    - add_ssh_keys:
-        fingerprints:
-            - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
     - run: *running_version_patch
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
@@ -95,6 +92,12 @@ deploy_steps: &deploy_steps
             ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
+
+  add-ssh-keys:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
 
     build-dev:
         <<: *defaults
