@@ -93,12 +93,6 @@ deploy_steps: &deploy_steps
 
 jobs:
 
-  add-ssh-keys:
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
-
     build-dev:
         <<: *defaults
         environment:
