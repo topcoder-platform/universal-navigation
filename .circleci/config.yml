@@ -128,6 +128,8 @@ workflows:
                     branches:
                         ignore:
                             - master
+                            # temporarily ignore this brach for dev
+                            - PROD-3458_prod-deploy
 
             - build-prod:
                 context : org-global
@@ -135,7 +137,7 @@ workflows:
                     branches:
                         only:
                             - master
-                            # temporarily build this brach for prod
+                            # temporarily build this brnch for prod
                             - PROD-3458_prod-deploy
 
             - deployDev:
@@ -155,5 +157,5 @@ workflows:
                     branches:
                         only:
                             - master
-                            # temporarily deploy this brach to prod
+                            # temporarily deploy this branch to prod
                             - PROD-3458_prod-deploy
