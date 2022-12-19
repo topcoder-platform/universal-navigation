@@ -64,10 +64,15 @@ running_version_patch: &running_version_patch
         git push --set-upstream origin PROD-3277_version
 
 
+finger_print_add: &finger_print_add
+    fingerprints:
+            - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
+            
 # DEFINE STEPS FOR JOBS
 
 build_steps: &build_steps
     # Initialization.
+    - add_ssh_keys: *finger_print_add          
     - checkout
     - setup_remote_docker
     - run: *install_build_dependency
