@@ -60,7 +60,7 @@ running_version_patch: &running_version_patch
         npm install
         git config user.name brooketopcoder
         git config user.email brooke.souza@topcoder.com
-        npm version patch -m "[ci skip]"
+        npm version patch -m "Increment Version [ci skip]"
         git push --set-upstream origin PROD-3277_version
 
 update_types: &update_types
