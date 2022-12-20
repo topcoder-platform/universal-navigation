@@ -61,7 +61,7 @@ running_version_patch: &running_version_patch
         git config user.name brooketopcoder
         git config user.email brooke.souza@topcoder.com
         npm version patch -m "Increment Version [ci skip]"
-        git push --set-upstream origin PROD-3277_version
+        git push --set-upstream origin master
 
 update_types: &update_types
     name: Updating Types
@@ -73,7 +73,7 @@ update_types: &update_types
         git config user.email brooke.souza@topcoder.com
         git add types
         git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
-        git push --set-upstream origin PROD-3277_version
+        git push --set-upstream origin master
 
 finger_print_add: &finger_print_add
     fingerprints:
