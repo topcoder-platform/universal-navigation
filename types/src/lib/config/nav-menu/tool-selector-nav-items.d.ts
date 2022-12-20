@@ -1,5 +1,5 @@
 export declare const toolSelectorNavItems: {
-    children: {
+    children: ({
         label: string;
         children: ({
             label: string;
@@ -17,5 +17,17 @@ export declare const toolSelectorNavItems: {
                 type: string;
             }[];
         })[];
-    }[];
+    } | {
+        label: string;
+        children: {
+            label: string;
+            groupOrder: number;
+            children: {
+                label: string;
+                url: string;
+                icon: string;
+                description: string;
+            }[];
+        }[];
+    })[];
 };

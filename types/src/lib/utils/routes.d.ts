@@ -1,5 +1,15 @@
 import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
 /**
+ * Parses the passed nav menu items and
+ * based on the `isAuthenticated` param
+ * activates the `authenticatedPath` for a nav menu item
+ * @param isAuthenticated
+ * @param navigationItem
+ * @param depth
+ * @returns NavMenuItem.children
+ */
+export declare const activateAuthenticatedRoutes: (isAuthenticated: boolean, { children }: NavMenuItem, depth?: number) => NavMenuItem[];
+/**
  * Matches the current route to a navigation menu item
  *  and returns the full trail to the matched route (eg. [parent, matchedRoute])
  * @param navMenu The full navigation menu to be parsed and to search for a matched route
@@ -13,4 +23,4 @@ export declare const matchRoutes: (navMenu: NavMenuItem, path: string) => NavMen
  * @param trailLevel The trail level of the active route to return
  * @returns
  */
-export declare function getActiveRoute(navMenu: NavMenuItem, trailLevel?: number): NavMenuItem[];
+export declare function getActiveRoute(navMenuItems: NavMenuItem[], trailLevel?: number): NavMenuItem[];

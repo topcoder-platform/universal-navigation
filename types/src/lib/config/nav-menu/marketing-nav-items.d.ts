@@ -11,6 +11,8 @@ export declare const marketingNavItems: {
                 icon?: string;
                 action?: string;
                 url?: string;
+                authenticatedPath?: string;
+                groupOrder?: number;
             })[];
             description?: string;
             host?: string;
@@ -20,6 +22,8 @@ export declare const marketingNavItems: {
             icon?: string;
             action?: string;
             url?: string;
+            authenticatedPath?: string;
+            groupOrder?: number;
         })[];
         description?: string;
         host?: string;
@@ -29,5 +33,7 @@ export declare const marketingNavItems: {
         icon?: string;
         action?: string;
         url?: string;
+        authenticatedPath?: string;
+        groupOrder?: number;
     }[];
 };

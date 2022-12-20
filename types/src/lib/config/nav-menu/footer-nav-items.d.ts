@@ -13,5 +13,7 @@ export declare const footerNavItems: {
         icon?: string;
         action?: string;
         url?: string;
+        authenticatedPath?: string;
+        groupOrder?: number;
     }[];
 };
