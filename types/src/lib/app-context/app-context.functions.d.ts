@@ -13,6 +13,7 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
     toolConfig: {
         name: any;
         root: any;
+        fullFooter: any;
     };
     supportMeta: any;
 };
