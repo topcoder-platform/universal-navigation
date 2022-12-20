@@ -164,8 +164,6 @@ workflows:
                     branches:
                         ignore:
                             - master
-                            # temporarily ignore this version branch
-                            - PROD-3277_version
 
             - build-prod:
                 context : org-global
@@ -173,8 +171,6 @@ workflows:
                     branches:
                         only:
                             - master
-                            # temporarily build this version branch
-                            - PROD-3277_version
 
             - deployDev:
                 context : org-global
