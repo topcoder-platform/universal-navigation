@@ -82,6 +82,12 @@ Resources:
                             # Customer & Member Marketing Prod & Dev
                             - !Sub https://${Domain} 
                             - !Sub https://www.${Domain}
+                            
+                            # Customer Marketing Local
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://localhost
 
                             # Forum Prod & Dev
                             - !Sub https://discussions.${Domain} 
