@@ -6,7 +6,6 @@ export declare type NavigationAppProps = {
     type?: NavigationType;
     toolName?: string;
     toolRoot?: string;
-    fullFooter?: boolean;
     handleNavigation?: NavigationHandler;
     onReady?: () => void;
     user?: AuthUser;

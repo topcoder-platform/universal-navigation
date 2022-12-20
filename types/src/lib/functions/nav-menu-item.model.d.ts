@@ -8,6 +8,4 @@ export interface NavMenuItem {
     icon?: string;
     action?: string;
     url?: string;
-    authenticatedPath?: string;
-    groupOrder?: number;
 }
