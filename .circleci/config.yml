@@ -69,7 +69,6 @@ update_types: &update_types
         npm ci
         npm run types
         diffstatus=$(git status --porcelain)
-        echo DIFF=$diffstatus >> $GITHUB_OUTPUT
         git config user.name brooketopcoder
         git config user.email brooke.souza@topcoder.com
         git add types
