@@ -70,15 +70,23 @@ finger_print_add: &finger_print_add
             
 # DEFINE STEPS FOR JOBS
 
-build_steps: &build_steps
+build_steps_prod: &build_steps_prod
     # Initialization.
     - add_ssh_keys: *finger_print_add          
     - checkout
     - setup_remote_docker
     - run: *install_build_dependency
     - run: *install_deploysuite
-    # Temporarily run the version patch step
     - run: *running_version_patch
+    - run: *running_npm_build
+    - persist_to_workspace: *workspace_persist
+
+build_steps: &build_steps
+    # Initialization.
+    - checkout
+    - setup_remote_docker
+    - run: *install_build_dependency
+    - run: *install_deploysuite
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
 
@@ -112,7 +120,7 @@ jobs:
             DEPLOY_ENV: "PROD"
             LOGICAL_ENV: "prod"
             APPNAME: "universal-navigation"
-        steps: *build_steps
+        steps: *build_steps_prod
 
     # Just tests commited code.
     deployDev:
@@ -160,14 +168,10 @@ workflows:
                 context : org-global
                 requires:
                     - build-dev
-                    # temporarily permit prod builds
-                    - build-prod
                 filters: 
                     branches:
                         only:
                             - dev
-                            # temporarily deploy master to dev
-                            - master
 
             - deployProd:
                 context : org-global
