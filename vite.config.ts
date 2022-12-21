@@ -18,9 +18,11 @@ export default defineConfig((props) => {
     const entry = !env.APP_BUILD_TARGET ? 'main' : `out/${target}-nav`
     const outputFileName = `${target ?? 'tc-universal'}-nav`
 
+    const isProd: boolean = props.mode === 'production'
+
     return {
         define: {
-            APP_IS_PROD: props.mode === 'production',
+            APP_IS_PROD: isProd,
         },
         plugins: [
             cssInjectedByJsPlugin(),
@@ -30,6 +32,7 @@ export default defineConfig((props) => {
             alias: {
                 assets: resolve(__dirname, './src/assets'),
                 lib: resolve(__dirname, './src/lib'),
+                'menu-item': resolve(__dirname, `./src/lib/config/nav-menu/menu-item${isProd ? '' : '.dev'}.ts`)
             }
         },
         build: {

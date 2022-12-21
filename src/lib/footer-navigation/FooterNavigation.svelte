@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { supportMenuItem } from 'menu-item';
   import { onMount } from 'svelte';
   import { getAppContext } from 'lib/app-context';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import { navUrl } from 'lib/utils/paths';
   import SupportModal from 'lib/components/modals/SupportModal.svelte';
-  import { supportMenuItem } from 'lib/config/nav-menu/menu-item';
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import FooterBottomBar from './FooterBottomBar.svelte';
