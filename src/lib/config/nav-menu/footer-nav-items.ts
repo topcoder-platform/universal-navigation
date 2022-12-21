@@ -1,4 +1,4 @@
-import * as navItems from "menu-item";
+import * as navItems from "./nav-items";
 
 export const footerNavItems = {
   children: [

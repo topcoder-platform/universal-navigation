@@ -1,3 +1,3 @@
 export declare const toolNavItems: {
-    children: any[];
+    children: Partial<import("../../functions/nav-menu-item.model").NavMenuItem>[];
 };

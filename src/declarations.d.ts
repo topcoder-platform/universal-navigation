@@ -1,1 +1,0 @@
-declare module 'menu-item'
