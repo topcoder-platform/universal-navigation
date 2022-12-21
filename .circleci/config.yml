@@ -58,8 +58,8 @@ running_version_patch: &running_version_patch
     name: Patching Version
     command: |
         npm install
-        git config user.name brooketopcoder
-        git config user.email brooke.souza@topcoder.com
+        git config user.name $CIRCLE_USERNAME
+        git config user.email security@topcoder.com
         npm version patch -m "Increment Version [ci skip]"
         git push --set-upstream origin master
 
@@ -69,8 +69,8 @@ update_types: &update_types
         npm ci
         npm run types
         diffstatus=$(git status --porcelain)
-        git config user.name brooketopcoder
-        git config user.email brooke.souza@topcoder.com
+        git config user.name $CIRCLE_USERNAME
+        git config user.email security@topcoder.com
         git add types
         git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
         git push --set-upstream origin master
@@ -164,6 +164,7 @@ workflows:
                     branches:
                         ignore:
                             - master
+                            - PROD-3172_circle-ci-user
 
             - build-prod:
                 context : org-global
@@ -171,6 +172,7 @@ workflows:
                     branches:
                         only:
                             - master
+                            - PROD-3172_circle-ci-user
 
             - deployDev:
                 context : org-global
