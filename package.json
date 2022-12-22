@@ -15,7 +15,7 @@
         "build:dev": "NODE_ENV=development npm run build:base",
         "build": "NODE_ENV=production npm run build:base",
         "check": "svelte-check --tsconfig ./tsconfig.json",
-        "demo:dist": "npx http-server --cors --host localhost --port 8080 ./dist",
+        "demo:dist": "npx http-server --cors --host localhost --port 8083 ./dist",
         "demo:marketing": "npx http-server --host localhost --port 8081 ./demo/marketing -P http://localhost:8081? -o /",
         "demo:tool": "npx http-server --host localhost --port 8082 ./demo/tool -P http://localhost:8081? -o /",
         "demo": "npx npm-run-all -p demo:*",

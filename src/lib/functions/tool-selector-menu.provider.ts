@@ -5,5 +5,5 @@ import type { NavMenuItem } from './nav-menu-item.model';
 const navMenu = toolSelectorNavItems as unknown as NavMenuItem
 
 export function getToolSelectorItems(): NavMenuItem[] {
-    return navMenu.children
+    return navMenu.children || []
 }
