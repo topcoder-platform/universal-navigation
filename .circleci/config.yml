@@ -180,7 +180,6 @@ workflows:
                     branches:
                         only:
                             - dev
-                            - PROD-3264_integrate-wp
 
             - deployProd:
                 context : org-global
