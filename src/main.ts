@@ -6,9 +6,9 @@ import 'lib/styles/main.scss';
 export * from './lib/app-context'
 
 export type NavigationType = (
-  |'footer'
-  |'marketing'
-  |'tool'
+  | 'footer'
+  | 'marketing'
+  | 'tool'
 )
 
 export type NavigationAppProps = {
@@ -28,7 +28,7 @@ export type NavigationAppProps = {
   supportMeta?: SupportMeta
 }
 
-export type TcUniNavMethods = 'init'|'update'
+export type TcUniNavMethods = 'init' | 'update'
 
 export type TcUniNavFn = (
   method: TcUniNavMethods,
@@ -37,7 +37,7 @@ export type TcUniNavFn = (
 ) => void
 
 const loadModule = (module: string) => {
-    return import(/* @vite-ignore */ module).then(d => d.default)
+  return import(/* @vite-ignore */ module).then(d => d.default)
 }
 
 // Serve the manually built files only when in production
@@ -46,7 +46,7 @@ const loadModule = (module: string) => {
 // only the manually built files exist in the prod build
 //
 // FOR clarificaiton: this is needed to run serve/dev commands
-const NavigationLoadersMap = APP_IS_PROD ? {
+const NavigationLoadersMap = BUILD_IS_PROD ? {
   marketing: () => loadModule('./marketing-nav.js'),
   tool: () => loadModule('./tool-nav.js'),
   footer: () => loadModule('./footer-nav.js'),
@@ -56,7 +56,7 @@ const NavigationLoadersMap = APP_IS_PROD ? {
   tool: () => loadModule('./lib/tool-navigation/ToolNavigation.svelte'),
 }
 
-const instancesContextStore: {[key: string]: Map<string, Writable<any>>} = {}
+const instancesContextStore: { [key: string]: Map<string, Writable<any>> } = {}
 
 /**
  * Initialize the navigation component
@@ -72,7 +72,7 @@ async function init(
     throw new Error(`A navigation component with an id of '${targetId}' was already initialized!`)
   }
 
-  const {onReady: readyCallback, ...props} = config
+  const { onReady: readyCallback, ...props } = config
 
   // split the contextual props from the navigation's props
   const {
@@ -114,7 +114,7 @@ async function init(
   // load the navigation component
   const Navigation = await loadNavigationFn();
   // instantiate the navigation component
-  new Navigation({target: targetEl, props: navProps, context: ctx});
+  new Navigation({ target: targetEl, props: navProps, context: ctx });
   targetEl.classList.add('tc-universal-nav')
 
   if (typeof readyCallback === 'function') {
@@ -167,7 +167,7 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
   const queue = tcUnivNavConfig.q ?? [];
 
   // execute all the calls in the queue
-  for(let qi of queue) {
+  for (let qi of queue) {
     const args = [].slice.call(qi);
     execQueueCall(args[0], ...args.slice(1))
   }

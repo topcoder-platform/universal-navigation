@@ -12,7 +12,7 @@ export function getPublicPath(assetPath: string): string {
 
     // for PRODuction inject the version number
     // for local development, keep assets at root
-    const version = APP_IS_PROD ? `/v${pkg.version.split('.')[0]}` : ''
+    const version = BUILD_IS_PROD ? `/v${pkg.version.split('.')[0]}` : ''
     const versionPath: string = `${version}${assetPath}`
     return new URL(versionPath, import.meta.url).href
 }

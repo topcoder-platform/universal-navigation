@@ -13,7 +13,6 @@ export interface NavItemConfig {
     challengesApp: NavMenuItem;
     communications: NavMenuItem;
     talent: NavMenuItem;
-    communityFaq: NavMenuItem;
     compete: NavMenuItem;
     connect: NavMenuItem;
     dataAdvisory: NavMenuItem;
