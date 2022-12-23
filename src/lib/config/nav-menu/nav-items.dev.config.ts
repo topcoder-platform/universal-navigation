@@ -13,7 +13,7 @@ export const navItemsConfigDev: NavItemConfig = {
     announcements: {
         label: 'Announcements',
         description: 'Important announcements to the Topcoder community.',
-        url: 'https://www.topcoder.com/community/member-programs/topcoder-open', // Need Dev
+        url: 'https://www.topcoder.com/community/programs-and-events', // Need Dev
     },
     articles: {
         label: 'Articles',
