@@ -1,3 +1,3 @@
 export declare const footerNavItems: {
-    children: any[];
+    children: import("../../functions/nav-menu-item.model").NavMenuItem[];
 };

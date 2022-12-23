@@ -25,12 +25,3 @@ export function getPublicPath(assetPath: string): string {
 export function getDefaultHostPath(path: string): string {
     return `${DEFAULT_HOST_URL}${path}`
 }
-
-/**
- * Gets the absolute path hosted on the DEFAULT_HOST
- * @params path
- * @returns string
- */
-export function navUrl(item: NavMenuItem): string {
-    return item.url ?? `${item.host ?? DEFAULT_HOST_URL}${item.path}`
-}

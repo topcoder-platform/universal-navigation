@@ -10,7 +10,7 @@
   const toolIcon = getPublicPath('/assets/icon-tool.svg');
 
   function hasCtas(item: NavMenuItem) {
-    return !!item.children.some(d => d.type === 'cta');
+    return !!item.children?.some(d => d.type === 'cta');
   }
 </script>
 
@@ -49,7 +49,9 @@
                     {/if}
                   </div>
                   <div class={styles.navItemContent}>
-                    <a href={navItem.url}>{navItem.label}</a>
+                    {#if !!navItem.label}
+                      <a href={navItem.url}>{navItem.label}</a>                      
+                    {/if}
                     {#if navItem.type !== 'cta' && navItem.description}
                       <span class={styles.navItemDescription}>
                         {navItem.description}

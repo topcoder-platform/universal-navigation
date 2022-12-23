@@ -1,13 +1,11 @@
 export interface NavMenuItem {
-    children: NavMenuItem[];
-    description: string;
-    host: string;
-    label: string;
-    path: string;
-    type?: 'cta';
-    icon?: string;
     action?: string;
-    url?: string;
-    authenticatedPath?: string;
+    authenticatedUrl?: string;
+    children?: NavMenuItem[];
+    description?: string;
     groupOrder?: number;
+    icon?: string;
+    label?: string;
+    type?: 'cta';
+    url?: string;
 }

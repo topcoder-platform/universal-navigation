@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { classnames } from 'lib/utils/classnames';
-  import { getPublicPath, navUrl } from 'lib/utils/paths';
+  import { getPublicPath } from 'lib/utils/paths';
   import styles from './Accordion.module.scss';
 
   export let activeRoute: NavMenuItem = undefined;
@@ -11,12 +11,12 @@
   const toggledItems: {[key: string]: boolean} = {};
   const iconUrl = getPublicPath(`/assets/icon-dropdown.svg`);
 
-  function key(item: NavMenuItem) {
-    return item.label
-  }
-
-  function toggleItem(item: NavMenuItem, toggle?: boolean) {
-    toggledItems[key(item)] = typeof toggle === 'boolean' ? toggle : !toggledItems[item.label];
+  function toggleItem(item: NavMenuItem, toggle?: boolean): void {
+    // if the nav item doesn' have a label, we can't do anything
+    if (!item.label) {
+      return
+    }
+    toggledItems[item.label] = typeof toggle === 'boolean' ? toggle : !toggledItems[item.label];
   }
 
   $: activeRoute && toggleItem(activeRoute)
@@ -27,16 +27,16 @@
     <li class={
       classnames(
         styles.item,
-        toggledItems[key(item)] && styles.isToggled,
+        !!item.label && toggledItems[item.label] && styles.isToggled,
         'uni-accordion-item',
         item.type === 'cta' && 'cta-type',
-        activeRoute?.path === item.path && styles.isActive
+        activeRoute?.url === item.url && styles.isActive
       )
     }>
-      {#if item.type !== 'cta'}
+      {#if !!item.label && item.type !== 'cta'}
         <div class={classnames(styles.itemHead, 'uni-accordion-item--head')}>
           <a
-            href={navUrl(item)}
+            href={item.url}
             class={classnames(styles.itemLabel, 'uni-accordion-item--label')}
           >
             {item.label}
@@ -47,14 +47,14 @@
             </span>
           {/if}
         </div>
-      {:else}
-        <a class={styles.navButton} href={navUrl(item)}>
+      {:else if !!item.label}
+        <a class={styles.navButton} href={item.url}>
           {item.label}
         </a>
       {/if}
     </li>
 
-    {#if toggledItems[key(item)]}
+    {#if !!item.label && toggledItems[item.label]}
       <slot {item}></slot>
     {/if}
   {/each}
