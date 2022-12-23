@@ -82,6 +82,16 @@ Resources:
                             # Customer & Member Marketing Prod & Dev
                             - https://www.topcoder.com
                             - https://topcoder.com
+
+                            # Customer Marketing Dev
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub https://${Domain} 
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub https://www.${Domain}
                             
                             # Customer Marketing Local
                             - !If 
@@ -95,16 +105,6 @@ Resources:
 
                             # Member Marketing Prod & Dev
                             - !Sub https://community-app.${Domain}
-
-                            # Member Marketing Dev
-                            - !If 
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub https://${Domain} 
-                            - !If 
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub https://www.${Domain}
                             
                             # Member Marketing Beta & Staging
                             - !If 
