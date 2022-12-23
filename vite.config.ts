@@ -18,11 +18,9 @@ export default defineConfig((props) => {
     const entry = !env.APP_BUILD_TARGET ? 'main' : `out/${target}-nav`
     const outputFileName = `${target ?? 'tc-universal'}-nav`
 
-    const isProd: boolean = props.mode === 'production'
-
     return {
         define: {
-            APP_IS_PROD: isProd,
+            APP_IS_PROD: props.mode === 'prod',
         },
         plugins: [
             cssInjectedByJsPlugin(),
