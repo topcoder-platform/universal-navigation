@@ -45,7 +45,7 @@ export const footerNavItems = {
                 navItems.benefits,
                 navItems.statistics,
                 navItems.gettingPaid,
-                navItems.communityFaq,
+                navItems.faq,
             ]
         },
         {

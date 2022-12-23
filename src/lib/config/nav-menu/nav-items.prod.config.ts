@@ -67,10 +67,6 @@ export const navItemsConfigProd: NavItemConfig = {
         description: 'Communications solutions, how Topcoder excels, including case studies.',
         url: 'https://www.topcoder.com/customer/communications',
     },
-    communityFaq: {
-        label: "FAQ",
-        url: "https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb",
-    },
     compete: {
         label: 'Compete',
         description: 'Competitive programming for fun and to grow your skills & ranking at Topcoder.',

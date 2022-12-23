@@ -65,11 +65,7 @@ export const navItemsConfigDev: NavItemConfig = {
     communications: {
         label: 'Communications',
         description: 'Communications solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/communications/', // Need Dev
-    },
-    communityFaq: {
-        label: "FAQ",
-        url: "https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb", // Need Dev
+        url: 'https://www.topcoder.com/universal-naviga/?page_id=41817',
     },
     compete: {
         label: 'Compete',
