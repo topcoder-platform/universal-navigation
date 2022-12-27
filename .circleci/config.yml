@@ -144,7 +144,7 @@ jobs:
             DEPLOY_ENV: "DEV"
             LOGICAL_ENV: "dev"
             APPNAME: "universal-navigation"
-        steps: *check_types
+        steps: *check_types_steps
 
     build-dev:
         <<: *defaults
