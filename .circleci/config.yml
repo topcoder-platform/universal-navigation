@@ -186,7 +186,7 @@ workflows:
     build:
         jobs:
 
-         - check-types:
+            - check-types:
                 context : org-global
                 filters:
                     branches:
