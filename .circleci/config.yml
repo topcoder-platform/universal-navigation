@@ -75,11 +75,31 @@ update_types: &update_types
         git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
         git push --set-upstream origin master
 
+check_types: &check_types
+    name: Checking Types
+    command: |
+        npm ci
+        npm run types
+        diffstatus=$(git status --porcelain)
+        git config user.name $CIRCLE_USERNAME
+        git config user.email security@topcoder.com
+        git add types
+        git diff-index --cached --quiet HEAD || echo 'Types need updating'
+        git diff-index --cached --quiet HEAD || exit code 1
+
 finger_print_add: &finger_print_add
     fingerprints:
             - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
             
 # DEFINE STEPS FOR JOBS
+
+check_types_steps: &check_types_steps
+    - add_ssh_keys: *finger_print_add          
+    - checkout
+    - setup_remote_docker
+    - run: *install_build_dependency
+    - run: *install_deploysuite
+    - run: *check_types
 
 build_steps_prod: &build_steps_prod
     # Initialization.
@@ -126,6 +146,14 @@ jobs:
             APPNAME: "universal-navigation"
         steps: *build_steps
 
+    build-dev:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            APPNAME: "universal-navigation"
+        steps: *build_steps
+
     build-prod:
         <<: *defaults
         environment:
@@ -158,6 +186,20 @@ workflows:
     build:
         jobs:
 
+         - check-types:
+                context : org-global
+                filters:
+                    branches:
+                        ignore:
+                            - master
+
+            - build-dev:
+                context : org-global
+                filters:
+                    branches:
+                        ignore:
+                            - master
+                            
             - build-dev:
                 context : org-global
                 filters:
