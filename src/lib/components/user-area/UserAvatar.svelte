@@ -26,8 +26,8 @@
   on:click={() => popupIsVisible = true}
   on:keydown={() => {}}
 >
-  {#if user?.photoUrl}
-    <img src={user.photoUrl} alt={initials} />
+  {#if user?.photoURL}
+    <img src={user.photoURL} alt={initials} />
   {:else}
     <span>{initials}</span>
   {/if}

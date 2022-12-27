@@ -1,5 +1,5 @@
 export interface AuthUser {
-  photoUrl?: string
+  photoURL?: string
   userId: string | number
   handle: string
 
