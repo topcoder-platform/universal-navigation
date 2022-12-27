@@ -84,7 +84,7 @@ check_types: &check_types
         git config user.name $CIRCLE_USERNAME
         git config user.email security@topcoder.com
         git add types
-        git diff-index --cached --quiet HEAD || echo 'Types need updating'
+        git diff-index --cached --quiet HEAD || echo 'WARNING: Types need updating'
         git diff-index --cached --quiet HEAD || exit 1
 
 finger_print_add: &finger_print_add
