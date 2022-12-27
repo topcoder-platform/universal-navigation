@@ -154,14 +154,6 @@ jobs:
             APPNAME: "universal-navigation"
         steps: *build_steps
 
-    build-dev:
-        <<: *defaults
-        environment:
-            DEPLOY_ENV: "DEV"
-            LOGICAL_ENV: "dev"
-            APPNAME: "universal-navigation"
-        steps: *build_steps
-
     build-prod:
         <<: *defaults
         environment:
