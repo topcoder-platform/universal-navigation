@@ -3,9 +3,8 @@
   import { getAppContext } from 'lib/app-context';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
-  import { navUrl } from 'lib/utils/paths';
   import SupportModal from 'lib/components/modals/SupportModal.svelte';
-  import { supportMenuItem } from 'lib/config/nav-menu/menu-item';
+  import { navItems } from 'lib/config/nav-menu/nav-items.config';
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import FooterBottomBar from './FooterBottomBar.svelte';
@@ -32,7 +31,7 @@
   onMount(checkAndLoadFonts)
 
   onMount(() => {
-    footerEl.addEventListener(supportMenuItem.action, toggleSupportModal);
+    footerEl.addEventListener(navItems.support.action, toggleSupportModal);
   })
 </script>
 
@@ -42,18 +41,21 @@
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
         <li class={styles.menuSection}>
-          <div class={styles.menuSectionHeading}>
-            {menuItem.label}
-          </div>
-
+          {#if !!menuItem.label}
+            <div class={styles.menuSectionHeading}>
+              {menuItem.label}
+            </div>            
+          {/if}
           {#if menuItem.children?.length}
             <ul class={styles.menuSectionEntries}>
               {#each menuItem.children as child}
-                <li class={styles.menuSectionEntry}>
-                  <a target="_top" use:handleNavItemAction={child} href={navUrl(child)}>
-                    {child.label}
-                  </a>
-                </li>
+                {#if !!child.label}
+                  <li class={styles.menuSectionEntry}>
+                    <a target="_top" use:handleNavItemAction={child} href={child.url}>
+                      {child.label}
+                    </a>
+                  </li>                  
+                {/if}
               {/each}
             </ul>
           {/if}

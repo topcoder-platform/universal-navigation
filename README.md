@@ -75,6 +75,8 @@ See the [IAC README](../iac/README.md) for instructions for deploying the stack.
 The dev version of the UniNav script allows the following origins.
 
 Customer & Member Mktg
+- https://topcoder.com
+- https://www.topcoder.com
 - https://topcoder-dev.com
 - https://www.topcoder-dev.com
 

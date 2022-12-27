@@ -1,8 +1,8 @@
 import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
 import { escapeRegExp } from "./regex";
 
-const routeMatchesPath = (path: string, route: NavMenuItem): boolean => (
-  !!path.match(new RegExp(`^${escapeRegExp(route.path)}(\\?|#|$)`, 'i'))
+const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => (
+  !!url.match(new RegExp(`^${escapeRegExp(route.url)}(\\?|#|$)`, 'i'))
 )
 
 /**
@@ -14,15 +14,15 @@ const routeMatchesPath = (path: string, route: NavMenuItem): boolean => (
  * @param depth
  * @returns NavMenuItem.children
  */
-export const activateAuthenticatedRoutes = (isAuthenticated: boolean, {children = []}: NavMenuItem, depth?: number) => {
+export const activateAuthenticatedRoutes = (isAuthenticated: boolean, { children = [] }: NavMenuItem, depth?: number) => {
   // safe escape if things get out of control
   if (depth >= 9) {
     return
   }
 
-  for(let child of children) {
-    if (isAuthenticated && child.authenticatedPath) {
-      child.path = child.authenticatedPath
+  for (let child of children) {
+    if (isAuthenticated && child.authenticatedUrl) {
+      child.url = child.authenticatedUrl
     }
 
     activateAuthenticatedRoutes(isAuthenticated, child, depth + 1);
@@ -40,18 +40,18 @@ export const activateAuthenticatedRoutes = (isAuthenticated: boolean, {children 
  */
 export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] => {
 
-  return (function parseNavMenu(l, {children = []}) {
+  return (function parseNavMenu(l, { children = [] }) {
     // safe escape if things get out of control
     if (l >= 9) {
       return
     }
 
-    for(let child of children) {
-      if (routeMatchesPath(path, child)) {
+    for (let child of children) {
+      if (routeMatchesUrl(path, child)) {
         return child;
       }
 
-      const trail =  parseNavMenu(l + 1, child);
+      const trail = parseNavMenu(l + 1, child);
       if (trail) {
         return [].concat(child, trail);
       }
@@ -67,6 +67,6 @@ export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] =
  */
 export function getActiveRoute(navMenuItems: NavMenuItem[], trailLevel?: number): NavMenuItem[] {
   const locationHref = `${location.pathname}`
-  const activeRouteTrail = [].concat(matchRoutes({children: navMenuItems} as NavMenuItem, locationHref))
+  const activeRouteTrail = [].concat(matchRoutes({ children: navMenuItems } as NavMenuItem, locationHref))
   return typeof trailLevel === 'number' ? activeRouteTrail?.slice(trailLevel, 1) : activeRouteTrail
 }

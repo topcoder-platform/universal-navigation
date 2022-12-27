@@ -2,7 +2,7 @@
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import MobileMenu from 'lib/components/MobileMenu.svelte';
   import Accordion from 'lib/components/Accordion.svelte';
-  import { getPublicPath, navUrl } from 'lib/utils/paths';
+  import { getPublicPath } from 'lib/utils/paths';
   import { classnames } from 'lib/utils/classnames';
 
   import styles from './MobileNavigation.module.scss';
@@ -37,18 +37,20 @@
       >
         <ul class={styles.list}>
           {#each subItem.children as child}
-            <li
-              class={
-                classnames(
-                  styles.listItem,
-                  activeRoutes[2]?.path === child.path && styles.isActive
-                )
-              }
-            >
-              <a href={navUrl(child)}>
+            {#if !!child.label}
+              <li
+                class={
+                  classnames(
+                    styles.listItem,
+                    activeRoutes[2]?.url === child.url && styles.isActive
+                  )
+                }
+              >
+              <a href={child.url}>
                 {child.label}
               </a>
             </li>
+            {/if}
           {/each}
           <li></li>
         </ul>
