@@ -5,6 +5,7 @@ This README provides instructions on how to develop the UniNav itself.
 For information re how to integrate the UniNav into a web property, see the main [README](../README.md).
 
 - [Architecture Diagram](#architecture-diagram)
+- [Why Svelte?](#why-svelte)
 - [Infrastructure](#infrastructure)
 - [Local App Development](#local-app-development)
     - [Serve the local app](#serve-the-local-app)
@@ -17,6 +18,22 @@ For information re how to integrate the UniNav into a web property, see the main
 ## Architecture Diagram
 
 ![Basic Architecture Diagram](../docs/UniNav_Diagram.png "Universal Nav Architecture Drawing")
+
+## Why Svelte?
+
+The primary architectural concerns for the Uni Nav are:
+
+- universal integration (i.e. server-side or client-side rendered app)
+- independent integration (i.e. no other libraries or packages required)
+- extreme performance (i.e. fast and small)
+
+The good news is that the Uni Nav does not have to do much.
+
+React is too bloated for and is overkill for the job.
+
+Svelte is a library that compiles to straight javascript with very tiny files:
+
+See https://refine.dev/blog/svelte-vs-react/ for more info
 
 ## Infrastructure
 
