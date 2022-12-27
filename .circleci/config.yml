@@ -138,6 +138,14 @@ deploy_steps: &deploy_steps
 
 jobs:
 
+    check-types:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            APPNAME: "universal-navigation"
+        steps: *check_types
+
     build-dev:
         <<: *defaults
         environment:
