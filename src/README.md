@@ -67,12 +67,14 @@ The build reads the app version in `package.json` and automatically outputs the 
 
 ## Typescript Type Declaration Generation
 
-Typescript type declarations (i.e. `*.d.ts`) are automatically generated for each branch as part of the Github build worklow.
+Typescript type declarations (i.e. `*.d.ts`) are automatically generated upon build. When developing the nav, it is preferred that each branch regenerates its types before PR merge.
 
-After pushing changes to Github, Github builds the app and automatically runs the command to generate types. 
+However, this is obviously error prone, so every time a push is made to master, the CI process will  regenerate the types and commit them to the master branch if there are differences.
 
-If there are any differences, Github automatically commits those into the branch.
+In addition, all pushes to the master branch will automatically increment the patch version number, which will allow the consumers of the types to get the updates with `npm update` or `yarn upgrade`.
 
-If a PR exists for a branch that has out of date types, the PR will display an error until the types are generated and committed, but it will not pervent the merging of the PR.
+Both the types commit and the version patch commit will be authored by the user who merged the PR.
 
->**NOTE** In order to disseminate updates to the types via npm, you must increment the version number in the [../package.json](../package.json).
+For non-master branches, there is a build job in the CI that will check to see if there are any updates to the types required and exit with an error code 1 with message `WARNING: Types need updating`.
+
+The error will not prevent merging a PR or deploying to an environment but will just be a flag for the PR owner and reviewers.
