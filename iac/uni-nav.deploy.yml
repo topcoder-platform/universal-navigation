@@ -97,7 +97,11 @@ Resources:
                             - !If 
                                 - IsProd
                                 - !Ref AWS::NoValue
-                                - http://localhost:8080
+                                - http://localhost:8080 
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://topcoder.topcoder-dev.com
 
                             # Forum Prod & Dev
                             - !Sub https://discussions.${Domain} 
