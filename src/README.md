@@ -29,11 +29,19 @@ The primary architectural concerns for the Uni Nav are:
 
 The good news is that the Uni Nav does not have to do much.
 
-React is too bloated for and is overkill for the job.
+When deciding on what to use for writing the universal navigation, there were 4 possibilities that were took into consideration:
+- angular
+- react
+- svelte
+- vanilla
 
-Svelte is a library that compiles to straight javascript with very tiny files:
+React & Angular are too bloated and they're overkill for the job.
 
-See https://refine.dev/blog/svelte-vs-react/ for more info
+We have to handle a lot of repeating items and also we need to make sure the css doesn't bleed out, so Vanilla was rulled out quickly because it meant to write too much "extra" code.
+
+Svelte doesn't need an additional runtime library, it compiles all the code at the build time and outputs only the code that is actually used, without adding any overhead code to run in the browser. Which translates into smaller files which means faster download & interpretation times.
+
+See https://refine.dev/blog/svelte-vs-react/, https://pagepro.co/blog/react-vs-svelte/ for more info
 
 ## Infrastructure
 
