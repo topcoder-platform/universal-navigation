@@ -6,7 +6,7 @@ export const navItemsConfigDev: NavItemConfig = {
         children: [
             {
                 label: "About Topcoder",
-                url: "https://www.topcoder.com/universal-naviga/?page_id=47252"
+                url: "https://uninav.topcoder.com/customer"
             }
         ],
     },
@@ -24,30 +24,30 @@ export const navItemsConfigDev: NavItemConfig = {
     benefits: {
         label: 'Benefits',
         description: 'Benefits members receive at Topcoder.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47302',
+        url: 'https://uninav.topcoder.com/talent/benefits',
     },
     bfsi: {
         label: 'BFSI',
         description: 'BFSI solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41809',
+        url: 'https://uninav.topcoder.com/bfsi',
     },
     bookADemo: {
         label: 'Book a demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47307',
+        url: 'https://uninav.topcoder.com/customer/demo',
     },
     careerGrowth: {
         label: 'Career Growth',
         description: 'Topcoder\'s profile captures your proven skills increasing employment opportunities.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47304',
+        url: 'https://uninav.topcoder.com/talent/career-growth',
     },
     careers: {
         label: "Careers",
         children: [
             {
                 label: "Work at Topcoder",
-                url: "https://www.topcoder.com/universal-naviga/?page_id=47309"
+                url: "https://uninav.topcoder.com/jobs"
             }
         ]
     },
@@ -58,44 +58,44 @@ export const navItemsConfigDev: NavItemConfig = {
     },
     challengesApp: {
         label: "Challenges",
-        url: "https://www.topcoder.com/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK", // Need Dev
+        url: "https://www.topcoder-dev.com/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
         icon: "challenges",
-        description: "Compete and earn money"
+        description: "Compete and earn money",
     },
     communications: {
         label: 'Communications',
         description: 'Communications solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41817',
+        url: 'https://uninav.topcoder.com/communications',
     },
     compete: {
         label: 'Compete',
         description: 'Competitive programming for fun and to grow your skills & ranking at Topcoder.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47270',
+        url: 'https://uninav.topcoder.com/talent/compete',
     },
     connect: {
         label: 'Connect',
         description: 'Connect with others at Topcoder.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47297',
+        url: 'https://uninav.topcoder.com/talent/connect',
     },
     customer: {
         label: 'Customer',
         description: 'Learn how Topcoder can help your business get work done.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47252',
+        url: 'https://uninav.topcoder.com/customer',
     },
     dataAdvisory: {
         label: 'Data Advisory',
         description: 'Submit work to get advice on how to use data science to improve your business.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45012',
+        url: 'https://uninav.topcoder.com/data-science/data-advisory',
     },
     dataExploration: {
         label: 'Data Exploration',
         description: 'Submit work to gain insights from your data.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45057',
+        url: 'https://uninav.topcoder.com/data-science/data-exploration',
     },
     dataScience: {
         label: 'Data Science',
         description: 'See how Topcoder has delivered Data Science solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45062',
+        url: 'https://uninav.topcoder.com/data-science',
     },
     demo: {
         label: 'Book a demo',
@@ -105,12 +105,12 @@ export const navItemsConfigDev: NavItemConfig = {
     design: {
         label: 'Design',
         description: 'See how Topcoder has delivered Design solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45783',
+        url: 'https://uninav.topcoder.com/customer/website-design',
     },
     development: {
         label: 'Development',
         description: 'See how Topcoder has delivered Development solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45598',
+        url: 'https://uninav.topcoder.com/customer/development',
     },
     devCenter: {
         label: "Dev Center",
@@ -121,7 +121,7 @@ export const navItemsConfigDev: NavItemConfig = {
     discord: {
         label: 'Discord',
         description: 'Chat with others in the community.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47299',
+        url: 'https://uninav.topcoder.com/talent/discord',
     },
     discordApp: {
         label: "Discord",
@@ -132,12 +132,12 @@ export const navItemsConfigDev: NavItemConfig = {
     earn: {
         label: 'Earn',
         description: 'How to earn money at Topcoder.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47291',
+        url: 'https://uninav.topcoder.com/talent/earn',
     },
     energyUtilities: {
         label: 'Energy / Utilities',
         description: 'Energy / utilities solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41811',
+        url: 'https://uninav.topcoder.com/customer/energy-utilities',
     },
     events: {
         label: 'Events',
@@ -147,12 +147,12 @@ export const navItemsConfigDev: NavItemConfig = {
     expertise: {
         label: 'Expertise',
         description: 'The areas in which Topcoder delivers successful solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47277',
+        url: 'https://uninav.topcoder.com/customer/expertise',
     },
     findMeData: {
         label: 'Find Me Data',
         description: 'Submit work to find data sources that can help your business.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45060',
+        url: 'https://uninav.topcoder.com/customer/find-me-data',
     },
     faq: {
         label: "FAQ",
@@ -167,7 +167,7 @@ export const navItemsConfigDev: NavItemConfig = {
     fullService: {
         label: 'Full Service',
         description: 'Work with Topcoder experts to craft the exact solution you need.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=46638',
+        url: 'https://uninav.topcoder.com/customer/full-service',
     },
     gettingPaid: {
         label: "Getting Paid",
@@ -192,26 +192,26 @@ export const navItemsConfigDev: NavItemConfig = {
     healthPharma: {
         label: 'Health / Pharma',
         description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41790',
+        url: 'https://uninav.topcoder.com/customer/health-pharma',
     },
     industries: {
         label: 'Industries',
         description: 'The industries in which Topcoder delivers successful solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47282',
+        url: 'https://uninav.topcoder.com/customer/industries',
     },
     learn: {
         label: 'Learn',
         description: 'Learning opportunities provided to Topcoder\'s members.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47287',
+        url: 'https://uninav.topcoder.com/talent/topcoder-academy',
     },
     marathonMatches: {
         label: 'Marathon Matches',
         description: 'Competitions that span days or weeks.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47272',
+        url: 'hhttps://uninav.topcoder.com/talent/marathon-matches',
     },
     marathonMatchesApp: {
         label: "Marathon Matches",
-        url: "https://www.topcoder.com/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK", // Need Dev
+        url: "https://www.topcoder-dev.com/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
         icon: "mm",
         description: "Solve hard algorithm problems"
     },
@@ -220,7 +220,7 @@ export const navItemsConfigDev: NavItemConfig = {
         children: [
             {
                 label: "Blog",
-                url: "https://www.topcoder.com/universal-naviga/?page_id=33528"
+                url: "https://uninav.topcoder.com/blog"
             },
             {
                 label: "Newsletter",
@@ -236,18 +236,18 @@ export const navItemsConfigDev: NavItemConfig = {
             },
             {
                 label: "Whitepapers",
-                url: "https://www.topcoder.com/universal-naviga/?page_id=42097"
+                url: "https://uninav.topcoder.com/white-papers"
             },
             {
                 label: "Releases",
-                url: "https://www.topcoder.com/universal-naviga/?page_id=40279"
+                url: "https://uninav.topcoder.com/releases"
             }
         ]
     },
     partners: {
         label: 'Partners',
         description: 'Companies Topcoder partners with to deliver high quality solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=1170',
+        url: 'https://uninav.topcoder.com/customer/partners',
     },
     payments: {
         label: "Payments",
@@ -268,33 +268,33 @@ export const navItemsConfigDev: NavItemConfig = {
     products: {
         label: 'Products',
         description: 'How you will engage with the products Topcoder offers.',
-        url: 'https://www.topcoder.com/universal-naviga',
+        url: 'https://uninav.topcoder.com',
     },
     publicSector: {
         label: 'Public Sector',
         description: 'Public sector solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41819',
+        url: 'https://uninav.topcoder.com/customer/public-sector',
     },
     qa: {
         label: 'QA',
         description: 'See how Topcoder has delivered QA solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45791',
+        url: 'https://uninav.topcoder.com/customer/qa',
     },
     rapidDevMatches: {
         label: 'Rapid Dev Matches',
         description: 'Quick competitions you can complete in less than one day.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47293',
+        url: 'https://uninav.topcoder.com/talent/rapid-dev-matches',
     },
     rapidDevMatchesApp: {
         label: "Rapid Dev Matches",
-        url: "https://www.topcoder.com/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true", // Need Dev
+        url: "https://www.topcoder-dev.com/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true", // Need Dev
         icon: "rdm",
         description: "Join fast, fun competitions"
     },
     retail: {
         label: 'Retail',
         description: 'Retail solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41815',
+        url: 'https://uninav.topcoder.com/customer/retail',
     },
     review: {
         label: "Review",
@@ -305,12 +305,12 @@ export const navItemsConfigDev: NavItemConfig = {
     security: {
         label: 'Security',
         description: 'How your IP is protected at Topcoder.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=40400',
+        url: 'https://uninav.topcoder.com/customer/security',
     },
     selfService: {
         label: 'Self Service Challenges',
         description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47284',
+        url: 'https://uninav.topcoder.com/customer/self-service',
     },
     selfServiceApp: {
         label: "Self Service Challenges",
@@ -321,7 +321,7 @@ export const navItemsConfigDev: NavItemConfig = {
     singleRoundMatches: {
         label: 'Single Round Matches',
         description: 'Multi-problem algorithmic competitions where you go head-to-head in an arena.',
-        url: 'hhttps://www.topcoder.com/universal-naviga/?page_id=47295',
+        url: 'hhttps://uninav.topcoder.com/talent/single-round-matches',
     },
     singleRoundMatchesApp: {
         label: "SRMs (Arena)",
@@ -336,7 +336,7 @@ export const navItemsConfigDev: NavItemConfig = {
     successStories: {
         label: 'Success Stories',
         description: 'Browse case studies for solutions Topcoder has successfully delivered.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=2464',
+        url: 'https://uninav.topcoder.com/customer/success-stories',
     },
     support: {
         action: "uninav:modals:support",
@@ -347,7 +347,7 @@ export const navItemsConfigDev: NavItemConfig = {
         authenticatedUrl: 'https://www.topcoder.com/home',
         label: 'Talent',
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47268',
+        url: 'https://uninav.topcoder.com/talent',
     },
     talkToAnExpert: {
         label: 'Talk to an expert',
@@ -358,12 +358,12 @@ export const navItemsConfigDev: NavItemConfig = {
     technology: {
         label: 'Technology',
         description: 'Technology solutions, how Topcoder excels, including case studies.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=41813',
+        url: 'https://uninav.topcoder.com/customer/technology',
     },
     theCommunity: {
         label: 'The Community',
         description: 'How the Topcoder community provides value to your business.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=46552',
+        url: 'https://uninav.topcoder.com/customer/the-community',
     },
     timeline: {
         label: 'Timeline',
@@ -373,7 +373,7 @@ export const navItemsConfigDev: NavItemConfig = {
     topcoderAcademy: {
         label: 'Topcoder Academy',
         description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47289',
+        url: 'https://uninav.topcoder.com/talent/topcoder-academy',
     },
     topcoderAcademyApp: {
         label: "Topcoder Academy",
@@ -390,16 +390,16 @@ export const navItemsConfigDev: NavItemConfig = {
         description: 'Register your own employees in Topcoder to maximize productivity.',
         icon: 'topcrowd',
         label: 'TopCrowd',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47053',
+        url: 'https://uninav.topcoder.com/customer/topcrowd',
     },
     websiteDesign: {
         label: 'Website Design',
         description: 'Work directly with the Topcoder community to design your website.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=45374',
+        url: 'https://uninav.topcoder.com/customer/design',
     },
     whyTopcoder: {
         label: 'Why Topcoder',
         description: 'How Topcoder provides hiqh quality, secure solutions.',
-        url: 'https://www.topcoder.com/universal-naviga/?page_id=47260',
+        url: 'https://uninav.topcoder.com/customer/why-topcoder',
     }
 }
