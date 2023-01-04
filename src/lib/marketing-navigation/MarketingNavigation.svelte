@@ -23,7 +23,11 @@
 
   let activeRoute: NavMenuItem[] = [];
   $: activeRoute = getActiveRoute(menuItems)
-  const [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
+
+  let primaryRoute: NavMenuItem;
+  let secondaryRoute: NavMenuItem;
+  let tertiaryRoute: NavMenuItem;
+  $: [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
 
   onMount(checkAndLoadFonts)
 </script>
