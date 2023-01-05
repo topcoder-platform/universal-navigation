@@ -34,9 +34,14 @@
               </div>
             {/if}
 
-            <ul class={styles.toolNavItems}>
+            <div class={styles.toolNavItems}>
               {#each group.children as navItem}
-                <li class={classnames(styles.toolNavItem, navItem.type === 'cta' && 'navButton')}>
+                <a
+                    href={navItem.url}
+                    class={classnames(styles.toolNavItem, navItem.type === 'cta' && 'navButton')}
+                    target="_blank"
+                    rel="noreferrer"
+                >
                   <div class={styles.toolIcon}>
                     {#if navItem.type !== 'cta'}
                       {#if navItem.icon}
@@ -50,7 +55,7 @@
                   </div>
                   <div class={styles.navItemContent}>
                     {#if !!navItem.label}
-                      <a href={navItem.url}>{navItem.label}</a>                      
+                      <span>{navItem.label}</span>
                     {/if}
                     {#if navItem.type !== 'cta' && navItem.description}
                       <span class={styles.navItemDescription}>
@@ -58,9 +63,9 @@
                       </span>
                     {/if}
                   </div>
-                </li>
+                </a>
               {/each}
-            </ul>
+            </div>
           </div>
         {/each}
       </div>

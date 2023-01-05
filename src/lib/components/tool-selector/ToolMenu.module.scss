@@ -159,6 +159,9 @@
 .navItemContent {
   display: flex;
   flex-direction: column;
+  span {
+    display: block;
+  }
 }
 
 .navItemDescription {
