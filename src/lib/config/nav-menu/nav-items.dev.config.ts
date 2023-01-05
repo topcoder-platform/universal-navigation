@@ -54,7 +54,7 @@ export const navItemsConfigDev: NavItemConfig = {
     challenges: {
         label: 'Challenges',
         description: 'Compete with others to solve challenges and earn money.',
-        url: 'https://www.topcoder.com/community/practice', // Need Dev 
+        url: 'https://www.topcoder.com/community/practice', // Need Dev
     },
     challengesApp: {
         label: "Challenges",
@@ -308,7 +308,7 @@ export const navItemsConfigDev: NavItemConfig = {
         url: 'https://uninav.topcoder.com/customer/security',
     },
     selfService: {
-        label: 'Self Service Challenges',
+        label: 'Self Service',
         description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
         url: 'https://uninav.topcoder.com/customer/self-service',
     },

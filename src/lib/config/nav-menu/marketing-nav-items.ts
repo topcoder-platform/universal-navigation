@@ -35,22 +35,17 @@ export const marketingNavItems = {
                         navItems.successStories,
                     ]
                 },
+                navItems.fullService,
                 {
-                    ...navItems.products,
+                    ...navItems.selfService,
                     children: [
-                        navItems.fullService,
-                        navItems.topCrowd,
-                        {
-                            ...navItems.selfService,
-                            children: [
-                                navItems.dataAdvisory,
-                                navItems.findMeData,
-                                navItems.dataExploration,
-                                navItems.websiteDesign,
-                            ]
-                        }
+                        navItems.dataAdvisory,
+                        navItems.findMeData,
+                        navItems.dataExploration,
+                        navItems.websiteDesign,
                     ]
                 },
+                navItems.topCrowd,
                 navItems.talkToAnExpert,
                 navItems.bookADemo,
             ]
