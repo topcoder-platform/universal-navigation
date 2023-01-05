@@ -207,7 +207,7 @@ export const navItemsConfigDev: NavItemConfig = {
     marathonMatches: {
         label: 'Marathon Matches',
         description: 'Competitions that span days or weeks.',
-        url: 'hhttps://uninav.topcoder.com/talent/marathon-matches',
+        url: 'https://uninav.topcoder.com/talent/marathon-matches',
     },
     marathonMatchesApp: {
         label: "Marathon Matches",
@@ -321,7 +321,7 @@ export const navItemsConfigDev: NavItemConfig = {
     singleRoundMatches: {
         label: 'Single Round Matches',
         description: 'Multi-problem algorithmic competitions where you go head-to-head in an arena.',
-        url: 'hhttps://uninav.topcoder.com/talent/single-round-matches',
+        url: 'https://uninav.topcoder.com/talent/single-round-matches',
     },
     singleRoundMatchesApp: {
         label: "SRMs (Arena)",
