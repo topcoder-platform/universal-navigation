@@ -308,7 +308,7 @@ export const navItemsConfigProd: NavItemConfig = {
         url: 'https://www.topcoder.com/customer/security',
     },
     selfService: {
-        label: 'Self Service Challenges',
+        label: 'Self Service',
         description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
         url: 'https://www.topcoder.com/customer/self-service',
     },
