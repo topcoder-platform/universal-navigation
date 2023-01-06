@@ -55,7 +55,7 @@
                   </div>
                   <div class={styles.navItemContent}>
                     {#if !!navItem.label}
-                      <span>{navItem.label}</span>
+                      <span class={styles.navItemLabel}>{navItem.label}</span>
                     {/if}
                     {#if navItem.type !== 'cta' && navItem.description}
                       <span class={styles.navItemDescription}>
