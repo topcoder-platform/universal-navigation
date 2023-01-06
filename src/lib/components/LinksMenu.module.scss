@@ -25,7 +25,6 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
-      text-transform: uppercase;
 
       &:hover, &:global(.hover) {
         color: #FFFFFF;
@@ -40,8 +39,12 @@
       font-family: 'Barlow Condensed';
       font-size: 20px;
       line-height: 24px;
+      text-transform: uppercase;
 
-      &:hover, &:global(.hover), &:global(.active) {
+      &:hover, &:global(.hover) {
+        color: #fff;
+      }
+      &:global(.active) {
         color: #82EACF;
       }
     }
