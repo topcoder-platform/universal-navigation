@@ -102,13 +102,6 @@
     margin-top: 16px;
   }
 
-  a {
-    line-height: 22px;
-    font: inherit;
-    margin-bottom: -4px;
-    margin-top: 4px;
-  }
-
   &:global(.navButton) {
     display: inline-flex;
     font-weight: 700;
@@ -129,7 +122,7 @@
       border-color: #219174;
     }
 
-    a {
+    .navItemLabel {
       margin-top: 0;
       margin-bottom: 0;
     }
@@ -159,9 +152,13 @@
 .navItemContent {
   display: flex;
   flex-direction: column;
-  span {
-    display: block;
-  }
+}
+
+.navItemLabel {
+  display: block;
+  line-height: 22px;
+  margin-bottom: -4px;
+  margin-top: 4px;
 }
 
 .navItemDescription {
