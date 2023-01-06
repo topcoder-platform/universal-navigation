@@ -11,6 +11,7 @@
   import { isMobile } from 'lib/utils/window-size.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
+  import AboutUsMenuItem from './components/AboutUsMenuItem.svelte';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -40,7 +41,10 @@
     menuItems={menuItems}
     isMobile={$isMobile}
   >
-    <UserArea slot="auth" />
+    <svelte:fragment slot="auth">
+      <AboutUsMenuItem />
+      <UserArea />
+    </svelte:fragment>
   </NavigationBar>
 
   {#if !$isMobile}
