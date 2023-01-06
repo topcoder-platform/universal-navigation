@@ -10,6 +10,11 @@ export const navItemsConfigDev: NavItemConfig = {
             }
         ],
     },
+    aboutUs: {
+        label: "About Us",
+        description: "",
+        url: "https://uninav.topcoder.com/about-us"
+    },
     announcements: {
         label: 'Announcements',
         description: 'Important announcements to the Topcoder community.',
@@ -54,7 +59,7 @@ export const navItemsConfigDev: NavItemConfig = {
     challenges: {
         label: 'Challenges',
         description: 'Compete with others to solve challenges and earn money.',
-        url: 'https://www.topcoder.com/community/practice', // Need Dev 
+        url: 'https://www.topcoder.com/community/practice', // Need Dev
     },
     challengesApp: {
         label: "Challenges",

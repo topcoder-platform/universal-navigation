@@ -2,6 +2,7 @@ import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
 
 export interface NavItemConfig {
     about: NavMenuItem
+    aboutUs: NavMenuItem
     announcements: NavMenuItem
     articles: NavMenuItem
     benefits: NavMenuItem

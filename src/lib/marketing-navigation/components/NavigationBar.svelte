@@ -4,6 +4,9 @@
     import LinksMenu from '../../components/LinksMenu.svelte';
     import TopNavbar from 'lib/components/TopNavbar.svelte';
     import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
+    import { navItems } from 'lib/config/nav-menu/nav-items.config';
+    import styles from './NavigationBar.module.scss';
+
 
     export let style: 'primary'|'secondary'|'tertiary';
     export let menuItems: NavMenuItem[] = [];
@@ -41,5 +44,11 @@
     </LinksMenu>
   {/if}
 
-  <slot name="auth" slot="right"></slot>
+  <svelte:fragment slot="right">
+    {#if !isMobile}
+      <LinksMenu menuItems={[navItems.aboutUs]} style="primary" />
+      <div class={styles.separator}/>
+    {/if}
+    <slot name="auth"></slot>
+  </svelte:fragment>
 </TopNavbar>
