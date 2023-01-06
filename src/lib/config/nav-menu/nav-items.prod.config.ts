@@ -10,6 +10,11 @@ export const navItemsConfigProd: NavItemConfig = {
             }
         ],
     },
+    aboutUs: {
+        label: "About Us",
+        description: "",
+        url: "https://uninav.topcoder.com/about-us"
+    },
     announcements: {
         label: 'Announcements',
         description: 'Important announcements to the Topcoder community.',

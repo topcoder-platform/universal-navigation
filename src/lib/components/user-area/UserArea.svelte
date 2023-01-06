@@ -17,8 +17,8 @@
 
 </script>
 
-<div class={styles.authWrap}>
-  {#if isReady}
+{#if isReady}
+  <div class={styles.userAreaWrap}>
     {#if !user}
     <div class={styles.btnsWrap}>
       <Button label="Log in" onClick={onSignIn} />
@@ -31,6 +31,6 @@
         onSignOut={onSignOut}
       />
     {/if}
-  {/if}
-</div>
+  </div>
+{/if}
 
