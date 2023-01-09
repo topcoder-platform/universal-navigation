@@ -16,10 +16,14 @@ export const footerNavItems = {
             ...navItems.customer,
             children: [
                 navItems.whyTopcoder,
-                navItems.products,
+                navItems.challengeModel,
+                navItems.fullService,
+                navItems.selfService,
+                navItems.topCrowd,
                 navItems.successStories,
+                navItems.partners,
                 navItems.security,
-                navItems.faq,
+                navItems.customerFaq,
             ]
         },
         {
@@ -51,7 +55,7 @@ export const footerNavItems = {
         {
             label: "Contact",
             children: [
-                navItems.talkToAnExpert,
+                navItems.talkToSales,
                 navItems.bookADemo,
                 navItems.support,
             ]

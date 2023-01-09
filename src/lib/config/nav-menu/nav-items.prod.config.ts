@@ -67,6 +67,11 @@ export const navItemsConfigProd: NavItemConfig = {
         icon: "challenges",
         description: "Compete and earn money"
     },
+    challengeModel: {
+      label: "Challenge Model",
+      url: "https://www.topcoder.com/customer/challenge-model",
+      description: "Challenge Model",
+    },
     communications: {
         label: 'Communications',
         description: 'Communications solutions, how Topcoder excels, including case studies.',
@@ -86,6 +91,11 @@ export const navItemsConfigProd: NavItemConfig = {
         label: 'Customer',
         description: 'Learn how Topcoder can help your business get work done.',
         url: 'https://www.topcoder.com/customer',
+    },
+    customerFaq: {
+      label: 'FAQ',
+      description: '',
+      url: 'https://www.topcoder.com/customer/faq'
     },
     dataAdvisory: {
         label: 'Data Advisory',
@@ -319,7 +329,7 @@ export const navItemsConfigProd: NavItemConfig = {
     },
     selfServiceApp: {
         label: "Self Service Challenges",
-        url: "http://platform-ui.topcoder-dev.com/work",
+        url: "http://platform-ui.topcoder.com/work",
         icon: "self-service",
         description: "Launch and manage work"
     },
@@ -359,6 +369,12 @@ export const navItemsConfigProd: NavItemConfig = {
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
         url: 'https://go.topcoder.com/lets-talk',
+    },
+    talkToSales: {
+      label: 'Talk to Sales',
+      description: 'Speak with a Topcoder expert to get started.',
+      type: 'cta',
+      url: 'https://topcoder-dev.com/customer/talk-to-an-expert', // Need Dev
     },
     technology: {
         label: 'Technology',

@@ -67,6 +67,11 @@ export const navItemsConfigDev: NavItemConfig = {
         icon: "challenges",
         description: "Compete and earn money",
     },
+    challengeModel: {
+        label: "Challenge Model",
+        url: "https://uninav.topcoder-dev.com/customer/challenge-model",
+        description: "Challenge Model",
+    },
     communications: {
         label: 'Communications',
         description: 'Communications solutions, how Topcoder excels, including case studies.',
@@ -86,6 +91,11 @@ export const navItemsConfigDev: NavItemConfig = {
         label: 'Customer',
         description: 'Learn how Topcoder can help your business get work done.',
         url: 'https://uninav.topcoder.com/customer',
+    },
+    customerFaq: {
+      label: 'FAQ',
+      description: '',
+      url: 'https://uninav.topcoder.com/customer/faq'
     },
     dataAdvisory: {
         label: 'Data Advisory',
@@ -359,6 +369,12 @@ export const navItemsConfigDev: NavItemConfig = {
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
         url: 'https://go.topcoder.com/lets-talk', // Need Dev
+    },
+    talkToSales: {
+        label: 'Talk to Sales',
+        description: 'Speak with a Topcoder expert to get started.',
+        type: 'cta',
+        url: 'https://uninav.topcoder.com/customer/talk-to-an-expert', // Need Dev
     },
     technology: {
         label: 'Technology',
