@@ -69,7 +69,7 @@ export const navItemsConfigDev: NavItemConfig = {
     },
     challengeModel: {
         label: "Challenge Model",
-        url: "https://www.topcoder-dev.com/challenge-model",
+        url: "https://uninav.topcoder-dev.com/customer/challenge-model",
         description: "Challenge Model",
     },
     communications: {
@@ -374,7 +374,7 @@ export const navItemsConfigDev: NavItemConfig = {
         label: 'Talk to Sales',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
-        url: 'https://go.topcoder.com/lets-talk', // Need Dev
+        url: 'https://uninav.topcoder.com/customer/talk-to-an-expert', // Need Dev
     },
     technology: {
         label: 'Technology',
