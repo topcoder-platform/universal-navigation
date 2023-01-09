@@ -9,10 +9,12 @@ export interface NavItemConfig {
     bfsi: NavMenuItem
     bookADemo: NavMenuItem
     customer: NavMenuItem
+    customerFaq: NavMenuItem
     careerGrowth: NavMenuItem
     careers: NavMenuItem
     challenges: NavMenuItem
     challengesApp: NavMenuItem
+    challengeModel: NavMenuItem
     communications: NavMenuItem
     talent: NavMenuItem
     compete: NavMenuItem
@@ -64,6 +66,7 @@ export interface NavItemConfig {
     successStories: NavMenuItem
     support: NavMenuItem
     talkToAnExpert: NavMenuItem
+    talkToSales: NavMenuItem
     technology: NavMenuItem
     theCommunity: NavMenuItem
     timeline: NavMenuItem
