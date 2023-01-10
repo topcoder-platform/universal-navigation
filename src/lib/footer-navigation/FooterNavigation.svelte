@@ -44,7 +44,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  {#if !fullFooter}
+  <!-- {#if !fullFooter}
     <div class={classnames(styles.toggleBar, isCollapsed && styles.isCollapsed)} on:click={toggleFooter} on:keydown={() => {}}>
       <span class={styles.icon}>
         <InlineSvg src="/assets/icon-tmenu.svg" />
@@ -53,7 +53,7 @@
         <InlineSvg src="/assets/icon-arrow.svg" />
       </span>
     </div>
-  {/if}
+  {/if} -->
   {#if fullFooter === true || !isCollapsed}
   <div class={styles.footerNavigation}>
     <ul class={styles.menuSections}>
