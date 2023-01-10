@@ -90,7 +90,7 @@ export const navItemsConfigProd: NavItemConfig = {
     customer: {
         label: 'Customer',
         description: 'Learn how Topcoder can help your business get work done.',
-        url: 'https://www.topcoder.com/customer',
+        url: 'https://www.topcoder.com',
     },
     customerFaq: {
       label: 'FAQ',
@@ -362,7 +362,7 @@ export const navItemsConfigProd: NavItemConfig = {
         authenticatedUrl: 'https://www.topcoder.com/home',
         label: 'Talent',
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
-        url: 'https://www.topcoder.com/talent',
+        url: 'https://topcoder.com/the-community',
     },
     talkToAnExpert: {
         label: 'Talk to an expert',
