@@ -17,10 +17,6 @@
     }
 
     const handleMouseover = (menuItem: NavMenuItem) => async (ev) => {
-        if (activeRoute) {
-            return;
-        }
-
         if (!itemHasHoverMenu(menuItem)) {
             return;
         }
