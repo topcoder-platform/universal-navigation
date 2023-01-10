@@ -44,7 +44,7 @@ running_npm_build: &running_npm_build
     name: Running npm Build
     command: |
         npm install
-        npm run build
+        APP_ENV=${LOGICAL_ENV} npm run build
 
 workspace_persist: &workspace_persist
     root: .
@@ -58,10 +58,10 @@ running_version_patch: &running_version_patch
     name: Patching Version
     command: |
         npm install
-        git config user.name brooketopcoder
-        git config user.email brooke.souza@topcoder.com
+        git config user.name $CIRCLE_USERNAME
+        git config user.email security@topcoder.com
         npm version patch -m "Increment Version [ci skip]"
-        git push --set-upstream origin master
+        git push --set-upstream origin $CIRCLE_BRANCH
 
 update_types: &update_types
     name: Updating Types
@@ -69,17 +69,37 @@ update_types: &update_types
         npm ci
         npm run types
         diffstatus=$(git status --porcelain)
-        git config user.name brooketopcoder
-        git config user.email brooke.souza@topcoder.com
+        git config user.name $CIRCLE_USERNAME
+        git config user.email security@topcoder.com
         git add types
         git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
-        git push --set-upstream origin master
+        git push --set-upstream origin $CIRCLE_BRANCH
+
+check_types: &check_types
+    name: Checking Types
+    command: |
+        npm ci
+        npm run types
+        diffstatus=$(git status --porcelain)
+        git config user.name $CIRCLE_USERNAME
+        git config user.email security@topcoder.com
+        git add types
+        git diff-index --cached --quiet HEAD || echo 'WARNING: Types need updating'
+        git diff-index --cached --quiet HEAD || exit 1
 
 finger_print_add: &finger_print_add
     fingerprints:
             - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
             
 # DEFINE STEPS FOR JOBS
+
+check_types_steps: &check_types_steps
+    - add_ssh_keys: *finger_print_add          
+    - checkout
+    - setup_remote_docker
+    - run: *install_build_dependency
+    - run: *install_deploysuite
+    - run: *check_types
 
 build_steps_prod: &build_steps_prod
     # Initialization.
@@ -117,6 +137,14 @@ deploy_steps: &deploy_steps
             ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
+
+    check-types:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "DEV"
+            LOGICAL_ENV: "dev"
+            APPNAME: "universal-navigation"
+        steps: *check_types_steps
 
     build-dev:
         <<: *defaults
@@ -158,6 +186,13 @@ workflows:
     build:
         jobs:
 
+            - check-types:
+                context : org-global
+                filters:
+                    branches:
+                        ignore:
+                            - master
+                            
             - build-dev:
                 context : org-global
                 filters:

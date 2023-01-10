@@ -10,11 +10,18 @@
   }
 
   a, a:active, a:visited, a:hover, a:link {
-    text-decoration: none;
     color: inherit;
   }
 
   hr {
     display: block;
+  }
+}
+
+.tc-universal-nav {
+  &.tc-universal-nav {
+    a, a:active, a:visited, a:hover, a:link {
+      text-decoration: none;
+    }
   }
 }

@@ -80,14 +80,32 @@ Resources:
                         Items:
 
                             # Customer & Member Marketing Prod & Dev
-                            - !Sub https://${Domain} 
-                            - !Sub https://www.${Domain}
+                            - https://www.topcoder.com
+                            - https://topcoder.com
+
+                            # Customer Marketing Dev
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub https://${Domain} 
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub https://www.${Domain}
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://uninav.topcoder.com
                             
                             # Customer Marketing Local
                             - !If 
                                 - IsProd
                                 - !Ref AWS::NoValue
-                                - http://localhost
+                                - http://localhost:8080 
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://topcoder.topcoder-dev.com
 
                             # Forum Prod & Dev
                             - !Sub https://discussions.${Domain} 

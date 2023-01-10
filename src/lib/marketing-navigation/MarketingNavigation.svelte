@@ -11,6 +11,7 @@
   import { isMobile } from 'lib/utils/window-size.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
+  import AboutUsMenuItem from './components/AboutUsMenuItem.svelte';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -23,7 +24,11 @@
 
   let activeRoute: NavMenuItem[] = [];
   $: activeRoute = getActiveRoute(menuItems)
-  const [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
+
+  let primaryRoute: NavMenuItem;
+  let secondaryRoute: NavMenuItem;
+  let tertiaryRoute: NavMenuItem;
+  $: [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
 
   onMount(checkAndLoadFonts)
 </script>
@@ -35,21 +40,28 @@
     style='primary'
     menuItems={menuItems}
     isMobile={$isMobile}
+    showHoverMenu={!primaryRoute}
   >
-    <UserArea slot="auth" />
+    <svelte:fragment slot="auth">
+      <AboutUsMenuItem />
+      <UserArea />
+    </svelte:fragment>
   </NavigationBar>
 
   {#if !$isMobile}
     {#if primaryRoute?.children?.length}
       <NavigationBar
+        activeRoutePath={activeRoute}
         activeRoute={secondaryRoute}
         style='secondary'
         menuItems={primaryRoute.children}
+        showHoverMenu={!secondaryRoute?.children?.length}
       />
     {/if}
 
     {#if secondaryRoute?.children?.length}
       <NavigationBar
+        activeRoutePath={activeRoute}
         activeRoute={tertiaryRoute}
         style='tertiary'
         menuItems={secondaryRoute.children}

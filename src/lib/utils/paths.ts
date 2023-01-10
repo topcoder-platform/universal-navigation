@@ -12,7 +12,7 @@ export function getPublicPath(assetPath: string): string {
 
     // for PRODuction inject the version number
     // for local development, keep assets at root
-    const version = APP_IS_PROD ? `/v${pkg.version.split('.')[0]}` : ''
+    const version = BUILD_IS_PROD ? `/v${pkg.version.split('.')[0]}` : ''
     const versionPath: string = `${version}${assetPath}`
     return new URL(versionPath, import.meta.url).href
 }
@@ -24,13 +24,4 @@ export function getPublicPath(assetPath: string): string {
  */
 export function getDefaultHostPath(path: string): string {
     return `${DEFAULT_HOST_URL}${path}`
-}
-
-/**
- * Gets the absolute path hosted on the DEFAULT_HOST
- * @params path
- * @returns string
- */
-export function navUrl(item: NavMenuItem): string {
-    return item.url ?? `${item.host ?? DEFAULT_HOST_URL}${item.path}`
 }

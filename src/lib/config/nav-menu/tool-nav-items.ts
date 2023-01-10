@@ -1,8 +1,8 @@
-import { businessMenuItem, communityMenuItem } from "./menu-item";
+import { navItems } from "./nav-items.config";
 
 export const toolNavItems = {
   children: [
-    businessMenuItem,
-    communityMenuItem,
+    navItems.customer,
+    navItems.talent,
   ]
 }

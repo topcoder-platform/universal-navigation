@@ -1,100 +1,98 @@
-import * as navItems from "./menu-item";
+import { navItems } from "./nav-items.config";
 
 export const marketingNavItems = {
-  children: [{
-      ...navItems.businessMenuItem,
-      children: [{
-          ...navItems.whyTopcoderMenuItem,
-          children: [
-            navItems.theCommunityMenuItem,
-            {
-              ...navItems.expertiseMenuItem,
-              children: [
-                navItems.dataScienceMenuItem,
-                navItems.designMenuItem,
-                navItems.developmentMenuItem,
-                navItems.qaMenuItem
-              ]
-            },
-            {
-              ...navItems.industriesMenuItem,
-              children: [
-                navItems.bfsiMenuItem,
-                navItems.communicationsMenuItem,
-                navItems.energyUtilitiesMenuItem,
-                navItems.healthPharmaMenuItem,
-                navItems.publicSectorMenuItem,
-                navItems.retailMenuItem,
-                navItems.technologyMenuItem,
-              ]
-            },
-            navItems.partnersMenuItem,
-            navItems.securityMenuItem,
-            navItems.successStoriesMenuItem,
-          ]
+    children: [
+        {
+            ...navItems.customer,
+            children: [
+                {
+                    ...navItems.whyTopcoder,
+                    children: [
+                        navItems.theCommunity,
+                        {
+                            ...navItems.expertise,
+                            children: [
+                                navItems.dataScience,
+                                navItems.design,
+                                navItems.development,
+                                navItems.qa,
+                            ]
+                        },
+                        {
+                            ...navItems.industries,
+                            children: [
+                                navItems.bfsi,
+                                navItems.communications,
+                                navItems.energyUtilities,
+                                navItems.healthPharma,
+                                navItems.publicSector,
+                                navItems.retail,
+                                navItems.technology,
+                            ]
+                        },
+                        navItems.partners,
+                        navItems.security,
+                        navItems.successStories,
+                    ]
+                },
+                navItems.fullService,
+                {
+                    ...navItems.selfService,
+                    children: [
+                        navItems.dataAdvisory,
+                        navItems.findMeData,
+                        navItems.dataExploration,
+                        navItems.websiteDesign,
+                    ]
+                },
+                navItems.topCrowd,
+                navItems.talkToAnExpert,
+                navItems.bookADemo,
+            ]
         },
         {
-          ...navItems.productsMenuItem,
-          children: [
-            navItems.fullServiceMenuItem,
-            navItems.topcrowdMenuItem,
-            {
-              ...navItems.selfServiceChallengesMenuItem,
-              children: [
-                navItems.dataAdvisoryMenuItem,
-                navItems.findMeDataMenuItem,
-                navItems.dataExplorationMenuItem,
-                navItems.websiteDesignMenuItem,
-              ]
-            }
-          ]
-        },
-        navItems.talkToAnExpertMenuItem,
-        navItems.bookADemoMenuItem,
-      ]
-    },
-    {
-      ...navItems.communityMenuItem,
-      children: [{
-          ...navItems.learnMenuItem,
-          children: [
-            navItems.topcoderAcademyMenuItem,
-            navItems.articlesMenuItem
-          ]
-        },
-        {
-          ...navItems.earnMenuItem,
-          children: [
-            navItems.challengesMenuItem,
-            navItems.gigsMenuItem
-          ]
-        },
-        {
-          ...navItems.competeMenuItem,
-          children: [
-            navItems.marathonMatchesMenuItem,
-            navItems.rapidDevMatchesMenuItem,
-            navItems.singleRoundMatchesMenuItem
-          ]
-        },
-        {
-          ...navItems.connectMenuItem,
-          children: [
-            navItems.announcementsMenuItem,
-            navItems.eventsMenuItem,
-            navItems.topcoderOpenMenuItem,
-            navItems.discordMenuItem,
-            navItems.timelineMenuItem,
-          ]
-        },
-        {
-          ...navItems.benefitsMenuItem,
-          children: [
-            navItems.healthCareMenuItem,
-            navItems.careerGrowthMenuItem,
-          ]
+            ...navItems.talent,
+            children: [
+                {
+                    ...navItems.learn,
+                    children: [
+                        navItems.topcoderAcademy,
+                        navItems.articles,
+                    ]
+                },
+                {
+                    ...navItems.earn,
+                    children: [
+                        navItems.challenges,
+                        navItems.gigs,
+                    ]
+                },
+                {
+                    ...navItems.compete,
+                    children: [
+                        navItems.marathonMatches,
+                        navItems.rapidDevMatches,
+                        navItems.singleRoundMatches,
+                    ]
+                },
+                {
+                    ...navItems.connect,
+                    children: [
+                        navItems.announcements,
+                        navItems.events,
+                        navItems.topcoderOpen,
+                        navItems.discord,
+                        navItems.timeline,
+                    ]
+                },
+                {
+                    ...navItems.benefits,
+                    children: [
+                        navItems.healthCare,
+                        navItems.careerGrowth,
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

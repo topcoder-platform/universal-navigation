@@ -1,128 +1,71 @@
-import * as navItems from "./menu-item";
+import { navItems } from "./nav-items.config";
 
 export const footerNavItems = {
-  children: [
-    {
-      label: "About",
-      children: [
+    children: [
+        navItems.about,
         {
-          label: "About Topcoder",
-          path: "/customer"
+            ...navItems.expertise,
+            children: [
+                navItems.dataScience,
+                navItems.design,
+                navItems.development,
+                navItems.qa,
+            ]
+        },
+        {
+            ...navItems.customer,
+            children: [
+                navItems.whyTopcoder,
+                navItems.challengeModel,
+                navItems.fullService,
+                navItems.selfService,
+                navItems.topCrowd,
+                navItems.successStories,
+                navItems.partners,
+                navItems.security,
+                navItems.customerFaq,
+            ]
+        },
+        {
+            ...navItems.industries,
+            children: [
+                navItems.bfsi,
+                navItems.communications,
+                navItems.energyUtilities,
+                navItems.healthPharma,
+                navItems.publicSector,
+                navItems.retail,
+                navItems.technology,
+            ]
+        },
+        navItems.media,
+        {
+            ...navItems.talent,
+            children: [
+                navItems.learn,
+                navItems.earn,
+                navItems.compete,
+                navItems.connect,
+                navItems.benefits,
+                navItems.statistics,
+                navItems.gettingPaid,
+                navItems.faq,
+            ]
+        },
+        {
+            label: "Contact",
+            children: [
+                navItems.talkToSales,
+                navItems.bookADemo,
+                navItems.support,
+            ]
+        },
+        navItems.careers,
+        {
+            label: "Legal",
+            children: [
+                navItems.privacyPolicy
+            ]
         }
-      ]
-    },
-    {
-      ...navItems.expertiseMenuItem,
-      children: [
-        navItems.dataScienceMenuItem,
-        navItems.designMenuItem,
-        navItems.developmentMenuItem,
-        navItems.qaMenuItem,
-      ]
-    },
-    {
-      ...navItems.businessMenuItem,
-      children: [
-        navItems.whyTopcoderMenuItem,
-        navItems.productsMenuItem,
-        navItems.successStoriesMenuItem,
-        navItems.securityMenuItem,
-        {
-          label: "FAQ",
-          path: "/faqs",
-          fullPath: "/faqs"
-        }
-      ]
-    },
-    {
-      ...navItems.industriesMenuItem,
-      children: [
-        navItems.bfsiMenuItem,
-        navItems.communicationsMenuItem,
-        navItems.energyUtilitiesMenuItem,
-        navItems.healthPharmaMenuItem,
-        navItems.publicSectorMenuItem,
-        navItems.retailMenuItem,
-        navItems.technologyMenuItem,
-      ]
-    },
-    {
-      label: "Media",
-      children: [
-        {
-          label: "Blog",
-          path: "/blog"
-        },
-        {
-          label: "Newsletter",
-          path: "/newsletter",
-          host: "http://go.topcoder.com"
-        },
-        {
-          label: "Press Room",
-          path: "/resources"
-        },
-        {
-          label: "Videos",
-          path: "/videos"
-        },
-        {
-          label: "Whitepapers",
-          path: "/ebooks-white-papers"
-        },
-        {
-          label: "Releases",
-          path: "/releases"
-        }
-      ]
-    },
-    {
-      ...navItems.communityMenuItem,
-      children: [
-        navItems.learnMenuItem,
-        navItems.earnMenuItem,
-        navItems.competeMenuItem,
-        navItems.connectMenuItem,
-        navItems.benefitsMenuItem,
-        {
-          label: "Statistics",
-          path: "/community/statistics"
-        },
-        {
-          label: "Getting Paid",
-          path: "/thrive/tracks?track=Topcoder&tax=Getting%20Paid",
-        },
-        {
-          label: "FAQ",
-          path: "/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb",
-        }
-      ]
-    },
-    {
-      label: "Contact",
-      children: [
-        navItems.talkToAnExpertMenuItem,
-        navItems.bookADemoMenuItem,
-        navItems.supportMenuItem,
-      ]
-    },
-    {
-      label: "Careers",
-      children: [
-        {
-          label: "Work at Topcoder",
-          path: "/work-at-topcoder"
-        }
-      ]
-    },
-    {
-      label: "Legal",
-      children: [
-        {
-          label: "Privacy Policy",
-          path: "/policy"
-        }
-      ]
-    }
-  ]
+    ]
 }

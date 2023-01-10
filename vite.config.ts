@@ -14,13 +14,14 @@ export default defineConfig((props) => {
     // builds output based on the env's build_target
     // if no build_target is passed, the main.ts will be built as tc-universal-nav
     // (which is only a loader for the actual navigations)
-    const target = env.APP_BUILD_TARGET as 'marketing'|'tool'|'footer';
+    const target = env.APP_BUILD_TARGET as 'marketing' | 'tool' | 'footer';
     const entry = !env.APP_BUILD_TARGET ? 'main' : `out/${target}-nav`
     const outputFileName = `${target ?? 'tc-universal'}-nav`
 
     return {
         define: {
-            APP_IS_PROD: props.mode === 'production',
+            BUILD_IS_PROD: props.mode === 'production',
+            ENV_IS_PROD: env.APP_ENV === 'prod'
         },
         plugins: [
             cssInjectedByJsPlugin(),

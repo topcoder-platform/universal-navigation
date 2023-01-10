@@ -1,20 +1,11 @@
 export interface NavMenuItem {
-    children: NavMenuItem[]
-    description: string
-    host: string
-    label: string
-    path: string
-    type?: 'cta'
-    icon?: string
-
     action?: string
-
-    // tool selector only has urls, no path
+    authenticatedUrl?: string    // URL used when user is authenticated
+    children?: NavMenuItem[]
+    description?: string
+    groupOrder?: number    // for tools groups ordering
+    icon?: string
+    label?: string
+    type?: 'cta'
     url?: string
-
-    // path used when user is authenticated
-    authenticatedPath?: string
-
-    // for tools groups ordering
-    groupOrder?: number
 }

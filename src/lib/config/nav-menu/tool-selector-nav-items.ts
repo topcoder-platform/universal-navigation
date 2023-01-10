@@ -1,38 +1,20 @@
+import { navItems } from "./nav-items.config"
+
 export const toolSelectorNavItems = {
     children: [
         {
             label: "Customer",
             children: [
                 {
-                    label: "",
                     children: [
-                        {
-                            label: "Self Service Challenges",
-                            url: "http://platform-ui.topcoder.com/work",
-                            icon: "self-service",
-                            description: "Launch and manage work"
-                        },
-                        // {
-                        //     label:"TopCrowd",
-                        //     url: "",
-                        //     icon: "topcrowd",
-                        //     description: "Hover description text"
-                        // }
+                        navItems.selfServiceApp,
+                        // navItems.topcrowd,
                     ]
                 },
                 {
-                    label: "",
                     children: [
-                        {
-                            label: "Talk to an expert",
-                            url: "http://go.topcoder.com/lets-talk",
-                            type: "cta"
-                        },
-                        {
-                            label: "Book a demo",
-                            url: "http://go.topcoder.com/lets-talk/?interest=A%20Demo%20of%20Topcoder",
-                            type: "cta"
-                        }
+                        navItems.talkToAnExpert,
+                        navItems.demo,
                     ]
                 }
             ]
@@ -41,105 +23,40 @@ export const toolSelectorNavItems = {
             label: "Talent",
             children: [
                 {
-                    label:"Learn",
+                    label: "Learn",
                     groupOrder: 1,
                     children: [
-                        {
-                            label: "Topcoder Academy",
-                            url: "http://platform-ui.topcoder.com/learn",
-                            icon: "tcacademy",
-                            description: "Learn new skills"
-                        },
-                        {
-                            label:"Dev Center",
-                            icon: "dev-center",
-                            url: "http://platform-ui.topcoder.com/dev-center",
-                            description: "Get help for Topcoder tools"
-                        },
-                        {
-                            label:"Practice",
-                            icon: "practice",
-                            url: "https://www.topcoder.com/challenges?search=practice&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
-                            description: "Learn to compete"
-                        }
+                        navItems.topcoderAcademyApp,
+                        navItems.devCenter,
+                        navItems.practice,
                     ]
                 },
                 {
-                    label:"Compete",
+                    label: "Compete",
                     groupOrder: 3,
                     children: [
-                        {
-                            label: "Marathon Matches",
-                            url: "https://www.topcoder.com/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
-                            icon: "mm",
-                            description: "Solve hard algorithm problems"
-                        },
-                        {
-                            label: "Rapid Dev Matches",
-                            url: "https://www.topcoder.com/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true",
-                            icon: "rdm",
-                            description: "Join fast, fun competitions"
-                        },
-                        {
-                            label:"SRMs (Arena)",
-                            url: "https://www.topcoder.com/community/arena?ref=nav",
-                            icon: "srm",
-                            description: "Start competitive programming"
-                        }
+                        navItems.marathonMatchesApp,
+                        navItems.rapidDevMatchesApp,
+                        navItems.singleRoundMatchesApp,
                     ]
                 },
                 {
-                    label:"Earn",
+                    label: "Earn",
                     groupOrder: 2,
                     children: [
-                        {
-                            label: "Challenges",
-                            url: "https://www.topcoder.com/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK",
-                            icon: "challenges",
-                            description: "Compete and earn money"
-                        },
-                        {
-                            label:"Gigs",
-                            url: "http://topcoder.com/gigs",
-                            icon: "gigs",
-                            description: "Find freelance gigs"
-                        },
-                        {
-                            label:"Review",
-                            url: "http://software.topcoder.com",
-                            icon: "review",
-                            description: "Review submissions"
-                        },
-                        {
-                            label:"Payments",
-                            url: "http://community.topcoder.com/PactsMemberServlet?module=PaymentHistory",
-                            icon: "payments",
-                            description: "Get paid"
-                        }
+                        navItems.challengesApp,
+                        navItems.gigsApp,
+                        navItems.review,
+                        navItems.payments
                     ]
                 },
                 {
-                    label:"Connect",
+                    label: "Connect",
                     groupOrder: 4,
                     children: [
-                        {
-                            label:"Forums",
-                            url: "https://discussions.topcoder.com",
-                            icon: "forums",
-                            description: "Discuss challenges or questions"
-                        },
-                        {
-                            label: "Articles",
-                            url: "https://www.topcoder.com/thrive",
-                            icon: "articles",
-                            description: "Get inspired"
-                        },
-                        {
-                            label: "Discord",
-                            url: "http://discord.com/invite/topcoder",
-                            icon: "discord",
-                            description: "Chat live with members"
-                        },
+                        navItems.forums,
+                        navItems.articles,
+                        navItems.discordApp,
                     ]
                 }
             ]
