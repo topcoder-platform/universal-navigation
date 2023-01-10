@@ -40,6 +40,7 @@
     style='primary'
     menuItems={menuItems}
     isMobile={$isMobile}
+    showHoverMenu={!primaryRoute}
   >
     <svelte:fragment slot="auth">
       <AboutUsMenuItem />
@@ -53,6 +54,7 @@
         activeRoute={secondaryRoute}
         style='secondary'
         menuItems={primaryRoute.children}
+        showHoverMenu={!secondaryRoute?.children?.length}
       />
     {/if}
 

@@ -10,6 +10,7 @@
     export let activeRoutePath: NavMenuItem[] = [];
     export let activeRoute: NavMenuItem;
     export let isMobile: boolean = false;
+    export let showHoverMenu: boolean = true;
 
     let popupIsVisible: boolean;
     let hoveredElement: HTMLElement | undefined;
@@ -31,7 +32,7 @@
         isPopupMenuActive={popupIsVisible}
         style={style}
     >
-        {#if !activeRoute}
+        {#if showHoverMenu}
             <HoverMenu
                 menuItems={hoveredMenuItem?.children}
                 mainDescription={hoveredMenuItem?.description}
