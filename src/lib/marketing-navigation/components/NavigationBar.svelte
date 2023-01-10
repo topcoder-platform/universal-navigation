@@ -33,6 +33,7 @@
     >
         {#if !activeRoute}
             <HoverMenu
+                activeRoute={activeRoutePath[3] ?? activeRoutePath[2]}
                 menuItems={hoveredMenuItem?.children}
                 mainDescription={hoveredMenuItem?.description}
                 bind:isHovering={popupIsVisible}

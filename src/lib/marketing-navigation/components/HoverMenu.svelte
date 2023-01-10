@@ -6,6 +6,7 @@
   export let mainDescription = '';
   export let menuItems: NavMenuItem[] = [];
   export let isHovering: boolean = false;
+  export let activeRoute: NavMenuItem = undefined;
 
   let elWrap: HTMLElement | undefined;
 
@@ -40,6 +41,7 @@
               {#if !!menuItem.label}
                 <a
                   class={styles.menuSectionHeading}
+                  class:active={activeRoute?.url === menuItem.url}
                   target="_top"
                   href={menuItem.url}
                 >
@@ -56,6 +58,7 @@
                       <li>
                         <a
                           class={styles.menuSectionChild}
+                          class:active={activeRoute?.url === child.url}
                           target="_top"
                           href={child.url}
                         >{child.label}</a>
