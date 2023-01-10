@@ -34,7 +34,7 @@ export const navItemsConfigDev: NavItemConfig = {
     bfsi: {
         label: 'BFSI',
         description: 'BFSI solutions, how Topcoder excels, including case studies.',
-        url: 'https://uninav.topcoder.com/bfsi',
+        url: 'https://uninav.topcoder.com/customer/bfsi',
     },
     bookADemo: {
         label: 'Book a demo',
@@ -75,7 +75,7 @@ export const navItemsConfigDev: NavItemConfig = {
     communications: {
         label: 'Communications',
         description: 'Communications solutions, how Topcoder excels, including case studies.',
-        url: 'https://uninav.topcoder.com/communications',
+        url: 'https://uninav.topcoder.com/customer/communications',
     },
     compete: {
         label: 'Compete',
