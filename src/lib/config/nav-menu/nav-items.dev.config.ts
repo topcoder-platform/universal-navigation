@@ -110,7 +110,7 @@ export const navItemsConfigDev: NavItemConfig = {
     dataScience: {
         label: 'Data Science',
         description: 'See how Topcoder has delivered Data Science solutions.',
-        url: 'https://uninav.topcoder.com/data-science',
+        url: 'https://uninav.topcoder.com/customer/data-science',
     },
     demo: {
         label: 'Book a demo',
