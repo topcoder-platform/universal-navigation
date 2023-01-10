@@ -83,6 +83,12 @@ a.menuSectionHeading {
   line-height: 22px;
   font-weight: 700;
   cursor: pointer;
+  &:hover {
+    color: #2A2A2A;
+  }
+  &:global(.active), &:active {
+    color: #0D664E;
+  }
 }
 
 .menuSectionDesc {
@@ -100,6 +106,12 @@ a.menuSectionChild {
   font-weight: 500;
   color: #767676;
   cursor: pointer;
+  &:hover {
+    color: #2A2A2A;
+  }
+  &:global(.active), &:active {
+    color: #0D664E;
+  }
 }
 
 a.ctaButton {
