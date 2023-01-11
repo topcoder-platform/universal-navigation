@@ -40,7 +40,7 @@ export interface NavItemConfig {
     gigsApp: NavMenuItem;
     healthCare: NavMenuItem;
     healthPharma: NavMenuItem;
-    home: NavMenuItem
+    home: NavMenuItem;
     industries: NavMenuItem;
     learn: NavMenuItem;
     marathonMatches: NavMenuItem;
