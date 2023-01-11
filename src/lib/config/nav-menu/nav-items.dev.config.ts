@@ -93,9 +93,9 @@ export const navItemsConfigDev: NavItemConfig = {
         url: 'https://uninav.topcoder.com/customer',
     },
     customerFaq: {
-      label: 'FAQ',
-      description: '',
-      url: 'https://uninav.topcoder.com/customer/faq'
+        label: 'FAQ',
+        description: '',
+        url: 'https://uninav.topcoder.com/customer/faq'
     },
     dataAdvisory: {
         label: 'Data Advisory',
@@ -209,6 +209,10 @@ export const navItemsConfigDev: NavItemConfig = {
         description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
         url: 'https://uninav.topcoder.com/customer/health-pharma',
     },
+    home: {
+        label: 'Home',
+        url: 'https://uninav.topcoder.com',
+    },
     industries: {
         label: 'Industries',
         description: 'The industries in which Topcoder delivers successful solutions.',
@@ -279,11 +283,6 @@ export const navItemsConfigDev: NavItemConfig = {
     privacyPolicy: {
         label: "Privacy Policy",
         url: "https://www.topcoder.com/policy" // Need Dev
-    },
-    products: {
-        label: 'Products',
-        description: 'How you will engage with the products Topcoder offers.',
-        url: 'https://uninav.topcoder.com',
     },
     publicSector: {
         label: 'Public Sector',
@@ -359,7 +358,7 @@ export const navItemsConfigDev: NavItemConfig = {
         url: "mailto:support@topcoder.com"
     },
     talent: {
-        authenticatedUrl: 'https://www.topcoder.com/home',
+        authenticatedUrl: 'https://uninav.topcoder.com/home',
         label: 'Talent',
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
         url: 'https://uninav.topcoder.com/talent',

@@ -40,6 +40,7 @@ export interface NavItemConfig {
     gigsApp: NavMenuItem;
     healthCare: NavMenuItem;
     healthPharma: NavMenuItem;
+    home: NavMenuItem
     industries: NavMenuItem;
     learn: NavMenuItem;
     marathonMatches: NavMenuItem;
@@ -49,7 +50,6 @@ export interface NavItemConfig {
     partners: NavMenuItem;
     practice: NavMenuItem;
     privacyPolicy: NavMenuItem;
-    products: NavMenuItem;
     publicSector: NavMenuItem;
     qa: NavMenuItem;
     rapidDevMatches: NavMenuItem;
