@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { getAppContext } from 'lib/app-context';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
@@ -27,13 +27,19 @@
 
   let supportVisible = false;
   let footerEl: Element | undefined = undefined;
+  let bottomBar: Element | undefined = undefined;
 
   function toggleSupportModal() {
     supportVisible = true;
   }
 
-  function toggleFooter() {
+  async function toggleFooter() {
     isCollapsed = !isCollapsed;
+    await tick()
+
+    if (!isCollapsed) {
+      bottomBar.scrollIntoView()
+    }
   }
 
   onMount(checkAndLoadFonts)
@@ -44,7 +50,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  <!-- {#if !fullFooter}
+  {#if !fullFooter}
     <div class={classnames(styles.toggleBar, isCollapsed && styles.isCollapsed)} on:click={toggleFooter} on:keydown={() => {}}>
       <span class={styles.icon}>
         <InlineSvg src="/assets/icon-tmenu.svg" />
@@ -53,9 +59,9 @@
         <InlineSvg src="/assets/icon-arrow.svg" />
       </span>
     </div>
-  {/if} -->
+  {/if}
   {#if fullFooter === true || !isCollapsed}
-  <div class={styles.footerNavigation}>
+  <div class={styles.footerNavigation} bind:this={bottomBar}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
         <li class={styles.menuSection}>
