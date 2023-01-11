@@ -313,7 +313,7 @@ export const navItemsConfigProd: NavItemConfig = {
     },
     review: {
         label: "Review",
-        url: "http://software.topcoder .com",
+        url: "http://software.topcoder.com",
         icon: "review",
         description: "Review submissions"
     },
