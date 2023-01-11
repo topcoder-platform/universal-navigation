@@ -1,4 +1,5 @@
 @import 'lib/styles/mixins.scss';
+@import 'lib/styles/fonts.scss';
 
 .userAvatarWrap {
   width: 32px;
@@ -35,7 +36,7 @@
     border-radius: inherit;
     box-sizing: border-box;
 
-    font-family: 'Roboto';
+    font-family: $roboto;
   }
 
   &:hover, &.popupVisible {

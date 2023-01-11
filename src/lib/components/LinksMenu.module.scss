@@ -1,3 +1,5 @@
+@import 'lib/styles/fonts.scss';
+
 .linksMenuWrap {
   display: flex;
   align-items: center;
@@ -21,7 +23,7 @@
 
     & { // same as secondary styles
       color: #AAAAAA;
-      font-family: 'Roboto';
+      font-family: $roboto;
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
@@ -36,7 +38,7 @@
     }
 
     &.primary {
-      font-family: 'Barlow Condensed';
+      font-family: $barlowCondensed;
       font-size: 20px;
       line-height: 24px;
       text-transform: uppercase;
@@ -64,7 +66,7 @@
   }
 
   :global(.navButton) {
-    font-family: 'Roboto';
+    font-family: $roboto;
     font-style: normal;
     font-weight: 700;
     font-size: 12px;

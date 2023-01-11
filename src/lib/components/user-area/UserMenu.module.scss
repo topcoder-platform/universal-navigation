@@ -1,8 +1,9 @@
 @import 'lib/styles/mixins.scss';
+@import 'lib/styles/fonts.scss';
 
 .userMenu {
   li {
-    font-family: 'Roboto';
+    font-family: $roboto;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
