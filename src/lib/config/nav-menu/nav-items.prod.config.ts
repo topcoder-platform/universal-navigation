@@ -70,7 +70,7 @@ export const navItemsConfigProd: NavItemConfig = {
     challengeModel: {
       label: "Challenge Model",
       url: "https://www.topcoder.com/customer/challenge-model",
-      description: "Challenge Model",
+      description: "What makes our challenge model a success",
     },
     communications: {
         label: 'Communications',
