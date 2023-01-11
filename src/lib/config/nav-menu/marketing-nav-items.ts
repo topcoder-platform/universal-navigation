@@ -9,6 +9,7 @@ export const marketingNavItems = {
                     ...navItems.whyTopcoder,
                     children: [
                         navItems.theCommunity,
+                        navItems.challengeModel,
                         {
                             ...navItems.expertise,
                             children: [
