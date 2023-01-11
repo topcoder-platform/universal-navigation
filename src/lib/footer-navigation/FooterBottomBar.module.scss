@@ -1,4 +1,5 @@
 @import 'lib/styles/mixins.scss';
+@import 'lib/styles/fonts.scss';
 
 .footerBar {
   background: #0C0C0C;
@@ -22,7 +23,7 @@
 }
 
 .cTopcoder {
-  font-family: 'Roboto';
+  font-family: $roboto;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

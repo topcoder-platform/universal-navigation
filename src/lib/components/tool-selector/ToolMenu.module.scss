@@ -1,9 +1,10 @@
 @import 'lib/styles/mixins.scss';
+@import 'lib/styles/fonts.scss';
 
 .toolMenuWrap {
   width: 472px;
 
-  font-family: 'Roboto';
+  font-family: $roboto;
   font-style: normal;
   font-size: 14px;
   color: #767676;
@@ -18,7 +19,7 @@
 }
 
 .title {
-  font-family: 'Roboto';
+  font-family: $roboto;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;

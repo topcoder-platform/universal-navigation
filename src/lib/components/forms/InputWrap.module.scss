@@ -1,3 +1,5 @@
+@import 'lib/styles/fonts.scss';
+
 .inputWrap {
   background: #fff;
   border: 1px solid #aaa;
@@ -31,6 +33,6 @@
   font-weight: 500;
   line-height: 10px;
   white-space: nowrap;
-  font-family: Roboto;
+  font-family: $roboto;
   font-size: 11px;
 }

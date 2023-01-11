@@ -1,3 +1,4 @@
+@import 'lib/styles/fonts.scss';
 @import 'lib/styles/mixins.scss';
 
 .modalWrap {
@@ -79,7 +80,7 @@
 .modalTitle {
   font-size: 22px;
   line-height: 26px;
-  font-family: 'Barlow Condensed';
+  font-family: $barlowCondensed;
   font-weight: 600;
   text-transform: uppercase;
 
