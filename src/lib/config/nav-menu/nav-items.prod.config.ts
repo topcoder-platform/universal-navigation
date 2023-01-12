@@ -68,9 +68,9 @@ export const navItemsConfigProd: NavItemConfig = {
         description: "Compete and earn money"
     },
     challengeModel: {
-      label: "Challenge Model",
-      url: "https://www.topcoder.com/customer/challenge-model",
-      description: "What makes our challenge model a success",
+        label: "Challenge Model",
+        url: "https://www.topcoder.com/customer/challenge-model",
+        description: "What makes our challenge model a success",
     },
     communications: {
         label: 'Communications',
@@ -93,9 +93,9 @@ export const navItemsConfigProd: NavItemConfig = {
         url: 'https://www.topcoder.com',
     },
     customerFaq: {
-      label: 'FAQ',
-      description: '',
-      url: 'https://www.topcoder.com/customer/faq'
+        label: 'FAQ',
+        description: '',
+        url: 'https://www.topcoder.com/customer/faq'
     },
     dataAdvisory: {
         label: 'Data Advisory',
@@ -209,6 +209,10 @@ export const navItemsConfigProd: NavItemConfig = {
         description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
         url: 'https://www.topcoder.com/customer/health-pharma',
     },
+    home: {
+        label: 'Home',
+        url: 'https://www.topcoder.com',
+    },
     industries: {
         label: 'Industries',
         description: 'The industries in which Topcoder delivers successful solutions.',
@@ -279,11 +283,6 @@ export const navItemsConfigProd: NavItemConfig = {
     privacyPolicy: {
         label: "Privacy Policy",
         url: "https://www.topcoder.com/privacy"
-    },
-    products: {
-        label: 'Products',
-        description: 'How you will engage with the products Topcoder offers.',
-        url: 'https://www.topcoder.com/customer/products',
     },
     publicSector: {
         label: 'Public Sector',
@@ -371,10 +370,10 @@ export const navItemsConfigProd: NavItemConfig = {
         url: 'https://go.topcoder.com/lets-talk',
     },
     talkToSales: {
-      label: 'Talk to Sales',
-      description: 'Speak with a Topcoder expert to get started.',
-      type: 'cta',
-      url: 'https://topcoder-dev.com/customer/talk-to-an-expert', // Need Dev
+        label: 'Talk to Sales',
+        description: 'Speak with a Topcoder expert to get started.',
+        type: 'cta',
+        url: 'https://topcoder-dev.com/customer/talk-to-an-expert', // Need Dev
     },
     technology: {
         label: 'Technology',
