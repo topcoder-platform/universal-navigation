@@ -6,7 +6,7 @@ export const navItemsConfigDev: NavItemConfig = {
         children: [
             {
                 label: "About Topcoder",
-                url: "https://uninav.topcoder.com/customer"
+                url: "https://uninav.topcoder.com/about-us"
             }
         ],
     },
@@ -120,7 +120,7 @@ export const navItemsConfigDev: NavItemConfig = {
     design: {
         label: 'Design',
         description: 'See how Topcoder has delivered Design solutions.',
-        url: 'https://uninav.topcoder.com/customer/website-design',
+        url: 'https://uninav.topcoder.com/customer/design',
     },
     development: {
         label: 'Development',
@@ -221,7 +221,7 @@ export const navItemsConfigDev: NavItemConfig = {
     learn: {
         label: 'Learn',
         description: 'Learning opportunities provided to Topcoder\'s members.',
-        url: 'https://uninav.topcoder.com/talent/topcoder-academy',
+        url: 'https://uninav.topcoder.com/talent/learn',
     },
     marathonMatches: {
         label: 'Marathon Matches',
@@ -247,7 +247,7 @@ export const navItemsConfigDev: NavItemConfig = {
             },
             {
                 label: "Press Room",
-                url: "https://www.topcoder.com/resources" // Need Dev
+                url: "https://www.topcoder.com/press-room" // Need Dev
             },
             {
                 label: "Videos",
@@ -345,7 +345,7 @@ export const navItemsConfigDev: NavItemConfig = {
     },
     statistics: {
         label: "Statistics",
-        url: "https://www.topcoder.com/community/statistics?tracks[All-pills]=0&tracks[General]=0", // Need Dev
+        url: "https://www.topcoder.com/talent/statistics", // Need Dev
     },
     successStories: {
         label: 'Success Stories',
@@ -393,7 +393,7 @@ export const navItemsConfigDev: NavItemConfig = {
     topcoderAcademy: {
         label: 'Topcoder Academy',
         description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-        url: 'https://uninav.topcoder.com/talent/topcoder-academy',
+        url: 'https://uninav.topcoder.com/talent/learn',
     },
     topcoderAcademyApp: {
         label: "Topcoder Academy",
@@ -415,7 +415,7 @@ export const navItemsConfigDev: NavItemConfig = {
     websiteDesign: {
         label: 'Website Design',
         description: 'Work directly with the Topcoder community to design your website.',
-        url: 'https://uninav.topcoder.com/customer/design',
+        url: 'https://uninav.topcoder.com/customer/website-design',
     },
     whyTopcoder: {
         label: 'Why Topcoder',

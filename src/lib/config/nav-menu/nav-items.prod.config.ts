@@ -247,7 +247,7 @@ export const navItemsConfigProd: NavItemConfig = {
             },
             {
                 label: "Press Room",
-                url: "https://www.topcoder.com/resources"
+                url: "https://www.topcoder.com/press-room"
             },
             {
                 label: "Videos",
@@ -345,7 +345,7 @@ export const navItemsConfigProd: NavItemConfig = {
     },
     statistics: {
         label: "Statistics",
-        url: "https://www.topcoder.com/community/statistics?tracks[All-pills]=0&tracks[General]=0",
+        url: "https://www.topcoder.com/talent/statistics",
     },
     successStories: {
         label: 'Success Stories',
@@ -393,7 +393,7 @@ export const navItemsConfigProd: NavItemConfig = {
     topcoderAcademy: {
         label: 'Topcoder Academy',
         description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-        url: 'https://www.topcoder.com/talent/topcoder-academy',
+        url: 'https://www.topcoder.com/talent/learn',
     },
     topcoderAcademyApp: {
         label: "Topcoder Academy",
