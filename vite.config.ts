@@ -21,7 +21,6 @@ export default defineConfig((props) => {
     return {
         define: {
             BUILD_IS_PROD: props.mode === 'production',
-            ENV_IS_PROD: env.APP_ENV === 'prod'
         },
         plugins: [
             cssInjectedByJsPlugin(),

@@ -1,4 +1,4 @@
-import { navItems } from 'lib/config/nav-menu/nav-items.config'
+import { DEFAULT_HOST_URL } from 'lib/config/nav-menu'
 import * as pkg from '../../../package.json'
 
 /**
@@ -21,5 +21,5 @@ export function getPublicPath(assetPath: string): string {
  * @returns string
  */
 export function getDefaultHostPath(path: string): string {
-    return `${navItems.home.url}${path}`
+    return `${DEFAULT_HOST_URL}${path}`
 }
