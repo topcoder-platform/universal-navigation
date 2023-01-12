@@ -4,6 +4,7 @@
   import Button from '../Button.svelte';
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
+  import VerticalSeparator from '../VerticalSeparator.svelte';
 
   const ctx = getAppContext()
 
@@ -18,6 +19,7 @@
 </script>
 
 {#if isReady}
+  <VerticalSeparator />
   <div class={styles.userAreaWrap}>
     {#if !user}
     <div class={styles.btnsWrap}>
