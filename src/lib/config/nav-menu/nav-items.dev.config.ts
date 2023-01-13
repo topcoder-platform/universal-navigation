@@ -69,7 +69,7 @@ export const navItemsConfigDev: NavItemConfig = {
     },
     challengeModel: {
         label: "Challenge Model",
-        url: "https://uninav.topcoder-dev.com/customer/challenge-model",
+        url: "https://uninav.topcoder.com/customer/challenge-model",
         description: "What makes our challenge model a success",
     },
     communications: {
