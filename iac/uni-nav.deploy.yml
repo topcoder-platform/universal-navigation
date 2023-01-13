@@ -79,6 +79,9 @@ Resources:
                         # TODO: figure out the best way to support wildcard origins
                         Items:
 
+                            # Challenges Prod & Dev
+                            - !Sub https://challenges.${Domain} 
+
                             # Customer & Member Marketing Prod & Dev
                             - https://www.topcoder.com
                             - https://topcoder.com
