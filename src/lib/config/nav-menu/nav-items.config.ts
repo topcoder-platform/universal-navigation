@@ -422,7 +422,7 @@ export const navItems: NavItemConfig = {
     websiteDesign: {
         label: 'Website Design',
         description: 'Work directly with the Topcoder community to design your website.',
-        url: getWordpressUrl('/customer/design'),
+        url: getWordpressUrl('/customer/website-design'),
     },
     whyTopcoder: {
         label: 'Why Topcoder',
