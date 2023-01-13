@@ -89,7 +89,7 @@ export const marketingNavItems = {
                 {
                     ...navItems.benefits,
                     children: [
-                        navItems.healthCare,
+                        navItems.healthcare,
                         navItems.careerGrowth,
                     ]
                 }

@@ -1,237 +1,242 @@
-import { getDefaultHostPath } from 'lib/utils/paths';
+import { getWordpressUrl } from 'lib/utils/paths';
+import {
+    CHALLENGE_HOST,
+    COMMUNITY_HOST,
+    FORUM_HOST,
+    ONLINE_REVIEW_HOST,
+    PLATFORM_UI_HOST,
+} from '.';
 import type { NavItemConfig } from './nav-item-config.model';
 
 export const navItems: NavItemConfig = {
-    about: {
+    aboutTopcoder: {
         label: 'About',
         children: [
             {
                 label: 'About Topcoder',
-                url: getDefaultHostPath('/customer'),
+                url: getWordpressUrl('/about-us'),
             }
         ],
     },
     aboutUs: {
         label: 'About Us',
-        description: '',
-        url: getDefaultHostPath('/about-us'),
+        url: getWordpressUrl('/about-us'),
     },
     announcements: {
         label: 'Announcements',
         description: 'Important announcements to the Topcoder community.',
-        url: 'https://www.topcoder.com/community/programs-and-events', // Need Dev
+        url: 'https://www.topcoder.com/community/programs-and-events',
     },
     articles: {
         label: 'Articles',
         icon: 'articles',
         description: 'Get inspired',
-        url: 'https://www.topcoder.com/thrive', // Need Dev
+        url: 'https://www.topcoder.com/thrive',
     },
     benefits: {
         label: 'Benefits',
         description: 'Benefits members receive at Topcoder.',
-        url: getDefaultHostPath('/talent/benefits'),
+        url: getWordpressUrl('/talent/benefits'),
     },
     bfsi: {
         label: 'BFSI',
         description: 'BFSI solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/bfsi'),
+        url: getWordpressUrl('/customer/bfsi'),
     },
     bookADemo: {
         label: 'Book a demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
-        url: getDefaultHostPath('/customer/demo'),
+        url: getWordpressUrl('/customer/demo'),
     },
     careerGrowth: {
         label: 'Career Growth',
         description: 'Topcoder\'s profile captures your proven skills increasing employment opportunities.',
-        url: getDefaultHostPath('/talent/career-growth'),
+        url: getWordpressUrl('/talent/career-growth'),
     },
     careers: {
         label: 'Careers',
         children: [
             {
                 label: 'Work at Topcoder',
-                url: getDefaultHostPath('/jobs'),
+                url: getWordpressUrl('/jobs'),
             }
         ]
     },
     challenges: {
         label: 'Challenges',
         description: 'Compete with others to solve challenges and earn money.',
-        url: 'https://www.topcoder.com/community/practice', // Need Dev
+        url: `https://www.topcoder.com/community/practice`,
     },
     challengesApp: {
         label: 'Challenges',
-        url: 'https://www.topcoder-dev.com/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK',
+        url: `${CHALLENGE_HOST}/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK`,
         icon: 'challenges',
         description: 'Compete and earn money',
     },
     challengeModel: {
         label: 'Challenge Model',
-        url: 'https://uninav.topcoder-dev.com/customer/challenge-model',
+        url: getWordpressUrl('/customer/challenge-model'),
         description: 'What makes our challenge model a success',
     },
     communications: {
         label: 'Communications',
         description: 'Communications solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/communications'),
+        url: getWordpressUrl('/customer/communications'),
     },
     compete: {
         label: 'Compete',
         description: 'Competitive programming for fun and to grow your skills & ranking at Topcoder.',
-        url: getDefaultHostPath('/talent/compete'),
+        url: getWordpressUrl('/talent/compete'),
     },
     connect: {
         label: 'Connect',
         description: 'Connect with others at Topcoder.',
-        url: getDefaultHostPath('/talent/connect'),
+        url: getWordpressUrl('/talent/connect'),
     },
     customer: {
         label: 'Customer',
         description: 'Learn how Topcoder can help your business get work done.',
-        url: getDefaultHostPath('/customer'),
+        url: getWordpressUrl('/customer'),
     },
     customerFaq: {
         label: 'FAQ',
-        description: '',
-        url: getDefaultHostPath('/customer/faq'),
+        url: getWordpressUrl('/customer/faq'),
     },
     dataAdvisory: {
         label: 'Data Advisory',
         description: 'Submit work to get advice on how to use data science to improve your business.',
-        url: getDefaultHostPath('/data-science/data-advisory'),
+        url: getWordpressUrl('/customer/data-advisory'),
     },
     dataExploration: {
         label: 'Data Exploration',
         description: 'Submit work to gain insights from your data.',
-        url: getDefaultHostPath('/data-science/data-exploration'),
+        url: getWordpressUrl('/customer/data-exploration'),
     },
     dataScience: {
         label: 'Data Science',
         description: 'See how Topcoder has delivered Data Science solutions.',
-        url: getDefaultHostPath('/customer/data-science'),
+        url: getWordpressUrl('/customer/data-science'),
     },
     demo: {
         label: 'Book a demo',
-        url: 'http://go.topcoder.com/lets-talk/?interest=A%20Demo%20of%20Topcoder', // Need Dev
+        url: 'http://go.topcoder.com/lets-talk/?interest=A%20Demo%20of%20Topcoder',
         type: 'cta',
     },
     design: {
         label: 'Design',
         description: 'See how Topcoder has delivered Design solutions.',
-        url: getDefaultHostPath('/customer/website-design'),
+        url: getWordpressUrl('/customer/design'),
     },
     development: {
         label: 'Development',
         description: 'See how Topcoder has delivered Development solutions.',
-        url: getDefaultHostPath('/customer/development'),
+        url: getWordpressUrl('/customer/development'),
     },
     devCenter: {
         label: 'Dev Center',
         icon: 'dev-center',
-        url: 'http://platform-ui.topcoder-dev.com/dev-center',
+        url: `${PLATFORM_UI_HOST}/dev-center'`,
         description: 'Get help for Topcoder tools',
     },
     discord: {
         label: 'Discord',
         description: 'Chat with others in the community.',
-        url: getDefaultHostPath('/talent/discord'),
+        url: getWordpressUrl('/talent/discord'),
     },
     discordApp: {
         label: 'Discord',
-        url: 'http://discord.com/invite/topcoder', // Need Dev
+        url: 'http://discord.com/invite/topcoder',
         icon: 'discord',
         description: 'Chat live with members',
     },
     earn: {
         label: 'Earn',
         description: 'How to earn money at Topcoder.',
-        url: getDefaultHostPath('/talent/earn'),
+        url: getWordpressUrl('/talent/earn'),
     },
     energyUtilities: {
         label: 'Energy / Utilities',
         description: 'Energy / utilities solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/energy-utilities'),
+        url: getWordpressUrl('/customer/energy-utilities'),
     },
     events: {
         label: 'Events',
         description: 'Upcoming Topcoder events.',
-        url: 'https://www.topcoder.com/community/events', // Need Dev
+        url: 'https://www.topcoder.com/community/events',
     },
     expertise: {
         label: 'Expertise',
         description: 'The areas in which Topcoder delivers successful solutions.',
-        url: getDefaultHostPath('/customer/expertise'),
+        url: getWordpressUrl('/customer/expertise'),
     },
     findMeData: {
         label: 'Find Me Data',
         description: 'Submit work to find data sources that can help your business.',
-        url: getDefaultHostPath('/customer/find-me-data'),
+        url: getWordpressUrl('/customer/find-me-data'),
     },
     faq: {
         label: 'FAQ',
-        url: 'https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb', // Need Dev
+        url: 'https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb',
     },
     forums: {
         label: 'Forums',
-        url: 'https://vanilla.topcoder-dev.com',
+        url: FORUM_HOST,
         icon: 'forums',
         description: 'Discuss challenges or questions',
     },
     fullService: {
         label: 'Full Service',
         description: 'Work with Topcoder experts to craft the exact solution you need.',
-        url: getDefaultHostPath('/customer/full-service'),
+        url: getWordpressUrl('/customer/full-service'),
     },
     gettingPaid: {
         label: 'Getting Paid',
-        url: 'https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=Getting%20Paid', // Need Dev
+        url: 'https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=Getting%20Paid',
     },
     gigs: {
         label: 'Gigs',
         description: 'Work directly with customers via time-based contracts.',
-        url: 'https://www.topcoder.com/community/gig-resources', // Need Dev
+        url: 'https://www.topcoder.com/community/gig-resources',
     },
     gigsApp: {
         label: 'Gigs',
-        url: 'https://www.topcoder.com/gigs', // Need Dev
+        url: 'https://www.topcoder.com/gigs',
         icon: 'gigs',
         description: 'Find freelance gigs',
     },
-    healthCare: {
-        label: 'Health care',
+    healthcare: {
+        label: 'Healthcare',
         description: 'International (non-US) healthcare.',
-        url: 'https://www.topcoder.com/community/safetywing', // Need Dev
+        url: 'https://www.topcoder.com/community/safetywing',
     },
     healthPharma: {
         label: 'Health / Pharma',
         description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/health-pharma'),
+        url: getWordpressUrl('/customer/health-pharma'),
     },
     home: {
         label: 'Home',
-        url: getDefaultHostPath(''),
+        url: getWordpressUrl(''),
     },
     industries: {
         label: 'Industries',
         description: 'The industries in which Topcoder delivers successful solutions.',
-        url: getDefaultHostPath('/customer/industries'),
+        url: getWordpressUrl('/customer/industries'),
     },
     learn: {
         label: 'Learn',
         description: 'Learning opportunities provided to Topcoder\'s members.',
-        url: getDefaultHostPath('/talent/topcoder-academy'),
+        url: getWordpressUrl('/talent/learn'),
     },
     marathonMatches: {
         label: 'Marathon Matches',
         description: 'Competitions that span days or weeks.',
-        url: getDefaultHostPath('/talent/marathon-matches'),
+        url: getWordpressUrl('/talent/marathon-matches'),
     },
     marathonMatchesApp: {
         label: 'Marathon Matches',
-        url: 'https://www.topcoder-dev.com/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK',
+        url: `${CHALLENGE_HOST}/challenges?search=marathon%20match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK`,
         icon: 'mm',
         description: 'Solve hard algorithm problems',
     },
@@ -240,118 +245,119 @@ export const navItems: NavItemConfig = {
         children: [
             {
                 label: 'Blog',
-                url: getDefaultHostPath('/blog'),
+                url: getWordpressUrl('/blog'),
             },
             {
                 label: 'Newsletter',
-                url: 'http://go.topcoder.com/newsletter', // Need Dev
+                url: 'http://go.topcoder.com/newsletter',
+                target: '_blank',
             },
             {
                 label: 'Press Room',
-                url: 'https://www.topcoder.com/resources' // Need Dev
+                url: 'https://www.topcoder.com/resources'
             },
             {
                 label: 'Videos',
-                url: 'https://www.topcoder.com/videos' // Need Dev
+                url: 'https://www.topcoder.com/videos'
             },
             {
                 label: 'Whitepapers',
-                url: getDefaultHostPath('/white-papers'),
+                url: getWordpressUrl('/white-papers'),
             },
             {
                 label: 'Releases',
-                url: getDefaultHostPath('/releases'),
+                url: getWordpressUrl('/releases'),
             }
         ]
     },
     partners: {
         label: 'Partners',
         description: 'Companies Topcoder partners with to deliver high quality solutions.',
-        url: getDefaultHostPath('/customer/partners'),
+        url: getWordpressUrl('/customer/partners'),
     },
     payments: {
         label: 'Payments',
-        url: 'http://community.topcoder-dev.com/PactsMemberServlet?module=PaymentHistory',
+        url: `${COMMUNITY_HOST}/PactsMemberServlet?module=PaymentHistory'`,
         icon: 'payments',
         description: 'Get paid',
     },
     practice: {
         label: 'Practice',
         icon: 'practice',
-        url: 'https://www.topcoder.com/challenges?search=practice&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK', // Need Dev
+        url: `${CHALLENGE_HOST}/challenges?search=practice&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK`,
         description: 'Learn to compete',
     },
     privacyPolicy: {
         label: 'Privacy Policy',
-        url: 'https://www.topcoder.com/policy' // Need Dev
+        url: 'https://www.topcoder.com/policy'
     },
     publicSector: {
         label: 'Public Sector',
         description: 'Public sector solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/public-sector'),
+        url: getWordpressUrl('/customer/public-sector'),
     },
     qa: {
         label: 'QA',
         description: 'See how Topcoder has delivered QA solutions.',
-        url: getDefaultHostPath('/customer/qa'),
+        url: getWordpressUrl('/customer/qa'),
     },
     rapidDevMatches: {
         label: 'Rapid Dev Matches',
         description: 'Quick competitions you can complete in less than one day.',
-        url: getDefaultHostPath('/talent/rapid-dev-matches'),
+        url: getWordpressUrl('/talent/rapid-dev-matches'),
     },
     rapidDevMatchesApp: {
         label: 'Rapid Dev Matches',
-        url: 'https://www.topcoder-dev.com/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true', // Need Dev
+        url: `${CHALLENGE_HOST}/challenges?bucket=openForRegistration&search=Rapid%20Development%20Match&tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true`,
         icon: 'rdm',
         description: 'Join fast, fun competitions',
     },
     retail: {
         label: 'Retail',
         description: 'Retail solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/retail'),
+        url: getWordpressUrl('/customer/retail'),
     },
     review: {
         label: 'Review',
-        url: 'http://software.topcoder-dev.com',
+        url: ONLINE_REVIEW_HOST,
         icon: 'review',
         description: 'Review submissions',
     },
     security: {
         label: 'Security',
         description: 'How your IP is protected at Topcoder.',
-        url: getDefaultHostPath('/customer/security'),
+        url: getWordpressUrl('/customer/security'),
     },
     selfService: {
         label: 'Self Service',
         description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
-        url: getDefaultHostPath('/customer/self-service'),
+        url: getWordpressUrl('/customer/self-service'),
     },
     selfServiceApp: {
         label: 'Self Service Challenges',
-        url: 'http://platform-ui.topcoder-dev.com/work',
+        url: `${PLATFORM_UI_HOST}/work`,
         icon: 'self-service',
         description: 'Launch and manage work',
     },
     singleRoundMatches: {
         label: 'Single Round Matches',
         description: 'Multi-problem algorithmic competitions where you go head-to-head in an arena.',
-        url: getDefaultHostPath('/talent/single-round-matches'),
+        url: getWordpressUrl('/talent/single-round-matches'),
     },
     singleRoundMatchesApp: {
         label: 'SRMs (Arena)',
-        url: 'https://www.topcoder.com/community/arena?ref=nav', // Need Dev
+        url: 'https://www.topcoder.com/community/arena?ref=nav',
         icon: 'srm',
         description: 'Start competitive programming',
     },
     statistics: {
         label: 'Statistics',
-        url: 'https://www.topcoder.com/community/statistics?tracks[All-pills]=0&tracks[General]=0', // Need Dev
+        url: 'https://www.topcoder.com/community/statistics?tracks[All-pills]=0&tracks[General]=0',
     },
     successStories: {
         label: 'Success Stories',
         description: 'Browse case studies for solutions Topcoder has successfully delivered.',
-        url: getDefaultHostPath('/customer/success-stories'),
+        url: getWordpressUrl('/customer/success-stories'),
     },
     support: {
         action: 'uninav:modals:support',
@@ -359,68 +365,68 @@ export const navItems: NavItemConfig = {
         url: 'mailto:support@topcoder.com',
     },
     talent: {
-        authenticatedUrl: getDefaultHostPath('/home'),
+        authenticatedUrl: getWordpressUrl('/home'),
         label: 'Talent',
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
-        url: getDefaultHostPath('/talent'),
+        url: getWordpressUrl('/talent'),
     },
     talkToAnExpert: {
         label: 'Talk to an expert',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
-        url: 'https://go.topcoder.com/lets-talk', // Need Dev
+        url: 'https://go.topcoder.com/lets-talk',
     },
     talkToSales: {
         label: 'Talk to Sales',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
-        url: getDefaultHostPath('/customer/talk-to-an-expert'), // Need Dev
+        url: getWordpressUrl('/customer/talk-to-an-expert'),
     },
     technology: {
         label: 'Technology',
         description: 'Technology solutions, how Topcoder excels, including case studies.',
-        url: getDefaultHostPath('/customer/technology'),
+        url: getWordpressUrl('/customer/technology'),
     },
     theCommunity: {
         label: 'The Community',
         description: 'How the Topcoder community provides value to your business.',
-        url: getDefaultHostPath('/customer/the-community'),
+        url: getWordpressUrl('/customer/the-community'),
     },
     timeline: {
         label: 'Timeline',
         description: 'An interactive timeline wall showing Topcoder\'s history.',
-        url: 'https://www.topcoder.com/community/timeline', // This page doesn't exist
+        url: 'https://www.topcoder.com/community/timeline-wall',
     },
     topcoderAcademy: {
         label: 'Topcoder Academy',
         description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-        url: getDefaultHostPath('/talent/topcoder-academy'),
+        url: getWordpressUrl('/talent/topcoder-academy'),
     },
     topcoderAcademyApp: {
         label: 'Topcoder Academy',
-        url: 'http://platform-ui.topcoder-dev.com/learn',
+        url: `${PLATFORM_UI_HOST}/learn`,
         icon: 'tcacademy',
         description: 'Learn new skills',
     },
     topcoderOpen: {
         label: 'Topcoder Open',
         description: 'The ultimate competitive tournament - the big event!',
-        url: 'https://www.topcoder.com/community/member-programs/topcoder-open', // Need Dev
+        url: 'https://www.topcoder.com/community/member-programs/topcoder-open',
     },
     topCrowd: {
         description: 'Register your own employees in Topcoder to maximize productivity.',
         icon: 'topcrowd',
         label: 'TopCrowd',
-        url: getDefaultHostPath('/customer/topcrowd'),
+        url: getWordpressUrl('/customer/topcrowd'),
     },
     websiteDesign: {
         label: 'Website Design',
         description: 'Work directly with the Topcoder community to design your website.',
-        url: getDefaultHostPath('/customer/design'),
+        url: getWordpressUrl('/customer/design'),
     },
     whyTopcoder: {
         label: 'Why Topcoder',
         description: 'How Topcoder provides hiqh quality, secure solutions.',
-        url: getDefaultHostPath('/customer/why-topcoder'),
+        url: getWordpressUrl('/customer/why-topcoder'),
     }
 }
