@@ -70,7 +70,7 @@ export const navItemsConfigProd: NavItemConfig = {
     challengeModel: {
         label: "Challenge Model",
         url: "https://www.topcoder.com/customer/challenge-model",
-        description: "What makes our challenge model a success",
+        description: "What makes our challenge model a success.",
     },
     communications: {
         label: 'Communications',
@@ -200,7 +200,7 @@ export const navItemsConfigProd: NavItemConfig = {
         description: "Find freelance gigs"
     },
     healthCare: {
-        label: 'Health care',
+        label: 'Healthcare',
         description: 'International (non-US) healthcare.',
         url: 'https://www.topcoder.com/talent/health-care',
     },
