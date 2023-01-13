@@ -200,7 +200,7 @@ export const navItemsConfigProd: NavItemConfig = {
         description: "Find freelance gigs"
     },
     healthCare: {
-        label: 'Health care',
+        label: 'Healthcare',
         description: 'International (non-US) healthcare.',
         url: 'https://www.topcoder.com/talent/health-care',
     },
