@@ -44,7 +44,7 @@ running_npm_build: &running_npm_build
     name: Running npm Build
     command: |
         npm install
-        APP_ENV=${LOGICAL_ENV} npm run build
+        DOTENV_CONFIG_PATH=.env.$LOGICAL_ENV npm run build
 
 workspace_persist: &workspace_persist
     root: .
