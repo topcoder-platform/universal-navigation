@@ -158,7 +158,7 @@ jobs:
         <<: *defaults
         environment:
             DEPLOY_ENV: "PROD"
-            LOGICAL_ENV: "production"
+            LOGICAL_ENV: "prod"
             APPNAME: "universal-navigation"
         steps: *build_steps_prod
 
@@ -176,7 +176,7 @@ jobs:
         <<: *deploy_defaults
         environment:
             DEPLOY_ENV: "PROD"
-            LOGICAL_ENV: "production"
+            LOGICAL_ENV: "prod"
             ENABLE_CACHE: true
             APPNAME: "universal-navigation"
         steps: *deploy_steps
