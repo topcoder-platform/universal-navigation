@@ -66,7 +66,7 @@ export const navItems: NavItemConfig = {
     challenges: {
         label: 'Challenges',
         description: 'Compete with others to solve challenges and earn money.',
-        url: `https://www.topcoder.com/community/practice`,
+        url: 'https://www.topcoder.com/community/practice',
     },
     challengesApp: {
         label: 'Challenges',
@@ -136,7 +136,7 @@ export const navItems: NavItemConfig = {
     devCenter: {
         label: 'Dev Center',
         icon: 'dev-center',
-        url: `${PLATFORM_UI_HOST}/dev-center'`,
+        url: `${PLATFORM_UI_HOST}/dev-center`,
         description: 'Get help for Topcoder tools',
     },
     discord: {
@@ -277,7 +277,7 @@ export const navItems: NavItemConfig = {
     },
     payments: {
         label: 'Payments',
-        url: `${COMMUNITY_HOST}/PactsMemberServlet?module=PaymentHistory'`,
+        url: `${COMMUNITY_HOST}/PactsMemberServlet?module=PaymentHistory`,
         icon: 'payments',
         description: 'Get paid',
     },
