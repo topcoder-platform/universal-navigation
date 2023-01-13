@@ -9,5 +9,6 @@ export declare const marketingNavItems: {
         label?: string;
         type?: "cta";
         url?: string;
+        target?: string;
     }[];
 };
