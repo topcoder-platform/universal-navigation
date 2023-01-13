@@ -75,7 +75,7 @@
               {#each menuItem.children as child}
                 {#if !!child.label}
                   <li class={styles.menuSectionEntry}>
-                    <a target="_top" use:handleNavItemAction={child} href={child.url}>
+                    <a target={child.target ?? '_top'} use:handleNavItemAction={child} href={child.url} rel="noopener">
                       {child.label}
                     </a>
                   </li>

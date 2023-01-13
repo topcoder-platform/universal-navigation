@@ -70,7 +70,7 @@ export const navItemsConfigDev: NavItemConfig = {
     challengeModel: {
         label: "Challenge Model",
         url: "https://uninav.topcoder-dev.com/customer/challenge-model",
-        description: "What makes our challenge model a success",
+        description: "What makes our challenge model a success.",
     },
     communications: {
         label: 'Communications',
@@ -200,7 +200,7 @@ export const navItemsConfigDev: NavItemConfig = {
         description: "Find freelance gigs"
     },
     healthCare: {
-        label: 'Health care',
+        label: 'Healthcare',
         description: 'International (non-US) healthcare.',
         url: 'https://www.topcoder.com/community/safetywing', // Need Dev
     },
@@ -244,6 +244,7 @@ export const navItemsConfigDev: NavItemConfig = {
             {
                 label: "Newsletter",
                 url: "http://go.topcoder.com/newsletter", // Need Dev
+                target: '_blank'
             },
             {
                 label: "Press Room",

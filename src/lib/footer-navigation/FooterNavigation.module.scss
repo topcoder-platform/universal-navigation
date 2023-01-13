@@ -68,6 +68,13 @@
     margin-top: 4px;
   }
 
+  @include desktopOnly {
+    // push last 2 sections to last column
+    &:nth-last-child(3) {
+      height: 100%;
+    }
+  }
+
   @include tabletOnly {
     flex: 1 1 25%;
   }
