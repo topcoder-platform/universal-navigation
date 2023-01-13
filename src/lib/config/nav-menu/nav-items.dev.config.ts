@@ -244,6 +244,7 @@ export const navItemsConfigDev: NavItemConfig = {
             {
                 label: "Newsletter",
                 url: "http://go.topcoder.com/newsletter", // Need Dev
+                target: '_blank'
             },
             {
                 label: "Press Room",
