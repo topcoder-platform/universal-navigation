@@ -9,8 +9,7 @@ import * as pkg from './package.json'
 export default defineConfig((props) => {
     // loads env variables based on the build mode (production|dev)
     // loads only variables prefixed with APP_
-    const appEnvMode = props.mode === 'prod' ? 'production' : props.mode;
-    const env = loadEnv(appEnvMode, process.cwd(), 'APP_')
+    const env = loadEnv(props.mode, process.cwd(), 'APP_')
 
     // builds output based on the env's build_target
     // if no build_target is passed, the main.ts will be built as tc-universal-nav
@@ -21,7 +20,7 @@ export default defineConfig((props) => {
 
     return {
         define: {
-            BUILD_IS_PROD: appEnvMode === 'prod',
+            BUILD_IS_PROD: props.mode === 'production',
         },
         plugins: [
             cssInjectedByJsPlugin(),
