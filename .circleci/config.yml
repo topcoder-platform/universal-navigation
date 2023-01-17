@@ -44,7 +44,6 @@ build_configuration_fetch: &build_configuration_fetch
     name: "configuring environment"
     command: |
       ./awsconfiguration.sh $DEPLOY_ENV
-      ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-buildvar
       aws s3 cp s3://tc-uninav-${LOGICAL_ENV}/securitymanager/uni-nav.env.${LOGICAL_ENV} ./.env
 
 running_npm_build: &running_npm_build
