@@ -12,7 +12,7 @@
         "build:tool": "APP_BUILD_TARGET=tool vite build --mode=$NODE_ENV",
         "build:navs": "npm run build:marketing & npm run build:footer && npm run build:tool",
         "build:base": "npm run build:navs && vite build --mode=$NODE_ENV && npx rimraf ./types && npm run types",
-        "build": "NODE_ENV=production npm run build:base",
+        "build": "NODE_ENV=\"${APP_ENV:-prod}\" npm run build:base",
         "check": "svelte-check --tsconfig ./tsconfig.json",
         "demo:dist": "npx http-server --cors --host localhost --port 8083 ./dist",
         "demo:marketing": "npx http-server --host localhost --port 8081 ./demo/marketing -P http://localhost:8081? -o /",
