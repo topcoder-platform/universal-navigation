@@ -12,8 +12,9 @@ export const navItemsConfigDev: NavItemConfig = {
     },
     aboutUs: {
         label: "About Us",
-        description: "",
-        url: "https://uninav.topcoder.com/about-us"
+        description: "20+ years delivering for the enterprise ",
+        url: "https://uninav.topcoder.com/about-us",
+        uiAttr: 'to-right'
     },
     announcements: {
         label: 'Announcements',

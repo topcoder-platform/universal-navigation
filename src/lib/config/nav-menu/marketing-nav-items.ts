@@ -94,6 +94,9 @@ export const marketingNavItems = {
                     ]
                 }
             ]
+        },
+        {
+          ...navItems.aboutUs,
         }
     ]
 }
