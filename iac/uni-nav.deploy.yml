@@ -82,6 +82,9 @@ Resources:
                             # Challenges Prod & Dev
                             - !Sub https://challenges.${Domain} 
 
+                            # Connect Prod & Dev
+                            - !Sub https://connect.${Domain}
+
                             # Customer & Member Marketing Prod & Dev
                             - https://www.topcoder.com
                             - https://topcoder.com
