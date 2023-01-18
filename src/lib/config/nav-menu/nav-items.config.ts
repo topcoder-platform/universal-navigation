@@ -254,15 +254,15 @@ export const navItems: NavItemConfig = {
             },
             {
                 label: 'Press Room',
-                url: 'https://www.topcoder.com/resources'
+                url: getWordpressUrl('/resources'),
             },
             {
                 label: 'Videos',
-                url: 'https://www.topcoder.com/videos'
+                url: getWordpressUrl('/videos'),
             },
             {
                 label: 'Whitepapers',
-                url: getWordpressUrl('/white-papers'),
+                url: getWordpressUrl('/resource-category/white-papers'),
             },
             {
                 label: 'Releases',
