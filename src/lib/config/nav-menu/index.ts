@@ -7,7 +7,7 @@
 // otherwise, return the value for the specified key.
 function getEnvValue(viteKey: string): string {
     if (!Object.prototype.hasOwnProperty.call(import.meta.env, viteKey)) {
-        throw new Error(viteKey)
+        throw new Error(`Config variable '${viteKey}' is missing from your .env file!`)
     }
 
     const viteValue: string = import.meta.env[viteKey]
