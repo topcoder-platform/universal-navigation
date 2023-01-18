@@ -6,10 +6,11 @@
 // throw an error;
 // otherwise, return the value for the specified key.
 function getEnvValue(viteKey: string): string {
-    const viteValue: string = import.meta.env[viteKey]
-    if (!viteValue) {
+    if (!Object.prototype.hasOwnProperty.call(import.meta.env, viteKey)) {
         throw new Error(viteKey)
     }
+
+    const viteValue: string = import.meta.env[viteKey]
     return viteValue
 }
 
