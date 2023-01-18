@@ -370,6 +370,11 @@ export const navItems: NavItemConfig = {
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
         url: getWordpressUrl('/talent'),
     },
+    talentTheCommunity: {
+      label: 'The Community',
+      description: 'How as talent at Topcoder you\'ll be part of a larger community.',
+      url: getWordpressUrl('/talent/the-community'),
+    },
     talkToAnExpert: {
         label: 'Talk to an expert',
         description: 'Speak with a Topcoder expert to get started.',

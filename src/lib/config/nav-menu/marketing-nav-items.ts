@@ -54,6 +54,7 @@ export const marketingNavItems = {
         {
             ...navItems.talent,
             children: [
+                navItems.talentTheCommunity,
                 {
                     ...navItems.learn,
                     children: [

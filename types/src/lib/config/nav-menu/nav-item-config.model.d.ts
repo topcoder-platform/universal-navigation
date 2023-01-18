@@ -68,6 +68,7 @@ export interface NavItemConfig {
     talkToSales: NavMenuItem;
     technology: NavMenuItem;
     theCommunity: NavMenuItem;
+    talentTheCommunity: NavMenuItem;
     timeline: NavMenuItem;
     topcoderAcademy: NavMenuItem;
     topcoderAcademyApp: NavMenuItem;
