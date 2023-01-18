@@ -1,3 +1,4 @@
+import { WP_HOST_URL } from 'lib/config/nav-menu'
 import * as pkg from '../../../package.json'
 
 /**
@@ -21,12 +22,9 @@ export function getPublicPath(assetPath: string): string {
  */
 export function getWordpressUrl(path: string): string {
 
-    // the domain is just the current window location
-    const domain: string = `${window.location.protocol}//${window.location.host}`
-
     // if the current host is a staging site, go to the staging site
     const pathPrefix: string = ['staging', 'universal-naviga']
-        .find(prefix => window.location.pathname.startsWith(`/${prefix}`))
+        .find(prefix => window.location.pathname.match(new RegExp(`\/${prefix}(\/|\\?|$)`)))
 
-    return `${domain}${!!pathPrefix ? `/${pathPrefix}` : ''}${path}`
+    return `${WP_HOST_URL}${!!pathPrefix ? `/${pathPrefix}` : ''}${path}`
 }
