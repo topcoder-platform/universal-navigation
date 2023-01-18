@@ -1,4 +1,4 @@
-import { navItems } from 'lib/config/nav-menu/nav-items.config'
+import { WP_HOST_URL } from 'lib/config/nav-menu'
 import * as pkg from '../../../package.json'
 
 /**
@@ -20,6 +20,11 @@ export function getPublicPath(assetPath: string): string {
  * @params path
  * @returns string
  */
-export function getDefaultHostPath(path: string): string {
-    return `${navItems.home.url}${path}`
+export function getWordpressUrl(path: string): string {
+
+    // if the current host is a staging site, go to the staging site
+    const pathPrefix: string = ['staging', 'universal-naviga']
+        .find(prefix => window.location.pathname.match(new RegExp(`\/${prefix}(\/|\\?|$)`)))
+
+    return `${WP_HOST_URL}${!!pathPrefix ? `/${pathPrefix}` : ''}${path}`
 }

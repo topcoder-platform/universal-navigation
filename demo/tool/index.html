@@ -13,11 +13,13 @@
   </head>
   <body>
     <div id="ui-nav"></div>
+    <div style="height: calc(100vh - 156px);"></div>
+    <div id="footer-el"></div>
     <script>
       !function(n,t,e,a,c,i,o){n['TcUnivNavConfig']=c,n[c]=n[c]||function(){
       (n[c].q=n[c].q??[]).push(arguments)},n[c].l=1*new Date();i=t.createElement(e),
       o=t.getElementsByTagName(e)[0];i.async=1;i.type="module";i.src=a;o.parentNode.insertBefore(i,o)
-      }(window,document,"script","//localhost:8080/v1/tc-universal-nav.js","tcUniNav");
+      }(window,document,"script","//localhost:8083/v1/tc-universal-nav.js","tcUniNav");
 
       const user = {
         photoURL: 'https://topcoder-prod-media.s3.amazonaws.com/member/profile/vasilica.olariu-1616487120406.png',
@@ -31,11 +33,15 @@
         type: 'tool',
         toolName: 'Tc Tool App',
         toolRoot: '/',
-        handleNavigation({ route: {label: string, path: string}, }){ console.log(`navigated to`, route) },
+        handleNavigation({ route: {label, path}, }){ console.log(`navigated to`, route) },
         onReady() {console.log('tool nav ready')},
         signIn() {console.log('Sign in was called')},
         signUp() {console.log('Sign up was called')},
         signOut() {console.log('Sign out was called')},
+      });
+
+      tcUniNav('init', 'footer-el', {
+        type: 'footer',
       });
 
       setTimeout(() => {tcUniNav('update', 'ui-nav', {user})}, 1500)

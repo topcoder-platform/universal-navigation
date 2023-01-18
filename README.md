@@ -19,6 +19,7 @@ For information on how to develop/maintain the UniNav component itself, please s
     - [2. Initialize tcUniNav](#2-initialize-tcuninav)
     - [3. Update tcUniNav](#3-update-tcuninav)
 - [Futher Reading](#further-reading)
+    - [Environment Files](#environment-files)
     - [Versioning](#versioning)
     - [API for tcUniNav](#api-for-tcuninav)
     - [tcUniNav Methods](#tcuninav-methods)
@@ -245,6 +246,13 @@ tcUniNav(
 ```
 
 ## Further Reading
+
+### Environment files
+You need to have an environment file in order to correctly build and pass the right variables to the build.
+Easiest way to create your local environment file is to copy one of the uni-nav.env.* (dev or prod) file to a `.env.local` file.
+`.env.local` files will be ignored by git and so you don't need to worry about versioning.
+
+`uni-nav.env.dev` and `uni-nav.env.prod` are used on the CI/CD process and copied to `S3: tc-uninav-[dev|prod]/securitymanage`.
 
 ### Versioning
 
