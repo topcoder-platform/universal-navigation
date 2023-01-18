@@ -1,7 +1,7 @@
 import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
 
 export interface NavItemConfig {
-    about: NavMenuItem
+    aboutTopcoder: NavMenuItem
     aboutUs: NavMenuItem
     announcements: NavMenuItem
     articles: NavMenuItem
@@ -39,7 +39,7 @@ export interface NavItemConfig {
     gettingPaid: NavMenuItem
     gigs: NavMenuItem
     gigsApp: NavMenuItem
-    healthCare: NavMenuItem
+    healthcare: NavMenuItem
     healthPharma: NavMenuItem
     home: NavMenuItem
     industries: NavMenuItem

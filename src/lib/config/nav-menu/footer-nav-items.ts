@@ -2,7 +2,7 @@ import { navItems } from "./nav-items.config";
 
 export const footerNavItems = {
     children: [
-        navItems.about,
+        navItems.aboutTopcoder,
         {
             ...navItems.expertise,
             children: [

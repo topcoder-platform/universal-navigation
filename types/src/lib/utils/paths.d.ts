@@ -9,4 +9,4 @@ export declare function getPublicPath(assetPath: string): string;
  * @params path
  * @returns string
  */
-export declare function getDefaultHostPath(path: string): string;
+export declare function getWordpressUrl(path: string): string;

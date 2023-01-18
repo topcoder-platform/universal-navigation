@@ -1,6 +1,6 @@
 # UniNav Development Information
 
-This README provides instructions on how to develop the UniNav itself. 
+This README provides instructions on how to develop the UniNav itself.
 
 For information re how to integrate the UniNav into a web property, see the main [README](../README.md).
 
@@ -51,6 +51,8 @@ See [IAC README](../iac/README.md) for more details.
 
 ## Local App Development
 
+See [Environment Files](../README.md#environment-files) for defining your .env file locally or for production building.
+
 ### Serve the local app
 
 [`../index.html`](../index.html) instantiates all 3 types of navigation (marketing, tool, footer) and will pass the user data to them after 3 seconds.
@@ -61,7 +63,7 @@ Run `% npm run dev` to view the app at http://localhost:5173/.
 
 The `demo` files are just basic (bare minimum) example of how to integrate the navigation in a simple html file.
 
-There are 2 sample integrations in the [/demo](./demo/) folder: 
+There are 2 sample integrations in the [/demo](./demo/) folder:
 
 [Marketing Navigation](../demo/marketing/index.html)
 
@@ -86,7 +88,7 @@ Run `npm run build` to build the files for production. The output is to be found
 
 The build reads the app version in `package.json` and automatically outputs the files in the correct directory.
 
-## Recommended IDE Setup   
+## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
