@@ -1,8 +1,8 @@
 export declare const marketingNavItems: {
     children: {
-        children: import("../../functions/nav-menu-item.model").NavMenuItem[];
         action?: string;
         authenticatedUrl?: string;
+        children?: import("../../functions/nav-menu-item.model").NavMenuItem[];
         description?: string;
         groupOrder?: number;
         icon?: string;
@@ -10,5 +10,6 @@ export declare const marketingNavItems: {
         type?: "cta";
         url?: string;
         target?: string;
+        uiAttr?: string;
     }[];
 };

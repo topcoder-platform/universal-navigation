@@ -21,6 +21,8 @@ export const navItems: NavItemConfig = {
     aboutUs: {
         label: 'About Us',
         url: getWordpressUrl('/about-us'),
+        description: "20+ years delivering for the enterprise ",
+        uiAttr: 'to-right',
     },
     announcements: {
         label: 'Announcements',

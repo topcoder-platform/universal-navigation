@@ -34,7 +34,7 @@
     {#each menuItems as menuItem}
         {#if !!menuItem.label}
             <a
-                class={classnames(getNavItemType(menuItem), styles[style])}
+                class={classnames(getNavItemType(menuItem), menuItem.uiAttr, styles[style])}
                 class:active={activeRoute?.url === menuItem.url}
                 class:hover={isPopupMenuActive &&
                     hoveredMenuItem?.url === menuItem.url}

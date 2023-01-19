@@ -9,4 +9,5 @@ export interface NavMenuItem {
     type?: 'cta'
     url?: string
     target?: string
+    uiAttr?: string // allow to pass class names for ui alterations
 }
