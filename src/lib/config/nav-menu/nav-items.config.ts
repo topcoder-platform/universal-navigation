@@ -405,7 +405,7 @@ export const navItems: NavItemConfig = {
     topcoderAcademy: {
         label: 'Topcoder Academy',
         description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-        url: getWordpressUrl('/talent/topcoder-academy'),
+        url: getWordpressUrl('/talent/learn'),
     },
     topcoderAcademyApp: {
         label: 'Topcoder Academy',
