@@ -60,7 +60,7 @@ export const footerNavItems = {
                 navItems.support,
             ]
         },
-        navItems.careers,
+        // navItems.careers,
         {
             label: "Legal",
             children: [
