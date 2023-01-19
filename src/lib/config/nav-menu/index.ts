@@ -17,6 +17,7 @@ function getEnvValue(viteKey: string): string {
 export const WP_HOST_URL: string = getEnvValue('VITE_WP_HOST_URL')
 export const CHALLENGE_HOST: string = getEnvValue('VITE_CHALLENGE_HOST')
 export const COMMUNITY_HOST: string = getEnvValue('VITE_COMMUNITY_HOST')
+export const PACTS_HOST: string = getEnvValue('VITE_PACTS_HOST')
 export const FORUM_HOST: string = getEnvValue('VITE_FORUM_HOST')
 export const ONLINE_REVIEW_HOST: string = getEnvValue('VITE_ONLINE_REVIEW_HOST')
 export const PLATFORM_UI_HOST: string = getEnvValue('VITE_PLATFORM_UI_HOST')
