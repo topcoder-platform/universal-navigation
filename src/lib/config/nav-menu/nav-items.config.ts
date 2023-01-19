@@ -264,7 +264,7 @@ export const navItems: NavItemConfig = {
             },
             {
                 label: 'Whitepapers',
-                url: getWordpressUrl('/resource-category/white-papers'),
+                url: getWordpressUrl('/white-papers'),
             },
             {
                 label: 'Releases',
@@ -407,7 +407,7 @@ export const navItems: NavItemConfig = {
     topcoderAcademy: {
         label: 'Topcoder Academy',
         description: 'Take courses, earn certificates, and grow your proven skillset to earn at Topcoder.',
-        url: getWordpressUrl('/talent/topcoder-academy'),
+        url: getWordpressUrl('/talent/learn'),
     },
     topcoderAcademyApp: {
         label: 'Topcoder Academy',
