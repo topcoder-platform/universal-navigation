@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { AuthUser } from "lib/app-context";
-    import { getWordpressUrl } from "lib/utils/paths";
+    import { COMMUNITY_HOST } from "lib/config/nav-menu";
     import styles from "./UserMenu.module.scss";
 
     export let user: AuthUser;
@@ -10,10 +10,10 @@
 <div class={styles.userMenu}>
     <ul>
         <li>
-            <a href={getWordpressUrl(`/members/${user.handle}`)}>My Profile</a>
+            <a href={`${COMMUNITY_HOST}/members/${user.handle}`}>My Profile</a>
         </li>
         <li>
-            <a href={getWordpressUrl("/settings/profile")}>Account Settings</a>
+            <a href={`${COMMUNITY_HOST}/settings/profile`}>Account Settings</a>
         </li>
         <li>
             <a href={"javascript:;"} on:click={onSignOut}>Log Out</a>

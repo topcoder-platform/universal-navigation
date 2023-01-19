@@ -1,10 +1,11 @@
 import { getWordpressUrl } from 'lib/utils/paths';
 import {
     CHALLENGE_HOST,
-    COMMUNITY_HOST,
+    PACTS_HOST,
     FORUM_HOST,
     ONLINE_REVIEW_HOST,
     PLATFORM_UI_HOST,
+    COMMUNITY_HOST,
 } from '.';
 import type { NavItemConfig } from './nav-item-config.model';
 
@@ -27,13 +28,13 @@ export const navItems: NavItemConfig = {
     announcements: {
         label: 'Announcements',
         description: 'Important announcements to the Topcoder community.',
-        url: 'https://www.topcoder.com/community/programs-and-events',
+        url: `${COMMUNITY_HOST}/community/programs-and-events`,
     },
     articles: {
         label: 'Articles',
         icon: 'articles',
         description: 'Get inspired',
-        url: 'https://www.topcoder.com/thrive',
+        url: `${COMMUNITY_HOST}/thrive`,
     },
     benefits: {
         label: 'Benefits',
@@ -68,7 +69,7 @@ export const navItems: NavItemConfig = {
     challenges: {
         label: 'Challenges',
         description: 'Compete with others to solve challenges and earn money.',
-        url: 'https://www.topcoder.com/community/practice',
+        url: `${COMMUNITY_HOST}/community/practice`,
     },
     challengesApp: {
         label: 'Challenges',
@@ -165,7 +166,7 @@ export const navItems: NavItemConfig = {
     events: {
         label: 'Events',
         description: 'Upcoming Topcoder events.',
-        url: 'https://www.topcoder.com/community/events',
+        url: `${COMMUNITY_HOST}/community/events`,
     },
     expertise: {
         label: 'Expertise',
@@ -179,7 +180,7 @@ export const navItems: NavItemConfig = {
     },
     faq: {
         label: 'FAQ',
-        url: 'https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb',
+        url: `${COMMUNITY_HOST}/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb`,
     },
     forums: {
         label: 'Forums',
@@ -194,12 +195,12 @@ export const navItems: NavItemConfig = {
     },
     gettingPaid: {
         label: 'Getting Paid',
-        url: 'https://www.topcoder.com/thrive/tracks?track=Topcoder&tax=Getting%20Paid',
+        url: `${COMMUNITY_HOST}/thrive/tracks?track=Topcoder&tax=Getting%20Paid`,
     },
     gigs: {
         label: 'Gigs',
         description: 'Work directly with customers via time-based contracts.',
-        url: 'https://www.topcoder.com/community/gig-resources',
+        url: `${COMMUNITY_HOST}/community/gig-resources`,
     },
     gigsApp: {
         label: 'Gigs',
@@ -210,7 +211,7 @@ export const navItems: NavItemConfig = {
     healthcare: {
         label: 'Healthcare',
         description: 'International (non-US) healthcare.',
-        url: 'https://www.topcoder.com/community/safetywing',
+        url: `${COMMUNITY_HOST}/community/safetywing`,
     },
     healthPharma: {
         label: 'Health / Pharma',
@@ -279,7 +280,7 @@ export const navItems: NavItemConfig = {
     },
     payments: {
         label: 'Payments',
-        url: `${COMMUNITY_HOST}/PactsMemberServlet?module=PaymentHistory`,
+        url: `${PACTS_HOST}/PactsMemberServlet?module=PaymentHistory`,
         icon: 'payments',
         description: 'Get paid',
     },
@@ -354,7 +355,7 @@ export const navItems: NavItemConfig = {
     },
     statistics: {
         label: 'Statistics',
-        url: 'https://www.topcoder.com/community/statistics?tracks[All-pills]=0&tracks[General]=0',
+        url: `${COMMUNITY_HOST}/community/statistics?tracks[All-pills]=0&tracks[General]=0`,
     },
     successStories: {
         label: 'Success Stories',
@@ -402,7 +403,7 @@ export const navItems: NavItemConfig = {
     timeline: {
         label: 'Timeline',
         description: 'An interactive timeline wall showing Topcoder\'s history.',
-        url: 'https://www.topcoder.com/community/timeline-wall',
+        url: `${COMMUNITY_HOST}/community/timeline-wall`,
     },
     topcoderAcademy: {
         label: 'Topcoder Academy',
@@ -418,7 +419,7 @@ export const navItems: NavItemConfig = {
     topcoderOpen: {
         label: 'Topcoder Open',
         description: 'The ultimate competitive tournament - the big event!',
-        url: 'https://www.topcoder.com/community/member-programs/topcoder-open',
+        url: `${COMMUNITY_HOST}/community/member-programs/topcoder-open`,
     },
     topCrowd: {
         description: 'Register your own employees in Topcoder to maximize productivity.',
