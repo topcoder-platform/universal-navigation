@@ -262,7 +262,7 @@ export const navItems: NavItemConfig = {
             },
             {
                 label: 'Whitepapers',
-                url: getWordpressUrl('/resource-category/white-papers'),
+                url: getWordpressUrl('/white-papers'),
             },
             {
                 label: 'Releases',
