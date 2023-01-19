@@ -1,7 +1,8 @@
+import { TC_API_V5_HOST } from 'lib/config/nav-menu';
 import type { ContactSupportRequest } from './contact-support-request.model'
 
 export async function sendSupportRequest(request: ContactSupportRequest): Promise<any> {
-  const url: string = `${ENV_IS_PROD ? 'https://api.topcoder.com/v5' : 'https://api.topcoder-dev.com/v5'}/challenges/support-requests`
+  const url: string = `${TC_API_V5_HOST}/challenges/support-requests`
 
   return fetch(url, {
     method: 'POST',

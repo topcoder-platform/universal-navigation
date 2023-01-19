@@ -40,11 +40,17 @@ save_cache_settings: &save_cache_settings
     paths:
         - node_modules
 
+build_configuration_fetch: &build_configuration_fetch
+    name: "configuring environment"
+    command: |
+      ./awsconfiguration.sh $DEPLOY_ENV
+      aws s3 cp s3://tc-uninav-${LOGICAL_ENV}/securitymanager/uni-nav.env.${LOGICAL_ENV} ./.env
+
 running_npm_build: &running_npm_build
     name: Running npm Build
     command: |
         npm install
-        APP_ENV=${LOGICAL_ENV} npm run build
+        npm run build
 
 workspace_persist: &workspace_persist
     root: .
@@ -108,6 +114,7 @@ build_steps_prod: &build_steps_prod
     - setup_remote_docker
     - run: *install_build_dependency
     - run: *install_deploysuite
+    - run: *build_configuration_fetch
     - run: *update_types
     - run: *running_version_patch
     - run: *running_npm_build
@@ -119,6 +126,7 @@ build_steps: &build_steps
     - setup_remote_docker
     - run: *install_build_dependency
     - run: *install_deploysuite
+    - run: *build_configuration_fetch
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
 
