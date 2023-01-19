@@ -54,7 +54,7 @@
       {/if}
     </li>
 
-    {#if !!item.label && toggledItems[item.label]}
+    {#if !!item.label && toggledItems[item.label] && item.children?.length}
       <slot {item}></slot>
     {/if}
   {/each}
