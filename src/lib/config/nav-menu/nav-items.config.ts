@@ -50,7 +50,8 @@ export const navItems: NavItemConfig = {
         label: 'Book a demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
-        url: getWordpressUrl('/customer/demo'),
+        url: 'https://go.topcoder.com/book-a-demo/?interest=A%20Demo%20of%20Topcoder',
+        target: '_blank',
     },
     careerGrowth: {
         label: 'Career Growth',
@@ -123,8 +124,9 @@ export const navItems: NavItemConfig = {
     },
     demo: {
         label: 'Book a demo',
-        url: 'http://go.topcoder.com/lets-talk/?interest=A%20Demo%20of%20Topcoder',
+        url: 'https://go.topcoder.com/book-a-demo/?interest=A%20Demo%20of%20Topcoder',
         type: 'cta',
+        target: '_blank',
     },
     design: {
         label: 'Design',
@@ -149,7 +151,7 @@ export const navItems: NavItemConfig = {
     },
     discordApp: {
         label: 'Discord',
-        url: 'http://discord.com/invite/topcoder',
+        url: 'https://discord.com/invite/topcoder',
         icon: 'discord',
         description: 'Chat live with members',
     },
@@ -252,7 +254,7 @@ export const navItems: NavItemConfig = {
             },
             {
                 label: 'Newsletter',
-                url: 'http://go.topcoder.com/newsletter',
+                url: 'https://go.topcoder.com/newsletter',
                 target: '_blank',
             },
             {
@@ -383,6 +385,7 @@ export const navItems: NavItemConfig = {
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
         url: 'https://go.topcoder.com/lets-talk',
+        target: '_blank',
     },
     talkToSales: {
         label: 'Talk to Sales',

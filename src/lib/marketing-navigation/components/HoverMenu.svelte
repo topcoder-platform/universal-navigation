@@ -42,7 +42,7 @@
                 <a
                   class={styles.menuSectionHeading}
                   class:active={activeRoute?.url === menuItem.url}
-                  target="_top"
+                  target={menuItem.target ?? '_top'}
                   href={menuItem.url}
                 >
                   {menuItem.label}
@@ -59,7 +59,7 @@
                         <a
                           class={styles.menuSectionChild}
                           class:active={activeRoute?.url === child.url}
-                          target="_top"
+                          target={child.target ?? '_top'}
                           href={child.url}
                         >{child.label}</a>
                       </li>
@@ -75,8 +75,8 @@
             {#each ctas as ctaMenuItem}
               <a
                 class={styles.ctaButton}
-                target="_top"
                 href={ctaMenuItem.url}
+                target={ctaMenuItem.target ?? '_top'}
               >
                 {ctaMenuItem.label}
               </a>
