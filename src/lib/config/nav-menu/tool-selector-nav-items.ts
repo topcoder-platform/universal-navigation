@@ -55,7 +55,10 @@ export const toolSelectorNavItems = {
                     groupOrder: 4,
                     children: [
                         navItems.forums,
-                        navItems.articles,
+                        {
+                            ...navItems.articles,
+                            url: `${navItems.articles.url}?navTool=tool`
+                        },
                         navItems.discordApp,
                     ]
                 }
