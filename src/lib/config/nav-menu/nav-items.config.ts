@@ -390,8 +390,7 @@ export const navItems: NavItemConfig = {
     talkToSales: {
         label: 'Talk to Sales',
         description: 'Speak with a Topcoder expert to get started.',
-        type: 'cta',
-        url: getWordpressUrl('/customer/talk-to-an-expert'),
+        url: 'https://go.topcoder.com/lets-talk',
     },
     technology: {
         label: 'Technology',
