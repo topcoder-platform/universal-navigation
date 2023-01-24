@@ -8,9 +8,10 @@
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import InlineSvg from 'lib/components/InlineSvg.svelte';
+  import { classnames } from 'lib/utils/classnames';
+  import { isMobile } from 'lib/utils/window-size.store';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
-  import { classnames } from 'lib/utils/classnames';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -21,7 +22,8 @@
   let menuItems: NavMenuItem[];
   $: menuItems = getFooterNavItems(isAuthenticated)
 
-  $: ({fullFooter} = $ctx.toolConfig)
+  let fullFooter: boolean;
+  $: fullFooter = $isMobile ? false : $ctx.toolConfig.fullFooter
 
   let isCollapsed = true;
 
@@ -50,7 +52,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  {#if !fullFooter}
+  {#if !$isMobile && !fullFooter}
     <div class={classnames(styles.toggleBar, isCollapsed && styles.isCollapsed)} on:click={toggleFooter} on:keydown={() => {}}>
       <span class={styles.icon}>
         <InlineSvg src="/assets/icon-tmenu.svg" />
