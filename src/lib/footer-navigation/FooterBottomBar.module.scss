@@ -17,7 +17,7 @@
   align-items: center;
   padding: 12px 32px;
 
-  @include mobile {
+  @include tablet {
     padding: 12px 16px;
   }
 }

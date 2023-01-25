@@ -22,8 +22,7 @@
   let menuItems: NavMenuItem[];
   $: menuItems = getFooterNavItems(isAuthenticated)
 
-  let fullFooter: boolean;
-  $: fullFooter = $isMobile ? false : $ctx.toolConfig.fullFooter
+  $: ({ fullFooter } = $ctx.toolConfig);
 
   let isCollapsed = true;
 
@@ -52,7 +51,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  {#if !$isMobile && !fullFooter}
+  {#if !fullFooter}
     <div class={classnames(styles.toggleBar, isCollapsed && styles.isCollapsed)} on:click={toggleFooter} on:keydown={() => {}}>
       <span class={styles.icon}>
         <InlineSvg src="/assets/icon-tmenu.svg" />

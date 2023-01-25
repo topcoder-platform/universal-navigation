@@ -19,7 +19,7 @@
   align-items: center;
   gap: 8px;
 
-  @include mobile {
+  @include smallMobile {
     > :first-child {
       display: none;
     }
