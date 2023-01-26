@@ -59,7 +59,10 @@ export const marketingNavItems = {
                     ...navItems.learn,
                     children: [
                         navItems.topcoderAcademyApp,
-                        navItems.articles,
+                        {
+                          ...navItems.articles,
+                          url: `${navItems.articles.url}?navTool=marketing`
+                        },
                     ]
                 },
                 {
