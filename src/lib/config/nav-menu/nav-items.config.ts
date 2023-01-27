@@ -33,7 +33,7 @@ export const navItems: NavItemConfig = {
     articles: {
         label: 'Articles',
         icon: 'articles',
-        description: 'Get inspired',
+        description: 'Get insights and tips about Topcoder',
         url: `${COMMUNITY_HOST}/thrive`,
     },
     benefits: {
@@ -307,7 +307,7 @@ export const navItems: NavItemConfig = {
         url: getWordpressUrl('/customer/qa'),
     },
     rapidDevMatches: {
-        label: 'Rapid Dev Matches',
+        label: 'Rapid Development Matches',
         description: 'Quick competitions you can complete in less than one day.',
         url: getWordpressUrl('/talent/rapid-dev-matches'),
     },
