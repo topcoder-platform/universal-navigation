@@ -42,8 +42,8 @@
                     target="_blank"
                     rel="noreferrer"
                 >
-                  <div class={styles.toolIcon}>
-                    {#if navItem.type !== 'cta'}
+                  {#if navItem.type !== 'cta'}
+                    <div class={styles.toolIcon}>
                       {#if navItem.icon}
                         <svg>
                           <use xlink:href={`#${navItem.icon}`}></use>
@@ -51,8 +51,8 @@
                       {:else}
                         <img src={toolIcon} alt={navItem.label} />
                       {/if}
-                    {/if}
-                  </div>
+                    </div>
+                  {/if}
                   <div class={styles.navItemContent}>
                     {#if !!navItem.label}
                       <span class={styles.navItemLabel}>{navItem.label}</span>
