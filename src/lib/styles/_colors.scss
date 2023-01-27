@@ -1,0 +1,14 @@
+@import './palette';
+
+$colors: (
+  hoverMenuLink: (
+    default: tc-color(turq, 160),
+    hover: tc-color(black, 100),
+    active: tc-color(black, 60),
+  )
+);
+
+@function color($base, $shade: default) {
+  $color: map-get(map-get($colors, $base), $shade);
+  @return $color;
+}

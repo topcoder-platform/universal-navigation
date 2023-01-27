@@ -1,0 +1,71 @@
+$palette: (
+  black: (
+    tc: #0C0C0C,
+    100: #2A2A2A,
+    80: #555555,
+    60: #7F7F7F,
+    40: #AAAAAA,
+    20: #D4D4D4,
+    10: #E9E9E9,
+    5: #F4F4F4,
+    2: #FBFBFB,
+  ),
+  white: (
+    tc: #FFFFFF,
+  ),
+  red: (
+    100: #EF3A3A,
+    75: #F37593,
+    50: #F7A3B7,
+    25: #FBD1DB,
+    120: #BE405E,
+    140: #8C384C,
+  ),
+  orange: (
+    100: #FFC43D,
+    75: #FFD36E,
+    50: #FFE19E,
+    25: #FFF0CE,
+    120: #E2AF3B,
+    140: #B98F31,
+  ),
+  yellow: (
+    100: #F9F649,
+    75: #FBF877,
+    50: #FBFAA4,
+    25: #FDFCD1,
+    120: #DDDA43,
+  ),
+  green: (
+    100: #63F963,
+    75: #8AFB8A,
+    50: #B0FCB1,
+    25: #D8FDD8,
+    120: #4CC94C,
+    140: #35AC35,
+  ),
+  turq: (
+    100: #06D6A0,
+    75: #45E1B8,
+    50: #82EACF,
+    25: #C1F5E7,
+    15: #E0FAF3,
+    120: #0AB88A,
+    140: #219174,
+    160: #137D60,
+    180: #0D664E,
+  ),
+  teal: (
+    100: #26B3C5,
+    75: #54B4C0,
+    50: #8DCCD4,
+    25: #C6E6EA,
+    120: #1E94A3,
+    140: #227681,
+  ),
+);
+
+@function tc-color($base, $shade: base) {
+  $color: map-get(map-get($palette, $base), $shade);
+  @return $color;
+}

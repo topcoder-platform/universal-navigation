@@ -1,5 +1,6 @@
 @import 'lib/styles/mixins.scss';
 @import 'lib/styles/fonts.scss';
+@import 'lib/styles/colors.scss';
 
 .hoverMenuWrap {
   position: absolute;
@@ -81,16 +82,16 @@
 a.menuSectionHeading {
   all: unset;
   display: block;
-  color: #767676;
+  color: color(hoverMenuLink);
   font-size: 14px;
   line-height: 22px;
   font-weight: 700;
   cursor: pointer;
   &:hover {
-    color: #2A2A2A;
+    color: color(hoverMenuLink, hover);
   }
   &:global(.active), &:active {
-    color: #0D664E;
+    color: color(hoverMenuLink, active);
   }
 }
 
@@ -107,13 +108,13 @@ a.menuSectionHeading {
 a.menuSectionChild {
   all: unset;
   font-weight: 500;
-  color: #767676;
+  color: color(hoverMenuLink);
   cursor: pointer;
   &:hover {
-    color: #2A2A2A;
+    color: color(hoverMenuLink, hover);
   }
   &:global(.active), &:active {
-    color: #0D664E;
+    color: color(hoverMenuLink, active);
   }
 }
 
