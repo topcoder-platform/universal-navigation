@@ -102,6 +102,11 @@ Resources:
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://uninav.topcoder.com
+
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://uninav2.topcoder.com
                             
                             # Customer Marketing Local
                             - !If 
