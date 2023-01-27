@@ -83,8 +83,8 @@ a.menuSectionHeading {
   all: unset;
   display: block;
   color: color(hoverMenuLink);
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 700;
   cursor: pointer;
   &:hover {
@@ -115,6 +115,7 @@ a.menuSectionChild {
   }
   &:global(.active), &:active {
     color: color(hoverMenuLink, active);
+    font-weight: 700;
   }
 }
 
