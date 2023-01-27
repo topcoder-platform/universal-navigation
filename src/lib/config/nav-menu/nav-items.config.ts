@@ -33,7 +33,7 @@ export const navItems: NavItemConfig = {
     articles: {
         label: 'Articles',
         icon: 'articles',
-        description: 'Get inspired',
+        description: 'Get insights and tips about Topcoder',
         url: `${COMMUNITY_HOST}/thrive`,
     },
     benefits: {
