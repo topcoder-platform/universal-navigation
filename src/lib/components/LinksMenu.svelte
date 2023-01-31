@@ -34,12 +34,12 @@
     {#each menuItems as menuItem}
         {#if !!menuItem.label}
             <a
-                class={classnames(getNavItemType(menuItem), styles[style])}
+                class={classnames(getNavItemType(menuItem), menuItem.uiAttr, styles[style])}
                 class:active={activeRoute?.url === menuItem.url}
                 class:hover={isPopupMenuActive &&
                     hoveredMenuItem?.url === menuItem.url}
                 href={menuItem.url}
-                target="_top"
+                target={menuItem.target ?? '_top'}
                 data-key={menuItem.url}
                 on:mouseover={handleMouseover(menuItem)}
                 on:focus={handleMouseover(menuItem)}

@@ -1,4 +1,5 @@
 iac/.env
+.env
 
 # Logs
 logs

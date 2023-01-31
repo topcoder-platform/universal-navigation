@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { getAppContext } from 'lib/app-context';
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
@@ -8,9 +8,10 @@
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import InlineSvg from 'lib/components/InlineSvg.svelte';
+  import { classnames } from 'lib/utils/classnames';
+  import { isMobile } from 'lib/utils/window-size.store';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
-  import { classnames } from 'lib/utils/classnames';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -21,19 +22,25 @@
   let menuItems: NavMenuItem[];
   $: menuItems = getFooterNavItems(isAuthenticated)
 
-  $: ({fullFooter} = $ctx.toolConfig)
+  $: ({ fullFooter } = $ctx.toolConfig);
 
   let isCollapsed = true;
 
   let supportVisible = false;
   let footerEl: Element | undefined = undefined;
+  let bottomBar: Element | undefined = undefined;
 
   function toggleSupportModal() {
     supportVisible = true;
   }
 
-  function toggleFooter() {
+  async function toggleFooter() {
     isCollapsed = !isCollapsed;
+    await tick()
+
+    if (!isCollapsed) {
+      bottomBar.scrollIntoView()
+    }
   }
 
   onMount(checkAndLoadFonts)
@@ -44,7 +51,7 @@
 </script>
 
 <footer class={styles.footerWrap} bind:this={footerEl}>
-  <!-- {#if !fullFooter}
+  {#if !fullFooter}
     <div class={classnames(styles.toggleBar, isCollapsed && styles.isCollapsed)} on:click={toggleFooter} on:keydown={() => {}}>
       <span class={styles.icon}>
         <InlineSvg src="/assets/icon-tmenu.svg" />
@@ -53,9 +60,9 @@
         <InlineSvg src="/assets/icon-arrow.svg" />
       </span>
     </div>
-  {/if} -->
+  {/if}
   {#if fullFooter === true || !isCollapsed}
-  <div class={styles.footerNavigation}>
+  <div class={styles.footerNavigation} bind:this={bottomBar}>
     <ul class={styles.menuSections}>
       {#each menuItems as menuItem}
         <li class={styles.menuSection}>
@@ -69,7 +76,7 @@
               {#each menuItem.children as child}
                 {#if !!child.label}
                   <li class={styles.menuSectionEntry}>
-                    <a target="_top" use:handleNavItemAction={child} href={child.url}>
+                    <a target={child.target ?? '_top'} use:handleNavItemAction={child} href={child.url} rel="noopener">
                       {child.label}
                     </a>
                   </li>

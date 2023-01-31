@@ -9,6 +9,7 @@ export const marketingNavItems = {
                     ...navItems.whyTopcoder,
                     children: [
                         navItems.theCommunity,
+                        navItems.challengeModel,
                         {
                             ...navItems.expertise,
                             children: [
@@ -53,11 +54,15 @@ export const marketingNavItems = {
         {
             ...navItems.talent,
             children: [
+                navItems.talentTheCommunity,
                 {
                     ...navItems.learn,
                     children: [
-                        navItems.topcoderAcademy,
-                        navItems.articles,
+                        navItems.topcoderAcademyApp,
+                        {
+                          ...navItems.articles,
+                          url: `${navItems.articles.url}?navTool=marketing`
+                        },
                     ]
                 },
                 {
@@ -88,11 +93,14 @@ export const marketingNavItems = {
                 {
                     ...navItems.benefits,
                     children: [
-                        navItems.healthCare,
+                        navItems.healthcare,
                         navItems.careerGrowth,
                     ]
                 }
             ]
+        },
+        {
+          ...navItems.aboutUs,
         }
     ]
 }

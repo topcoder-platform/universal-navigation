@@ -1,5 +1,4 @@
-import { TC_API_V5_HOST } from 'lib/config'
-
+import { TC_API_V5_HOST } from 'lib/config/nav-menu';
 import type { ContactSupportRequest } from './contact-support-request.model'
 
 export async function sendSupportRequest(request: ContactSupportRequest): Promise<any> {

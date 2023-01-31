@@ -2,7 +2,7 @@ import { navItems } from "./nav-items.config";
 
 export const footerNavItems = {
     children: [
-        navItems.about,
+        navItems.aboutTopcoder,
         {
             ...navItems.expertise,
             children: [
@@ -60,7 +60,7 @@ export const footerNavItems = {
                 navItems.support,
             ]
         },
-        navItems.careers,
+        // navItems.careers,
         {
             label: "Legal",
             children: [

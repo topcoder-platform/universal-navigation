@@ -1,4 +1,5 @@
 @import 'lib/styles/mixins.scss';
+@import 'lib/styles/fonts.scss';
 
 .footerBar {
   background: #0C0C0C;
@@ -16,13 +17,13 @@
   align-items: center;
   padding: 12px 32px;
 
-  @include mobile {
+  @include tablet {
     padding: 12px 16px;
   }
 }
 
 .cTopcoder {
-  font-family: 'Roboto';
+  font-family: $roboto;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

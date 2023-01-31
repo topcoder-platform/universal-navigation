@@ -38,6 +38,11 @@
         alt='Instagram'
         href='https://www.instagram.com/topcoder'
       />
+      <SocialIcon
+        icon='icon-discord.svg'
+        alt='Discord'
+        href='https://discord.com/invite/topcoder?ref=navb'
+      />
     </div>
   </div>
 </div>

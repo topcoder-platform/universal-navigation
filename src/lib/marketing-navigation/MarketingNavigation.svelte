@@ -11,7 +11,6 @@
   import { isMobile } from 'lib/utils/window-size.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
-  import AboutUsMenuItem from './components/AboutUsMenuItem.svelte';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -42,10 +41,7 @@
     isMobile={$isMobile}
     showHoverMenu={!primaryRoute}
   >
-    <svelte:fragment slot="auth">
-      <AboutUsMenuItem />
-      <UserArea />
-    </svelte:fragment>
+    <UserArea slot="auth" />
   </NavigationBar>
 
   {#if !$isMobile}

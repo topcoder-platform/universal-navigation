@@ -1,9 +1,12 @@
 import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
 import { escapeRegExp } from "./regex";
 
-const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => (
-  !!url.match(new RegExp(`^${escapeRegExp(route.url)}\/?(\\?|#|$)`, 'i'))
-)
+const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
+  const urlObj = new URL(route.url);
+  const routeUrl = `${urlObj.origin}${urlObj.pathname}`;
+
+  return !!url.match(new RegExp(`^${escapeRegExp(routeUrl)}\/?(\\?|#|$)`, 'i'));
+}
 
 /**
  * Parses the passed nav menu items and

@@ -1,6 +1,6 @@
 import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
 export interface NavItemConfig {
-    about: NavMenuItem;
+    aboutTopcoder: NavMenuItem;
     aboutUs: NavMenuItem;
     announcements: NavMenuItem;
     articles: NavMenuItem;
@@ -38,8 +38,9 @@ export interface NavItemConfig {
     gettingPaid: NavMenuItem;
     gigs: NavMenuItem;
     gigsApp: NavMenuItem;
-    healthCare: NavMenuItem;
+    healthcare: NavMenuItem;
     healthPharma: NavMenuItem;
+    home: NavMenuItem;
     industries: NavMenuItem;
     learn: NavMenuItem;
     marathonMatches: NavMenuItem;
@@ -49,7 +50,6 @@ export interface NavItemConfig {
     partners: NavMenuItem;
     practice: NavMenuItem;
     privacyPolicy: NavMenuItem;
-    products: NavMenuItem;
     publicSector: NavMenuItem;
     qa: NavMenuItem;
     rapidDevMatches: NavMenuItem;
@@ -68,6 +68,7 @@ export interface NavItemConfig {
     talkToSales: NavMenuItem;
     technology: NavMenuItem;
     theCommunity: NavMenuItem;
+    talentTheCommunity: NavMenuItem;
     timeline: NavMenuItem;
     topcoderAcademy: NavMenuItem;
     topcoderAcademyApp: NavMenuItem;

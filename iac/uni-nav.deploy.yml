@@ -79,6 +79,12 @@ Resources:
                         # TODO: figure out the best way to support wildcard origins
                         Items:
 
+                            # Challenges Prod & Dev
+                            - !Sub https://challenges.${Domain} 
+
+                            # Connect Prod & Dev
+                            - !Sub https://connect.${Domain}
+
                             # Customer & Member Marketing Prod & Dev
                             - https://www.topcoder.com
                             - https://topcoder.com
@@ -96,6 +102,11 @@ Resources:
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://uninav.topcoder.com
+
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://uninav2.topcoder.com
                             
                             # Customer Marketing Local
                             - !If 
@@ -172,6 +183,40 @@ Resources:
                                 - IsProd
                                 - https://topcrowd.topcoder.com
                                 - https://topcrowd.dev.topcoder.com
+                            - !If 
+                                - IsProd
+                                - https://topcrowd.net
+                                - https://qa.dev.topcrowd.net
+                            - !If 
+                                - IsProd
+                                - https://topcrowd.io
+                                - https://qa.dev.topcrowd.io
+                            - !If 
+                                - IsProd
+                                - https://topcrowd.app
+                                - https://qa.dev.topcrowd.app
+                            - !If 
+                                - IsProd
+                                - https://gettopcrowd.com
+                                - https://qa.dev.gettopcrowd.com
+
+                            # TopCrowd Dev
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://dev.topcrowd.net
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://dev.topcrowd.io
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://dev.topcrowd.app
+                            - !If 
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - https://dev.gettopcrowd.com
 
                             # TopCrowd Local
                             - !If 

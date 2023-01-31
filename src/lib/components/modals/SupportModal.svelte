@@ -73,7 +73,7 @@
     {#if user?.email}
       at&nbsp;<strong>{user.email}</strong>
     {/if}
-    &nbsp;within one business day.
+    within one business day.
   </p>
   <div class={classnames(styles.form, submitted && styles.submitted)}>
     <form on:submit={handleSubmit}>
