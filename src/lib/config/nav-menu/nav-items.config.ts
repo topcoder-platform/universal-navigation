@@ -81,7 +81,7 @@ export const navItems: NavItemConfig = {
     challengeModel: {
         label: 'Challenge Model',
         url: getWordpressUrl('/customer/challenge-model'),
-        description: 'What makes our challenge model a success',
+        description: 'What makes our challenge model a success.',
     },
     communications: {
         label: 'Communications',
