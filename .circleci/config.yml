@@ -115,8 +115,9 @@ build_steps_prod: &build_steps_prod
     - run: *install_build_dependency
     - run: *install_deploysuite
     - run: *build_configuration_fetch
-    - run: *update_types
-    - run: *running_version_patch
+    # Temporarily commenting this out for production uni-nav hotfix
+    # - run: *update_types
+    # - run: *running_version_patch
     - run: *running_npm_build
     - persist_to_workspace: *workspace_persist
 
@@ -145,7 +146,6 @@ deploy_steps: &deploy_steps
             ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
-
     check-types:
         <<: *defaults
         environment:
