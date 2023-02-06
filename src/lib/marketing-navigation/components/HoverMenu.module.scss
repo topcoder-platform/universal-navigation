@@ -32,7 +32,7 @@ $transitionInDelay: 0.2s;
     visibility 0s linear .35s,
     transform 0.15s ease-out 0.15s;
 
-  :global(*:hover) ~ &, &:hover {
+  *:not(:global(.active)):hover ~ &, &:hover {
     opacity: 1;
     visibility: visible;
     z-index: 19;
