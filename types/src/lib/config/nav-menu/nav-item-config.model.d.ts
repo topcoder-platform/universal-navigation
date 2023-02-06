@@ -74,6 +74,7 @@ export interface NavItemConfig {
     topcoderAcademyApp: NavMenuItem;
     topcoderOpen: NavMenuItem;
     topCrowd: NavMenuItem;
+    topCrowdApp: NavMenuItem;
     websiteDesign: NavMenuItem;
     whyTopcoder: NavMenuItem;
 }
