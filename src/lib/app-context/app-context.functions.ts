@@ -15,14 +15,17 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
     handleNavigation = prevContext.navigationHandler,
     supportMeta = prevContext.supportMeta,
     fullFooter = prevContext.toolConfig?.fullFooter,
-  } = newConfig
+  } = {...newConfig, user: undefined}
 
-  const hasUserProp = hasOwnProperty(newConfig, 'user')
+  const hasUserProp = hasOwnProperty(newConfig, 'user') && newConfig['user'] !== 'auto'
+  // user: 'atuo' translates to auth.autoFetchUser: true
+  const autoFetchUser = hasOwnProperty(newConfig, 'user') && newConfig['user'] === 'auto'
 
   return {
     auth: {
       ready: prevContext.auth?.ready || hasUserProp,
       user: hasUserProp ? newConfig.user : user,
+      autoFetchUser,
       signIn,
       signOut,
       signUp,
