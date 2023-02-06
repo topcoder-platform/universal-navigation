@@ -2,7 +2,7 @@
   /**
    * This is the navigation component as seen on any tool for the topcoder
   */
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { getMainNavItems } from 'lib/functions/tool-navigation.provider'
   import { getAppContext } from 'lib/app-context';
   import TopNavbar from 'lib/components/TopNavbar.svelte';
@@ -35,23 +35,20 @@
   }
 
   let linksMenuEl: HTMLElement;
-  let mainMenuWidth = useSessionStorage<number>('mm-width', 157);
+  let mainMenuWidth = useSessionStorage<number>('mm-width', 154);
   let mainMenuVisible = false;
 
-  function toggleMainMenu() {
+  async function toggleMainMenu() {
+    setMainMenuWidth()
+    await tick()
     mainMenuVisible = !mainMenuVisible
   }
 
   async function setMainMenuWidth() {
-    await checkAndLoadFonts()
     $mainMenuWidth = linksMenuEl?.offsetWidth
-
   }
 
-  onMount(setMainMenuWidth)
-
-  // if we switch from mobile view to desktop, call `setMainMenuWidth`
-  $: linksMenuEl && setMainMenuWidth()
+  onMount(checkAndLoadFonts)
 </script>
 
 <TopNavbar minLogoVersion class={styles.navbar} style="primary">
