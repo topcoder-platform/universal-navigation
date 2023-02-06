@@ -424,10 +424,15 @@ export const navItems: NavItemConfig = {
         url: `${COMMUNITY_HOST}/community/member-programs/topcoder-open`,
     },
     topCrowd: {
-        description: 'Register your own employees in Topcoder to maximize productivity.',
-        icon: 'topcrowd',
+        description: 'Engage and reward your workforce to maximize productivity.',
         label: 'TopCrowd',
         url: getWordpressUrl('/customer/topcrowd'),
+    },
+    topCrowdApp: {
+        description: 'Engage and reward your workforce',
+        icon: 'topcrowd',
+        label: 'TopCrowd',
+        url: 'https://topcrowd.net',
     },
     websiteDesign: {
         label: 'Website Design',
