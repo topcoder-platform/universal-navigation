@@ -1,7 +1,8 @@
-import { writable } from 'svelte/store'
+import { writable, get } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import 'lib/styles/main.scss';
+import { hasOwnProperty } from 'lib/utils/hasOwnProperty';
 
 export * from './lib/app-context'
 
@@ -20,7 +21,8 @@ export type NavigationAppProps = {
 
   onReady?: () => void
 
-  user?: AuthUser,
+  user?: AuthUser | 'auto',
+
   signIn?: () => void
   signUp?: () => void
   signOut?: () => void

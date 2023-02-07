@@ -5,6 +5,7 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
     auth: {
         ready: any;
         user: any;
+        autoFetchUser: boolean;
         signIn: any;
         signOut: any;
         signUp: any;

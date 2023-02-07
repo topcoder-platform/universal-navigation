@@ -9,7 +9,7 @@ export declare type NavigationAppProps = {
     fullFooter?: boolean;
     handleNavigation?: NavigationHandler;
     onReady?: () => void;
-    user?: AuthUser;
+    user?: AuthUser | 'auto';
     signIn?: () => void;
     signUp?: () => void;
     signOut?: () => void;
