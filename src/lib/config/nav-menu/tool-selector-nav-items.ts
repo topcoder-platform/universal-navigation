@@ -7,8 +7,8 @@ export const toolSelectorNavItems = {
             children: [
                 {
                     children: [
+                        navItems.topCrowdApp,
                         navItems.selfServiceApp,
-                        // navItems.topcrowd,
                     ]
                 },
                 {
