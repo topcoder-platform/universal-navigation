@@ -19,7 +19,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
 
   const hasUserProp = hasOwnProperty(newConfig, 'user') && newConfig['user'] !== 'auto'
   // user: 'atuo' translates to auth.autoFetchUser: true
-  const autoFetchUser = hasOwnProperty(newConfig, 'user') && newConfig['user'] === 'auto'
+  const autoFetchUser = hasOwnProperty(newConfig, 'user') ? newConfig['user'] === 'auto' : !!prevContext.auth?.autoFetchUser
 
   return {
     auth: {
