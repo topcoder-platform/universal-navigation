@@ -8,9 +8,13 @@ const localCache = {};
 
 // JWT to JS data object
 function parseJwt (token: string) {
-  try {
-    return JSON.parse(atob(token.split('.')[1].replace(/[^A-Za-z0-9\+\/\=]/g, "")));
-  } catch {}
+  const base64Url = token.split('.')[1];
+  const base64fixed = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(window.atob(base64fixed).split('').map(c => (
+      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+  )).join(''));
+
+  return JSON.parse(jsonPayload);
 }
 
 // get the JWT authentication cookie value
