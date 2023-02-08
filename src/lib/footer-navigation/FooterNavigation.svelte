@@ -9,9 +9,9 @@
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import InlineSvg from 'lib/components/InlineSvg.svelte';
   import { classnames } from 'lib/utils/classnames';
-  import { isMobile } from 'lib/utils/window-size.store';
   import FooterBottomBar from './FooterBottomBar.svelte';
   import styles from './FooterNavigation.module.scss'
+  import SubmitBugModal from 'lib/components/modals/SubmitBugModal.svelte';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -26,12 +26,12 @@
 
   let isCollapsed = true;
 
-  let supportVisible = false;
+  let visibleModal = '';
   let footerEl: Element | undefined = undefined;
   let bottomBar: Element | undefined = undefined;
 
-  function toggleSupportModal() {
-    supportVisible = true;
+  const toggleModal = (modalName: string) => () => {
+    visibleModal = modalName;
   }
 
   async function toggleFooter() {
@@ -46,7 +46,8 @@
   onMount(checkAndLoadFonts)
 
   onMount(() => {
-    footerEl.addEventListener(navItems.support.action, toggleSupportModal);
+    footerEl.addEventListener(navItems.support.action, toggleModal('support'));
+    footerEl.addEventListener(navItems.reportABug.action, toggleModal('reportABug'));
   })
 </script>
 
@@ -92,7 +93,10 @@
 
   <FooterBottomBar />
 
-  {#if supportVisible}
-  <SupportModal bind:isVisible={supportVisible} />
+  {#if visibleModal === 'support'}
+    <SupportModal bind:isVisible={visibleModal} />
+  {/if}
+  {#if visibleModal === 'reportABug'}
+    <SubmitBugModal bind:isVisible={visibleModal} />
   {/if}
 </footer>

@@ -13,7 +13,10 @@
   $: ({user} = $ctx.auth)
   $: ({supportMeta: meta = {} as SupportMeta} = $ctx)
 
-  export let isVisible = false;
+  export let isVisible: string = '';
+  export let title = 'WE\'RE HERE TO HELP';
+  export let description = 'How can we help you?';
+
   let submitted = false;
 
   async function handleSubmit(ev: MouseEvent | SubmitEvent) {
@@ -23,7 +26,7 @@
 
     submitted = true;
     await delay(1500);
-    isVisible = false;
+    isVisible = '';
   }
 
   const formValue = {
@@ -55,26 +58,28 @@
 <Modal
   class={styles.supportModal}
   bind:isVisible={isVisible}
-  title="WE'RE HERE TO HELP"
+  title={title}
   size="sm"
 >
-  <p>
-    Hi
-    {#if user?.firstName}
-      <strong>{user.firstName}</strong>,
-    {:else}
-      there,
-    {/if}
-    we're here to help.
-  </p>
-  <p>
-    Please describe what you'd like to discuss, and a Topcoder Solutions Expert
-    will email you back
-    {#if user?.email}
-      at&nbsp;<strong>{user.email}</strong>
-    {/if}
-    within one business day.
-  </p>
+  <slot name="description">
+    <p>
+      Hi
+      {#if user?.firstName}
+        <strong>{user.firstName}</strong>,
+      {:else}
+        there,
+      {/if}
+      we're here to help.
+    </p>
+    <p>
+      Please describe what you'd like to discuss, and a Topcoder Solutions Expert
+      will email you back
+      {#if user?.email}
+        at&nbsp;<strong>{user.email}</strong>
+      {/if}
+      within one business day.
+    </p>
+  </slot>
   <div class={classnames(styles.form, submitted && styles.submitted)}>
     <form on:submit={handleSubmit}>
       <p>
@@ -88,7 +93,7 @@
       </p>
       <p>
         <Input
-          label="How can we help you?"
+          label={description}
           type="textarea"
           bind:value={formValue.question}
           required

@@ -58,6 +58,7 @@ export const footerNavItems = {
                 navItems.talkToSales,
                 navItems.bookADemo,
                 navItems.support,
+                navItems.reportABug,
             ]
         },
         // navItems.careers,

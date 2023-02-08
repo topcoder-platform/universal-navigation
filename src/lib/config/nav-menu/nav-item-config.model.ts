@@ -65,6 +65,7 @@ export interface NavItemConfig {
     statistics: NavMenuItem
     successStories: NavMenuItem
     support: NavMenuItem
+    reportABug: NavMenuItem
     talkToAnExpert: NavMenuItem
     talkToSales: NavMenuItem
     technology: NavMenuItem

@@ -369,6 +369,11 @@ export const navItems: NavItemConfig = {
         label: 'Support',
         url: 'mailto:support@topcoder.com',
     },
+    reportABug: {
+        action: 'uninav:modals:bug',
+        label: 'Report a Bug',
+        url: 'mailto:support@topcoder.com',
+    },
     talent: {
         authenticatedUrl: getWordpressUrl('/home'),
         label: 'Talent',

@@ -3,7 +3,7 @@
   import { classnames } from 'lib/utils/classnames';
   import styles from './Modal.module.scss';
 
-  export let isVisible: boolean = false;
+  export let isVisible: string = '';
 
   export let title: string = '';
   export let size: 'sm' = undefined;
@@ -26,7 +26,7 @@
           </h3>
           <button
             class={styles.closeBtn}
-            on:click={() => isVisible = false}
+            on:click={() => isVisible = ''}
             on:keydown={() => {}}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
