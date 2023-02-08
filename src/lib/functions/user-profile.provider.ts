@@ -9,7 +9,7 @@ const localCache = {};
 // JWT to JS data object
 function parseJwt (token: string) {
   try {
-    return JSON.parse(atob(token.split('.')[1]));
+    return JSON.parse(atob(token.split('.')[1].replace(/[^A-Za-z0-9\+\/\=]/g, "")));
   } catch {}
 }
 
