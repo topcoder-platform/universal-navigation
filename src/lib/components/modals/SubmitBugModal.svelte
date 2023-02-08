@@ -11,8 +11,8 @@
 >
   <svelte:fragment slot="description">
     <p>
-      Oops you’ve found a bug!
+      Oops, you've found a bug!
     </p>
-    <p>You can report the issue and our team will get it resolved.</p>
+    <p>You can report the issue here and our team will get it resolved right away.</p>
   </svelte:fragment>
 </SupportModal>
