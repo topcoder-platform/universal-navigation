@@ -24,7 +24,11 @@ function getAuthJwtCookie() {
 
 // Get the authentication data from the jwt auth cookie
 function getAuthData() {
-  return parseJwt(getAuthJwtCookie());
+  const jwtCookie = getAuthJwtCookie();
+  if (!jwtCookie) {
+    return {};
+  }
+  return parseJwt(jwtCookie);
 }
 
 // get the user's handle from the jwt data
@@ -56,8 +60,9 @@ export const fetchUserProfile = async (): Promise<AuthUser> => {
   localCache[userHandle] = new Promise((r) => {resolve = r});
 
   const requestUrl: string = `${TC_API_V5_HOST}/members/${userHandle}`;
+  const jwtCookie = getAuthJwtCookie();
   const requestAuth = {'Authorization': `Bearer ${getAuthJwtCookie()}`};
-  const request = fetch(requestUrl, {headers: {...requestAuth}});
+  const request = fetch(requestUrl, {headers: {...(jwtCookie ? requestAuth : {})}});
 
   const response = await (await request).json();
   resolve({...response, photoURL: undefined, photoUrl: response.photoURL});
