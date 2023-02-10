@@ -1,4 +1,4 @@
-import { getWordpressUrl } from 'lib/utils/paths';
+import { getWordpressUrl } from '../../utils/paths';
 import {
     CHALLENGE_HOST,
     PACTS_HOST,

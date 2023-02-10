@@ -1,4 +1,4 @@
-import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
+import type { NavMenuItem } from '../functions/nav-menu-item.model';
 import { escapeRegExp } from "./regex";
 
 const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
