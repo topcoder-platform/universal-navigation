@@ -110,7 +110,7 @@ Resources:
 
                             - !If
                                 - IsProd
-                                - !Ref AWS::NoValue
+                                - https://go.topcoder.com
                                 - https://go.topcoder.com
 
                             # Customer Marketing Local
