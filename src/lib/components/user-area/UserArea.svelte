@@ -5,6 +5,8 @@
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
   import VerticalSeparator from '../VerticalSeparator.svelte';
+  import { fetchUserProfile } from 'lib/functions/user-profile.provider';
+  import { onMount } from 'svelte';
 
   const ctx = getAppContext()
 
@@ -13,9 +15,19 @@
     signUp: onSignUp = () => {},
     signOut: onSignOut = () => {},
     ready: isReady,
+    autoFetchUser,
     user,
   } = $ctx.auth)
 
+  onMount(async () => {
+    if (autoFetchUser !== true) {
+      return
+    }
+
+    $ctx.auth = {...$ctx.auth, ready: false};
+    const authUser = await fetchUserProfile();
+    $ctx.auth = {...$ctx.auth, ready: true, user: authUser};
+  })
 </script>
 
 {#if isReady}

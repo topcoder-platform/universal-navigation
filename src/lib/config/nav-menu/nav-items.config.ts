@@ -1,4 +1,4 @@
-import { getWordpressUrl } from 'lib/utils/paths';
+import { getWordpressUrl } from '../../utils/paths';
 import {
     CHALLENGE_HOST,
     PACTS_HOST,
@@ -81,7 +81,7 @@ export const navItems: NavItemConfig = {
     challengeModel: {
         label: 'Challenge Model',
         url: getWordpressUrl('/customer/challenge-model'),
-        description: 'What makes our challenge model a success',
+        description: 'What makes our challenge model a success.',
     },
     communications: {
         label: 'Communications',
@@ -369,6 +369,11 @@ export const navItems: NavItemConfig = {
         label: 'Support',
         url: 'mailto:support@topcoder.com',
     },
+    reportABug: {
+        action: 'uninav:modals:bug',
+        label: 'Report a Bug',
+        url: 'mailto:support@topcoder.com',
+    },
     talent: {
         authenticatedUrl: getWordpressUrl('/home'),
         label: 'Talent',
@@ -424,10 +429,15 @@ export const navItems: NavItemConfig = {
         url: `${COMMUNITY_HOST}/community/member-programs/topcoder-open`,
     },
     topCrowd: {
-        description: 'Register your own employees in Topcoder to maximize productivity.',
-        icon: 'topcrowd',
+        description: 'Engage and reward your workforce to maximize productivity.',
         label: 'TopCrowd',
         url: getWordpressUrl('/customer/topcrowd'),
+    },
+    topCrowdApp: {
+        description: 'Engage and reward your workforce',
+        icon: 'topcrowd',
+        label: 'TopCrowd',
+        url: 'https://topcrowd.net',
     },
     websiteDesign: {
         label: 'Website Design',

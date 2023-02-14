@@ -2,6 +2,8 @@
 @import 'lib/styles/fonts.scss';
 @import 'lib/styles/colors.scss';
 
+$transitionInDelay: 0.2s;
+
 .hoverMenuWrap {
   position: absolute;
   top: 100%;
@@ -21,16 +23,16 @@
 
   visibility: hidden;
   opacity: 0;
-  z-index: -1;
+  z-index: 2;
   transform: translateY(5px);
   pointer-events: none;
 
   // transition out
   transition: opacity 0.2s ease-out 0.15s,
-    visibility 0s ease-out 0.35s,
+    visibility 0s linear .35s,
     transform 0.15s ease-out 0.15s;
 
-  :global(*:hover) ~ &, &:hover {
+  *:not(:global(.active)):hover ~ &, &:hover {
     opacity: 1;
     visibility: visible;
     z-index: 19;
@@ -38,9 +40,9 @@
     pointer-events: auto;
 
     // transition in
-    transition: opacity 0.2s ease-in 0.15s,
-        visibility 0s ease-in 0.1s,
-        transform 0.15s ease-in 0.15s;
+    transition: opacity 0.2s ease-in calc(0.15s + $transitionInDelay),
+      visibility 0s linear 0.35s,
+      transform 0.15s ease-in calc(0.15s + $transitionInDelay);
   }
 }
 

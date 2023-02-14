@@ -1,4 +1,4 @@
-import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
+import type { NavMenuItem } from '../functions/nav-menu-item.model';
 /**
  * Parses the passed nav menu items and
  * based on the `isAuthenticated` param

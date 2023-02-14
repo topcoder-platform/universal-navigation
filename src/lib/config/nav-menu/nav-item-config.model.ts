@@ -1,4 +1,4 @@
-import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
+import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
 export interface NavItemConfig {
     aboutTopcoder: NavMenuItem
@@ -65,6 +65,7 @@ export interface NavItemConfig {
     statistics: NavMenuItem
     successStories: NavMenuItem
     support: NavMenuItem
+    reportABug: NavMenuItem
     talkToAnExpert: NavMenuItem
     talkToSales: NavMenuItem
     technology: NavMenuItem
@@ -75,6 +76,7 @@ export interface NavItemConfig {
     topcoderAcademyApp: NavMenuItem
     topcoderOpen: NavMenuItem
     topCrowd: NavMenuItem
+    topCrowdApp: NavMenuItem
     websiteDesign: NavMenuItem
     whyTopcoder: NavMenuItem
 }

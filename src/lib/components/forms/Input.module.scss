@@ -1,5 +1,5 @@
 .inputEl {
-  input, textarea {
+  input:global(.uni-input), textarea:global(.uni-input) {
     border-radius: 0;
     color: #7f7f7f;
     height: auto;
@@ -19,7 +19,7 @@
     }
   }
 
-  textarea {
+  textarea:global(.uni-input) {
     resize: vertical;
   }
 }

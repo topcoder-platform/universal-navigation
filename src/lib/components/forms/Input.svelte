@@ -27,8 +27,8 @@
   class={styles.inputEl}
 >
   {#if type === 'textarea'}
-    <textarea value={value} on:keyup={handleChange} />
+    <textarea class="uni-input" value={value} on:keyup={handleChange} />
   {:else}
-    <input {type} {value} on:keyup={handleChange}/>
+    <input class="uni-input" {type} {value} on:keyup={handleChange}/>
   {/if}
 </InputWrap>

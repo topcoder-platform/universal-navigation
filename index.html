@@ -18,15 +18,15 @@
 
     <script>
       // sdk include
-      // creates a global variable to delegate, so it will be available before script loaded 
+      // creates a global variable to delegate, so it will be available before script loaded
       window['tcUniNav'] = window['tcUniNav'] || function () {
           // pushes arguments that were passed to delegate into queue
           // so they can be accessed later from the main script
           (window['tcUniNav'].q = window['tcUniNav'].q ?? []).push(arguments)
       };
-      
+
     </script>
-    
+
     <script>
       // mock user data
       const user = {
@@ -38,6 +38,7 @@
 
       tcUniNav('init', 'marketing-nav', {
         type: 'marketing',
+        user: 'auto',
         onReady() {console.log('marketing nav ready')}
       })
 
@@ -59,7 +60,7 @@
         toolName: 'Topcoder Academy'
       })
 
-      setTimeout(() => tcUniNav('update', '*', {
+      setTimeout(() => tcUniNav('update', 'tool-nav', {
         user
       }), 3000)
     </script>

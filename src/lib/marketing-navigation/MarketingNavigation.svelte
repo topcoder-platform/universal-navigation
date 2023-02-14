@@ -39,7 +39,6 @@
     style='primary'
     menuItems={menuItems}
     isMobile={$isMobile}
-    showHoverMenu={!primaryRoute}
   >
     <UserArea slot="auth" />
   </NavigationBar>
@@ -51,7 +50,6 @@
         activeRoute={secondaryRoute}
         style='secondary'
         menuItems={primaryRoute.children}
-        showHoverMenu={!secondaryRoute?.children?.length}
       />
     {/if}
 
