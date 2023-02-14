@@ -1,4 +1,4 @@
-Description: UniNav hosting on S3 and CloudFront 
+Description: UniNav hosting on S3 and CloudFront
 
 Parameters:
 
@@ -13,22 +13,22 @@ Parameters:
             - topcoder.com
             - topcoder-dev.com
 
-Conditions: 
+Conditions:
     IsProd: !Equals [ !Ref Domain, topcoder.com ]
-    IsNotFeature: 
+    IsNotFeature:
         !Or [!Equals [ !Ref Stage, dev ], Condition: IsProd]
 
 Mappings:
 
     DomainMap:
 
-        topcoder.com: 
+        topcoder.com:
             CdnArnPrefix: arn:aws:cloudfront::409275337247:distribution/
             CertArn: arn:aws:acm:us-east-1:409275337247:certificate/8cabe19d-6559-41c6-8dfb-66f8080d27d4
             HostedZoneId: Z1B7U7QS3AAI1X
             RoleArn: arn:aws:iam::409275337247:role/learning-paths-v5-container-role
 
-        topcoder-dev.com: 
+        topcoder-dev.com:
             CdnArnPrefix: arn:aws:cloudfront::811668436784:distribution/
             CertArn: arn:aws:acm:us-east-1:811668436784:certificate/8e56f24a-1eaf-4289-8c21-db2c0761ecf4
             HostedZoneId: Z2CIRG3R0ZSGFQ
@@ -50,8 +50,8 @@ Resources:
 
     OriginAccessControl:
         Type: AWS::CloudFront::OriginAccessControl
-        Properties: 
-            OriginAccessControlConfig: 
+        Properties:
+            OriginAccessControlConfig:
                 Name: !Sub 's3-always-sigv4-${Stage}'
                 OriginAccessControlOriginType: s3
                 SigningBehavior: always
@@ -68,7 +68,7 @@ Resources:
                         Items:
                             - '*'
                     AccessControlAllowMethods:
-                        Items: 
+                        Items:
                             - GET
                             - HEAD
                             - OPTIONS
@@ -80,7 +80,7 @@ Resources:
                         Items:
 
                             # Challenges Prod & Dev
-                            - !Sub https://challenges.${Domain} 
+                            - !Sub https://challenges.${Domain}
 
                             # Connect Prod & Dev
                             - !Sub https://connect.${Domain}
@@ -90,57 +90,62 @@ Resources:
                             - https://topcoder.com
 
                             # Customer Marketing Dev
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
-                                - !Sub https://${Domain} 
-                            - !If 
+                                - !Sub https://${Domain}
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - !Sub https://www.${Domain}
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://uninav.topcoder.com
 
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://uninav2.topcoder.com
-                            
-                            # Customer Marketing Local
-                            - !If 
+
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
-                                - http://localhost:8080 
-                            - !If 
+                                - https://go.topcoder.com
+
+                            # Customer Marketing Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - http://localhost:8080
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - http://topcoder.topcoder-dev.com
 
                             # Forum Prod & Dev
-                            - !Sub https://discussions.${Domain} 
+                            - !Sub https://discussions.${Domain}
                             - !Sub https://vanilla.${Domain}
 
                             # Member Marketing Prod & Dev
                             - !Sub https://community-app.${Domain}
-                            
+
                             # Member Marketing Beta & Staging
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://beta-community-app.topcoder.com
                                 - !Ref AWS::NoValue
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://staging-community-app.topcoder.com
                                 - !Ref AWS::NoValue
 
                             # Member Marketing QA
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://qa-community-app.topcoder-dev.com
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://test-community-app.topcoder-dev.com
@@ -149,7 +154,7 @@ Resources:
                             - !Sub https://software.${Domain}
 
                             # Online Review Local
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - http://local.topcoder-dev.com:8080
@@ -158,7 +163,7 @@ Resources:
                             - !Sub https://community.${Domain}
 
                             # PACTS Local
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - !Sub http://local.tc.cloud.topcoder.com
@@ -167,65 +172,65 @@ Resources:
                             - !Sub https://platform-ui.${Domain}
 
                             # Platform UI Local
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - !Sub 'https://local.${Domain}'
 
                             # PTC Prod & QA
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://topcoder.privatetalent.cloud
                                 - https://qa.dev.privatetalent.cloud
 
                             # TopCrowd Prod & QA
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://topcrowd.topcoder.com
                                 - https://topcrowd.dev.topcoder.com
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://topcrowd.net
                                 - https://qa.dev.topcrowd.net
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://topcrowd.io
                                 - https://qa.dev.topcrowd.io
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://topcrowd.app
                                 - https://qa.dev.topcrowd.app
-                            - !If 
+                            - !If
                                 - IsProd
                                 - https://gettopcrowd.com
                                 - https://qa.dev.gettopcrowd.com
 
                             # TopCrowd Dev
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://dev.topcrowd.net
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://dev.topcrowd.io
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://dev.topcrowd.app
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - https://dev.gettopcrowd.com
 
                             # TopCrowd Local
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - http://127.0.0.1:3000
 
                             # TopCrowd Local
-                            - !If 
+                            - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - http://localhost:3000
@@ -234,17 +239,17 @@ Resources:
 
     Cdn:
         Type: AWS::CloudFront::Distribution
-        Properties: 
-            DistributionConfig: 
+        Properties:
+            DistributionConfig:
                 Enabled: true
-                Aliases: 
+                Aliases:
                     - !If [IsNotFeature, !Sub 'uni-nav.${Domain}', !Sub 'uni-nav-${Stage}.${Domain}']
                 Origins:
-                    -   Id: !Join 
+                    -   Id: !Join
                             - ''
                             -   - !Ref Store
                                 - .s3.amazonaws.com
-                        DomainName: !Join 
+                        DomainName: !Join
                             - ''
                             -   - !Ref Store
                                 - .s3.amazonaws.com
@@ -256,7 +261,7 @@ Resources:
                     # See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html
                     CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
                     Compress: true
-                    TargetOriginId: !Join 
+                    TargetOriginId: !Join
                         - ''
                         -   - !Ref Store
                             - .s3.amazonaws.com
@@ -266,7 +271,7 @@ Resources:
                         Cookies:
                             Forward: none
                     ResponseHeadersPolicyId: !Ref ResponseHeadersPolicy
-                ViewerCertificate: 
+                ViewerCertificate:
                     AcmCertificateArn: !FindInMap
                         - DomainMap
                         - !Ref Domain
@@ -277,7 +282,7 @@ Resources:
     StoreBucketPolicy:
         Type: 'AWS::S3::BucketPolicy'
         Properties:
-            Bucket: 
+            Bucket:
                 !Ref Store
             PolicyDocument:
                 Id: StoreBucketPolicy
@@ -288,14 +293,14 @@ Resources:
                         Principal:
                             Service: cloudfront.amazonaws.com
                         Action: 's3:GetObject'
-                        Resource: !Join 
+                        Resource: !Join
                             - ''
                             -   - 'arn:aws:s3:::'
                                 - !Ref Store
                                 - /*
                         Condition:
                             ArnEquals:
-                                aws:SourceArn: !Join 
+                                aws:SourceArn: !Join
                                     - ''
                                     -   - !FindInMap
                                             - DomainMap
@@ -310,11 +315,11 @@ Resources:
                 - DomainMap
                 - !Ref Domain
                 - HostedZoneId
-            Name: 
+            Name:
                 !If [IsNotFeature, !Sub 'uni-nav.${Domain}', !Sub 'uni-nav-${Stage}.${Domain}']
             Type: A
-            AliasTarget: 
+            AliasTarget:
                 # hard-coded zone id for all cloudfront routes
                 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#cfn-route53-aliastarget-hostedzoneid
-                HostedZoneId: Z2FDTNDATAQYW2 
+                HostedZoneId: Z2FDTNDATAQYW2
                 DNSName: !GetAtt Cdn.DomainName
