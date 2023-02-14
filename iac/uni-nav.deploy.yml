@@ -108,10 +108,8 @@ Resources:
                                 - !Ref AWS::NoValue
                                 - https://uninav2.topcoder.com
 
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://go.topcoder.com
+                            # Unbounce Pages
+                            - https://go.topcoder.com
 
                             # Customer Marketing Local
                             - !If
