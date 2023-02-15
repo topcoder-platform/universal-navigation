@@ -1,6 +1,8 @@
 :where(.tc-universal-nav) {
   *, *:before, *:after {
     box-sizing: border-box;
+    overflow-wrap: initial;
+    word-break: initial;
   }
 
   ul {
