@@ -29,16 +29,22 @@
     hoveredMenuItem = menuItem;
   };
 
-  function getNavItemType(menuItem: NavMenuItem) {
-    return menuItem.type === "cta" ? "navButton" : "navLink";
+  function getNavItemClassNames(menuItem: NavMenuItem) {
+    return classnames(
+      styles[style],
+      menuItem.uiAttr,
+      menuItem.type === "cta" ? "navButton" : "navLink",
+      itemHasHoverMenu(menuItem) && 'has-menu',
+    )
   }
+
 </script>
 
 <div class={styles.linksMenuWrap} bind:this={ref}>
   {#each menuItems as menuItem}
     {#if !!menuItem.label}
       <a
-        class={classnames(getNavItemType(menuItem), menuItem.uiAttr, styles[style])}
+        class={getNavItemClassNames(menuItem)}
         class:active={isActiveMenu(menuItem)}
         class:hover={isPopupMenuActive &&
           hoveredMenuItem?.url === menuItem.url}
