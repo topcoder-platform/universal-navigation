@@ -28,6 +28,43 @@ const fontsList = [
 
 let previousLoadPromise;
 
+/**
+ * Checks if font is loaded by checking the differences in width
+ * before and after setting the font family & weight on an element
+ *
+ * @param query CSS font rules for the font
+ * @param fontWeight font weight to test on
+ * @returns True if font is loaded
+ */
+function checkFont(query: string, fontWeight: number): boolean {
+  // create a test div element and position it outside of visible area
+  const testEl = document.createElement('div');
+  testEl.innerText = 'Sample Text!';
+  Object.assign(testEl.style, {
+    position: 'absolute',
+    top: '-500px',
+    left: '-500px',
+    fontWeight,
+    fontFamily: 'serif',
+  });
+  document.body.appendChild(testEl);
+
+  // take it's initial width
+  const initWidth = testEl.offsetWidth;
+
+  // assign the specified font family & weight and
+  // take it's width after applying the new styling
+  Object.assign(testEl.style, {font: query});
+  const afterWidth = testEl.offsetWidth;
+
+  // remove from dom
+  testEl.remove();
+
+  // check if the before & after widths are different
+  // if they're different it means it's more than probable for the font to be loaded
+  return initWidth !== afterWidth;
+}
+
 // Check if all the fonts in the above list were loaded after the fontsSet is ready
 // if not all fonts are loaded, simply add the stylesheet from google fonts with all necessary fonts
 // even if we did a mistake, this will not enforce the client to re-load all fonts,
@@ -40,7 +77,7 @@ export const checkAndLoadFonts = async () => {
   }
 
   const notLoaded = fontsList.filter((font) => (
-    !document.fonts.check(font.query)
+    !checkFont(font.query, font.weight)
   ));
 
   if (notLoaded.length) {
