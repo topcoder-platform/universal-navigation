@@ -2,7 +2,7 @@
   /**
    * This is the navigation component as seen on any tool for the topcoder
   */
-  import { onMount, tick } from 'svelte';
+  import { onMount } from 'svelte';
   import { getMainNavItems } from 'lib/functions/tool-navigation.provider'
   import { getAppContext } from 'lib/app-context';
   import TopNavbar from 'lib/components/TopNavbar.svelte';
@@ -14,6 +14,7 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { useSessionStorage } from 'lib/utils/use-storage';
+  import { HoverMenu } from 'lib/components/hover-menu';
 
   import styles from './ToolNavigation.module.scss';
   import ToolNavSeparator from './tool-nav-separator/ToolNavSeparator.svelte';
@@ -36,13 +37,12 @@
 
   let linksMenuEl: HTMLElement;
   let mainMenuWidth = useSessionStorage<number>('mm-width', 154);
+  let isHiding = false;
   let mainMenuVisible = false;
 
-  async function toggleMainMenu() {
-    setMainMenuWidth()
-    await tick()
-    mainMenuVisible = !mainMenuVisible
-  }
+  let popupIsVisible: boolean;
+  let hoveredElement: HTMLElement | undefined;
+  let hoveredMenuItem: NavMenuItem;
 
   async function setMainMenuWidth() {
     $mainMenuWidth = linksMenuEl?.offsetWidth
@@ -57,18 +57,28 @@
       menuItems={menuItems}
     />
   {:else}
-    <div class={classnames(styles.primaryMenu, mainMenuVisible && styles.visible)}>
+    <div class={classnames(styles.primaryMenu, mainMenuVisible && !isHiding && styles.visible, isHiding && styles.hiding)}>
       <LinksMenu
         menuItems={menuItems}
         bind:ref={linksMenuEl}
         style='primary'
-      />
+        bind:hoveredMenuItem={hoveredMenuItem}
+        bind:hoveredElement={hoveredElement}
+        isPopupMenuActive={popupIsVisible}
+      >
+        <HoverMenu
+          menuItems={hoveredMenuItem?.children}
+          mainDescription={hoveredMenuItem?.description}
+          bind:isHovering={popupIsVisible}
+        />
+      </LinksMenu>
     </div>
 
     <ToolNavSeparator
       offsetLeft={$mainMenuWidth}
-      isToggled={mainMenuVisible}
-      onClick={toggleMainMenu}
+      bind:isHiding={isHiding}
+      bind:mainMenuVisible={mainMenuVisible}
+      onClick={setMainMenuWidth}
     />
 
     <div class={styles.toolNavWrap}>
