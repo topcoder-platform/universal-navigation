@@ -1,8 +1,7 @@
-import { navItems } from "./nav-items.config";
+import { marketingNavItems } from "./marketing-nav-items";
 
 export const toolNavItems = {
-  children: [
-    navItems.customer,
-    navItems.talent,
-  ]
+    children: [
+      ...marketingNavItems.children.slice(0, 2)
+    ],
 }
