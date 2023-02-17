@@ -12,6 +12,25 @@
   &:not(.visible) > * {
     pointer-events: none;
   }
+
+  &.visible {
+    position: static;
+
+    & > * {
+      position: static;
+      transform: none;
+    }
+
+    + :global(.togle-separator) {
+      margin-left: 35px;
+      transition: none;
+    }
+  }
+  &.hiding {
+    + :global(.togle-separator) {
+      transition: none;
+    }
+  }
 }
 
 .toolNavWrap {
