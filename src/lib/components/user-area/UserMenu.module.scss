@@ -1,21 +1,27 @@
 @import 'lib/styles/mixins.scss';
 @import 'lib/styles/fonts.scss';
+@import 'lib/styles/colors.scss';
 
 .userMenu {
   li {
     font-family: $roboto;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
-    color: #767676;
+    color: color(hoverMenuLink);
     width: 190px;
     + li {
       margin-top: 8px;
     }
 
     &:hover {
-      color: #0C0C0C;
+      color: color(hoverMenuLink, hover);
+      font-weight: 700;
+    }
+
+    &:global(.active) {
+      color: color(hoverMenuLink, active);
       font-weight: 700;
     }
   }
