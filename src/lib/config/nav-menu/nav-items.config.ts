@@ -447,5 +447,5 @@ export const navItems: NavItemConfig = {
         label: 'Why Topcoder',
         description: 'How Topcoder provides hiqh quality, secure solutions.',
         url: getWordpressUrl('/customer/why-topcoder'),
-    }
+    },
 }
