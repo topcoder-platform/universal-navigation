@@ -1,4 +1,5 @@
 import type { NavMenuItem } from '../functions/nav-menu-item.model';
+export declare const routeMatchesUrl: (url: string, route: NavMenuItem) => boolean;
 /**
  * Parses the passed nav menu items and
  * based on the `isAuthenticated` param
