@@ -162,6 +162,14 @@ jobs:
             APPNAME: "universal-navigation"
         steps: *build_steps
 
+    build-qa:
+        <<: *defaults
+        environment:
+            DEPLOY_ENV: "QA"
+            LOGICAL_ENV: "qa"
+            APPNAME: "universal-navigation"
+        steps: *build_steps
+
     build-prod:
         <<: *defaults
         environment:
@@ -176,6 +184,15 @@ jobs:
         environment:
             DEPLOY_ENV: "DEV"
             LOGICAL_ENV: "dev"
+            ENABLE_CACHE: true
+            APPNAME: "universal-navigation"
+        steps: *deploy_steps
+
+    deployQa:
+        <<: *deploy_defaults
+        environment:
+            DEPLOY_ENV: "QA"
+            LOGICAL_ENV: "qa"
             ENABLE_CACHE: true
             APPNAME: "universal-navigation"
         steps: *deploy_steps
@@ -207,6 +224,13 @@ workflows:
                     branches:
                         ignore:
                             - master
+                            - qa
+            - build-qa:
+                context : org-global
+                filters:
+                    branches:
+                        only:
+                            - qa                            
 
             - build-prod:
                 context : org-global
@@ -223,6 +247,15 @@ workflows:
                     branches:
                         only:
                             - dev
+
+            - deployQa:
+                context : org-global
+                requires:
+                    - build-qa
+                filters: 
+                    branches:
+                        only:
+                            - qa
 
             - deployProd:
                 context : org-global
