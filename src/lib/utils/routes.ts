@@ -1,7 +1,7 @@
 import type { NavMenuItem } from '../functions/nav-menu-item.model';
 import { escapeRegExp } from "./regex";
 
-const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
+export const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
   const urlObj = new URL(route.url);
   const routeUrl = `${urlObj.origin}${urlObj.pathname}`;
 

@@ -1,6 +1,6 @@
 <script type="ts">
     import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
-    import HoverMenu from './HoverMenu.svelte';
+    import { HoverMenu } from '../../components/hover-menu';
     import LinksMenu from '../../components/LinksMenu.svelte';
     import TopNavbar from 'lib/components/TopNavbar.svelte';
     import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';

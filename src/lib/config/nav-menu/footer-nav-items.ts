@@ -61,11 +61,11 @@ export const footerNavItems = {
                 navItems.reportABug,
             ]
         },
-        // navItems.careers,
+        navItems.careers,
         {
             label: "Legal",
             children: [
-                navItems.privacyPolicy
+                navItems.privacyPolicy,
             ]
         }
     ]

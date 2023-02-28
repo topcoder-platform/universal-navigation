@@ -22,7 +22,6 @@ export const navItems: NavItemConfig = {
     aboutUs: {
         label: 'About Us',
         url: getWordpressUrl('/about-us'),
-        description: "20+ years delivering for the enterprise ",
         uiAttr: 'to-right',
     },
     announcements: {
@@ -448,5 +447,5 @@ export const navItems: NavItemConfig = {
         label: 'Why Topcoder',
         description: 'How Topcoder provides hiqh quality, secure solutions.',
         url: getWordpressUrl('/customer/why-topcoder'),
-    }
+    },
 }
