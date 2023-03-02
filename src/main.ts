@@ -3,8 +3,16 @@ import type { Writable } from 'svelte/store'
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import 'lib/styles/main.scss';
 import { hasOwnProperty } from 'lib/utils/hasOwnProperty';
+import { sprig } from '@sprig-technologies/sprig-browser';
+import sprigInit from 'lib/sprig/sprig_on_init'
 
 export * from './lib/app-context'
+
+export const SPRIG_ID: string = getEnvValue('VITE_SPRIG_ID')
+
+export const Sprig = sprig.configure({
+  environmentId: SPRIG_ID,
+})
 
 export type NavigationType = (
   | 'footer'
@@ -122,6 +130,9 @@ async function init(
   if (typeof readyCallback === 'function') {
     readyCallback()
   }
+
+  // get registration date and replace Data.now() with date
+  sprigInit(props.user.email, Date.now(), Sprig)
 }
 
 /**
