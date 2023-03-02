@@ -6,6 +6,7 @@
   import styles from './UserArea.module.scss'
   import VerticalSeparator from '../VerticalSeparator.svelte';
   import { fetchUserProfile } from 'lib/functions/user-profile.provider';
+  import * as chameleon from '../../load-chameleon';
   import { onMount } from 'svelte';
 
   const ctx = getAppContext()
@@ -27,6 +28,15 @@
     $ctx.auth = {...$ctx.auth, ready: false};
     const authUser = await fetchUserProfile();
     $ctx.auth = {...$ctx.auth, ready: true, user: authUser};
+
+    if (authUser?.userId) {
+      const chmln = chameleon.load()
+      chmln.identify(authUser.userId, {
+        email: authUser.email,
+        name: `${authUser.firstName} ${authUser.lastName}`,
+        uid_hash: '50a42d5f6a9c300132c18a04712f46ddca3a33ff79910387c61c992a3e4959bb-1677768098',
+      });
+    }
   })
 </script>
 
