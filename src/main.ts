@@ -1,8 +1,10 @@
 import { writable, get } from 'svelte/store'
 import type { Writable } from 'svelte/store'
+
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
+import { triggerForNewUsers } from 'lib/functions/sprig';
+
 import 'lib/styles/main.scss';
-import { hasOwnProperty } from 'lib/utils/hasOwnProperty';
 
 export * from './lib/app-context'
 
@@ -121,6 +123,10 @@ async function init(
 
   if (typeof readyCallback === 'function') {
     readyCallback()
+  }
+
+  if (navType === 'footer') {
+    triggerForNewUsers()
   }
 }
 
