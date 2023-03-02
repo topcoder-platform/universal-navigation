@@ -55,7 +55,10 @@ export const footerNavItems = {
         {
             label: "Contact",
             children: [
-                navItems.talkToSales,
+                {
+                  ...navItems.talkToAnExpert,
+                  label: 'Talk to Sales',
+                },
                 navItems.bookADemo,
                 navItems.support,
                 navItems.reportABug,
