@@ -2,12 +2,12 @@ import { SPRIG_ID } from "../config/nav-menu"
 import { fetchUserProfile } from "./user-profile.provider";
 
 export const lazyLoadAndInitSprig = () => {
-  if (!SPRIG_ID) {
-    return (() => {}) as any
-  }
-
   if (window['Sprig']) {
     return window['Sprig'];
+  }
+
+  if (!SPRIG_ID) {
+    return (() => {}) as any
   }
 
   eval(
