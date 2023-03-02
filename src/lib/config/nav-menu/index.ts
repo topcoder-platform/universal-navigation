@@ -5,12 +5,12 @@
 // if no value for the specified config key exists,
 // throw an error;
 // otherwise, return the value for the specified key.
-function getEnvValue(viteKey: string): string {
-    if (!Object.prototype.hasOwnProperty.call(import.meta.env, viteKey)) {
+function getEnvValue(viteKey: string, defaultValue?: string): string {
+    if (!Object.prototype.hasOwnProperty.call(import.meta.env, viteKey) && defaultValue === undefined) {
         throw new Error(`Config variable '${viteKey}' is missing from your .env file!`)
     }
 
-    const viteValue: string = import.meta.env[viteKey]
+    const viteValue: string = import.meta.env[viteKey] ?? defaultValue
     return viteValue
 }
 
@@ -22,3 +22,4 @@ export const FORUM_HOST: string = getEnvValue('VITE_FORUM_HOST')
 export const ONLINE_REVIEW_HOST: string = getEnvValue('VITE_ONLINE_REVIEW_HOST')
 export const PLATFORM_UI_HOST: string = getEnvValue('VITE_PLATFORM_UI_HOST')
 export const TC_API_V5_HOST: string = getEnvValue('VITE_TC_API_V5_HOST')
+export const SPRIG_ID: string = getEnvValue('VITE_SPRIG_ID', '')
