@@ -14,7 +14,7 @@ export const toolSelectorNavItems = {
                 {
                     children: [
                         navItems.talkToAnExpert,
-                        navItems.demo,
+                        navItems.bookADemo,
                     ]
                 }
             ]

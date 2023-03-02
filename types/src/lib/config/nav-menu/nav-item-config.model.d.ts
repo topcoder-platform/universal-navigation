@@ -21,7 +21,6 @@ export interface NavItemConfig {
     dataAdvisory: NavMenuItem;
     dataExploration: NavMenuItem;
     dataScience: NavMenuItem;
-    demo: NavMenuItem;
     design: NavMenuItem;
     development: NavMenuItem;
     devCenter: NavMenuItem;
@@ -66,7 +65,6 @@ export interface NavItemConfig {
     support: NavMenuItem;
     reportABug: NavMenuItem;
     talkToAnExpert: NavMenuItem;
-    talkToSales: NavMenuItem;
     technology: NavMenuItem;
     theCommunity: NavMenuItem;
     talentTheCommunity: NavMenuItem;
