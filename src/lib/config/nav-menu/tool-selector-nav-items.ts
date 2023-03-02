@@ -1,68 +1,70 @@
-import { navItems } from "./nav-items.config"
+import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
-export const toolSelectorNavItems = {
-    children: [
+import { allNavItems } from "./all-nav-items.config"
+
+export const toolSelectorNavItems: NavMenuItem = {
+  children: [
+    {
+      label: "Customer",
+      children: [
         {
-            label: "Customer",
-            children: [
-                {
-                    children: [
-                        navItems.topCrowdApp,
-                        navItems.selfServiceApp,
-                    ]
-                },
-                {
-                    children: [
-                        navItems.talkToAnExpert,
-                        navItems.demo,
-                    ]
-                }
-            ]
+          children: [
+            allNavItems.topCrowdApp,
+            allNavItems.selfServiceApp,
+          ]
         },
         {
-            label: "Talent",
-            children: [
-                {
-                    label: "Learn",
-                    groupOrder: 1,
-                    children: [
-                        navItems.topcoderAcademyApp,
-                        navItems.devCenter,
-                        navItems.practice,
-                    ]
-                },
-                {
-                    label: "Compete",
-                    groupOrder: 3,
-                    children: [
-                        navItems.marathonMatchesApp,
-                        navItems.rapidDevMatchesApp,
-                        navItems.singleRoundMatchesApp,
-                    ]
-                },
-                {
-                    label: "Earn",
-                    groupOrder: 2,
-                    children: [
-                        navItems.challengesApp,
-                        navItems.gigsApp,
-                        navItems.review,
-                        navItems.payments
-                    ]
-                },
-                {
-                    label: "Connect",
-                    groupOrder: 4,
-                    children: [
-                        navItems.forums,
-                        {
-                            ...navItems.articles,
-                            url: `${navItems.articles.url}?navTool=tool`
-                        },
-                        navItems.discordApp,
-                    ]
-                }
-            ]
+          children: [
+            allNavItems.talkToAnExpert,
+            allNavItems.demo,
+          ]
         }
-    ]
+      ]
+    },
+    {
+      label: "Talent",
+      children: [
+        {
+          label: "Learn",
+          groupOrder: 1,
+          children: [
+            allNavItems.topcoderAcademyApp,
+            allNavItems.devCenter,
+            allNavItems.practice,
+          ]
+        },
+        {
+          label: "Compete",
+          groupOrder: 3,
+          children: [
+            allNavItems.marathonMatchesApp,
+            allNavItems.rapidDevMatchesApp,
+            allNavItems.singleRoundMatchesApp,
+          ]
+        },
+        {
+          label: "Earn",
+          groupOrder: 2,
+          children: [
+            allNavItems.challengesApp,
+            allNavItems.gigsApp,
+            allNavItems.review,
+            allNavItems.payments
+          ]
+        },
+        {
+          label: "Connect",
+          groupOrder: 4,
+          children: [
+            allNavItems.forums,
+            {
+              ...allNavItems.articles,
+              url: `${allNavItems.articles.url}?navTool=tool`
+            },
+            allNavItems.discordApp,
+          ]
+        }
+      ]
+    }
+  ]
 }

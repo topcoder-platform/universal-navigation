@@ -4,7 +4,7 @@
   import { getFooterNavItems } from 'lib/functions/footer-navigation.provider';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import SupportModal from 'lib/components/modals/SupportModal.svelte';
-  import { navItems } from 'lib/config/nav-menu/nav-items.config';
+  import { allNavItems } from 'lib/config/nav-menu/all-nav-items.config';
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import InlineSvg from 'lib/components/InlineSvg.svelte';
@@ -46,8 +46,8 @@
   onMount(checkAndLoadFonts)
 
   onMount(() => {
-    footerEl.addEventListener(navItems.support.action, toggleModal('support'));
-    footerEl.addEventListener(navItems.reportABug.action, toggleModal('reportABug'));
+    footerEl.addEventListener(allNavItems.support.action, toggleModal('support'));
+    footerEl.addEventListener(allNavItems.reportABug.action, toggleModal('reportABug'));
   })
 </script>
 

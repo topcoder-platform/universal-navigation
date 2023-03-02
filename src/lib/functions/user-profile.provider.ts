@@ -1,5 +1,5 @@
 import type { AuthUser } from '../../main';
-import { TC_API_V5_HOST } from '../config/nav-menu';
+import { TC_API_V5_HOST } from '../config';
 
 export type fetchUserProfileFn = () => AuthUser | null;
 

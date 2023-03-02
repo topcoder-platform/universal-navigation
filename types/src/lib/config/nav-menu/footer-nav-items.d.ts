@@ -1,3 +1,2 @@
-export declare const footerNavItems: {
-    children: import("../../functions/nav-menu-item.model").NavMenuItem[];
-};
+import type { NavMenuItem } from "../../functions/nav-menu-item.model";
+export declare const footerNavItems: NavMenuItem;

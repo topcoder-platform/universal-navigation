@@ -9,9 +9,9 @@
     "scripts": {
         "build": "vite build --mode=production && npx rimraf ./types && npm run types",
         "check": "svelte-check --tsconfig ./tsconfig.json",
-        "demo:dist": "npx http-server --cors --host localhost --port 8083 ./dist",
-        "demo:marketing": "npx http-server --host localhost --port 8081 ./demo/marketing -P http://localhost:8081? -o /",
-        "demo:tool": "npx http-server --host localhost --port 8082 ./demo/tool -P http://localhost:8081? -o /",
+        "demo:dist": "npx http-server --cors --host local.topcoder-dev.com --port 8083 ./dist",
+        "demo:marketing": "npx http-server --host local.topcoder-dev.com --port 8081 ./demo/marketing -P http://local.topcoder-dev.com:8081? -o /",
+        "demo:tool": "npx http-server --host local.topcoder-dev.com --port 8082 ./demo/tool -P http://local.topcoder-dev.com:8081? -o /",
         "demo": "npx npm-run-all --npm-path npm -p demo:*",
         "deploy-stack": "cd iac && sh deploy-stack.sh",
         "dev": "vite --host",

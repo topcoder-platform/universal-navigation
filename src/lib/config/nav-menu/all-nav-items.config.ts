@@ -1,4 +1,6 @@
-import { getWordpressUrl } from '../../utils/paths';
+import { getWordpressUrl } from "../../utils/paths";
+import type { NavMenuItem } from "../../functions/nav-menu-item.model";
+
 import {
     CHALLENGE_HOST,
     PACTS_HOST,
@@ -6,10 +8,9 @@ import {
     ONLINE_REVIEW_HOST,
     PLATFORM_UI_HOST,
     COMMUNITY_HOST,
-} from '.';
-import type { NavItemConfig } from './nav-item-config.model';
+} from '..';
 
-export const navItems: NavItemConfig = {
+export const allNavItems: {[key: string]: NavMenuItem} = {
     aboutTopcoder: {
         label: 'About',
         children: [

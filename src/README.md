@@ -76,11 +76,11 @@ There are 2 sample integrations in the [/demo](./demo/) folder:
 
 2. Serve the demo app
     - `% npm run demo`
-    - http://localhost:8083
+    - http://local.topcoder-dev.com:8083
 
 3. Navigate to the specific nav:
-    - Marketing Nav: http://localhost:8081
-    - Tool Nav: http://localhost:8082
+    - Marketing Nav: http://local.topcoder-dev.com:8081
+    - Tool Nav: http://local.topcoder-dev.com:8082
 
 ## Production Distribution
 
