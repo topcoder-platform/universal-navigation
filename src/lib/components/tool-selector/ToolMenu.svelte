@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { AuthUser } from "lib/app-context";
   import { getPublicPath } from 'lib/utils/paths';
   import { classnames } from 'lib/utils/classnames';
   import { getToolSelectorItems } from 'lib/functions/tool-selector-menu.provider';
@@ -6,7 +7,9 @@
   import InlineSvg from '../InlineSvg.svelte';
   import styles from './ToolMenu.module.scss';
 
-  const navMenuItems = getToolSelectorItems()
+  export let user: AuthUser;
+
+  const navMenuItems = getToolSelectorItems(user?.roles ?? [])
   const toolIcon = getPublicPath('/assets/icon-tool.svg');
 
   function hasCtas(item: NavMenuItem) {

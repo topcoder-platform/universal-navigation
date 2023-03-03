@@ -1,4 +1,5 @@
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
+import { CUSTOMER_ROUTE_GUARD, MEMBER_ROUTE_GUARD } from "../auth"
 
 import { allNavItems } from "./all-nav-items.config"
 
@@ -19,7 +20,8 @@ export const toolSelectorNavItems: NavMenuItem = {
             allNavItems.demo,
           ]
         }
-      ]
+      ],
+      ...CUSTOMER_ROUTE_GUARD,
     },
     {
       label: "Talent",
@@ -64,7 +66,8 @@ export const toolSelectorNavItems: NavMenuItem = {
             allNavItems.discordApp,
           ]
         }
-      ]
+      ],
+      ...MEMBER_ROUTE_GUARD,
     }
   ]
 }

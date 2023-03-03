@@ -10,11 +10,37 @@ export const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
 
 /**
  * Parses the passed nav menu items and
+ * based on the `filter` param
+ * filters out or includes a route
+ * @param navigationItem navigation menu
+ * @param filter Filter function
+ *
+ * @returns NavMenuItem
+ */
+export const filterRoutes = (navMenuItem: NavMenuItem, filter: (n: NavMenuItem) => boolean, depth?: number) => {
+  // safe escape if things get out of control
+  if (depth >= 9) {
+    return
+  }
+
+  if (!filter(navMenuItem)) {
+    return
+  }
+
+  return {
+    ...navMenuItem,
+    children: navMenuItem.children?.map((childNavMenuItem) => (
+      filterRoutes(childNavMenuItem, filter, depth + 1)
+    )).filter(Boolean)
+  };
+}
+
+/**
+ * Parses the passed nav menu items and
  * based on the `isAuthenticated` param
  * activates the `authenticatedPath` for a nav menu item
  * @param isAuthenticated
  * @param navigationItem
- * @param depth
  * @returns NavMenuItem.children
  */
 export const activateAuthenticatedRoutes = (isAuthenticated: boolean, { children = [] }: NavMenuItem, depth?: number) => {
