@@ -51,7 +51,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
         url: 'https://go.topcoder.com/book-a-demo/?interest=A%20Demo%20of%20Topcoder',
-        target: '_blank',
     },
     careerGrowth: {
         label: 'Career Growth',
@@ -121,12 +120,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Data Science',
         description: 'See how Topcoder has delivered Data Science solutions.',
         url: getWordpressUrl('/customer/data-science'),
-    },
-    demo: {
-        label: 'Book a demo',
-        url: 'https://go.topcoder.com/book-a-demo/?interest=A%20Demo%20of%20Topcoder',
-        type: 'cta',
-        target: '_blank',
     },
     design: {
         label: 'Design',
@@ -389,12 +382,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Talk to an expert',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
-        url: 'https://go.topcoder.com/lets-talk',
-        target: '_blank',
-    },
-    talkToSales: {
-        label: 'Talk to Sales',
-        description: 'Speak with a Topcoder expert to get started.',
         url: 'https://go.topcoder.com/lets-talk',
     },
     technology: {

@@ -57,7 +57,10 @@ export const footerNavItems: NavMenuItem = {
         {
             label: "Contact",
             children: [
-                allNavItems.talkToSales,
+                {
+                  ...allNavItems.talkToAnExpert,
+                  label: 'Talk to Sales',
+                },
                 allNavItems.bookADemo,
                 allNavItems.support,
                 allNavItems.reportABug,

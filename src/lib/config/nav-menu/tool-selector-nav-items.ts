@@ -17,7 +17,7 @@ export const toolSelectorNavItems: NavMenuItem = {
         {
           children: [
             allNavItems.talkToAnExpert,
-            allNavItems.demo,
+            allNavItems.bookADemo,
           ]
         }
       ],
