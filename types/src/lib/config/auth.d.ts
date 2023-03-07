@@ -1,4 +1,8 @@
-export declare type AUTH_USER_ROLE = 'Topcoder User' | 'Topcoder Member' | 'Topcoder Customer';
+export declare enum AUTH_USER_ROLE {
+    user = "Topcoder User",
+    member = "Topcoder Member",
+    customer = "Topcoder Customer"
+}
 export declare const AUTH_MEMBER_ROLES: AUTH_USER_ROLE[];
 export declare const AUTH_CUSTOMER_ROLES: AUTH_USER_ROLE[];
 export declare const MEMBER_ROUTE_GUARD: {
