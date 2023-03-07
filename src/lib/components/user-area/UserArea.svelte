@@ -39,7 +39,7 @@
       <Button variant="primary" label="Sign Up" onClick={onSignUp} />
     </div>
     {:else }
-      <ToolSelector user={user} />
+      <ToolSelector />
       <UserAvatar
         user={user}
         onSignOut={onSignOut}

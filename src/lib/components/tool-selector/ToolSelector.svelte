@@ -7,8 +7,6 @@
   import ToolMenu from './ToolMenu.svelte';
   import styles from './ToolSelector.module.scss';
 
-  export let user: AuthUser;
-
   const imgUrl = getPublicPath('/assets/tool-trigger.svg');
   const toolsIcons = getPublicPath('/assets/tools/sprite.svg');
 
@@ -31,10 +29,10 @@
 
 {#if !$isMobile}
   <PopupMenu targetEl={elRef} bind:isVisible={popupIsVisible}>
-    <ToolMenu user={user} />
+    <ToolMenu />
   </PopupMenu>
 {:else if popupIsVisible}
   <MobileMenu direction="y" handleClose={() => popupIsVisible = false}>
-    <ToolMenu user={user} />
+    <ToolMenu />
   </MobileMenu>
 {/if}

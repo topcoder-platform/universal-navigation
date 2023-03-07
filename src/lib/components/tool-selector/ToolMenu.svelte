@@ -7,9 +7,7 @@
   import InlineSvg from '../InlineSvg.svelte';
   import styles from './ToolMenu.module.scss';
 
-  export let user: AuthUser;
-
-  const navMenuItems = getToolSelectorItems(user?.roles ?? [])
+  let navMenuItems = getToolSelectorItems();
   const toolIcon = getPublicPath('/assets/icon-tool.svg');
 
   function hasCtas(item: NavMenuItem) {
