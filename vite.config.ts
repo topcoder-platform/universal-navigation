@@ -11,12 +11,7 @@ export default defineConfig((props) => {
     // loads only variables prefixed with APP_
     const env = loadEnv(props.mode, process.cwd(), 'APP_')
 
-    // builds output based on the env's build_target
-    // if no build_target is passed, the main.ts will be built as tc-universal-nav
-    // (which is only a loader for the actual navigations)
-    const target = env.APP_BUILD_TARGET as 'marketing' | 'tool' | 'footer';
-    const entry = !env.APP_BUILD_TARGET ? 'main' : `out/${target}-nav`
-    const outputFileName = `${target ?? 'tc-universal'}-nav`
+    const outputFileName = 'tc-universal-nav'
 
     return {
         define: {
@@ -42,7 +37,7 @@ export default defineConfig((props) => {
             // this doesn't remove whitespaces
             minify: true,
             lib: {
-                entry: resolve(__dirname, `src/${entry}.ts`),
+                entry: resolve(__dirname, `src/main.ts`),
                 formats: ['es'],
                 fileName: outputFileName
             },

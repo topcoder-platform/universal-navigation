@@ -40,24 +40,10 @@ export type TcUniNavFn = (
   config: NavigationAppProps,
 ) => void
 
-const loadModule = (module: string) => {
-  return import(/* @vite-ignore */ module).then(d => d.default)
-}
-
-// Serve the manually built files only when in production
-// otherwise serve the local files
-// this logic is "magically" cleaned up on build time, so this won't exist in the prod build,
-// only the manually built files exist in the prod build
-//
-// FOR clarificaiton: this is needed to run serve/dev commands
-const NavigationLoadersMap = BUILD_IS_PROD ? {
-  marketing: () => loadModule('./marketing-nav.js'),
-  tool: () => loadModule('./tool-nav.js'),
-  footer: () => loadModule('./footer-nav.js'),
-} : {
-  marketing: () => loadModule('./lib/marketing-navigation/MarketingNavigation.svelte'),
-  footer: () => loadModule('./lib/footer-navigation/FooterNavigation.svelte'),
-  tool: () => loadModule('./lib/tool-navigation/ToolNavigation.svelte'),
+const NavigationLoadersMap = {
+  marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
+  footer: () => import('./lib/footer-navigation/FooterNavigation.svelte').then(d => d.default),
+  tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
 }
 
 const instancesContextStore: { [key: string]: Map<string, Writable<any>> } = {}

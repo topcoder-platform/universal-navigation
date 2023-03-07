@@ -1,10 +1,13 @@
 <script lang="ts">
+  import type { AuthUser } from "lib/app-context";
   import PopupMenu from 'lib/components/PopupMenu.svelte';
   import { getPublicPath } from 'lib/utils/paths';
   import { isMobile } from 'lib/utils/window-size.store';
   import MobileMenu from '../MobileMenu.svelte';
   import ToolMenu from './ToolMenu.svelte';
   import styles from './ToolSelector.module.scss';
+
+  export let user: AuthUser;
 
   const imgUrl = getPublicPath('/assets/tool-trigger.svg');
   const toolsIcons = getPublicPath('/assets/tools/sprite.svg');
@@ -28,10 +31,10 @@
 
 {#if !$isMobile}
   <PopupMenu targetEl={elRef} bind:isVisible={popupIsVisible}>
-    <ToolMenu />
+    <ToolMenu user={user} />
   </PopupMenu>
 {:else if popupIsVisible}
   <MobileMenu direction="y" handleClose={() => popupIsVisible = false}>
-    <ToolMenu />
+    <ToolMenu user={user} />
   </MobileMenu>
 {/if}
