@@ -1,5 +1,5 @@
 import type { AuthUser } from '../../main';
-import { TC_API_V5_HOST } from '../config/nav-menu';
+import { TC_API_V5_HOST } from '../config';
 
 export type fetchUserProfileFn = () => AuthUser | null;
 
@@ -22,6 +22,7 @@ function getAuthJwtCookie() {
   return (document.cookie.match(/tcjwt=([^;]+)/) ?? []) [1];
 }
 
+
 // Get the authentication data from the jwt auth cookie
 function getAuthData() {
   const jwtCookie = getAuthJwtCookie();
@@ -38,6 +39,15 @@ export const getJwtUserhandle = (): AuthUser['handle'] | undefined => {
   )) ?? [];
 
   return handleEntry[1] as AuthUser['handle'] | undefined;
+}
+
+// get the user's roles from the jwt data
+export const getJwtUserRoles = (): AuthUser['roles'] | undefined => {
+  const userRolesEntry = Object.entries((getAuthData() ?? {})).find((entry) => (
+    entry[0].match(/^https?:\/\/.*\/roles$/i)
+  )) ?? [];
+
+  return userRolesEntry[1] as AuthUser['roles'] | undefined;
 }
 
 /**
@@ -65,7 +75,12 @@ export const fetchUserProfile = async (): Promise<AuthUser> => {
   const request = fetch(requestUrl, {headers: {...(jwtCookie ? requestAuth : {})}});
 
   const response = await (await request).json();
-  resolve({...response, photoURL: undefined, photoUrl: response.photoURL});
+  resolve({
+    ...response,
+    photoURL: undefined,
+    photoUrl: response.photoURL,
+    roles: getJwtUserRoles(),
+  });
 
   return localCache[userHandle];
 }

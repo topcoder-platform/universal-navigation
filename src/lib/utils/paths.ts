@@ -1,4 +1,4 @@
-import { WP_HOST_URL } from '../config/nav-menu'
+import { WP_HOST_URL } from '../config'
 import * as pkg from '../../../package.json'
 
 const isProdBuild: boolean = typeof BUILD_IS_PROD !== 'undefined' ? BUILD_IS_PROD : true

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { AuthUser } from "lib/app-context";
   import PopupMenu from 'lib/components/PopupMenu.svelte';
   import { getPublicPath } from 'lib/utils/paths';
   import { isMobile } from 'lib/utils/window-size.store';

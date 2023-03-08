@@ -2,11 +2,20 @@ import type { NavMenuItem } from '../functions/nav-menu-item.model';
 export declare const routeMatchesUrl: (url: string, route: NavMenuItem) => boolean;
 /**
  * Parses the passed nav menu items and
+ * based on the `filter` param
+ * filters out or includes a route
+ * @param navigationItem navigation menu
+ * @param filter Filter function
+ *
+ * @returns NavMenuItem
+ */
+export declare const filterRoutes: (navMenuItem: NavMenuItem, filter: (n: NavMenuItem) => boolean, depth?: number) => any;
+/**
+ * Parses the passed nav menu items and
  * based on the `isAuthenticated` param
  * activates the `authenticatedPath` for a nav menu item
  * @param isAuthenticated
  * @param navigationItem
- * @param depth
  * @returns NavMenuItem.children
  */
 export declare const activateAuthenticatedRoutes: (isAuthenticated: boolean, { children }: NavMenuItem, depth?: number) => NavMenuItem[];

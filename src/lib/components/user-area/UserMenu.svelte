@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { AuthUser } from "lib/app-context";
-  import { COMMUNITY_HOST } from "lib/config/nav-menu";
+  import { COMMUNITY_HOST } from "lib/config";
   import { routeMatchesUrl } from "lib/utils/routes";
   import styles from "./UserMenu.module.scss";
 
