@@ -1,5 +1,5 @@
-import { SPRIG_ID } from "../config"
-import { fetchUserProfile } from "./user-profile.provider";
+import { SPRIG_ID } from "../../config"
+import { fetchUserProfile } from "../user-profile.provider";
 
 export const lazyLoadAndInitSprig = () => {
   if (window['Sprig']) {

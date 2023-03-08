@@ -2,7 +2,7 @@ import { writable, get } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { triggerForNewUsers } from 'lib/functions/sprig';
+import { triggerForNewUsers } from 'lib/functions/integrations/sprig';
 
 import 'lib/styles/main.scss';
 
