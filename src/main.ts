@@ -1,8 +1,9 @@
-import { writable, get } from 'svelte/store'
+import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { triggerForNewUsers } from 'lib/functions/sprig';
+import { triggerForNewUsers } from 'lib/functions/integrations/sprig';
+import { subscribeToAuthContext as chameleonWatchForUser } from './lib/functions/integrations/chameleon'
 
 import 'lib/styles/main.scss';
 
@@ -111,8 +112,9 @@ async function init(
     readyCallback()
   }
 
-  if (navType === 'footer') {
+  if (navType === 'tool' || navType === 'marketing') {
     triggerForNewUsers()
+    chameleonWatchForUser(ctx.get('appContext'))
   }
 }
 
