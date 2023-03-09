@@ -1,4 +1,7 @@
-import { CHAMELEON_KEY_ID } from "../../config";
+import { getContext } from "svelte";
+import { CHAMELEON_KEY_ID, TC_API_V5_HOST } from "../../config";
+import { getRequestAuthHeaders } from "../auth-jwt";
+import { getJwtUserRoles } from "../user-profile.provider";
 
 /**
  * Check if chameleon sdk is loaded
@@ -31,7 +34,8 @@ const load = () => {
  * @returns string
  */
 const getUserIdHash = async (userId) => {
-  const request = fetch(`https://3h38gedbu9.execute-api.us-east-1.amazonaws.com/${userId}`);
+  const requestUrl: string = `${TC_API_V5_HOST}/learning-paths/chameleon/hash-uuid?uuId=${userId}`;
+  const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
   const response = await (await request).json();
 
   return response?.uid_hash;
@@ -54,7 +58,29 @@ const identify = async (userId, data) => {
   });
 }
 
+/**
+ * Subscribes to a writable auth context,
+ * and watches for when the user data is ready.
+ * Once user data is ready, calls chameleon's identify() method
+ * @param ctx Svelte writable/readable context
+ */
+const subscribeToAuthContext = (ctx) => {
+  if (!CHAMELEON_KEY_ID) {
+    return
+  }
+
+  ctx.subscribe(({auth: { user }}) => user && identify(
+    user.userId,
+    {
+      email: user.email,
+      roles: getJwtUserRoles(),
+      name: `${user.firstName} ${user.lastName}`,
+    }
+  ));
+}
+
 export {
+  subscribeToAuthContext,
   load,
   identify,
 }
