@@ -86,7 +86,6 @@ export const mainNavigationItems: NavMenuItem[] = [
         children: [
           allNavItems.announcements,
           allNavItems.events,
-          allNavItems.topcoderOpen,
           allNavItems.discord,
           allNavItems.timeline,
         ]
