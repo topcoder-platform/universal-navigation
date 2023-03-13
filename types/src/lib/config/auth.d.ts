@@ -1,5 +1,4 @@
 export declare enum AUTH_USER_ROLE {
-    user = "Topcoder User",
     member = "Topcoder Member",
     customer = "Topcoder Customer"
 }
