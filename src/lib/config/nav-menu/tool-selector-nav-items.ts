@@ -1,5 +1,5 @@
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
-import { CUSTOMER_ROUTE_GUARD, MEMBER_ROUTE_GUARD } from "../auth"
+import { CUSTOMER_ROUTE_GUARD, TALENT_ROUTE_GUARD } from "../auth"
 
 import { allNavItems } from "./all-nav-items.config"
 
@@ -67,7 +67,7 @@ export const toolSelectorNavItems: NavMenuItem = {
           ]
         }
       ],
-      ...MEMBER_ROUTE_GUARD,
+      ...TALENT_ROUTE_GUARD,
     }
   ]
 }
