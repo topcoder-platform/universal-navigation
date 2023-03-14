@@ -1,4 +1,5 @@
 import type { AuthUser } from '../../main';
+import { AUTH_USER_ROLE, AUTH_USER_ROLE_VALUES } from '../config/auth';
 import { TC_API_V5_HOST } from '../config';
 import { getAuthJwtDomainProp, getRequestAuthHeaders } from './auth-jwt';
 
@@ -15,6 +16,11 @@ export const getJwtUserhandle = (): AuthUser['handle'] | undefined => {
 // get the user's roles from the jwt data
 export const getJwtUserRoles = (): AuthUser['roles'] | undefined => {
   return getAuthJwtDomainProp<AuthUser['roles'] | undefined>('roles')
+}
+
+// get the user roles that match the config/auth's user roles definitions
+export const getUserAppRoles = (): AuthUser['roles'] | undefined => {
+  return getJwtUserRoles().filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
 }
 
 /**

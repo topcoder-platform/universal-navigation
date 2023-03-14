@@ -35,6 +35,13 @@
     margin-bottom: 16px;
   }
 
+  // hides the menu title when the section is alone in the whole menu
+  &:first-of-type:last-of-type {
+    .toolSectionTitle {
+      display: none;
+    }
+  }
+
   @include mobile {
     display: flex;
     flex-direction: column;

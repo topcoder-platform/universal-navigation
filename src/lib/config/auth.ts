@@ -3,6 +3,8 @@ export enum AUTH_USER_ROLE {
   customer = 'Topcoder Customer',
 }
 
+export const AUTH_USER_ROLE_VALUES = Object.values(AUTH_USER_ROLE);
+
 export const AUTH_TALENT_ROLES: AUTH_USER_ROLE[] = [AUTH_USER_ROLE.talent];
 export const AUTH_CUSTOMER_ROLES: AUTH_USER_ROLE[] = [AUTH_USER_ROLE.customer];
 
