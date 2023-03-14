@@ -51,6 +51,7 @@ export const footerNavItems: NavMenuItem = {
                 allNavItems.benefits,
                 allNavItems.statistics,
                 allNavItems.gettingPaid,
+                allNavItems.topcoderOpen,
                 allNavItems.faq,
             ]
         },
