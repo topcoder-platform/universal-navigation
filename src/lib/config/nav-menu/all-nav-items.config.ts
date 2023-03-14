@@ -410,6 +410,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'tcacademy',
         description: 'Learn new skills',
     },
+    topcoderOpen: {
+      label: 'Topcoder Open',
+      description: 'The ultimate competitive tournament - the big event!',
+      url: `${COMMUNITY_HOST}/community/member-programs/topcoder-open`,
+  },
     topCrowd: {
         description: 'Engage and reward your workforce to maximize productivity.',
         label: 'TopCrowd',
