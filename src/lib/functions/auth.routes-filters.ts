@@ -1,3 +1,4 @@
+import { AUTH_USER_ROLE } from 'lib/config/auth';
 import { filterRoutes } from 'lib/utils/routes';
 import type { NavMenuItem } from './nav-menu-item.model';
 import { getUserAppRoles } from './user-profile.provider';
@@ -11,7 +12,13 @@ import { getUserAppRoles } from './user-profile.provider';
 export const filterRoutesByUserRole = (routes: NavMenuItem) => {
   const userRoles = getUserAppRoles();
 
-  return filterRoutes(routes, (item: NavMenuItem) => !userRoles?.length || !item.auth?.requireRoles || (
+  // if no specific app role is assigned to the user,
+  // assign `noRole`, to allow the rendering of the basic view
+  if (!userRoles.length) {
+    userRoles.push(AUTH_USER_ROLE.noRole);
+  }
+
+  return filterRoutes(routes, (item: NavMenuItem) => !item.auth?.requireRoles || (
     item.auth.requireRoles.some(role => userRoles.indexOf(role) > -1)
   ));
 }

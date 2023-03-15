@@ -1,5 +1,5 @@
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
-import { CUSTOMER_ROUTE_GUARD, TALENT_ROUTE_GUARD } from "../auth"
+import { CUSTOMER_ROUTE_GUARD, STAFF_ROUTE_GUARD, TALENT_ROUTE_GUARD } from "../auth"
 
 import { allNavItems } from "./all-nav-items.config"
 
@@ -68,6 +68,18 @@ export const toolSelectorNavItems: NavMenuItem = {
         }
       ],
       ...TALENT_ROUTE_GUARD,
-    }
+    },
+    {
+      label: "Staff",
+      children: [
+        {
+          children: [
+            allNavItems.workManager,
+            allNavItems.staffConnect,
+          ]
+        },
+      ],
+      ...STAFF_ROUTE_GUARD,
+    },
   ]
 }
