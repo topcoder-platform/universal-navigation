@@ -3,11 +3,13 @@ import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
 import {
     CHALLENGE_HOST,
-    PACTS_HOST,
+    COMMUNITY_HOST,
+    CONNECT_HOST,
     FORUM_HOST,
     ONLINE_REVIEW_HOST,
+    PACTS_HOST,
     PLATFORM_UI_HOST,
-    COMMUNITY_HOST,
+    WORK_MANAGER_HOST,
 } from '..';
 
 export const allNavItems: {[key: string]: NavMenuItem} = {
@@ -435,5 +437,17 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Why Topcoder',
         description: 'How Topcoder provides hiqh quality, secure solutions.',
         url: getWordpressUrl('/customer/why-topcoder'),
+    },
+    workManager: {
+        label: 'Work Manager',
+        icon: 'work-manager',
+        description: 'Work Manager App',
+        url: `${WORK_MANAGER_HOST}`,
+    },
+    staffConnect: {
+        label: 'Connect',
+        icon: 'connect',
+        description: 'Connect App',
+        url: `${CONNECT_HOST}`,
     },
 }

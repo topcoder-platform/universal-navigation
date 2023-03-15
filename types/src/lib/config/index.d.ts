@@ -6,5 +6,7 @@ export declare const FORUM_HOST: string;
 export declare const ONLINE_REVIEW_HOST: string;
 export declare const PLATFORM_UI_HOST: string;
 export declare const TC_API_V5_HOST: string;
+export declare const CONNECT_HOST: string;
+export declare const WORK_MANAGER_HOST: string;
 export declare const SPRIG_ID: string;
 export declare const CHAMELEON_KEY_ID: string;

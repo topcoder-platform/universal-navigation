@@ -20,7 +20,7 @@ export const getJwtUserRoles = (): AuthUser['roles'] | undefined => {
 
 // get the user roles that match the config/auth's user roles definitions
 export const getUserAppRoles = (): AuthUser['roles'] | undefined => {
-  return getJwtUserRoles().filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
+  return (getJwtUserRoles() ?? []).filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
 }
 
 /**
