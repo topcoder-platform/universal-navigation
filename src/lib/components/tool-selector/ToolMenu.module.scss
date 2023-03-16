@@ -35,6 +35,13 @@
     margin-bottom: 16px;
   }
 
+  // hides the menu title when the section is alone in the whole menu
+  &:first-of-type:last-of-type {
+    .toolSectionTitle {
+      display: none;
+    }
+  }
+
   @include mobile {
     display: flex;
     flex-direction: column;
@@ -100,13 +107,14 @@
   align-items: center;
   gap: 8px;
   width: 100%;
+  overflow: hidden;
   &.toolNavItem {
     font-weight: 500;
     color: color(hoverMenuLink);
   }
 
   & + & {
-    margin-top: 16px;
+    margin-top: 12px;
   }
 
   &:global(.navButton) {
@@ -160,6 +168,7 @@
 .navItemContent {
   display: flex;
   flex-direction: column;
+  margin: -3px 0 -4px;
 }
 
 .navItemLabel {
@@ -181,7 +190,7 @@
 .toolMenuSpacer {
   border: 0 solid #D4D4D4;
   border-bottom-width: 1px;
-  margin: 24px -32px;
+  margin: 16px -32px;
   &.toolMenuSpacer {
     width: auto;
   }

@@ -1,7 +1,9 @@
-import { marketingNavItems } from "./marketing-nav-items";
+import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
-export const toolNavItems = {
+import { mainNavigationItems } from "./main-navigation.config";
+
+export const toolNavItems: NavMenuItem = {
     children: [
-      ...marketingNavItems.children.slice(0, 2)
+      ...mainNavigationItems,
     ],
 }

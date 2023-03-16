@@ -1,43 +1,26 @@
 import type { AuthUser } from '../../main';
-import { TC_API_V5_HOST } from '../config/nav-menu';
+import { AUTH_USER_ROLE, AUTH_USER_ROLE_VALUES } from '../config/auth';
+import { TC_API_V5_HOST } from '../config';
+import { getAuthJwtDomainProp, getRequestAuthHeaders } from './auth-jwt';
 
 export type fetchUserProfileFn = () => AuthUser | null;
 
 // store fetched data in a local cache (de-duplicate immediate api calls)
 const localCache = {};
 
-// JWT to JS data object
-function parseJwt (token: string) {
-  const base64Url = token.split('.')[1];
-  const base64fixed = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(window.atob(base64fixed).split('').map(c => (
-      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-  )).join(''));
-
-  return JSON.parse(jsonPayload);
-}
-
-// get the JWT authentication cookie value
-function getAuthJwtCookie() {
-  return (document.cookie.match(/tcjwt=([^;]+)/) ?? []) [1];
-}
-
-// Get the authentication data from the jwt auth cookie
-function getAuthData() {
-  const jwtCookie = getAuthJwtCookie();
-  if (!jwtCookie) {
-    return {};
-  }
-  return parseJwt(jwtCookie);
-}
-
 // get the user's handle from the jwt data
 export const getJwtUserhandle = (): AuthUser['handle'] | undefined => {
-  const handleEntry = Object.entries((getAuthData() ?? {})).find((entry) => (
-    entry[0].match(/^https?:\/\/.*\/handle$/i)
-  )) ?? [];
+  return getAuthJwtDomainProp<AuthUser['handle'] | undefined>('handle')
+}
 
-  return handleEntry[1] as AuthUser['handle'] | undefined;
+// get the user's roles from the jwt data
+export const getJwtUserRoles = (): AuthUser['roles'] | undefined => {
+  return getAuthJwtDomainProp<AuthUser['roles'] | undefined>('roles')
+}
+
+// get the user roles that match the config/auth's user roles definitions
+export const getUserAppRoles = (): AuthUser['roles'] | undefined => {
+  return (getJwtUserRoles() ?? []).filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
 }
 
 /**
@@ -60,12 +43,15 @@ export const fetchUserProfile = async (): Promise<AuthUser> => {
   localCache[userHandle] = new Promise((r) => {resolve = r});
 
   const requestUrl: string = `${TC_API_V5_HOST}/members/${userHandle}`;
-  const jwtCookie = getAuthJwtCookie();
-  const requestAuth = {'Authorization': `Bearer ${getAuthJwtCookie()}`};
-  const request = fetch(requestUrl, {headers: {...(jwtCookie ? requestAuth : {})}});
+  const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
 
   const response = await (await request).json();
-  resolve({...response, photoURL: undefined, photoUrl: response.photoURL});
+  resolve({
+    ...response,
+    photoURL: undefined,
+    photoUrl: response.photoURL,
+    roles: getJwtUserRoles(),
+  });
 
   return localCache[userHandle];
 }

@@ -1,71 +1,77 @@
-import { navItems } from "./nav-items.config";
+import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
-export const footerNavItems = {
+import { allNavItems } from "./all-nav-items.config";
+
+export const footerNavItems: NavMenuItem = {
     children: [
-        navItems.aboutTopcoder,
+        allNavItems.aboutTopcoder,
         {
-            ...navItems.expertise,
+            ...allNavItems.expertise,
             children: [
-                navItems.dataScience,
-                navItems.design,
-                navItems.development,
-                navItems.qa,
+                allNavItems.dataScience,
+                allNavItems.design,
+                allNavItems.development,
+                allNavItems.qa,
             ]
         },
         {
-            ...navItems.customer,
+            ...allNavItems.customer,
             children: [
-                navItems.whyTopcoder,
-                navItems.challengeModel,
-                navItems.fullService,
-                navItems.selfService,
-                navItems.topCrowd,
-                navItems.successStories,
-                navItems.partners,
-                navItems.security,
-                navItems.customerFaq,
+                allNavItems.whyTopcoder,
+                allNavItems.challengeModel,
+                allNavItems.fullService,
+                allNavItems.selfService,
+                allNavItems.topCrowd,
+                allNavItems.successStories,
+                allNavItems.partners,
+                allNavItems.security,
+                allNavItems.customerFaq,
             ]
         },
         {
-            ...navItems.industries,
+            ...allNavItems.industries,
             children: [
-                navItems.bfsi,
-                navItems.communications,
-                navItems.energyUtilities,
-                navItems.healthPharma,
-                navItems.publicSector,
-                navItems.retail,
-                navItems.technology,
+                allNavItems.bfsi,
+                allNavItems.communications,
+                allNavItems.energyUtilities,
+                allNavItems.healthPharma,
+                allNavItems.publicSector,
+                allNavItems.retail,
+                allNavItems.technology,
             ]
         },
-        navItems.media,
+        allNavItems.media,
         {
-            ...navItems.talent,
+            ...allNavItems.talent,
             children: [
-                navItems.learn,
-                navItems.earn,
-                navItems.compete,
-                navItems.connect,
-                navItems.benefits,
-                navItems.statistics,
-                navItems.gettingPaid,
-                navItems.faq,
+                allNavItems.learn,
+                allNavItems.earn,
+                allNavItems.compete,
+                allNavItems.connect,
+                allNavItems.benefits,
+                allNavItems.statistics,
+                allNavItems.gettingPaid,
+                allNavItems.topcoderOpen,
+                allNavItems.faq,
             ]
         },
         {
             label: "Contact",
             children: [
-                navItems.talkToSales,
-                navItems.bookADemo,
-                navItems.support,
-                navItems.reportABug,
+                {
+                  ...allNavItems.talkToAnExpert,
+                  label: 'Talk to Sales',
+                },
+                allNavItems.bookADemo,
+                allNavItems.support,
+                allNavItems.reportABug,
             ]
         },
-        navItems.careers,
+        allNavItems.careers,
         {
             label: "Legal",
             children: [
-                navItems.privacyPolicy,
+                allNavItems.privacyPolicy,
             ]
         }
     ]
