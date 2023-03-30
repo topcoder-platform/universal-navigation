@@ -62,25 +62,32 @@ const identify = async (userId, data) => {
  * Subscribes to a writable auth context,
  * and watches for when the user data is ready.
  * Once user data is ready, calls chameleon's identify() method
- * @param ctx Svelte writable/readable context
+ * @param appContext Svelte writable/readable context
  */
-const subscribeToAuthContext = (ctx) => {
+const subscribeToAuthContext = (appContext) => {
   if (!CHAMELEON_KEY_ID) {
     return
   }
 
-  ctx.subscribe(({auth: { user }}) => user && identify(
-    user.userId,
-    {
+  appContext.subscribe(({auth: { user }, integrations}) => {
+    if (integrations?.chameleon.match(/^disable/i)) {
+      return;
+    }
+
+    if (!user) {
+      return;
+    }
+
+    identify(user.userId, {
       email: user.email,
       roles: getJwtUserRoles(),
       name: `${user.firstName} ${user.lastName}`,
-    }
-  ));
+    });
+  });
 }
 
 export {
-  subscribeToAuthContext,
+  subscribeToAuthContext as triggerChameleon,
   load,
   identify,
 }

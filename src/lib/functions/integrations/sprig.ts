@@ -1,7 +1,6 @@
 import { SPRIG_ID } from "../../config"
-import { fetchUserProfile } from "../user-profile.provider";
 
-export const lazyLoadAndInitSprig = () => {
+const lazyLoadAndInitSprig = () => {
   if (window['Sprig']) {
     return window['Sprig'];
   }
@@ -25,18 +24,33 @@ export const lazyLoadAndInitSprig = () => {
   return window['Sprig'];
 }
 
-export const triggerForNewUsers = async () => {
-  const user = await fetchUserProfile();
-  if (!user?.createdAt) {
-    return
+const triggerForNewUsers = async (appContext) => {
+  if (!SPRIG_ID) {
+    // do not initialize if SPRIG_ID config was not set
+    return;
   }
 
-  const userAge = Math.round(Date.now() - +new Date(user.createdAt)) / 86400000;
-  const isNewUser = userAge <= 30;
+  appContext.subscribe(({auth: { user }, integrations}) => {
+    if (integrations?.sprig.match(/^disable/i)) {
+      return;
+    }
 
-  if (isNewUser) {
-    const sprig = lazyLoadAndInitSprig();
-    sprig('setUserId', user.email);
-    sprig('track', 'onNewUserUseUniNav');
-  }
+    if (!user?.createdAt) {
+      return
+    }
+
+    const userAge = Math.round(Date.now() - +new Date(user.createdAt)) / 86400000;
+    const isNewUser = userAge <= 30;
+
+    if (isNewUser) {
+      const sprig = lazyLoadAndInitSprig();
+      sprig('setUserId', user.email);
+      sprig('track', 'onNewUserUseUniNav');
+    }
+  });
+}
+
+export {
+  lazyLoadAndInitSprig,
+  triggerForNewUsers as triggerSprig,
 }

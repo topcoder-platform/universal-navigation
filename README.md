@@ -279,23 +279,24 @@ Information regarding the changes will be disseminated to the owners of all prop
 ### API for tcUniNav
 `tcUniNav(method, targetId, config)`
 
-| Parameter               | Type                                    | Required                | Description                                                                              | Default value |
-|-------------------------|-----------------------------------------|-------------------------|------------------------------------------------------------------------------------------|---------------|
-| method                  | Enum: 'init' \| 'update'                | yes                     | The method to be called                                                                  |               |
-| targetId                | string(html element id)                 | yes                     | target element for the navigation to be rendered on                                      | none          |
-| config                  | object                                  | no                      | The config object for the specific navigation type                                       | {}            |
-| config.handleNavigation | (route: {path, label}) => void          | no                      | Allow for external handling of route navigation (eg. via react-router-dom)               | none          |
-| config.onReady          | () => void                              | no                      | Callback function called when the navigation was rendered                                | none          |
-| config.signIn           | () => void                              | yes (except for footer) | Called when the user clicks the Log in button                                            | none          |
-| config.signOut          | () => void                              | yes (except for footer) | Called when the user clicks the Log out button                                           | none          |
-| config.signUp           | () => void                              | yes (except for footer) | Called when the user clicks sign up/register                                             | none          |
-| config.toolName         | string                                  | yes (tool nav only)     | The name of the tool as it should appear in the header                                   | none          |
-| config.toolRoot         | string                                  | yes (tool nav only)     | The route to the tool as it should appear in the header                                  | none          |
-| config.fullFooter       | boolean                                 | no                      | Shows the full footer navigation when it is true                                         | false         |
-| config.type             | Enum: 'marketing' \| 'tool' \| 'footer' | yes                     | The type of navigation to render                                                         |               |
-| config.user             | 'auto'                                  | no                      | Instruct the uni-nav to auto-fetch user profile info based on the `tcjwt` cookie value   | {}            |
-| config.user             | {photoURL, userId, initials, handle}    | no                      | The logged in user                                                                       | {}            |
-| config.supportMeta      | {challengeId, isSelfService}            | no                      | Additional meta data to be sent along with any support ticket created by the user        |               |
+| Parameter               | Type                                        | Required                | Description                                                                              | Default value |
+|-------------------------|---------------------------------------------|-------------------------|------------------------------------------------------------------------------------------|---------------|
+| method                  | Enum: 'init' \| 'update'                    | yes                     | The method to be called                                                                  |               |
+| targetId                | string(html element id)                     | yes                     | target element for the navigation to be rendered on                                      | none          |
+| config                  | object                                      | no                      | The config object for the specific navigation type                                       | {}            |
+| config.handleNavigation | (route: {path, label}) => void              | no                      | Allow for external handling of route navigation (eg. via react-router-dom)               | none          |
+| config.onReady          | () => void                                  | no                      | Callback function called when the navigation was rendered                                | none          |
+| config.signIn           | () => void                                  | yes (except for footer) | Called when the user clicks the Log in button                                            | none          |
+| config.signOut          | () => void                                  | yes (except for footer) | Called when the user clicks the Log out button                                           | none          |
+| config.signUp           | () => void                                  | yes (except for footer) | Called when the user clicks sign up/register                                             | none          |
+| config.toolName         | string                                      | yes (tool nav only)     | The name of the tool as it should appear in the header                                   | none          |
+| config.toolRoot         | string                                      | yes (tool nav only)     | The route to the tool as it should appear in the header                                  | none          |
+| config.fullFooter       | boolean                                     | no                      | Shows the full footer navigation when it is true                                         | false         |
+| config.type             | Enum: 'marketing' \| 'tool' \| 'footer'     | yes                     | The type of navigation to render                                                         |               |
+| config.user             | 'auto'                                      | no                      | Instruct the uni-nav to auto-fetch user profile info based on the `tcjwt` cookie value   | {}            |
+| config.user             | {photoURL, userId, initials, handle}        | no                      | The logged in user                                                                       | {}            |
+| config.supportMeta      | {challengeId, isSelfService}                | no                      | Additional meta data to be sent along with any support ticket created by the user        |               |
+| config.integrations     | {sprig?: 'disable', chameleon?: 'disable'}  | no                      | Disable sprig and/or chameleon integration                                               |               |
 
 ### User Model
 You can either pass user's details as described by the `AuthUser` interface, or pass a value of `auto` and uni-nav will automatically fetch user's details from the api based on the tcjwt auth cookie.
