@@ -2,8 +2,8 @@ import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { triggerForNewUsers } from 'lib/functions/integrations/sprig';
-import { subscribeToAuthContext as chameleonWatchForUser } from './lib/functions/integrations/chameleon'
+import { triggerSprig } from 'lib/functions/integrations/sprig';
+import { triggerChameleon } from './lib/functions/integrations/chameleon'
 
 import 'lib/styles/main.scss';
 
@@ -31,6 +31,8 @@ export type NavigationAppProps = {
   signOut?: () => void
 
   supportMeta?: SupportMeta
+
+  integrations: {[key: string]: 'disable'}
 }
 
 export type TcUniNavMethods = 'init' | 'update'
@@ -113,8 +115,8 @@ async function init(
   }
 
   if (navType === 'tool' || navType === 'marketing') {
-    triggerForNewUsers()
-    chameleonWatchForUser(ctx.get('appContext'))
+    triggerSprig(ctx.get('appContext'))
+    triggerChameleon(ctx.get('appContext'))
   }
 }
 

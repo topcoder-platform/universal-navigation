@@ -13,7 +13,7 @@ declare const identify: (userId: any, data: any) => Promise<void>;
  * Subscribes to a writable auth context,
  * and watches for when the user data is ready.
  * Once user data is ready, calls chameleon's identify() method
- * @param ctx Svelte writable/readable context
+ * @param appContext Svelte writable/readable context
  */
-declare const subscribeToAuthContext: (ctx: any) => void;
-export { subscribeToAuthContext, load, identify, };
+declare const subscribeToAuthContext: (appContext: any) => void;
+export { subscribeToAuthContext as triggerChameleon, load, identify, };
