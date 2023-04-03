@@ -32,7 +32,7 @@ export type NavigationAppProps = {
 
   supportMeta?: SupportMeta
 
-  integrations: {[key: string]: 'disable'}
+  integrations?: {[key: string]: 'disable'}
 }
 
 export type TcUniNavMethods = 'init' | 'update'

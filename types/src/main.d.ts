@@ -14,7 +14,7 @@ export declare type NavigationAppProps = {
     signUp?: () => void;
     signOut?: () => void;
     supportMeta?: SupportMeta;
-    integrations: {
+    integrations?: {
         [key: string]: 'disable';
     };
 };
