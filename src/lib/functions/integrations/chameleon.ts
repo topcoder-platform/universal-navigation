@@ -1,7 +1,7 @@
-import { getContext } from "svelte";
 import { CHAMELEON_KEY_ID, TC_API_V5_HOST } from "../../config";
 import { getRequestAuthHeaders } from "../auth-jwt";
 import { getJwtUserRoles } from "../user-profile.provider";
+import { integrationIsDisabled } from "./utils";
 
 /**
  * Check if chameleon sdk is loaded
@@ -70,7 +70,7 @@ const subscribeToAuthContext = (appContext) => {
   }
 
   appContext.subscribe(({auth: { user }, integrations}) => {
-    if (integrations?.chameleon.match(/^disable/i)) {
+    if (integrationIsDisabled(integrations, 'chameleon')) {
       return;
     }
 

@@ -1,4 +1,5 @@
 import { SPRIG_ID } from "../../config"
+import { integrationIsDisabled } from "./utils";
 
 const lazyLoadAndInitSprig = () => {
   if (window['Sprig']) {
@@ -31,7 +32,7 @@ const triggerForNewUsers = async (appContext) => {
   }
 
   appContext.subscribe(({auth: { user }, integrations}) => {
-    if (integrations?.sprig.match(/^disable/i)) {
+    if (integrationIsDisabled(integrations, 'sprig')) {
       return;
     }
 
