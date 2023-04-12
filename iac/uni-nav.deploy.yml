@@ -169,6 +169,9 @@ Resources:
                             # Platform UI Prod & Dev
                             - !Sub https://platform-ui.${Domain}
 
+                            # Learn subromain Prod & Dev
+                            - !Sub https://learn.${Domain}
+
                             # Platform UI Local
                             - !If
                                 - IsProd
