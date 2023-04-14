@@ -35,6 +35,7 @@ echo "Template: $template"
 echo "Stage: $stage"
 echo "Stack name: $stackName"
 echo "Domain: $DOMAIN"
+echo "AWS Profile: $AWS_PROFILE"
 
 # approve the deployment
 silent=$2
@@ -56,6 +57,7 @@ echo "Deploy (i.e. create or update) the stack w/the params"
 aws cloudformation deploy \
     --stack-name $stackName \
     --template-file $template \
+    --profile $AWS_PROFILE \
     --parameter-overrides \
         Stage=$stage \
         Domain=$DOMAIN
