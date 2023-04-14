@@ -169,8 +169,8 @@ Resources:
                             # Platform UI Prod & Dev
                             - !Sub https://platform-ui.${Domain}
 
-                            # Learn subromain Prod & Dev
-                            - !Sub https://learn.${Domain}
+                            # Topcoder Academy subdomain Prod & Dev
+                            - !Sub https://academy.${Domain}
 
                             # Platform UI Local
                             - !If
