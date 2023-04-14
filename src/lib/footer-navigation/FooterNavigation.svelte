@@ -24,7 +24,7 @@
 
   $: ({ fullFooter } = $ctx.toolConfig);
 
-  let isCollapsed = true;
+  let isCollapsed = false;
 
   let visibleModal = '';
   let footerEl: Element | undefined = undefined;
