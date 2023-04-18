@@ -17,5 +17,6 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
         fullFooter: any;
     };
     supportMeta: any;
+    integrations: any;
 };
 export declare const getAppContext: () => Writable<AppContext>;

@@ -14,6 +14,9 @@ export declare type NavigationAppProps = {
     signUp?: () => void;
     signOut?: () => void;
     supportMeta?: SupportMeta;
+    integrations?: {
+        [key: string]: 'disable';
+    };
 };
 export declare type TcUniNavMethods = 'init' | 'update';
 export declare type TcUniNavFn = (method: TcUniNavMethods, targetId: string, config: NavigationAppProps) => void;

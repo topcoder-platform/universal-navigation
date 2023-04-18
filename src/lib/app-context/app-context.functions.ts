@@ -14,6 +14,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
     toolRoot = prevContext.toolConfig?.root,
     handleNavigation = prevContext.navigationHandler,
     supportMeta = prevContext.supportMeta,
+    integrations = prevContext.integrations,
     fullFooter = prevContext.toolConfig?.fullFooter,
   } = {...newConfig, user: undefined}
 
@@ -37,6 +38,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
       fullFooter,
     },
     supportMeta,
+    integrations,
   }
 }
 
