@@ -169,8 +169,11 @@ Resources:
                             # Platform UI Prod & Dev
                             - !Sub https://platform-ui.${Domain}
 
-                            # Topcoder Academy subdomain Prod & Dev
+                            # Platform UI sub apps for Prod & Dev
                             - !Sub https://academy.${Domain}
+                            - !Sub https://work.${Domain}
+                            - !Sub https://gamification-admin.${Domain}
+                            - !Sub https://devcenter.${Domain}
 
                             # Platform UI Local
                             - !If

@@ -5,10 +5,12 @@ import {
     CHALLENGE_HOST,
     COMMUNITY_HOST,
     CONNECT_HOST,
+    DEV_CENTER_HOST,
     FORUM_HOST,
     ONLINE_REVIEW_HOST,
     PACTS_HOST,
-    PLATFORM_UI_HOST,
+    SELF_SERVICE_HOST,
+    TCACADEMY_HOST,
     WORK_MANAGER_HOST,
 } from '..';
 
@@ -136,7 +138,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     devCenter: {
         label: 'Dev Center',
         icon: 'dev-center',
-        url: `${PLATFORM_UI_HOST}/dev-center`,
+        url: DEV_CENTER_HOST,
         description: 'Get help for Topcoder tools',
     },
     discord: {
@@ -335,7 +337,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     selfServiceApp: {
         label: 'Self Service Challenges',
-        url: `${PLATFORM_UI_HOST}/work`,
+        url: SELF_SERVICE_HOST,
         icon: 'self-service',
         description: 'Launch and manage work',
     },
@@ -408,7 +410,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     topcoderAcademyApp: {
         label: 'Topcoder Academy',
-        url: `${PLATFORM_UI_HOST}/learn`,
+        url: TCACADEMY_HOST,
         icon: 'tcacademy',
         description: 'Learn new skills',
     },
