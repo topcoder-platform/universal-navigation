@@ -181,6 +181,30 @@ Resources:
                                 - !Ref AWS::NoValue
                                 - !Sub 'https://local.${Domain}'
 
+                            # Academy Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://academy.local.${Domain}'
+
+                            # Work Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://work.local.${Domain}'
+
+                            # Devcenter Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://devcenter.local.${Domain}'
+
+                            # Gamification Admin Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://gamification-admin.local.${Domain}'
+
                             # PTC Prod & QA
                             - !If
                                 - IsProd
