@@ -169,14 +169,41 @@ Resources:
                             # Platform UI Prod & Dev
                             - !Sub https://platform-ui.${Domain}
 
-                            # Topcoder Academy subdomain Prod & Dev
+                            # Platform UI sub apps for Prod & Dev
                             - !Sub https://academy.${Domain}
+                            - !Sub https://work.${Domain}
+                            - !Sub https://gamification-admin.${Domain}
+                            - !Sub https://devcenter.${Domain}
 
                             # Platform UI Local
                             - !If
                                 - IsProd
                                 - !Ref AWS::NoValue
                                 - !Sub 'https://local.${Domain}'
+
+                            # Academy Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://academy.local.${Domain}'
+
+                            # Work Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://work.local.${Domain}'
+
+                            # Devcenter Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://devcenter.local.${Domain}'
+
+                            # Gamification Admin Local
+                            - !If
+                                - IsProd
+                                - !Ref AWS::NoValue
+                                - !Sub 'https://gamification-admin.local.${Domain}'
 
                             # PTC Prod & QA
                             - !If
