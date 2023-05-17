@@ -1,18 +1,6 @@
 #!/bin/bash
 
-# load in the environment variables
-set -a
-. .env
-set +a
-
-# validate the environment variables
-if [[ -z $DOMAIN ]]
-    then
-        echo "DOMAIN is required"
-        exit 1
-fi
-
-# get the stage
+# ask the user for the stage if it wasn't passed in
 stage=$1
 if [[ -z $stage ]]
     then
@@ -26,6 +14,22 @@ if [[ -z $stage ]]
     then
         echo "Stage is required. Cancelling deployment."
         exit 2
+fi
+
+if [[ $stage != "dev" && $stage != "prod" ]]
+    then
+        echo "Stage must be 'dev' or 'prod'. Cancelling deployment."
+        exit 2
+fi
+
+if [ $stage == "dev" ]
+    then
+        export DOMAIN=topcoder-dev.com
+fi
+
+if [ $stage == "prod" ]
+    then
+        export DOMAIN=topcoder.com
 fi
 
 # get the stack and queue names

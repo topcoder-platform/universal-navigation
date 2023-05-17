@@ -1,367 +1,365 @@
 Description: UniNav hosting on S3 and CloudFront
 
 Parameters:
-
-    Stage:
-        Type: String
-        Description: The Environment/Stage for which to create the stack
-
-    Domain:
-        Type: String
-        Description: UniNav Hosting Domain
-        AllowedValues:
-            - topcoder.com
-            - topcoder-dev.com
+  Stage:
+    Type: String
+    Description: The Environment/Stage for which to create the stack
+  Domain:
+    Type: String
+    Description: UniNav Hosting Domain
+    AllowedValues:
+      - topcoder.com
+      - topcoder-dev.com
 
 Conditions:
-    IsProd: !Equals [ !Ref Domain, topcoder.com ]
-    IsNotFeature:
-        !Or [!Equals [ !Ref Stage, dev ], Condition: IsProd]
+  IsProd: !Equals [!Ref Domain, topcoder.com]
+  IsNotFeature: !Or [!Equals [!Ref Stage, dev], Condition: IsProd]
 
 Mappings:
-
-    DomainMap:
-
-        topcoder.com:
-            CdnArnPrefix: arn:aws:cloudfront::409275337247:distribution/
-            CertArn: arn:aws:acm:us-east-1:409275337247:certificate/8cabe19d-6559-41c6-8dfb-66f8080d27d4
-            HostedZoneId: Z1B7U7QS3AAI1X
-            RoleArn: arn:aws:iam::409275337247:role/learning-paths-v5-container-role
-
-        topcoder-dev.com:
-            CdnArnPrefix: arn:aws:cloudfront::811668436784:distribution/
-            CertArn: arn:aws:acm:us-east-1:811668436784:certificate/8e56f24a-1eaf-4289-8c21-db2c0761ecf4
-            HostedZoneId: Z2CIRG3R0ZSGFQ
-            RoleArn: arn:aws:iam::811668436784:role/learning-paths-v5-container-role
+  DomainMap:
+    topcoder.com:
+      CdnArnPrefix: arn:aws:cloudfront::409275337247:distribution/
+      CertArn: arn:aws:acm:us-east-1:409275337247:certificate/8cabe19d-6559-41c6-8dfb-66f8080d27d4
+      HostedZoneId: Z1B7U7QS3AAI1X
+      RoleArn: arn:aws:iam::409275337247:role/learning-paths-v5-container-role
+    topcoder-dev.com:
+      CdnArnPrefix: arn:aws:cloudfront::811668436784:distribution/
+      CertArn: arn:aws:acm:us-east-1:811668436784:certificate/8e56f24a-1eaf-4289-8c21-db2c0761ecf4
+      HostedZoneId: Z2CIRG3R0ZSGFQ
+      RoleArn: arn:aws:iam::811668436784:role/learning-paths-v5-container-role
 
 Resources:
+  Store:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      AccessControl: Private
+      BucketName: !Sub "uni-nav-s3-${Stage}"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
 
-    Store:
-        Type: AWS::S3::Bucket
-        DeletionPolicy: Delete
-        Properties:
-            AccessControl: Private
-            BucketName: !Sub 'uni-nav-s3-${Stage}'
-            PublicAccessBlockConfiguration:
-                BlockPublicAcls: true
-                IgnorePublicAcls: true
-                BlockPublicPolicy: true
-                RestrictPublicBuckets: true
+  OriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub "s3-always-sigv4-${Stage}"
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
 
-    OriginAccessControl:
-        Type: AWS::CloudFront::OriginAccessControl
-        Properties:
-            OriginAccessControlConfig:
-                Name: !Sub 's3-always-sigv4-${Stage}'
-                OriginAccessControlOriginType: s3
-                SigningBehavior: always
-                SigningProtocol: sigv4
+  ResponseHeadersPolicy:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties:
+      ResponseHeadersPolicyConfig:
+        Name: !Sub ${AWS::StackName}-security-response-headers-policy
+        CorsConfig:
+          AccessControlAllowCredentials: false
+          AccessControlAllowHeaders:
+            Items:
+              - "*"
+          AccessControlAllowMethods:
+            Items:
+              - GET
+              - HEAD
+              - OPTIONS
+          AccessControlAllowOrigins:
+            # TODO: figure out a way to load this in from a shared config
+            # so that we don't have to manually deploy any time we add a
+            # new tool
+            # TODO: figure out the best way to support wildcard origins
+            Items:
+              # Challenges Prod & Dev
+              - !Sub https://challenges.${Domain}
 
-    ResponseHeadersPolicy:
-        Type: AWS::CloudFront::ResponseHeadersPolicy
-        Properties:
-            ResponseHeadersPolicyConfig:
-                Name: !Sub ${AWS::StackName}-security-response-headers-policy
-                CorsConfig:
-                    AccessControlAllowCredentials: false
-                    AccessControlAllowHeaders:
-                        Items:
-                            - '*'
-                    AccessControlAllowMethods:
-                        Items:
-                            - GET
-                            - HEAD
-                            - OPTIONS
-                    AccessControlAllowOrigins:
-                        # TODO: figure out a way to load this in from a shared config
-                        # so that we don't have to manually deploy any time we add a
-                        # new tool
-                        # TODO: figure out the best way to support wildcard origins
-                        Items:
+              # Connect Prod & Dev
+              - !Sub https://connect.${Domain}
 
-                            # Challenges Prod & Dev
-                            - !Sub https://challenges.${Domain}
+              # Customer & Member Marketing Prod & Dev
+              - https://www.topcoder.com
+              - https://topcoder.com
 
-                            # Connect Prod & Dev
-                            - !Sub https://connect.${Domain}
+              # Customer Marketing Dev
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub https://${Domain}
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub https://www.${Domain}
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://uninav.topcoder.com
 
-                            # Customer & Member Marketing Prod & Dev
-                            - https://www.topcoder.com
-                            - https://topcoder.com
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://uninav2.topcoder.com
 
-                            # Customer Marketing Dev
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub https://${Domain}
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub https://www.${Domain}
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://uninav.topcoder.com
+              # Unbounce Pages
+              - https://go.topcoder.com
 
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://uninav2.topcoder.com
+              # Customer Marketing Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - http://localhost:8080
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - http://topcoder.topcoder-dev.com
 
-                            # Unbounce Pages
-                            - https://go.topcoder.com
+              # Forum Prod & Dev
+              - !Sub https://discussions.${Domain}
+              - !Sub https://vanilla.${Domain}
 
-                            # Customer Marketing Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - http://localhost:8080
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - http://topcoder.topcoder-dev.com
+              # Member Marketing Prod & Dev
+              - !Sub https://community-app.${Domain}
 
-                            # Forum Prod & Dev
-                            - !Sub https://discussions.${Domain}
-                            - !Sub https://vanilla.${Domain}
+              # Member Marketing Beta & Staging
+              - !If
+                - IsProd
+                - https://beta-community-app.topcoder.com
+                - !Ref AWS::NoValue
+              - !If
+                - IsProd
+                - https://staging-community-app.topcoder.com
+                - !Ref AWS::NoValue
 
-                            # Member Marketing Prod & Dev
-                            - !Sub https://community-app.${Domain}
+              # Member Marketing QA
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://qa-community-app.topcoder-dev.com
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://test-community-app.topcoder-dev.com
 
-                            # Member Marketing Beta & Staging
-                            - !If
-                                - IsProd
-                                - https://beta-community-app.topcoder.com
-                                - !Ref AWS::NoValue
-                            - !If
-                                - IsProd
-                                - https://staging-community-app.topcoder.com
-                                - !Ref AWS::NoValue
+              # Online Review Prod & Dev
+              - !Sub https://software.${Domain}
 
-                            # Member Marketing QA
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://qa-community-app.topcoder-dev.com
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://test-community-app.topcoder-dev.com
+              # Online Review Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - http://local.topcoder-dev.com:8080
 
-                            # Online Review Prod & Dev
-                            - !Sub https://software.${Domain}
+              # PACTS Prod & Dev
+              - !Sub https://community.${Domain}
 
-                            # Online Review Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - http://local.topcoder-dev.com:8080
+              # PACTS Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub http://local.tc.cloud.topcoder.com
 
-                            # PACTS Prod & Dev
-                            - !Sub https://community.${Domain}
+              # Platform UI Prod & Dev
+              - !Sub https://platform-ui.${Domain}
 
-                            # PACTS Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub http://local.tc.cloud.topcoder.com
+              # Platform UI sub apps for Prod & Dev
+              - !Sub https://academy.${Domain}
+              - !Sub https://work.${Domain}
+              - !Sub https://gamification-admin.${Domain}
+              - !Sub https://devcenter.${Domain}
+              - !Sub https://profiles.${Domain}
+              - !Sub https://talent-search.${Domain}
 
-                            # Platform UI Prod & Dev
-                            - !Sub https://platform-ui.${Domain}
+              # Platform UI Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://local.${Domain}"
 
-                            # Platform UI sub apps for Prod & Dev
-                            - !Sub https://academy.${Domain}
-                            - !Sub https://work.${Domain}
-                            - !Sub https://gamification-admin.${Domain}
-                            - !Sub https://devcenter.${Domain}
-                            - !Sub https://profiles.${Domain}
-                            - !Sub https://talent-search.${Domain}
+              # Academy Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://academy.local.${Domain}"
 
-                            # Platform UI Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://local.${Domain}'
+              # Work Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://work.local.${Domain}"
 
-                            # Academy Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://academy.local.${Domain}'
+              # Devcenter Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://devcenter.local.${Domain}"
 
-                            # Work Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://work.local.${Domain}'
+              # Gamification Admin Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://gamification-admin.local.${Domain}"
 
-                            # Devcenter Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://devcenter.local.${Domain}'
+              # Profiles Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://profiles.local.${Domain}"
 
-                            # Gamification Admin Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://gamification-admin.local.${Domain}'
+              # Talent search Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://talent-search.local.${Domain}"
 
-                            # Profiles Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://profiles.local.${Domain}'
+              # PTC Prod & QA
+              - !If
+                - IsProd
+                - https://topcoder.privatetalent.cloud
+                - https://qa.dev.privatetalent.cloud
 
-                            # Talent search Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - !Sub 'https://talent-search.local.${Domain}'
+              # TopCrowd Prod & QA
+              - !If
+                - IsProd
+                - https://topcrowd.topcoder.com
+                - https://topcrowd.dev.topcoder.com
+              - !If
+                - IsProd
+                - https://topcrowd.net
+                - https://qa.dev.topcrowd.net
+              - !If
+                - IsProd
+                - https://topcrowd.io
+                - https://qa.dev.topcrowd.io
+              - !If
+                - IsProd
+                - https://topcrowd.app
+                - https://qa.dev.topcrowd.app
+              - !If
+                - IsProd
+                - https://gettopcrowd.com
+                - https://qa.dev.gettopcrowd.com
 
-                            # PTC Prod & QA
-                            - !If
-                                - IsProd
-                                - https://topcoder.privatetalent.cloud
-                                - https://qa.dev.privatetalent.cloud
+              # TopCrowd Dev
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://dev.topcrowd.net
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://dev.topcrowd.io
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://dev.topcrowd.app
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - https://dev.gettopcrowd.com
 
-                            # TopCrowd Prod & QA
-                            - !If
-                                - IsProd
-                                - https://topcrowd.topcoder.com
-                                - https://topcrowd.dev.topcoder.com
-                            - !If
-                                - IsProd
-                                - https://topcrowd.net
-                                - https://qa.dev.topcrowd.net
-                            - !If
-                                - IsProd
-                                - https://topcrowd.io
-                                - https://qa.dev.topcrowd.io
-                            - !If
-                                - IsProd
-                                - https://topcrowd.app
-                                - https://qa.dev.topcrowd.app
-                            - !If
-                                - IsProd
-                                - https://gettopcrowd.com
-                                - https://qa.dev.gettopcrowd.com
+              # TopCrowd Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - http://127.0.0.1:3000
 
-                            # TopCrowd Dev
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://dev.topcrowd.net
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://dev.topcrowd.io
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://dev.topcrowd.app
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - https://dev.gettopcrowd.com
+              # TopCrowd Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - http://localhost:3000
+          OriginOverride: true
 
-                            # TopCrowd Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - http://127.0.0.1:3000
+  Cdn:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Aliases:
+          - !If [
+              IsNotFeature,
+              !Sub "uni-nav.${Domain}",
+              !Sub "uni-nav-${Stage}.${Domain}",
+            ]
+        Origins:
+          - Id: !Join
+              - ""
+              - - !Ref Store
+                - .s3.amazonaws.com
+            DomainName: !Join
+              - ""
+              - - !Ref Store
+                - .s3.amazonaws.com
+            OriginAccessControlId: !Ref OriginAccessControl
+            S3OriginConfig:
+              OriginAccessIdentity: ""
+        DefaultCacheBehavior:
+          # This is the managed cache policy ID for the CachingOptimized policy.
+          # See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          Compress: true
+          TargetOriginId: !Join
+            - ""
+            - - !Ref Store
+              - .s3.amazonaws.com
+          ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ResponseHeadersPolicyId: !Ref ResponseHeadersPolicy
+        ViewerCertificate:
+          AcmCertificateArn: !FindInMap
+            - DomainMap
+            - !Ref Domain
+            - CertArn
+          MinimumProtocolVersion: TLSv1.2_2018
+          SslSupportMethod: sni-only
 
-                            # TopCrowd Local
-                            - !If
-                                - IsProd
-                                - !Ref AWS::NoValue
-                                - http://localhost:3000
+  StoreBucketPolicy:
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref Store
+      PolicyDocument:
+        Id: StoreBucketPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: AllowCloudFrontServicePrincipalReadOnly
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: "s3:GetObject"
+            Resource: !Join
+              - ""
+              - - "arn:aws:s3:::"
+                - !Ref Store
+                - /*
+            Condition:
+              ArnEquals:
+                aws:SourceArn: !Join
+                  - ""
+                  - - !FindInMap
+                      - DomainMap
+                      - !Ref Domain
+                      - CdnArnPrefix
+                    - !Ref Cdn
 
-                    OriginOverride: true
-
-    Cdn:
-        Type: AWS::CloudFront::Distribution
-        Properties:
-            DistributionConfig:
-                Enabled: true
-                Aliases:
-                    - !If [IsNotFeature, !Sub 'uni-nav.${Domain}', !Sub 'uni-nav-${Stage}.${Domain}']
-                Origins:
-                    -   Id: !Join
-                            - ''
-                            -   - !Ref Store
-                                - .s3.amazonaws.com
-                        DomainName: !Join
-                            - ''
-                            -   - !Ref Store
-                                - .s3.amazonaws.com
-                        OriginAccessControlId: !Ref OriginAccessControl
-                        S3OriginConfig:
-                            OriginAccessIdentity: ""
-                DefaultCacheBehavior:
-                    # This is the managed cache policy ID for the CachingOptimized policy.
-                    # See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html
-                    CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
-                    Compress: true
-                    TargetOriginId: !Join
-                        - ''
-                        -   - !Ref Store
-                            - .s3.amazonaws.com
-                    ViewerProtocolPolicy: redirect-to-https
-                    ForwardedValues:
-                        QueryString: false
-                        Cookies:
-                            Forward: none
-                    ResponseHeadersPolicyId: !Ref ResponseHeadersPolicy
-                ViewerCertificate:
-                    AcmCertificateArn: !FindInMap
-                        - DomainMap
-                        - !Ref Domain
-                        - CertArn
-                    MinimumProtocolVersion: TLSv1.2_2018
-                    SslSupportMethod: sni-only
-
-    StoreBucketPolicy:
-        Type: 'AWS::S3::BucketPolicy'
-        Properties:
-            Bucket:
-                !Ref Store
-            PolicyDocument:
-                Id: StoreBucketPolicy
-                Version: 2012-10-17
-                Statement:
-                    -   Sid: AllowCloudFrontServicePrincipalReadOnly
-                        Effect: Allow
-                        Principal:
-                            Service: cloudfront.amazonaws.com
-                        Action: 's3:GetObject'
-                        Resource: !Join
-                            - ''
-                            -   - 'arn:aws:s3:::'
-                                - !Ref Store
-                                - /*
-                        Condition:
-                            ArnEquals:
-                                aws:SourceArn: !Join
-                                    - ''
-                                    -   - !FindInMap
-                                            - DomainMap
-                                            - !Ref Domain
-                                            - CdnArnPrefix
-                                        - !Ref Cdn
-
-    Route:
-        Type: AWS::Route53::RecordSet
-        Properties:
-            HostedZoneId: !FindInMap
-                - DomainMap
-                - !Ref Domain
-                - HostedZoneId
-            Name:
-                !If [IsNotFeature, !Sub 'uni-nav.${Domain}', !Sub 'uni-nav-${Stage}.${Domain}']
-            Type: A
-            AliasTarget:
-                # hard-coded zone id for all cloudfront routes
-                # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#cfn-route53-aliastarget-hostedzoneid
-                HostedZoneId: Z2FDTNDATAQYW2
-                DNSName: !GetAtt Cdn.DomainName
+  Route:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: !FindInMap
+        - DomainMap
+        - !Ref Domain
+        - HostedZoneId
+      Name:
+        !If [
+          IsNotFeature,
+          !Sub "uni-nav.${Domain}",
+          !Sub "uni-nav-${Stage}.${Domain}",
+        ]
+      Type: A
+      AliasTarget:
+        # hard-coded zone id for all cloudfront routes
+        # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#cfn-route53-aliastarget-hostedzoneid
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName: !GetAtt Cdn.DomainName
