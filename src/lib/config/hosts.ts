@@ -23,20 +23,3 @@ export const SELF_SERVICE_HOST: string = `https://work.${TC_DOMAIN}`;
 export const TC_API_V5_HOST: string = `https://api.${TC_DOMAIN}/v5`;
 export const CONNECT_HOST: string = `https://connect.${TC_DOMAIN}`;
 export const WORK_MANAGER_HOST: string = `https://challenges.${TC_DOMAIN}`;
-
-console.table({
-  HOST_ENV,
-  TC_DOMAIN,
-  WP_HOST_URL,
-  CHALLENGE_HOST,
-  COMMUNITY_HOST,
-  PACTS_HOST,
-  FORUM_HOST,
-  ONLINE_REVIEW_HOST,
-  TCACADEMY_HOST,
-  DEV_CENTER_HOST,
-  SELF_SERVICE_HOST,
-  TC_API_V5_HOST,
-  CONNECT_HOST,
-  WORK_MANAGER_HOST,
-})
