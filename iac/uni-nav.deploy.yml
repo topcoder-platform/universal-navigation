@@ -168,6 +168,7 @@ Resources:
               - !Sub https://devcenter.${Domain}
               - !Sub https://profiles.${Domain}
               - !Sub https://talent-search.${Domain}
+              - !Sub https://account-settings.${Domain}
 
               # Platform UI Local
               - !If
@@ -204,6 +205,12 @@ Resources:
                 - IsProd
                 - !Ref AWS::NoValue
                 - !Sub "https://profiles.local.${Domain}"
+
+              # Account Settings Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://account-settings.local.${Domain}"
 
               # Talent search Local
               - !If
