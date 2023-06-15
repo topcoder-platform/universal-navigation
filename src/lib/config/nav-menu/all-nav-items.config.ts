@@ -207,11 +207,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'gigs',
         description: 'Find freelance gigs',
     },
-    healthcare: {
-        label: 'Healthcare',
-        description: 'International (non-US) healthcare.',
-        url: `${COMMUNITY_HOST}/community/safetywing`,
-    },
     healthPharma: {
         label: 'Health / Pharma',
         description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
