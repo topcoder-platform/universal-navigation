@@ -93,7 +93,6 @@ export const mainNavigationItems: NavMenuItem[] = [
       {
         ...allNavItems.benefits,
         children: [
-          allNavItems.healthcare,
           allNavItems.careerGrowth,
         ]
       }
