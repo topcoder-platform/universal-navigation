@@ -47,7 +47,12 @@ export const mainNavigationItems: NavMenuItem[] = [
           allNavItems.websiteDesign,
         ]
       },
-      allNavItems.topCrowd,
+      {
+        ...allNavItems.topCrowd,
+        children: [
+          allNavItems.topCrowdPricing,
+        ]
+      },
       allNavItems.talkToAnExpert,
       allNavItems.bookADemo,
     ]

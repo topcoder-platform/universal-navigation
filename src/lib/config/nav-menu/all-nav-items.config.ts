@@ -419,6 +419,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'TopCrowd',
         url: getWordpressUrl('/customer/topcrowd'),
     },
+    topCrowdPricing: {
+      label: 'Pricing Plans',
+      description: 'Sign up and experience all the benefits of the Professional plan, FREE for 30 days.',
+      url: getWordpressUrl('/customer/topcrowd/pricing'),
+    },
     topCrowdApp: {
         description: 'Engage and reward your workforce',
         icon: 'topcrowd',
