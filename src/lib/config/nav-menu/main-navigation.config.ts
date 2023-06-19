@@ -47,7 +47,12 @@ export const mainNavigationItems: NavMenuItem[] = [
           allNavItems.websiteDesign,
         ]
       },
-      allNavItems.topCrowd,
+      {
+        ...allNavItems.topCrowd,
+        children: [
+          allNavItems.topCrowdPricing,
+        ]
+      },
       allNavItems.talkToAnExpert,
       allNavItems.bookADemo,
     ]
@@ -93,7 +98,6 @@ export const mainNavigationItems: NavMenuItem[] = [
       {
         ...allNavItems.benefits,
         children: [
-          allNavItems.healthcare,
           allNavItems.careerGrowth,
         ]
       }

@@ -207,11 +207,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'gigs',
         description: 'Find freelance gigs',
     },
-    healthcare: {
-        label: 'Healthcare',
-        description: 'International (non-US) healthcare.',
-        url: `${COMMUNITY_HOST}/community/safetywing`,
-    },
     healthPharma: {
         label: 'Health / Pharma',
         description: 'Health / pharma solutions, how Topcoder excels, including case studies.',
@@ -423,6 +418,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Engage and reward your workforce to maximize productivity.',
         label: 'TopCrowd',
         url: getWordpressUrl('/customer/topcrowd'),
+    },
+    topCrowdPricing: {
+      label: 'Pricing Plans',
+      description: 'Sign up and experience all the benefits of the Professional plan, FREE for 30 days.',
+      url: getWordpressUrl('/customer/topcrowd/pricing'),
     },
     topCrowdApp: {
         description: 'Engage and reward your workforce',
