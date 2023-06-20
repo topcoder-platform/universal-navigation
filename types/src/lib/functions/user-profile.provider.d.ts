@@ -1,5 +1,5 @@
 import type { AuthUser } from '../../main';
-export declare type fetchUserProfileFn = () => AuthUser | null;
+export type fetchUserProfileFn = () => AuthUser | null;
 export declare const getJwtUserhandle: () => AuthUser['handle'] | undefined;
 export declare const getJwtUserRoles: () => AuthUser['roles'] | undefined;
 export declare const getUserAppRoles: () => AuthUser['roles'] | undefined;

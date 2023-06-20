@@ -1,8 +1,8 @@
 import { type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context';
 import 'lib/styles/main.scss';
 export * from './lib/app-context';
-export declare type NavigationType = ('footer' | 'marketing' | 'tool');
-export declare type NavigationAppProps = {
+export type NavigationType = ('footer' | 'marketing' | 'tool');
+export type NavigationAppProps = {
     type?: NavigationType;
     toolName?: string;
     toolRoot?: string;
@@ -18,5 +18,5 @@ export declare type NavigationAppProps = {
         [key: string]: 'disable';
     };
 };
-export declare type TcUniNavMethods = 'init' | 'update';
-export declare type TcUniNavFn = (method: TcUniNavMethods, targetId: string, config: NavigationAppProps) => void;
+export type TcUniNavMethods = 'init' | 'update';
+export type TcUniNavFn = (method: TcUniNavMethods, targetId: string, config: NavigationAppProps) => void;
