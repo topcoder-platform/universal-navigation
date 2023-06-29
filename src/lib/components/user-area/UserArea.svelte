@@ -5,8 +5,9 @@
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
   import VerticalSeparator from '../VerticalSeparator.svelte';
-  import { fetchUserProfile } from 'lib/functions/user-profile.provider';
+  import { fetchUserProfile, fetchUserProfileCompletedness } from 'lib/functions/user-profile.provider';
   import { onMount } from 'svelte';
+  import Completedness from './Completedness.svelte';
 
   const ctx = getAppContext()
 
@@ -17,17 +18,38 @@
     ready: isReady,
     autoFetchUser,
     user,
-  } = $ctx.auth)
+    profileCompletedness,
+  } = $ctx.auth);
+
+  async function fetchProfileDetails() {
+    if (!user) {
+      return;
+    }
+
+    const completednessData = await fetchUserProfileCompletedness(user);
+
+    if (!completednessData) {
+      return;
+    }
+
+    $ctx.auth = {
+      ...$ctx.auth,
+      profileCompletedness: completednessData.data?.percentComplete,
+      profileCompletednessData: completednessData,
+    };
+  }
+
+  $: isReady && fetchProfileDetails();
 
   onMount(async () => {
     if (autoFetchUser !== true) {
-      return
+      return;
     }
 
     $ctx.auth = {...$ctx.auth, ready: false};
     const authUser = await fetchUserProfile();
     $ctx.auth = {...$ctx.auth, ready: true, user: authUser};
-  })
+  });
 </script>
 
 {#if isReady}
@@ -43,7 +65,10 @@
       <UserAvatar
         user={user}
         onSignOut={onSignOut}
-      />
+        profileCompletedness={profileCompletedness}
+      >
+        <Completedness />
+      </UserAvatar>
     {/if}
   </div>
 {/if}

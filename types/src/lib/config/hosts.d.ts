@@ -13,3 +13,4 @@ export declare const SELF_SERVICE_HOST: string;
 export declare const TC_API_V5_HOST: string;
 export declare const CONNECT_HOST: string;
 export declare const WORK_MANAGER_HOST: string;
+export declare const PROFILE_HOST: string;
