@@ -34,7 +34,7 @@
     to="360 0 0"
     attributeName="transform"
     type="rotate"
-    repeatCount="10"
+    repeatCount="indefinite"
     dur="700ms"
   />
 </svg>

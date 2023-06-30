@@ -16,6 +16,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
     supportMeta = prevContext.supportMeta,
     integrations = prevContext.integrations,
     fullFooter = prevContext.toolConfig?.fullFooter,
+    profileCompletionData = prevContext.auth?.profileCompletionData,
   } = {...newConfig, user: undefined}
 
   const hasUserProp = hasOwnProperty(newConfig, 'user') && newConfig['user'] !== 'auto'
@@ -30,6 +31,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
       signIn,
       signOut,
       signUp,
+      profileCompletionData,
     },
     navigationHandler: handleNavigation,
     toolConfig: {

@@ -6,7 +6,7 @@
 
   export let user: AuthUser;
   export let onSignOut: () => void;
-  export let profileCompletedness: number;
+  export let profileCompletionPerc: number;
 
   const MY_PROFILE_URL = `${COMMUNITY_HOST}/members/${user.handle}`;
   const ACC_SETTINGS_URL = `${COMMUNITY_HOST}/settings/profile`;
@@ -23,7 +23,7 @@
 
 <div class={styles.userMenu}>
   <ul>
-    <li class:nudge={profileCompletedness < 100}>
+    <li class:nudge={profileCompletionPerc < 100}>
       <a
         href={MY_PROFILE_URL}
         class:active={isActive(MY_PROFILE_URL)}

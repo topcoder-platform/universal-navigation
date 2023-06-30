@@ -79,7 +79,7 @@ export const toastsMeta: {
     cover: 'work-history.png',
     type: 'animated',
     title: 'Experience says it all!',
-    message: 'Experience says it all!',
+    message: 'Show off your all your hard work and amazing gigs.',
     ctaText: 'Add Experience',
     ctaLink: `${PROFILE_HOST}?edit-mode=workHistory`,
   },

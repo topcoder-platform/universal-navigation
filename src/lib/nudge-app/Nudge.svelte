@@ -1,6 +1,5 @@
 <script lang="ts">
   import { getAppContext } from 'lib/app-context';
-  import type { ProfileCompletednessResponse } from 'lib/functions/user-profile.provider';
   import Toastr from './components/Toastr.svelte';
   import styles from './Nudge.module.scss';
   import type { ToastType } from './config';
@@ -10,7 +9,7 @@
 
   $: ({
     ready: isReady,
-    profileCompletednessData,
+    profileCompletionData,
   } = $ctx.auth)
 
   let toast: ToastType;
@@ -20,18 +19,7 @@
     hideToast();
   }
 
-  // const checkAndShowNudges = async () => {
-  //   const completednessData = await fetchUserProfileCompletedness();
-  //   if (!completednessData) {
-  //     return;
-  //   }
-
-  //   $ctx.auth = {...$ctx.auth, profileCompletedness: completednessData.data?.percentComplete};
-  //   toast = getToast(completednessData);
-  // };
-
-
-  $: toast = isReady && getToast(profileCompletednessData as ProfileCompletednessResponse);
+  $: toast = isReady && getToast(profileCompletionData);
 </script>
 
 {#if toast}

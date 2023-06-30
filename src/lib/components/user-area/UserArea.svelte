@@ -8,6 +8,7 @@
   import { fetchUserProfile, fetchUserProfileCompletedness } from 'lib/functions/user-profile.provider';
   import { onMount } from 'svelte';
   import Completedness from './Completedness.svelte';
+  import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 
   const ctx = getAppContext()
 
@@ -18,7 +19,7 @@
     ready: isReady,
     autoFetchUser,
     user,
-    profileCompletedness,
+    profileCompletionData = {} as ProfileCompletionData,
   } = $ctx.auth);
 
   async function fetchProfileDetails() {
@@ -34,8 +35,12 @@
 
     $ctx.auth = {
       ...$ctx.auth,
-      profileCompletedness: completednessData.data?.percentComplete,
-      profileCompletednessData: completednessData,
+      profileCompletionData: {
+        completed: completednessData.data?.percentComplete === 100,
+        handle: completednessData.handle,
+        percentComplete: completednessData.data?.percentComplete,
+        showToast: completednessData.showToast,
+      },
     };
   }
 
@@ -65,7 +70,7 @@
       <UserAvatar
         user={user}
         onSignOut={onSignOut}
-        profileCompletedness={profileCompletedness}
+        profileCompletionPerc={profileCompletionData?.percentComplete ?? 0}
       >
         <Completedness />
       </UserAvatar>

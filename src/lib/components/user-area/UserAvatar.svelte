@@ -9,7 +9,7 @@
 
   export let user: AuthUser;
   export let onSignOut: () => void;
-  export let profileCompletedness: number;
+  export let profileCompletionPerc: number;
 
   let elRef: HTMLElement;
   let popupIsVisible: boolean;
@@ -40,7 +40,7 @@
   <UserMenu
     onSignOut={onSignOut}
     user={user}
-    profileCompletedness={profileCompletedness}
+    profileCompletionPerc={profileCompletionPerc}
   />
 </PopupMenu>
 {:else if popupIsVisible}
@@ -48,7 +48,7 @@
     <UserMenu
       onSignOut={onSignOut}
       user={user}
-      profileCompletedness={profileCompletedness}
+      profileCompletionPerc={profileCompletionPerc}
     />
   </MobileMenu>
 {/if}

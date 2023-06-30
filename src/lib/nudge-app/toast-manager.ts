@@ -1,13 +1,8 @@
-import type { ProfileCompletednessResponse } from '../functions/user-profile.provider';
+import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 import { checkCookie, getCookieValue, setCookie } from '../utils/cookies';
 import { toastsMeta } from "./config";
 
 const TOAST_COOKIE = 'uninav-toast-shown';
-
-function isProfileCompleted(completednessData: ProfileCompletednessResponse) {
-  const {percentComplete} = completednessData.data;
-  return percentComplete >= 100;
-}
 
 function isToastDismissed() {
   return checkCookie(TOAST_COOKIE, 'hidden');
@@ -26,8 +21,8 @@ function getLastSeenToast() {
  * @param completednessData
  * @returns
  */
-export const getToast = (completednessData: ProfileCompletednessResponse) => {
-  if (!completednessData || isProfileCompleted(completednessData) || isToastDismissed()) {
+export const getToast = (completednessData: ProfileCompletionData) => {
+  if (!completednessData || completednessData.completed || isToastDismissed()) {
     return;
   }
 

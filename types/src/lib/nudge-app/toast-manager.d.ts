@@ -1,4 +1,4 @@
-import type { ProfileCompletednessResponse } from '../functions/user-profile.provider';
+import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 /**
  * Get the toast to show based on the completedness data
  * If the user has completed their profile, return undefined
@@ -8,5 +8,5 @@ import type { ProfileCompletednessResponse } from '../functions/user-profile.pro
  * @param completednessData
  * @returns
  */
-export declare const getToast: (completednessData: ProfileCompletednessResponse) => import("./config").ToastType;
+export declare const getToast: (completednessData: ProfileCompletionData) => import("./config").ToastType;
 export declare const hideToast: () => void;
