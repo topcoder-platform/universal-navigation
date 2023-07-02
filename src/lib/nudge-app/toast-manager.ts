@@ -3,6 +3,7 @@ import { checkCookie, getCookieValue, setCookie } from '../utils/cookies';
 import { toastsMeta } from "./config";
 
 const TOAST_COOKIE = 'uninav-toast-shown';
+const TOAST_COOKIE_ACTIVE_PERIOD_DAYS = 7;
 
 function isToastDismissed() {
   return checkCookie(TOAST_COOKIE, 'hidden');
@@ -28,7 +29,7 @@ export const getToast = (completednessData: ProfileCompletionData) => {
 
   const lastToastSeen = getLastSeenToast();
   if (!lastToastSeen) {
-    setCookie(TOAST_COOKIE, completednessData.showToast, 7);
+    setCookie(TOAST_COOKIE, completednessData.showToast, TOAST_COOKIE_ACTIVE_PERIOD_DAYS);
   }
 
   const toastToShow = lastToastSeen || completednessData.showToast;
@@ -36,5 +37,5 @@ export const getToast = (completednessData: ProfileCompletionData) => {
 }
 
 export const hideToast = () => {
-  setCookie(TOAST_COOKIE, 'hidden', 7);
+  setCookie(TOAST_COOKIE, 'hidden', TOAST_COOKIE_ACTIVE_PERIOD_DAYS);
 }
