@@ -1,3 +1,5 @@
+import { TC_DOMAIN } from "lib/config";
+
 export const getCookieValue = (name: string) => {
   const cookie = document.cookie.split(';').find((c) => c.trim().startsWith(name + '='));
   if (!cookie) {
@@ -21,5 +23,5 @@ export const setCookie = (cookieName: string, value: any, duration: number, unit
   d.setHours(0, 0, 0, 0);
 
   const expires = `expires=${d.toUTCString()}`;
-  document.cookie = `${cookieName}=${JSON.stringify(value)};${expires};path=/`;
+  document.cookie = `${cookieName}=${JSON.stringify(value)};${expires};domain=.${TC_DOMAIN};path=/;`;
 }

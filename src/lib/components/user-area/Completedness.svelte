@@ -18,13 +18,13 @@
   let animate = false;
   $: animate = (
     profileCompletionData.completed === false &&
-    !checkCookie('uninav-nudge-anim-shown')
+    !checkCookie('uni-nudge-anim-shown')
   );
 
   $: {
     // check if animate is true and set cookie flag for 1 day
     if (animate) {
-      setCookie('uninav-nudge-anim-shown', true, 1);
+      setCookie('uni-nudge-anim-shown', true, 1);
     }
   }
 </script>
