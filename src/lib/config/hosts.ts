@@ -14,8 +14,20 @@ export const TC_DOMAIN: string = {
 export const WP_HOST_URL: string = `https://www.${TC_DOMAIN}`;
 export const CHALLENGE_HOST: string = `https://www.${TC_DOMAIN}`;
 export const COMMUNITY_HOST: string = `https://www.${TC_DOMAIN}`;
+
+export const THRIVE_HOST: string = {
+  dev: `https://community-app.${TC_DOMAIN}`,
+  qa: `https://community-app.${TC_DOMAIN}`,
+  prod: `https://www.${TC_DOMAIN}`,
+}[HOST_ENV] || `https://www.${TC_DOMAIN}`;
+
+export const FORUM_HOST: string = {
+  dev: `https://vanilla.${TC_DOMAIN}`,
+  qa: `https://vanilla.${TC_DOMAIN}`,
+  prod: `https://discussions.${TC_DOMAIN}`,
+}[HOST_ENV] || `https://discussions.${TC_DOMAIN}`;
+
 export const PACTS_HOST: string = `https://community.${TC_DOMAIN}`;
-export const FORUM_HOST: string = `https://vanilla.${TC_DOMAIN}`;
 export const ONLINE_REVIEW_HOST: string = `https://software.${TC_DOMAIN}`;
 export const TCACADEMY_HOST: string = `https://academy.${TC_DOMAIN}`;
 export const DEV_CENTER_HOST: string = `https://devcenter.${TC_DOMAIN}`;

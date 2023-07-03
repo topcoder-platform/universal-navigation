@@ -11,6 +11,7 @@ import {
     PACTS_HOST,
     SELF_SERVICE_HOST,
     TCACADEMY_HOST,
+    THRIVE_HOST,
     WORK_MANAGER_HOST,
 } from '..';
 
@@ -38,7 +39,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Articles',
         icon: 'articles',
         description: 'Get insights and tips about Topcoder',
-        url: `${COMMUNITY_HOST}/thrive`,
+        url: `${THRIVE_HOST}/thrive`,
     },
     benefits: {
         label: 'Benefits',
@@ -179,7 +180,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     faq: {
         label: 'FAQ',
-        url: `${COMMUNITY_HOST}/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb`,
+        url: `${THRIVE_HOST}/thrive/tracks?track=Topcoder&tax=FAQ&ref=navb`,
     },
     forums: {
         label: 'Forums',
@@ -194,7 +195,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     gettingPaid: {
         label: 'Getting Paid',
-        url: `${COMMUNITY_HOST}/thrive/tracks?track=Topcoder&tax=Getting%20Paid`,
+        url: `${THRIVE_HOST}/thrive/tracks?track=Topcoder&tax=Getting%20Paid`,
     },
     gigs: {
         label: 'Gigs',
