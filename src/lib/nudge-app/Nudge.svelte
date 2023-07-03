@@ -9,6 +9,7 @@
 
   $: ({
     ready: isReady,
+    user,
     profileCompletionData,
   } = $ctx.auth)
 
@@ -26,7 +27,7 @@
 <div class={styles.nudgeOuter}>
   <div class={styles.nudgeWrap}>
     <div class={styles.nudgeInner}>
-      <Toastr toast={toast} on:dismiss={dismissToast} />
+      <Toastr userhandle={user.handle} toast={toast} on:dismiss={dismissToast} />
     </div>
   </div>
 </div>

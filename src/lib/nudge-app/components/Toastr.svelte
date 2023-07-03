@@ -7,6 +7,7 @@
   import type { ToastType } from '../config';
 
   export let toast: ToastType;
+  export let userhandle: string;
   let visible = false;
   const dispatch = createEventDispatcher();
 
@@ -41,7 +42,7 @@
     <div class={styles.title}>{toast.title}</div>
     <div class={styles.message}>{toast.message}</div>
 
-    <a href={toast.ctaLink} class={styles.ctaBtn} target="_blank" rel="noreferrer" on:click={dismiss}>
+    <a href={toast.ctaLink(userhandle)} class={styles.ctaBtn} target="_blank" rel="noreferrer" on:click={dismiss}>
       {toast.ctaText}
     </a>
   </div>

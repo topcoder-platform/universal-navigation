@@ -6,7 +6,7 @@ export interface ToastType {
     title: string;
     message: string;
     ctaText: string;
-    ctaLink: string;
+    ctaLink: (userhandle: string) => string;
 }
 export declare const toastsMeta: {
     [key: string]: ToastType;
