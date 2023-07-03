@@ -2,7 +2,7 @@ import type { ProfileCompletionData } from 'lib/app-context/profile-completion.m
 import { checkCookie, getCookieValue, setCookie } from '../utils/cookies';
 import { toastsMeta } from "./config";
 
-const TOAST_COOKIE = 'uninav-toast-shown';
+const TOAST_COOKIE = 'uni-toast-shown';
 const TOAST_COOKIE_ACTIVE_PERIOD_DAYS = 7;
 
 function isToastDismissed() {
