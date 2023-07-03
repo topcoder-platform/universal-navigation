@@ -8,6 +8,7 @@
 
   position: relative;
   cursor: pointer;
+  z-index: 1;
 
   img {
     object-fit: cover;
@@ -32,7 +33,6 @@
     color: #fff;
     text-transform: uppercase;
 
-    border: 2px solid #fff;
     border-radius: inherit;
     box-sizing: border-box;
 

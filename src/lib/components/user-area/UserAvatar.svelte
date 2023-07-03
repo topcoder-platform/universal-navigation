@@ -9,6 +9,7 @@
 
   export let user: AuthUser;
   export let onSignOut: () => void;
+  export let profileCompletionPerc: number;
 
   let elRef: HTMLElement;
   let popupIsVisible: boolean;
@@ -31,14 +32,23 @@
   {:else}
     <span>{initials}</span>
   {/if}
+  <slot></slot>
 </div>
 
 {#if !$isMobile}
 <PopupMenu targetEl={elRef} bind:isVisible={popupIsVisible}>
-  <UserMenu onSignOut={onSignOut} user={user} />
+  <UserMenu
+    onSignOut={onSignOut}
+    user={user}
+    profileCompletionPerc={profileCompletionPerc}
+  />
 </PopupMenu>
 {:else if popupIsVisible}
   <MobileMenu direction="y" handleClose={() => popupIsVisible = false}>
-    <UserMenu onSignOut={onSignOut} user={user} />
+    <UserMenu
+      onSignOut={onSignOut}
+      user={user}
+      profileCompletionPerc={profileCompletionPerc}
+    />
   </MobileMenu>
 {/if}

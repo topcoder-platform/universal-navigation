@@ -9,6 +9,7 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
         signIn: any;
         signOut: any;
         signUp: any;
+        profileCompletionData: any;
     };
     navigationHandler: any;
     toolConfig: {
