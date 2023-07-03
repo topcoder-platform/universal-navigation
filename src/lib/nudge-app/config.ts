@@ -8,7 +8,7 @@ export interface ToastType {
   title: string
   message: string
   ctaText: string
-  ctaLink: string
+  ctaLink: (userhandle: string) => string
 }
 
 export const toastsMeta: {
@@ -21,7 +21,7 @@ export const toastsMeta: {
     title: 'What makes you, you?',
     message: 'Share a little something about you. AI can help.',
     ctaText: 'Add Bio',
-    ctaLink: `${PROFILE_HOST}?edit-mode=aboutMe`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=aboutMe`,
   },
   education: {
     theme: 'education',
@@ -31,7 +31,7 @@ export const toastsMeta: {
     title: 'Cool for school!',
     message: 'All that hard work, and so much to show.',
     ctaText: 'Add Education',
-    ctaLink: `${PROFILE_HOST}?edit-mode=education`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=education`,
   },
   gigAvailability: {
     theme: 'gigAvailability',
@@ -41,7 +41,7 @@ export const toastsMeta: {
     title: 'Looking for work?',
     message: 'Set your availability so we can find you a sweet gig.',
     ctaText: 'Set Availability',
-    ctaLink: `${PROFILE_HOST}?edit-mode=openForWork`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=openForWork`,
   },
   profilePicture: {
     theme: 'profilePicture',
@@ -51,7 +51,7 @@ export const toastsMeta: {
     title: 'What\'s your vibe?',
     message: 'Represent your style with a headshot.',
     ctaText: 'Add Profile Pic',
-    ctaLink: `${PROFILE_HOST}?edit-mode=photo`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=photo`,
   },
   skills: {
     theme: 'skills',
@@ -61,7 +61,7 @@ export const toastsMeta: {
     title: 'Know your stuff?',
     message: 'Share your skills and get more eyes on your profile.',
     ctaText: 'Add Skills',
-    ctaLink: `${PROFILE_HOST}?edit-mode=skills`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=skills`,
   },
   verified: {
     theme: 'verified',
@@ -71,7 +71,7 @@ export const toastsMeta: {
     title: 'Are you real?',
     message: 'Prove you are not a robot by verifying a few details.',
     ctaText: 'Verify Me',
-    ctaLink: `${PROFILE_HOST}?edit-mode=verified`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=verified`,
   },
   workHistory: {
     theme: 'workHistory',
@@ -81,6 +81,6 @@ export const toastsMeta: {
     title: 'Experience says it all!',
     message: 'Show off all your hard work and amazing gigs.',
     ctaText: 'Add Experience',
-    ctaLink: `${PROFILE_HOST}?edit-mode=workHistory`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=workHistory`,
   },
 }
