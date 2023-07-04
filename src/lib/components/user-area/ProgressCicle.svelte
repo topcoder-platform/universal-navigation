@@ -4,7 +4,8 @@
   // 94.247 is the circumference of the svg circle
   const c = 94.247;
 
-  $: offset = (-1 * progress) * c / 100;
+  // double the circle circumference minus the progress length
+  $: offset = c * 2 - (progress * c / 100);
 
 </script>
 
