@@ -5,12 +5,16 @@
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
   import VerticalSeparator from '../VerticalSeparator.svelte';
-  import { fetchUserProfile, fetchUserProfileCompletedness } from 'lib/functions/user-profile.provider';
+  import { fetchUserProfile } from 'lib/functions/user-profile.provider';
   import { onMount } from 'svelte';
   import Completedness from './Completedness.svelte';
   import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
+  import { fetchUserProfileCompletedness } from 'lib/functions/profile-completeness';
 
-  const ctx = getAppContext()
+  const ctx = getAppContext();
+
+  // debounce updats to user if user.handle stays the same
+  let debounce = '';
 
   $: ({
     signIn: onSignIn = () => {},
@@ -23,11 +27,12 @@
   } = $ctx.auth);
 
   async function fetchProfileDetails() {
-    if (!user) {
+    if (!user || debounce === user.handle) {
       return;
     }
 
-    const completednessData = await fetchUserProfileCompletedness(user);
+    debounce = user.handle;
+    const completednessData = await fetchUserProfileCompletedness(user, true);
 
     if (!completednessData) {
       return;
@@ -42,9 +47,11 @@
         showToast: completednessData.showToast,
       },
     };
+
+    setTimeout(() => debounce = '', 100);
   }
 
-  $: isReady && fetchProfileDetails();
+  $: isReady && user?.handle && fetchProfileDetails();
 
   onMount(async () => {
     if (autoFetchUser !== true) {
