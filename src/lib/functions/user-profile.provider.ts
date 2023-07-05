@@ -85,14 +85,19 @@ export const fetchUserProfileCompletedness = async (user: AuthUser): Promise<Pro
   localCache[cacheKey] = new Promise((r) => {resolve = r});
 
   const requestUrl: string = `${TC_API_V5_HOST}/members/${userHandle}/profileCompleteness`;
-  const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
+  const response = await fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
 
-  const response = await (await request).json();
+  if (!response?.ok) {
+    return;
+  }
+
+  const responseJSON = await response.json();
+
   resolve({
-    ...response,
+    ...responseJSON,
     data: {
-      ...response.data,
-      percentComplete: (response?.data?.percentComplete ?? 0) * 100,
+      ...responseJSON.data,
+      percentComplete: (responseJSON?.data?.percentComplete ?? 0) * 100,
     },
   });
 
