@@ -30,7 +30,14 @@
 </script>
 
 {#if isReady && user}
-  <div class={classnames(styles.wrap, isReady && styles.isReady, animate && styles.animate)}>
+  <div class={
+    classnames(
+      styles.wrap,
+      isReady && styles.isReady,
+      animate && styles.animate,
+      profileCompletionData.completed && styles.isCompleted,
+    )
+  }>
   {#if profileCompletionData.completed}
     <div class={styles.completed}></div>
   {:else}

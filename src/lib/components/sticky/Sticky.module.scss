@@ -1,0 +1,6 @@
+.sticky {
+  &.sticky.sticky {
+    position: fixed;
+    top: var(--top-offset, 0);
+  }
+}
