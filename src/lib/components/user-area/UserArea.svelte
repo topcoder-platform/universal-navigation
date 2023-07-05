@@ -1,14 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { getAppContext } from 'lib/app-context';
-  import {
-    checkUserAppRole,
-    fetchUserProfile,
-    fetchUserProfileCompletedness,
-    getUserAppRoles,
-  } from 'lib/functions/user-profile.provider';
+  import { checkUserAppRole, fetchUserProfile } from 'lib/functions/user-profile.provider';
+  import { fetchUserProfileCompletedness } from 'lib/functions/profile-completeness';
   import { AUTH_USER_ROLE } from 'lib/config/auth';
-  import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
   import Button from '../Button.svelte';
@@ -18,7 +13,10 @@
   import styles from './UserArea.module.scss'
   import Completedness from './Completedness.svelte';
 
-  const ctx = getAppContext()
+  const ctx = getAppContext();
+
+  // debounce updates to user if user.handle stays the same
+  let debounce = '';
 
   $: ({
     signIn: onSignIn = () => {},
@@ -32,11 +30,12 @@
 
   async function fetchProfileDetails() {
     // do nothing if user is not authenticated or has customer role
-    if (!user || checkUserAppRole(AUTH_USER_ROLE.customer)) {
+    if (!user || checkUserAppRole(AUTH_USER_ROLE.customer) || debounce === user.handle) {
       return;
     }
 
-    const completednessData = await fetchUserProfileCompletedness(user);
+    debounce = user.handle;
+    const completednessData = await fetchUserProfileCompletedness(user, true);
 
     if (!completednessData) {
       return;
@@ -51,9 +50,11 @@
         showToast: completednessData.showToast,
       },
     };
+
+    setTimeout(() => debounce = '', 100);
   }
 
-  $: isReady && fetchProfileDetails();
+  $: isReady && user?.handle && fetchProfileDetails();
 
   onMount(async () => {
     if (autoFetchUser !== true) {

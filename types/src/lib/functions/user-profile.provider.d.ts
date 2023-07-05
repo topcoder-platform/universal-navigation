@@ -10,15 +10,3 @@ export declare const checkUserAppRole: (role: AUTH_USER_ROLE) => boolean;
  * @returns Promise<AuthUser>
  */
 export declare const fetchUserProfile: () => Promise<AuthUser>;
-export interface ProfileCompletednessResponse {
-    handle: string;
-    showToast: string;
-    data: {
-        percentComplete: number;
-    };
-}
-/**
- * Fetches the user profile completedness
- * @returns Promise<ProfileCompletednessResponse>
- */
-export declare const fetchUserProfileCompletedness: (user: AuthUser) => Promise<ProfileCompletednessResponse>;
