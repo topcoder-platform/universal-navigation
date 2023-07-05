@@ -13,7 +13,7 @@
 
   const ctx = getAppContext();
 
-  // debounce updats to user if user.handle stays the same
+  // debounce updates to user if user.handle stays the same
   let debounce = '';
 
   $: ({
