@@ -51,6 +51,8 @@
     box-sizing: border-box;
 
     font-family: $roboto;
+    position: relative;
+    z-index: 1;
   }
 
   &:hover, &.popupVisible {
