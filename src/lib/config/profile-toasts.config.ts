@@ -81,6 +81,6 @@ export const toastsMeta: {
     title: 'Experience says it all!',
     message: 'Show off all your hard work and amazing gigs.',
     ctaText: 'Add Experience',
-    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=workHistory`,
+    ctaLink: (userhandle: string) => `${PROFILE_HOST}/${userhandle}?edit-mode=workExperience`,
   },
 }

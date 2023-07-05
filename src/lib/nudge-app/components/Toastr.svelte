@@ -4,7 +4,7 @@
   import styles from './Toastr.module.scss';
   import { classnames } from 'lib/utils/classnames';
   import Animation from './Animation.svelte';
-  import type { ToastType } from '../config';
+  import type { ToastType } from '../../config/profile-toasts.config';
 
   export let toast: ToastType;
   export let userhandle: string;

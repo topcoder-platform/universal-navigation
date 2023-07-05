@@ -2,7 +2,7 @@
   import { getAppContext } from 'lib/app-context';
   import Toastr from './components/Toastr.svelte';
   import styles from './Nudge.module.scss';
-  import type { ToastType } from './config';
+  import type { ToastType } from 'lib/config/profile-toasts.config';
   import { getToast, hideToast } from './toast-manager';
 
   const ctx = getAppContext();

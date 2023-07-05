@@ -1,6 +1,6 @@
 import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 import { checkCookie, getCookieValue, setCookie } from '../utils/cookies';
-import { toastsMeta } from "./config";
+import { toastsMeta } from 'lib/config/profile-toasts.config';
 
 const TOAST_COOKIE = 'uni-toast-shown';
 const TOAST_COOKIE_ACTIVE_PERIOD_DAYS = 7;
