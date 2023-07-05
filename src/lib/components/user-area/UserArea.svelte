@@ -1,14 +1,22 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { getAppContext } from 'lib/app-context';
+  import {
+    checkUserAppRole,
+    fetchUserProfile,
+    fetchUserProfileCompletedness,
+    getUserAppRoles,
+  } from 'lib/functions/user-profile.provider';
+  import { AUTH_USER_ROLE } from 'lib/config/auth';
+  import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
+
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
   import Button from '../Button.svelte';
+  import VerticalSeparator from '../VerticalSeparator.svelte';
+
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
-  import VerticalSeparator from '../VerticalSeparator.svelte';
-  import { fetchUserProfile, fetchUserProfileCompletedness } from 'lib/functions/user-profile.provider';
-  import { onMount } from 'svelte';
   import Completedness from './Completedness.svelte';
-  import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 
   const ctx = getAppContext()
 
@@ -19,11 +27,12 @@
     ready: isReady,
     autoFetchUser,
     user,
-    profileCompletionData = {} as ProfileCompletionData,
+    profileCompletionData,
   } = $ctx.auth);
 
   async function fetchProfileDetails() {
-    if (!user) {
+    // do nothing if user is not authenticated or has customer role
+    if (!user || checkUserAppRole(AUTH_USER_ROLE.customer)) {
       return;
     }
 
@@ -72,7 +81,9 @@
         onSignOut={onSignOut}
         profileCompletionPerc={profileCompletionData?.percentComplete ?? 0}
       >
+        {#if profileCompletionData}
         <Completedness />
+        {/if}
       </UserAvatar>
     {/if}
   </div>
