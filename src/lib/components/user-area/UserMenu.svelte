@@ -2,6 +2,7 @@
   import type { AuthUser } from "lib/app-context";
   import { COMMUNITY_HOST } from "lib/config";
   import { routeMatchesUrl } from "lib/utils/routes";
+  import { dismissNudgesBasedOnHost } from "lib/functions/profile-nudges";
   import styles from "./UserMenu.module.scss";
 
   export let user: AuthUser;
@@ -23,7 +24,7 @@
 
 <div class={styles.userMenu}>
   <ul>
-    <li class:nudge={profileCompletionPerc < 100}>
+    <li class:nudge={!dismissNudgesBasedOnHost() && profileCompletionPerc < 100}>
       <a
         href={MY_PROFILE_URL}
         class:active={isActive(MY_PROFILE_URL)}
