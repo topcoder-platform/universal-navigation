@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { getAppContext } from 'lib/app-context';
   import { checkUserAppRole, fetchUserProfile } from 'lib/functions/user-profile.provider';
-  import { fetchUserProfileCompletedness } from 'lib/functions/profile-completeness';
+  import { fetchUserProfileCompletedness, dismissNudgesBasedOnHost } from 'lib/functions/profile-nudges';
   import { AUTH_USER_ROLE } from 'lib/config/auth';
 
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
@@ -30,7 +30,7 @@
 
   async function fetchProfileDetails() {
     // do nothing if user is not authenticated or has customer role
-    if (!user || checkUserAppRole(AUTH_USER_ROLE.customer) || debounce === user.handle) {
+    if (dismissNudgesBasedOnHost() || !user || checkUserAppRole(AUTH_USER_ROLE.customer) || debounce === user.handle) {
       return;
     }
 

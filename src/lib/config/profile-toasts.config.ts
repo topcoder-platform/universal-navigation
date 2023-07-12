@@ -1,4 +1,18 @@
-import { PROFILE_HOST } from "lib/config/hosts"
+import {
+  CONNECT_HOST,
+  ONBOARDING_HOST,
+  PROFILE_HOST,
+  TALENT_SEARCH_HOST,
+  WORK_MANAGER_HOST,
+} from "lib/config/hosts";
+
+export const NUDGES_DISABLED_HOSTS = [
+  CONNECT_HOST,
+  ONBOARDING_HOST,
+  PROFILE_HOST,
+  TALENT_SEARCH_HOST,
+  WORK_MANAGER_HOST,
+];
 
 export interface ToastType {
   theme: 'bio' | 'education' | 'gigAvailability' | 'profilePicture' | 'skills' | 'verified' | 'workHistory'
