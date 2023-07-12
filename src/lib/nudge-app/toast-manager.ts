@@ -1,6 +1,7 @@
 import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
-import { checkCookie, getCookieValue, setCookie } from '../utils/cookies';
 import { toastsMeta } from 'lib/config/profile-toasts.config';
+import { checkCookie, getCookieValue, setCookie } from '../utils/cookies';
+import { dismissNudgesBasedOnHost } from '../functions/profile-nudges';
 
 const TOAST_COOKIE = 'uni-toast-shown';
 const TOAST_COOKIE_ACTIVE_PERIOD_DAYS = 7;
@@ -23,7 +24,7 @@ function getLastSeenToast() {
  * @returns
  */
 export const getToast = (completednessData: ProfileCompletionData) => {
-  if (!completednessData || completednessData.completed || isToastDismissed()) {
+  if (dismissNudgesBasedOnHost() || !completednessData || completednessData.completed || isToastDismissed()) {
     return;
   }
 

@@ -1,6 +1,19 @@
 import { TC_API_V5_HOST } from "lib/config";
-import { getRequestAuthHeaders } from "./auth-jwt";
 import type { AuthUser } from "lib/app-context";
+import { NUDGES_DISABLED_HOSTS } from "lib/config/profile-toasts.config";
+
+import { getRequestAuthHeaders } from "./auth-jwt";
+
+/**
+ * Check if we're on a domain that should not show the profile nudges
+ * @returns Boolean
+ */
+export function dismissNudgesBasedOnHost(): boolean {
+  const locationHostname = window?.location.hostname ?? ''
+  return !! NUDGES_DISABLED_HOSTS.find(host => (
+    host.match(new RegExp(`^https?:\/\/${locationHostname}`, 'i'))
+  ));
+}
 
 // store fetched data in a local cache (de-duplicate immediate api calls)
 const localCache = {};
