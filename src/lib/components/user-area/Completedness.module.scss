@@ -108,9 +108,14 @@
     opacity: 1;
     transform: translate(-50%,-50%) scale(0.01);
   }
-  100% {
+  99.99% {
     opacity: 0;
     transform: translate(-50%,-50%) scale(2);
+    pointer-events: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(0.01);
     pointer-events: none;
   }
 }

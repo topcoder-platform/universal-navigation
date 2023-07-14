@@ -1,5 +1,6 @@
 @import 'lib/styles/fonts.scss';
 @import 'lib/styles/palette.scss';
+@import 'lib/styles/mixins.scss';
 
 .toastr {
   display: flex;
@@ -56,6 +57,10 @@
 
   &:global(.workHistory-theme) {
     background: linear-gradient(265.38deg, #30178C 1.99%, #5CB3DE 98.19%);
+  }
+
+  @include mobile {
+    width: 100%;
   }
 }
 
