@@ -118,7 +118,7 @@ async function init(
   if (navType === 'tool' || navType === 'marketing') {
     triggerSprig(ctx.get('appContext'))
     triggerChameleon(ctx.get('appContext'))
-    loadNudgeApp(ctx, targetEl)
+    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'))
   }
 }
 

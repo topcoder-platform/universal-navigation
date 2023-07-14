@@ -1,7 +1,9 @@
 @import 'lib/styles/mixins.scss';
 
 .nudgeOuter {
-  position: relative;
+  position: absolute;
+  top: calc(var(--uninav-header-height) + var(--top-offset));
+  left: 0;
   z-index: 19;
 
   height: 0;
