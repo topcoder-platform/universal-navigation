@@ -61,6 +61,7 @@
 
   @include mobile {
     width: 100%;
+    max-width: 520px;
   }
 }
 
@@ -68,6 +69,7 @@
   flex: 1 1 52%;
   position: relative;
   pointer-events: none;
+  max-width: 200px;
 
   .animation {
     width: 200px;
