@@ -23,9 +23,13 @@ export const getUserAppRoles = (): AuthUser['roles'] | undefined => {
   return (getJwtUserRoles() ?? []).filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
 }
 
+export const checkUserAppRole = (role: AUTH_USER_ROLE): boolean => (
+  getUserAppRoles().indexOf(role) > -1
+);
+
 /**
  * Fetches the user profile based on the handle that's stored in the jwt cookie
- * @returns Promise<>
+ * @returns Promise<AuthUser>
  */
 export const fetchUserProfile = async (): Promise<AuthUser> => {
   const userHandle = getJwtUserhandle();

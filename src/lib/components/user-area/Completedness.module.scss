@@ -1,0 +1,139 @@
+.wrap {
+  --offset: -4px;
+
+  position: absolute;
+  top: var(--offset);
+  left: var(--offset);
+  right: var(--offset);
+  bottom: var(--offset);
+
+  border-radius: 50%;
+
+  &.isCompleted {
+    --offset: -3px;
+  }
+}
+
+.completed {
+  background: linear-gradient(265.28deg, #038664 -25.88%, #079615 -25.87%, #00FCFC 11.82%, #13AF52 75.39%, #077269 116.04%);
+  border-radius: 50%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background: linear-gradient(265.28deg, #F4E560 4.2%, #FFB100 87.6%);
+    border-radius: 50%;
+  }
+}
+
+.inProgress {
+  img {
+    display: block;
+    z-index: -1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.01);
+    background: #fff;
+    border-radius: 50%;
+  }
+}
+
+.progressCircle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+}
+
+/**
+  * Animation
+  */
+
+.wrap {
+  &:not(.isReady) {
+    .completed,
+    .inProgress:before,
+    .inProgress img,
+    .progressCircle {
+      display: none;
+    }
+  }
+
+  &.isReady:not(.animate) {
+    .inProgress:before,
+    .inProgress img {
+      display: none;
+    }
+  }
+}
+
+.animate {
+  .inProgress {
+    img {
+      animation: fadeOut 0s ease-in-out 1.5s 1 forwards;
+    }
+    &:before {
+      animation: fadeIn 0.5s ease-in-out 1.2s 1 forwards;
+    }
+  }
+  .progressCircle {
+    animation: fadeAfter 0s ease-in-out 1.5s 1 both;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(0.01);
+  }
+  99.99% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(2);
+    pointer-events: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(0.01);
+    pointer-events: none;
+  }
+}
+
+@keyframes fadeOut {
+  0%, 99% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeAfter {
+  0%, 99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}

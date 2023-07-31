@@ -1,14 +1,16 @@
 <script lang="ts">
   import type { AuthUser } from "lib/app-context";
-  import { COMMUNITY_HOST } from "lib/config";
+  import { ACCOUNT_SETTINGS_HOST, PROFILE_HOST } from "lib/config";
   import { routeMatchesUrl } from "lib/utils/routes";
+  import { dismissNudgesBasedOnHost } from "lib/functions/profile-nudges";
   import styles from "./UserMenu.module.scss";
 
   export let user: AuthUser;
   export let onSignOut: () => void;
+  export let profileCompletionPerc: number;
 
-  const MY_PROFILE_URL = `${COMMUNITY_HOST}/members/${user.handle}`;
-  const ACC_SETTINGS_URL = `${COMMUNITY_HOST}/settings/profile`;
+  const MY_PROFILE_URL = `${PROFILE_HOST}/${user.handle}`;
+  const ACC_SETTINGS_URL = `${ACCOUNT_SETTINGS_HOST}`;
 
   function isActive(url: string): boolean {
     if (typeof window === 'undefined') {
@@ -22,7 +24,7 @@
 
 <div class={styles.userMenu}>
   <ul>
-    <li>
+    <li class:nudge={!dismissNudgesBasedOnHost() && profileCompletionPerc < 100}>
       <a
         href={MY_PROFILE_URL}
         class:active={isActive(MY_PROFILE_URL)}

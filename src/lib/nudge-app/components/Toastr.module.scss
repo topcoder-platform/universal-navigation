@@ -1,0 +1,158 @@
+@import 'lib/styles/fonts.scss';
+@import 'lib/styles/palette.scss';
+@import 'lib/styles/mixins.scss';
+
+.toastr {
+  display: flex;
+  min-height: 105px;
+  width: 407px;
+  padding: 6px 9px;
+  gap: 6px;
+  border-radius: 11px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(265.38deg, #E8735A 1.99%, #66108F 98.19%);
+
+  &:global(.hidden) {
+    opacity: 0;
+    // visibility: hidden;
+    pointer-events: none;
+    // move up and fade in when shown
+    transform: translate(0, -30px);
+    transition: transform 0.3s ease-in-out, opacity 0.18s ease-in-out 0.1s, visibility 0.01ms 0.3s;
+  }
+
+  &:not(:global(.hidden)) {
+    opacity: 1;
+    // visibility: visible;
+    pointer-events: all;
+    // move down and fade out when hidden
+    transform: translate(0, 0);
+    transition: transform 0.3s ease-in-out, opacity 0.18s ease-in-out, visibility 0.01ms;
+  }
+
+  &:global(.bio-theme) {
+    background: linear-gradient(273.53deg, #070318 0%, #00ABFF 78.46%);
+  }
+
+  &:global(.education-theme) {
+    background: linear-gradient(265.38deg, #E8735A 1.99%, #66108F 98.19%);
+  }
+
+  &:global(.gigAvailability-theme) {
+    background: linear-gradient(265.38deg, #30178C 1.99%, #5CB3DE 98.19%);
+  }
+
+  &:global(.profilePicture-theme) {
+    background: linear-gradient(265.38deg, #EF476F 1.99%, #9D41C9 98.19%);
+
+  }
+
+  &:global(.skills-theme) {
+    background: linear-gradient(265.38deg, #EF476F 1.99%, #9D41C9 98.19%);
+  }
+
+  &:global(.verified-theme) {
+    background: linear-gradient(265.38deg, #E8735A 1.99%, #66108F 98.19%);
+  }
+
+  &:global(.workHistory-theme) {
+    background: linear-gradient(265.38deg, #30178C 1.99%, #5CB3DE 98.19%);
+  }
+
+  @include mobile {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+.icon {
+  flex: 1 1 52%;
+  position: relative;
+  pointer-events: none;
+  max-width: 200px;
+
+  .animation {
+    width: 200px;
+    height: 190px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .toastr:global(.bio-theme) & {
+
+    }
+    .toastr:global(.gigAvailability-theme) & {
+      height: 190px;
+    }
+    .toastr:global(.profilePicture-theme) & {
+      height: 170px;
+      transform: translate(-50%,-58%);
+    }
+    .toastr:global(.skills-theme) & {
+      height: 200px;
+    }
+    .toastr:global(.verified-theme) & {
+      height: 190px;
+    }
+    .toastr:global(.workHistory-theme) & {
+      transform: translate(-50%,-58%);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.contents {
+  flex: 1 1 48%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+
+  font-family: $roboto;
+  color: #fff;
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .message {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .ctaBtn {
+    display: block;
+    height: 30px;
+    padding: 5px 15px;
+    border-radius: 25px;
+
+    background: tc-color(black, 100);
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    transition: 0.15s ease-in-out;
+
+    &:hover {
+      background: tc-color(black, tc);
+    }
+  }
+}
+
+.close {
+  padding-top: 3px;
+  flex: 0 0 16px;
+
+  cursor: pointer;
+}

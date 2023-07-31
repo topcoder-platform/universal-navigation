@@ -35,3 +35,7 @@ export const SELF_SERVICE_HOST: string = `https://work.${TC_DOMAIN}`;
 export const TC_API_V5_HOST: string = `https://api.${TC_DOMAIN}/v5`;
 export const CONNECT_HOST: string = `https://connect.${TC_DOMAIN}`;
 export const WORK_MANAGER_HOST: string = `https://challenges.${TC_DOMAIN}`;
+export const PROFILE_HOST: string = `https://profiles.${TC_DOMAIN}`;
+export const ONBOARDING_HOST: string = `https://onboarding.${TC_DOMAIN}`;
+export const TALENT_SEARCH_HOST: string = `https://talent-search.${TC_DOMAIN}`;
+export const ACCOUNT_SETTINGS_HOST: string = `https://account-settings.${TC_DOMAIN}`;

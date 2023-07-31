@@ -4,6 +4,7 @@ import type { Writable } from 'svelte/store'
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import { triggerSprig } from 'lib/functions/integrations/sprig';
 import { triggerChameleon } from './lib/functions/integrations/chameleon'
+import { loadNudgeApp } from './lib/functions/load-nudge-app'
 
 import 'lib/styles/main.scss';
 
@@ -117,6 +118,7 @@ async function init(
   if (navType === 'tool' || navType === 'marketing') {
     triggerSprig(ctx.get('appContext'))
     triggerChameleon(ctx.get('appContext'))
+    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'))
   }
 }
 
