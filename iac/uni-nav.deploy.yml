@@ -169,6 +169,7 @@ Resources:
               - !Sub https://profiles.${Domain}
               - !Sub https://talent-search.${Domain}
               - !Sub https://account-settings.${Domain}
+              - !Sub https://onboarding.${Domain}
 
               # Platform UI Local
               - !If
@@ -211,6 +212,12 @@ Resources:
                 - IsProd
                 - !Ref AWS::NoValue
                 - !Sub "https://account-settings.local.${Domain}"
+
+              # Onboarding Local
+              - !If
+                - IsProd
+                - !Ref AWS::NoValue
+                - !Sub "https://onboarding.local.${Domain}"
 
               # Talent search Local
               - !If
