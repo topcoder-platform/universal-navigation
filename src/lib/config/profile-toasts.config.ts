@@ -7,13 +7,17 @@ import {
   WORK_MANAGER_HOST,
 } from "lib/config/hosts";
 
-export const NUDGES_DISABLED_HOSTS = [
+export const CUSTOMER_HOSTS = [
   CONNECT_HOST,
-  ONBOARDING_HOST,
-  PROFILE_HOST,
   SELF_SERVICE_HOST,
   TALENT_SEARCH_HOST,
   WORK_MANAGER_HOST,
+]
+
+export const NUDGES_DISABLED_HOSTS = [
+  ...CUSTOMER_HOSTS,
+  ONBOARDING_HOST,
+  PROFILE_HOST,
 ];
 
 export interface ToastType {
