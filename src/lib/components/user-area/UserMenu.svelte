@@ -2,12 +2,11 @@
   import type { AuthUser } from "lib/app-context";
   import { ACCOUNT_SETTINGS_HOST, PROFILE_HOST } from "lib/config";
   import { routeMatchesUrl } from "lib/utils/routes";
-  import { dismissNudgesBasedOnHost } from "lib/functions/profile-nudges";
   import styles from "./UserMenu.module.scss";
 
   export let user: AuthUser;
   export let onSignOut: () => void;
-  export let profileCompletionPerc: number;
+  export let profileCompletionPerc: number | undefined;
 
   const MY_PROFILE_URL = `${PROFILE_HOST}/${user.handle}`;
   const ACC_SETTINGS_URL = `${ACCOUNT_SETTINGS_HOST}`;
@@ -24,7 +23,7 @@
 
 <div class={styles.userMenu}>
   <ul>
-    <li class:nudge={!dismissNudgesBasedOnHost() && profileCompletionPerc < 100}>
+    <li class:nudge={profileCompletionPerc !== undefined && profileCompletionPerc < 100}>
       <a
         href={MY_PROFILE_URL}
         class:active={isActive(MY_PROFILE_URL)}

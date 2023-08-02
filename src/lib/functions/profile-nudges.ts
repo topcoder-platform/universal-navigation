@@ -10,7 +10,7 @@ import { getRequestAuthHeaders } from "./auth-jwt";
  */
 export function dismissNudgesBasedOnHost(): boolean {
   const locationHostname = window?.location.hostname ?? ''
-  return !! NUDGES_DISABLED_HOSTS.find(host => (
+  return !!NUDGES_DISABLED_HOSTS.find(host => (
     host.match(new RegExp(`^https?:\/\/${locationHostname}`, 'i'))
   ));
 }

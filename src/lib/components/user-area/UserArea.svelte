@@ -30,7 +30,7 @@
 
   async function fetchProfileDetails() {
     // do nothing if user is not authenticated or has customer role
-    if (dismissNudgesBasedOnHost() || !user || checkUserAppRole(AUTH_USER_ROLE.customer) || debounce === user.handle) {
+    if (!user || checkUserAppRole(AUTH_USER_ROLE.customer) || debounce === user.handle) {
       return;
     }
 
@@ -80,7 +80,7 @@
       <UserAvatar
         user={user}
         onSignOut={onSignOut}
-        profileCompletionPerc={profileCompletionData?.percentComplete ?? 0}
+        profileCompletionPerc={profileCompletionData?.percentComplete}
       >
         {#if profileCompletionData}
         <Completedness />
