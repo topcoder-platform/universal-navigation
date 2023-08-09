@@ -12,6 +12,7 @@ export const toolSelectorNavItems: NavMenuItem = {
           children: [
             allNavItems.topCrowdApp,
             allNavItems.selfServiceApp,
+            allNavItems.talentSearchApp,
           ]
         },
         {
