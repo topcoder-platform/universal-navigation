@@ -10,6 +10,7 @@ import {
     ONLINE_REVIEW_HOST,
     PACTS_HOST,
     SELF_SERVICE_HOST,
+    TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
     THRIVE_HOST,
     WORK_MANAGER_HOST,
@@ -372,6 +373,12 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Talent',
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
         url: getWordpressUrl('/talent'),
+    },
+    talentSearchApp: {
+        label: 'Talent Search',
+        icon: 'talent-search',
+        description: 'Find skilled talent for your next project',
+        url: TALENT_SEARCH_HOST,
     },
     talentTheCommunity: {
       label: 'The Community',

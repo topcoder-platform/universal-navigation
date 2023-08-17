@@ -1,3 +1,4 @@
+export declare const CUSTOMER_HOSTS: string[];
 export declare const NUDGES_DISABLED_HOSTS: string[];
 export interface ToastType {
     theme: 'bio' | 'education' | 'gigAvailability' | 'profilePicture' | 'skills' | 'verified' | 'workHistory';
