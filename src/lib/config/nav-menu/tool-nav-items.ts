@@ -1,5 +1,6 @@
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
+import { allNavItems } from "./all-nav-items.config";
 import { mainNavigationItems } from "./main-navigation.config";
 
 export const toolNavItems: NavMenuItem = {
@@ -7,3 +8,8 @@ export const toolNavItems: NavMenuItem = {
       ...mainNavigationItems,
     ],
 }
+
+export const toolCtaNavItems: NavMenuItem[] = [
+  allNavItems.talkToAnExpert,
+  allNavItems.bookADemo,
+]

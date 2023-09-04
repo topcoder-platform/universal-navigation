@@ -16,6 +16,7 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
         name: any;
         root: any;
         fullFooter: any;
+        showSalesCta: any;
     };
     supportMeta: any;
     integrations: any;

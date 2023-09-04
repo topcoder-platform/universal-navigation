@@ -8,3 +8,5 @@ export function getMainNavItems(isAuthenticated: boolean): NavMenuItem[] {
   const menu = JSON.parse(JSON.stringify(navMenu));
   return activateAuthenticatedRoutes(isAuthenticated, menu);
 }
+
+export { toolCtaNavItems } from 'lib/config/nav-menu/tool-nav-items'
