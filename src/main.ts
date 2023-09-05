@@ -21,6 +21,7 @@ export type NavigationAppProps = {
   toolName?: string,
   toolRoot?: string,
   fullFooter?: boolean,
+  showSalesCta?: boolean,
   handleNavigation?: NavigationHandler
 
   onReady?: () => void

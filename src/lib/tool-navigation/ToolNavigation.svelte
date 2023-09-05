@@ -18,6 +18,7 @@
 
   import styles from './ToolNavigation.module.scss';
   import ToolNavSeparator from './tool-nav-separator/ToolNavSeparator.svelte';
+  import SalesCtaButtons from './SalesCtaButtons.svelte';
 
   const ctx = getAppContext()
   $: ({toolConfig, navigationHandler, auth} = $ctx)
@@ -88,5 +89,10 @@
     </div>
   {/if}
 
-  <UserArea slot="right" />
+  <svelte:fragment slot="right">
+    {#if !$isMobile && toolConfig.showSalesCta && auth.ready}
+      <SalesCtaButtons isAuthenticated={isAuthenticated} />
+    {/if}
+    <UserArea />
+  </svelte:fragment>
 </TopNavbar>

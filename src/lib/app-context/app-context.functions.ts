@@ -16,12 +16,17 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
     supportMeta = prevContext.supportMeta,
     integrations = prevContext.integrations,
     fullFooter = prevContext.toolConfig?.fullFooter,
+    showSalesCta = prevContext.toolConfig?.showSalesCta,
     profileCompletionData = prevContext.auth?.profileCompletionData,
   } = {...newConfig, user: undefined}
 
   const hasUserProp = hasOwnProperty(newConfig, 'user') && newConfig['user'] !== 'auto'
-  // user: 'atuo' translates to auth.autoFetchUser: true
-  const autoFetchUser = hasOwnProperty(newConfig, 'user') ? newConfig['user'] === 'auto' : !!prevContext.auth?.autoFetchUser
+
+  // user: 'auto' translates to auth.autoFetchUser: true
+  const autoFetchUser = hasOwnProperty(newConfig, 'user')
+    ? newConfig['user'] === 'auto' : (
+      prevContext.auth?.autoFetchUser === false ? false : true
+    )
 
   return {
     auth: {
@@ -38,6 +43,7 @@ export const buildContext = (newConfig: Partial<NavigationAppProps>, prevContext
       name: toolName,
       root: toolRoot,
       fullFooter,
+      showSalesCta,
     },
     supportMeta,
     integrations,

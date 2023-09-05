@@ -83,5 +83,12 @@
     border-radius: 24px;
 
     padding: 0 16px;
+
+
+    &.cta {
+      background: #137D60;
+      border: #137D60;
+      margin-right: -12px;
+    }
   }
 }
