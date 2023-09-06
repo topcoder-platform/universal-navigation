@@ -5,7 +5,7 @@
 
   export let ref: Element | undefined = undefined;
 
-  export let style: "primary" | "secondary" | "tertiary";
+  export let style: "primary" | "secondary" | "tertiary" | 'cta';
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
   export let hoveredMenuItem: NavMenuItem = undefined;
