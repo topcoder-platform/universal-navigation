@@ -268,7 +268,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
                 url: getWordpressUrl('/releases'),
             },
             {
-                label: 'Change Log',
+                label: 'Changelog',
                 url: getWordpressUrl('/changelog'),
             },
         ]
