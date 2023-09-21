@@ -266,7 +266,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
             {
                 label: 'Releases',
                 url: getWordpressUrl('/releases'),
-            }
+            },
+            {
+                label: 'Changelog',
+                url: getWordpressUrl('/changelog'),
+            },
         ]
     },
     partners: {
