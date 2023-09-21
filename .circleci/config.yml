@@ -1,234 +1,232 @@
 version: 2.1
 
 defaults: &defaults
-    docker:
-      - image: node:16.14
+  docker:
+    - image: node:16.14
 
 # DEFINE INDIVIDUAL STEPS
 
 deploy_defaults: &deploy_defaults
-    docker:
-      - image: cimg/python:3.10.2
+  docker:
+    - image: cimg/python:3.10.2
 
 install_build_dependency: &install_build_dependency
-    name: Installation of build and deployment dependencies.
-    command: |
-        apt-get update -y && apt-get install -qq -y python-pip libpython-dev
-        curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
-        #installing awscli
-        pip install awscli --upgrade
-        apt install jq -y
+  name: Installation of build and deployment dependencies.
+  command: |
+    apt-get update -y && apt-get install -qq -y python-pip libpython-dev
+    curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
+    #installing awscli
+    pip install awscli --upgrade
+    apt install jq -y
 
 install_dependency: &install_dependency
-    name: Installation of build and deployment dependencies.
-    command: |
-        pip3 install awscli --upgrade
+  name: Installation of build and deployment dependencies.
+  command: |
+    pip3 install awscli --upgrade
 
 install_deploysuite: &install_deploysuite
-    name: Installation of install_deploysuite.
-    command: |
-        git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
-        cp ./../buildscript/master_deploy.sh .
-        cp ./../buildscript/buildenv.sh .
-        cp ./../buildscript/awsconfiguration.sh .
+  name: Installation of install_deploysuite.
+  command: |
+    git clone --branch v1.4.13 https://github.com/topcoder-platform/tc-deploy-scripts ../buildscript
+    cp ./../buildscript/master_deploy.sh .
+    cp ./../buildscript/buildenv.sh .
+    cp ./../buildscript/awsconfiguration.sh .
 
 restore_cache_settings_for_build: &restore_cache_settings_for_build
-    key: connect-node-modules-{{ checksum package-lock.json" }}
+  key: connect-node-modules-{{ checksum package-lock.json" }}
 
 save_cache_settings: &save_cache_settings
-    key: connect-node-modules-{{ checksum "package-lock.json" }}
-    paths:
-        - node_modules
+  key: connect-node-modules-{{ checksum "package-lock.json" }}
+  paths:
+    - node_modules
 
 build_configuration_fetch: &build_configuration_fetch
-    name: "configuring environment"
-    command: |
-      ./awsconfiguration.sh $DEPLOY_ENV
-      aws s3 cp s3://tc-uninav-${LOGICAL_ENV}/securitymanager/uni-nav.env.${LOGICAL_ENV} ./.env
+  name: "configuring environment"
+  command: |
+    ./awsconfiguration.sh $DEPLOY_ENV
+    aws s3 cp s3://tc-uninav-${LOGICAL_ENV}/securitymanager/uni-nav.env.${LOGICAL_ENV} ./.env
 
 running_npm_build: &running_npm_build
-    name: Running npm Build
-    command: |
-        npm install
-        npm run build
+  name: Running npm Build
+  command: |
+    npm install
+    npm run build
 
 workspace_persist: &workspace_persist
-    root: .
-    paths:
-        - dist
+  root: .
+  paths:
+    - dist
 
 workspace_attach: &workspace_attach
-    at: ./workspace
+  at: ./workspace
 
 running_version_patch: &running_version_patch
-    name: Patching Version
-    command: |
-        npm install
-        git config user.name $CIRCLE_USERNAME
-        git config user.email security@topcoder.com
-        npm version patch -m "Increment Version [ci skip]"
-        git push --set-upstream origin $CIRCLE_BRANCH
+  name: Patching Version
+  command: |
+    npm install
+    git config user.name $CIRCLE_USERNAME
+    git config user.email security@topcoder.com
+    npm version patch -m "Increment Version [ci skip]"
+    git push --set-upstream origin $CIRCLE_BRANCH
 
+# NOTE: If this fails due to a deploy key issue, ensure the "Deploy Key" section of
+# the CircleCI project settings > SSH Keys section does not list a key.
 update_types: &update_types
-    name: Updating Types
-    command: |
-        npm ci
-        npm run types
-        diffstatus=$(git status --porcelain)
-        git config user.name $CIRCLE_USERNAME
-        git config user.email security@topcoder.com
-        git add types
-        git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
-        git push --set-upstream origin $CIRCLE_BRANCH
+  name: Updating Types
+  command: |
+    npm ci
+    npm run types
+    diffstatus=$(git status --porcelain)
+    git config user.name $CIRCLE_USERNAME
+    git config user.email security@topcoder.com
+    git add types
+    git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
+    git push --set-upstream origin $CIRCLE_BRANCH
 
 check_types: &check_types
-    name: Checking Types
-    command: |
-        npm ci
-        npm run types
-        diffstatus=$(git status --porcelain)
-        git config user.name $CIRCLE_USERNAME
-        git config user.email security@topcoder.com
-        git add types
-        git diff-index --cached --quiet HEAD || echo 'WARNING: Types need updating'
-        git diff-index --cached --quiet HEAD || exit 1
+  name: Checking Types
+  command: |
+    npm ci
+    npm run types
+    diffstatus=$(git status --porcelain)
+    git config user.name $CIRCLE_USERNAME
+    git config user.email security@topcoder.com
+    git add types
+    git diff-index --cached --quiet HEAD || echo 'WARNING: Types need updating'
+    git diff-index --cached --quiet HEAD || exit 1
 
 finger_print_add: &finger_print_add
-    fingerprints:
-            - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
-            
+  fingerprints:
+    - "a5:ad:51:96:10:a9:09:fb:7b:b4:fc:b7:08:df:ab:fa"
+
 # DEFINE STEPS FOR JOBS
 
 check_types_steps: &check_types_steps
-    - add_ssh_keys: *finger_print_add          
-    - checkout
-    - setup_remote_docker
-    - run: *install_build_dependency
-    - run: *install_deploysuite
-    - run: *check_types
+  - add_ssh_keys: *finger_print_add
+  - checkout
+  - setup_remote_docker
+  - run: *install_build_dependency
+  - run: *install_deploysuite
+  - run: *check_types
 
-build_steps_prod: &build_steps_prod
-    # Initialization.
-    - add_ssh_keys: *finger_print_add          
-    - checkout
-    - setup_remote_docker
-    - run: *install_build_dependency
-    - run: *install_deploysuite
-    - run: *build_configuration_fetch
-    - run: *update_types
-    - run: *running_version_patch
-    - run: *running_npm_build
-    - persist_to_workspace: *workspace_persist
+build_steps_prod: &build_steps_prod # Initialization.
+  - add_ssh_keys: *finger_print_add
+  - checkout
+  - setup_remote_docker
+  - run: *install_build_dependency
+  - run: *install_deploysuite
+  - run: *build_configuration_fetch
+  - run: *update_types
+  - run: *running_version_patch
+  - run: *running_npm_build
+  - persist_to_workspace: *workspace_persist
 
-build_steps: &build_steps
-    # Initialization.
-    - checkout
-    - setup_remote_docker
-    - run: *install_build_dependency
-    - run: *install_deploysuite
-    - run: *build_configuration_fetch
-    - run: *running_npm_build
-    - persist_to_workspace: *workspace_persist
+build_steps: &build_steps # Initialization.
+  - checkout
+  - setup_remote_docker
+  - run: *install_build_dependency
+  - run: *install_deploysuite
+  - run: *build_configuration_fetch
+  - run: *running_npm_build
+  - persist_to_workspace: *workspace_persist
 
 deploy_steps: &deploy_steps
-    - checkout
-    - attach_workspace: *workspace_attach
-    - run: *install_dependency
-    - run: *install_deploysuite
-    - deploy:
-        name: Running MasterScript
-        command: |
-            ./awsconfiguration.sh $DEPLOY_ENV
-            source awsenvconf
-            ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-deployvar
-            source buildenvvar
-            ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
+  - checkout
+  - attach_workspace: *workspace_attach
+  - run: *install_dependency
+  - run: *install_deploysuite
+  - deploy:
+      name: Running MasterScript
+      command: |
+        ./awsconfiguration.sh $DEPLOY_ENV
+        source awsenvconf
+        ./buildenv.sh -e $DEPLOY_ENV -b ${LOGICAL_ENV}-${APPNAME}-deployvar
+        source buildenvvar
+        ./master_deploy.sh -d CFRONT -e $DEPLOY_ENV -c $ENABLE_CACHE
 
 jobs:
+  check-types:
+    <<: *defaults
+    environment:
+      DEPLOY_ENV: "DEV"
+      LOGICAL_ENV: "dev"
+      APPNAME: "universal-navigation"
+    steps: *check_types_steps
 
-    check-types:
-        <<: *defaults
-        environment:
-            DEPLOY_ENV: "DEV"
-            LOGICAL_ENV: "dev"
-            APPNAME: "universal-navigation"
-        steps: *check_types_steps
+  build-dev:
+    <<: *defaults
+    environment:
+      DEPLOY_ENV: "DEV"
+      LOGICAL_ENV: "dev"
+      APPNAME: "universal-navigation"
+    steps: *build_steps
 
-    build-dev:
-        <<: *defaults
-        environment:
-            DEPLOY_ENV: "DEV"
-            LOGICAL_ENV: "dev"
-            APPNAME: "universal-navigation"
-        steps: *build_steps
+  build-prod:
+    <<: *defaults
+    environment:
+      DEPLOY_ENV: "PROD"
+      LOGICAL_ENV: "prod"
+      APPNAME: "universal-navigation"
+    steps: *build_steps_prod
 
-    build-prod:
-        <<: *defaults
-        environment:
-            DEPLOY_ENV: "PROD"
-            LOGICAL_ENV: "prod"
-            APPNAME: "universal-navigation"
-        steps: *build_steps_prod
+  # Just tests commited code.
+  deployDev:
+    <<: *deploy_defaults
+    environment:
+      DEPLOY_ENV: "DEV"
+      LOGICAL_ENV: "dev"
+      ENABLE_CACHE: true
+      APPNAME: "universal-navigation"
+    steps: *deploy_steps
 
-    # Just tests commited code.
-    deployDev:
-        <<: *deploy_defaults
-        environment:
-            DEPLOY_ENV: "DEV"
-            LOGICAL_ENV: "dev"
-            ENABLE_CACHE: true
-            APPNAME: "universal-navigation"
-        steps: *deploy_steps
-
-    deployProd:
-        <<: *deploy_defaults
-        environment:
-            DEPLOY_ENV: "PROD"
-            LOGICAL_ENV: "prod"
-            ENABLE_CACHE: true
-            APPNAME: "universal-navigation"
-        steps: *deploy_steps
+  deployProd:
+    <<: *deploy_defaults
+    environment:
+      DEPLOY_ENV: "PROD"
+      LOGICAL_ENV: "prod"
+      ENABLE_CACHE: true
+      APPNAME: "universal-navigation"
+    steps: *deploy_steps
 
 workflows:
-    version: 2
-    build:
-        jobs:
+  version: 2
+  build:
+    jobs:
+      - check-types:
+          context: org-global
+          filters:
+            branches:
+              ignore:
+                - master
 
-            - check-types:
-                context : org-global
-                filters:
-                    branches:
-                        ignore:
-                            - master
-                            
-            - build-dev:
-                context : org-global
-                filters:
-                    branches:
-                        ignore:
-                            - master
+      - build-dev:
+          context: org-global
+          filters:
+            branches:
+              ignore:
+                - master
 
-            - build-prod:
-                context : org-global
-                filters:
-                    branches:
-                        only:
-                            - master
+      - build-prod:
+          context: org-global
+          filters:
+            branches:
+              only:
+                - master
 
-            - deployDev:
-                context : org-global
-                requires:
-                    - build-dev
-                filters: 
-                    branches:
-                        only:
-                            - dev
+      - deployDev:
+          context: org-global
+          requires:
+            - build-dev
+          filters:
+            branches:
+              only:
+                - dev
 
-            - deployProd:
-                context : org-global
-                requires:
-                    - build-prod
-                filters: 
-                    branches:
-                        only:
-                            - master
+      - deployProd:
+          context: org-global
+          requires:
+            - build-prod
+          filters:
+            branches:
+              only:
+                - master
