@@ -2,7 +2,7 @@ import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { triggerSprig } from 'lib/functions/integrations/sprig';
+import { initUserflow, triggerFlow } from 'lib/functions/integrations/userflow';
 import { triggerChameleon } from './lib/functions/integrations/chameleon'
 import { loadNudgeApp } from './lib/functions/load-nudge-app'
 
@@ -113,13 +113,13 @@ async function init(
   targetEl.classList.add('tc-universal-nav')
 
   if (typeof readyCallback === 'function') {
-    readyCallback()
+    readyCallback();
   }
 
   if (navType === 'tool' || navType === 'marketing') {
-    triggerSprig(ctx.get('appContext'))
-    triggerChameleon(ctx.get('appContext'))
-    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'))
+    triggerChameleon(ctx.get('appContext'));
+    initUserflow(ctx.get('appContext'));
+    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'));
   }
 }
 
@@ -155,6 +155,10 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
 
   else if (method === 'update') {
     update.call(null, ...args)
+  }
+
+  else if (method === 'triggerFlow') {
+    triggerFlow.call(null, ...args)
   }
 
   else {
