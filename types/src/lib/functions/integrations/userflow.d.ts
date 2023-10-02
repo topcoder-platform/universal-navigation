@@ -20,5 +20,6 @@ declare const subscribeToAuthContext: (appContext: any) => void;
  */
 declare const triggerFlow: (flowId: string, options?: {
     once?: boolean;
+    delay?: number;
 }) => void;
 export { subscribeToAuthContext as initUserflow, initAndIdentifyUser as identify, triggerFlow, };

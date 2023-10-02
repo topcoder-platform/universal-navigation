@@ -96,6 +96,7 @@ const subscribeToAuthContext = (appContext) => {
   });
 }
 
+let debounce = {};
 /**
  * Triggers a Userflow content item
  * @param flowId Userflow content ID
@@ -104,10 +105,15 @@ const subscribeToAuthContext = (appContext) => {
  *      If the user has already seen it before, nothing happens.
  *      Defaults to true.
  */
-const triggerFlow = (flowId: string, options: {once?: boolean} = {}) => {
+const triggerFlow = (flowId: string, options: {once?: boolean, delay?: number} = {}) => {
   const userflow = loadUserflowScripts();
 
-  userflow.start(flowId, { once: options?.once ?? true });
+  const { delay = 3000 } = options
+
+  if (debounce[flowId]) {
+    clearTimeout(debounce[flowId])
+  }
+  debounce[flowId] = setTimeout(userflow.start, delay, flowId, { once: options?.once ?? true });
 }
 
 export {
