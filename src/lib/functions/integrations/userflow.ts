@@ -54,6 +54,7 @@ const initAndIdentifyUser = async (user) => {
       handle: user.handle,
       first_name: user.firstName,
       last_name: user.lastName,
+      name: `${user.firstName} ${user.lastName}`,
       signed_up_at: user.createdAt ? toIsoString(user.createdAt) : undefined,
     })), {
       signature: uid_hash,
