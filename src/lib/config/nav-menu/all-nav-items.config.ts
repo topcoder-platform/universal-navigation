@@ -431,6 +431,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'TopCrowd',
         url: getWordpressUrl('/customer/topcrowd'),
     },
+    topCrowdUniversities: {
+        description: 'Empower Your University Community with Real-World Challenges and Skill Development',
+        label: 'TopCrowd for Universities',
+        url: getWordpressUrl('/customer/topcrowd/topcrowd-universities'),
+    },
     topCrowdPricing: {
       label: 'Pricing Plans',
       description: 'Sign up and experience all the benefits of the Professional plan, FREE for 30 days.',

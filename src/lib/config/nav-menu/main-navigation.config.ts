@@ -51,6 +51,7 @@ export const mainNavigationItems: NavMenuItem[] = [
         ...allNavItems.topCrowd,
         children: [
           allNavItems.topCrowdPricing,
+          allNavItems.topCrowdUniversities,
         ]
       },
       allNavItems.talkToAnExpert,
