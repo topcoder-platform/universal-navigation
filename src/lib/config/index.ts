@@ -7,5 +7,6 @@ import { getEnvValue } from "./env-vars"
 export const CHAMELEON_KEY_ID: string = getEnvValue('VITE_CHAMELEON_KEY_ID', '')
 export const USERFLOW_ENVIRONMENT_TOKEN: string = getEnvValue('VITE_USERFLOW_ENVIRONMENT_TOKEN')
 export const USERFLOW_TC_SIGNATURE: string = getEnvValue('VITE_USERFLOW_TC_SIGNATURE')
+export const USERFLOW_DEFAULT_SURVEY_DELAY: string = getEnvValue('VITE_USERFLOW_DEFAULT_SURVEY_DELAY', '3000')
 
 export * from './hosts'

@@ -1,4 +1,9 @@
-import { TC_API_V5_HOST, USERFLOW_ENVIRONMENT_TOKEN, USERFLOW_TC_SIGNATURE } from "../../config";
+import {
+  TC_API_V5_HOST,
+  USERFLOW_DEFAULT_SURVEY_DELAY,
+  USERFLOW_ENVIRONMENT_TOKEN,
+  USERFLOW_TC_SIGNATURE,
+} from "../../config";
 import { getRequestAuthHeaders } from "../auth-jwt";
 import { getJwtUserRoles } from "../user-profile.provider";
 import { loadUserflowScripts } from "./userflow-loader";
@@ -109,12 +114,12 @@ let debounce = {};
 const triggerFlow = (flowId: string, options: {once?: boolean, delay?: number} = {}) => {
   const userflow = loadUserflowScripts();
 
-  const { delay = 3000 } = options
+  const { delay = USERFLOW_DEFAULT_SURVEY_DELAY } = options
 
   if (debounce[flowId]) {
     clearTimeout(debounce[flowId])
   }
-  debounce[flowId] = setTimeout(userflow.start, delay, flowId, { once: options?.once ?? true });
+  debounce[flowId] = setTimeout(userflow.start, Number(delay), flowId, { once: options?.once ?? true });
 }
 
 export {
