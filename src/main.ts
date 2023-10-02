@@ -37,7 +37,7 @@ export type NavigationAppProps = {
   integrations?: {[key: string]: 'disable'}
 }
 
-export type TcUniNavMethods = 'init' | 'update'
+export type TcUniNavMethods = 'init' | 'update' | 'triggerFlow'
 
 export type TcUniNavFn = (
   method: TcUniNavMethods,
