@@ -21,7 +21,6 @@ const toIsoString = (createdAt: Date | number | string) => {
  */
 const getUserIdHash = (() => {
   const fetchFn = async () => {
-    // const requestUrl: string = `${TC_API_V5_HOST}/members/uid-signature?type=userflow`;
     const requestUrl: string = `${TC_API_V5_HOST}/members/uid-signature?type=userflow`;
     const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
     const response = await (await request).json();
