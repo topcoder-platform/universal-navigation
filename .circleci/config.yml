@@ -221,6 +221,7 @@ workflows:
             branches:
               only:
                 - dev
+                - PROD-4397_userflow-integration
 
       - deployProd:
           context: org-global
