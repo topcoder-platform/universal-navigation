@@ -69,6 +69,20 @@ running_version_patch: &running_version_patch
     npm version patch -m "Increment Version [ci skip]"
     git push --set-upstream origin $CIRCLE_BRANCH
 
+# NOTE: If this fails due to a deploy key issue, ensure the "Deploy Key" section of
+# the CircleCI project settings > SSH Keys section does not list a key.
+update_types: &update_types
+  name: Updating Types
+  command: |
+    npm ci
+    npm run types
+    diffstatus=$(git status --porcelain)
+    git config user.name $CIRCLE_USERNAME
+    git config user.email security@topcoder.com
+    git add types
+    git diff-index --cached --quiet HEAD || git commit -m "Add Types [ci skip]"
+    git push --set-upstream origin $CIRCLE_BRANCH
+
 check_types: &check_types
   name: Checking Types
   command: |
