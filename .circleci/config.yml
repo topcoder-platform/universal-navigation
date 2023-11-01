@@ -116,7 +116,6 @@ build_steps_prod: &build_steps_prod # Initialization.
   - run: *install_build_dependency
   - run: *install_deploysuite
   - run: *build_configuration_fetch
-  - run: *update_types
   - run: *running_version_patch
   - run: *running_npm_build
   - persist_to_workspace: *workspace_persist
