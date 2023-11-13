@@ -1,4 +1,5 @@
 import {
+  DISABLE_USERFLOW,
   TC_API_V5_HOST,
   USERFLOW_DEFAULT_SURVEY_DELAY,
   USERFLOW_ENVIRONMENT_TOKEN,
@@ -44,6 +45,10 @@ const getUserIdHash = (() => {
  * @param user
  */
 const initAndIdentifyUser = async (user) => {
+  if (!USERFLOW_ENVIRONMENT_TOKEN || DISABLE_USERFLOW) {
+    return
+  }
+
   const userflow = loadUserflowScripts()
 
   userflow.init(USERFLOW_ENVIRONMENT_TOKEN);
@@ -84,7 +89,7 @@ const initAndIdentifyUser = async (user) => {
  * @param appContext Svelte writable/readable context
  */
 const subscribeToAuthContext = (appContext) => {
-  if (!USERFLOW_ENVIRONMENT_TOKEN) {
+  if (!USERFLOW_ENVIRONMENT_TOKEN || DISABLE_USERFLOW) {
     return
   }
 
@@ -111,6 +116,10 @@ let debounce = {};
  *      Defaults to true.
  */
 const triggerFlow = (flowId: string, options: {once?: boolean, delay?: number} = {}) => {
+  if (!USERFLOW_ENVIRONMENT_TOKEN || DISABLE_USERFLOW) {
+    return
+  }
+
   const userflow = loadUserflowScripts();
 
   const { delay = USERFLOW_DEFAULT_SURVEY_DELAY } = options
