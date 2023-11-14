@@ -4,7 +4,6 @@
 
 import { getEnvValue } from "./env-vars"
 
-export const CHAMELEON_KEY_ID: string = getEnvValue('VITE_CHAMELEON_KEY_ID', '')
 export const DISABLE_USERFLOW: string = getEnvValue('VITE_DISABLE_USERFLOW', '')
 export const USERFLOW_ENVIRONMENT_TOKEN: string = getEnvValue('VITE_USERFLOW_ENVIRONMENT_TOKEN')
 export const USERFLOW_TC_SIGNATURE: string = getEnvValue('VITE_USERFLOW_TC_SIGNATURE')
