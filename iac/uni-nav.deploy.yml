@@ -170,6 +170,7 @@ Resources:
               - !Sub https://talent-search.${Domain}
               - !Sub https://account-settings.${Domain}
               - !Sub https://onboarding.${Domain}
+              - !Sub https://manage.${Domain}
 
               # Platform UI Local
               - !If
