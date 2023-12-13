@@ -10,7 +10,6 @@ export const mainNavigationItems: NavMenuItem[] = [
         ...allNavItems.whyTopcoder,
         children: [
           allNavItems.theCommunity,
-          allNavItems.challengeModel,
           {
             ...allNavItems.expertise,
             children: [
@@ -37,6 +36,7 @@ export const mainNavigationItems: NavMenuItem[] = [
           allNavItems.successStories,
         ]
       },
+      allNavItems.challengeModel,
       allNavItems.fullService,
       {
         ...allNavItems.selfService,
@@ -82,6 +82,7 @@ export const mainNavigationItems: NavMenuItem[] = [
       {
         ...allNavItems.compete,
         children: [
+          allNavItems.innovationChallenges,
           allNavItems.marathonMatches,
           allNavItems.rapidDevMatches,
           allNavItems.singleRoundMatches,
