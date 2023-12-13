@@ -296,7 +296,7 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.user             | 'auto'                                       | no                      | Instruct the uni-nav to auto-fetch user profile info based on the `tcjwt` cookie value   | {}            |
 | config.user             | {photoURL, userId, initials, handle}         | no                      | The logged in user                                                                       | {}            |
 | config.supportMeta      | {challengeId, isSelfService}                 | no                      | Additional meta data to be sent along with any support ticket created by the user        |               |
-| config.integrations     | {userflow?: 'disable', chameleon?: 'disable'}| no                      | Disable userflow and/or chameleon integration                                            |               |
+| config.integrations     | {userflow?: 'disable'}                       | no                      | Disable userflow integration                                                             |               |
 
 ### User Model
 You can either pass user's details as described by the `AuthUser` interface, or pass a value of `auto` and uni-nav will automatically fetch user's details from the api based on the tcjwt auth cookie.
