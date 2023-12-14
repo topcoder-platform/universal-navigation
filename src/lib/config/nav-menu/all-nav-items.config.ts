@@ -84,9 +84,9 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Compete and earn money',
     },
     challengeModel: {
-        label: 'Challenge Model',
+        label: 'Challenges',
         url: getWordpressUrl('/customer/challenge-model'),
-        description: 'What makes our challenge model a success.',
+        description: 'Topcoder’s Transformative Approach to Problem Solving.',
     },
     communications: {
         label: 'Communications',
@@ -222,6 +222,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Industries',
         description: 'The industries in which Topcoder delivers successful solutions.',
         url: getWordpressUrl('/customer/industries'),
+    },
+    innovationChallenges: {
+      label: 'Innovation Challenges',
+      description: 'Targeted Challenges aimed at elevating pivotal technology skills.',
+      url: `${COMMUNITY_HOST}/challenges?bucket=openForRegistration&isInnovationChallenge=true`,
     },
     learn: {
         label: 'Learn',
