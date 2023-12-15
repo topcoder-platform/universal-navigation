@@ -27,7 +27,6 @@ export const FORUM_HOST: string = {
   prod: `https://discussions.${TC_DOMAIN}`,
 }[HOST_ENV] || `https://discussions.${TC_DOMAIN}`;
 
-export const PACTS_HOST: string = `https://community.${TC_DOMAIN}`;
 export const ONLINE_REVIEW_HOST: string = `https://software.${TC_DOMAIN}`;
 export const TCACADEMY_HOST: string = `https://academy.${TC_DOMAIN}`;
 export const DEV_CENTER_HOST: string = `https://devcenter.${TC_DOMAIN}`;
@@ -39,3 +38,4 @@ export const PROFILE_HOST: string = `https://profiles.${TC_DOMAIN}`;
 export const ONBOARDING_HOST: string = `https://onboarding.${TC_DOMAIN}`;
 export const TALENT_SEARCH_HOST: string = `https://talent-search.${TC_DOMAIN}`;
 export const ACCOUNT_SETTINGS_HOST: string = `https://account-settings.${TC_DOMAIN}`;
+export const WALLETAPP_HOST: string = `https://wallet.${TC_DOMAIN}`;
