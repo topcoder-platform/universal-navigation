@@ -220,7 +220,7 @@ workflows:
             branches:
               only:
                 - dev
-                - PROD-4397_userflow-integration
+                - CORE-260_new-goals
 
       - deployProd:
           context: org-global
