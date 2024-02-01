@@ -253,7 +253,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
             },
             {
                 label: 'Newsletter',
-                url: 'https://go.topcoder.com/newsletter',
+                url: 'https://join.topcoder.com/newsletter',
                 target: '_blank',
             },
             {
