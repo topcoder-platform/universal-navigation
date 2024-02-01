@@ -67,7 +67,7 @@ export const mainNavigationItems: NavMenuItem[] = [
       {
         ...allNavItems.compete,
         children: [
-          { ...allNavItems.challenges, label: 'All Challenges' },
+          { ...allNavItems.challengesApp, label: 'All Challenges' },
           allNavItems.browseInnovationChallenges,
           allNavItems.experienceChallenges,
         ]

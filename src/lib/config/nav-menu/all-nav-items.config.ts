@@ -181,7 +181,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     assistedWork: {
       label: 'Assisted Work',
-      description: 'Experts in our community manage your work from start to finish.',
+      description: 'Fully assisted work, at any scale, from start to finish.',
       url: getWordpressUrl('/customer/full-service'),
   },
     gettingPaid: {
