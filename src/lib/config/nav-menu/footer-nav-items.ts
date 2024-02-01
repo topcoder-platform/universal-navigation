@@ -8,6 +8,7 @@ export const footerNavItems: NavMenuItem = {
         {
             ...allNavItems.expertise,
             children: [
+                { ...allNavItems.innovationChallenges, label: 'AI' },
                 allNavItems.dataScience,
                 allNavItems.design,
                 allNavItems.development,
@@ -49,6 +50,7 @@ export const footerNavItems: NavMenuItem = {
                 allNavItems.connect,
                 allNavItems.statistics,
                 allNavItems.gettingPaid,
+                allNavItems.gigs,
                 allNavItems.topcoderOpen,
                 allNavItems.faq,
             ]
@@ -65,7 +67,6 @@ export const footerNavItems: NavMenuItem = {
                 allNavItems.reportABug,
             ]
         },
-        allNavItems.careers,
         {
             label: "Legal",
             children: [
