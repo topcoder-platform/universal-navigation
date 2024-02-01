@@ -42,11 +42,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Get insights and tips about Topcoder',
         url: `${THRIVE_HOST}/thrive`,
     },
-    benefits: {
-        label: 'Benefits',
-        description: 'Benefits members receive at Topcoder.',
-        url: getWordpressUrl('/talent/benefits'),
-    },
     bfsi: {
         label: 'BFSI',
         description: 'BFSI solutions, how Topcoder excels, including case studies.',
@@ -56,12 +51,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Book a demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
-        url: 'https://go.topcoder.com/book-a-demo/?interest=A%20Demo%20of%20Topcoder',
-    },
-    careerGrowth: {
-        label: 'Career Growth',
-        description: 'Topcoder\'s profile captures your proven skills increasing employment opportunities.',
-        url: getWordpressUrl('/talent/career-growth'),
+        url: 'https://join.topcoder.com/book-a-demo',
     },
     careers: {
         label: 'Careers',
@@ -84,7 +74,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Compete and earn money',
     },
     challengeModel: {
-        label: 'Challenges',
+        label: 'Challenge Model',
         url: getWordpressUrl('/customer/challenge-model'),
         description: 'Topcoder’s Transformative Approach to Problem Solving.',
     },
@@ -156,7 +146,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     earn: {
         label: 'Earn',
-        description: 'How to earn money at Topcoder.',
+        description: 'Get Started with Challenges.',
         url: getWordpressUrl('/talent/earn'),
     },
     energyUtilities: {
@@ -189,11 +179,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'forums',
         description: 'Discuss challenges or questions',
     },
-    fullService: {
-        label: 'Full Service',
-        description: 'Work with Topcoder experts to craft the exact solution you need.',
-        url: getWordpressUrl('/customer/full-service'),
-    },
+    assistedWork: {
+      label: 'Assisted Work',
+      description: 'Fully assisted work, at any scale, from start to finish.',
+      url: getWordpressUrl('/customer/full-service'),
+  },
     gettingPaid: {
         label: 'Getting Paid',
         url: `${THRIVE_HOST}/thrive/tracks?track=Topcoder&tax=Getting%20Paid`,
@@ -223,15 +213,25 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'The industries in which Topcoder delivers successful solutions.',
         url: getWordpressUrl('/customer/industries'),
     },
-    innovationChallenges: {
+    browseInnovationChallenges: {
       label: 'Innovation Challenges',
       description: 'Targeted Challenges aimed at elevating pivotal technology skills.',
       url: `${COMMUNITY_HOST}/challenges?bucket=openForRegistration&isInnovationChallenge=true`,
+    },
+    innovationChallenges: {
+      label: 'Innovation Challenges',
+      description: 'Large-scale challenge series focused on AI innovation.',
+      url: getWordpressUrl('/innovation-challenges'),
     },
     learn: {
         label: 'Learn',
         description: 'Learning opportunities provided to Topcoder\'s members.',
         url: getWordpressUrl('/talent/learn'),
+    },
+    experienceChallenges: {
+        label: 'Experience Challenges',
+        description: 'Build experience, boost skills, and earn bragging rights with these exciting challenges.',
+        url: getWordpressUrl('/talent/experience-challenges'),
     },
     marathonMatches: {
         label: 'Marathon Matches',
@@ -336,10 +336,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'How your IP is protected at Topcoder.',
         url: getWordpressUrl('/customer/security'),
     },
-    selfService: {
-        label: 'Self Service',
-        description: 'Submit work directly to Topcoder and get results without having to talk to anyone.',
-        url: getWordpressUrl('/customer/self-service'),
+    product: {
+      label: 'Product',
+      description: 'Launch your work in our platform or through tools you already use.',
+      url: getWordpressUrl('/customer/self-service'),
     },
     selfServiceApp: {
         label: 'Self Service Challenges',
@@ -363,7 +363,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: `${COMMUNITY_HOST}/community/statistics?tracks[All-pills]=0&tracks[General]=0`,
     },
     successStories: {
-        label: 'Success Stories',
+        label: 'Customer Stories',
         description: 'Browse case studies for solutions Topcoder has successfully delivered.',
         url: getWordpressUrl('/customer/success-stories'),
     },
@@ -384,21 +384,21 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: getWordpressUrl('/talent'),
     },
     talentSearchApp: {
-        label: 'Talent Search',
+        label: 'Meet our Talent',
         icon: 'talent-search',
         description: 'Find skilled talent for your next project',
         url: TALENT_SEARCH_HOST,
     },
     talentTheCommunity: {
-      label: 'The Community',
-      description: 'How as talent at Topcoder you\'ll be part of a larger community.',
+      label: 'Talent Network',
+      description: 'Connect with like-minded peers.',
       url: getWordpressUrl('/talent/the-community'),
     },
     talkToAnExpert: {
         label: 'Talk to an expert',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
-        url: 'https://go.topcoder.com/lets-talk',
+        url: 'https://join.topcoder.com/lets-talk',
     },
     technology: {
         label: 'Technology',
@@ -406,7 +406,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: getWordpressUrl('/customer/technology'),
     },
     theCommunity: {
-        label: 'The Community',
+        label: 'Talent',
         description: 'How the Topcoder community provides value to your business.',
         url: getWordpressUrl('/customer/the-community'),
     },
@@ -430,26 +430,11 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Topcoder Open',
       description: 'The ultimate competitive tournament - the big event!',
       url: `${COMMUNITY_HOST}/community/member-programs/topcoder-open`,
-  },
-    topCrowd: {
-        description: 'Engage and reward your workforce to maximize productivity.',
-        label: 'TopCrowd',
-        url: getWordpressUrl('/customer/topcrowd'),
-    },
-    topCrowdUniversities: {
-        description: 'Empower Your University Community with Real-World Challenges and Skill Development',
-        label: 'TopCrowd for Universities',
-        url: getWordpressUrl('/customer/topcrowd/topcrowd-universities'),
-    },
-    topCrowdPricing: {
-      label: 'Pricing Plans',
-      description: 'Sign up and experience all the benefits of the Professional plan, FREE for 30 days.',
-      url: getWordpressUrl('/customer/topcrowd/pricing'),
     },
     topCrowdApp: {
         description: 'Engage and reward your workforce',
         icon: 'topcrowd',
-        label: 'TopCrowd',
+        label: 'Topcoder Platform',
         url: 'https://topcrowd.net',
     },
     websiteDesign: {
