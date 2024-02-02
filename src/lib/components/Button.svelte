@@ -2,7 +2,7 @@
   import { classnames } from 'lib/utils/classnames';
   import styles from './Button.module.scss'
 
-  type ButtonVariant = 'primary'|'outline'|''
+  type ButtonVariant = 'primary'|'outline'|'contrast'|''
 
   let className = '';
   export {className as class};
@@ -10,11 +10,13 @@
   export let onClick: (ev: MouseEvent) => void = () => {};
   export let variant: ButtonVariant = ''
   export let disabled: boolean = false;
-  export let size: 'sm'|'md' = 'sm';
+  export let size: 'sm'|'md'|'md-0' = 'sm';
+  export let ref: HTMLElement = null;
 
 </script>
 
 <button
+  bind:this={ref}
   class={
     classnames(
       className,

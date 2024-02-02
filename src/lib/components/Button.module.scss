@@ -24,6 +24,12 @@
   color: #FFFFFF;
   cursor: pointer;
 
+  &.md-0 {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 4px 20px;
+  }
+
   &.md {
     font-size: 14px;
     padding: 8px 24px;
@@ -39,6 +45,13 @@
     background-color: #fff;
     border-color: #137d60;
     color: #137d60;
+  }
+
+  &.contrast {
+    color: #FFFFFF;
+    background: #137D60;
+    font-weight: normal;
+    text-transform: none;
   }
 
   &[disabled][disabled] {

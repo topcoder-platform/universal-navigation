@@ -12,15 +12,18 @@
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
   import Completedness from './Completedness.svelte';
+  import SignupPopup from './SignupPopup.svelte';
+  import LoginPopup from './LoginPopup.svelte';
 
   const ctx = getAppContext();
 
   // debounce updates to user if user.handle stays the same
   let debounce = '';
 
+  let signupBtnRef: HTMLElement;
+  let loginBtnRef: HTMLElement;
+
   $: ({
-    signIn: onSignIn = () => {},
-    signUp: onSignUp = () => {},
     signOut: onSignOut = () => {},
     ready: isReady,
     autoFetchUser,
@@ -72,8 +75,19 @@
   <div class={styles.userAreaWrap}>
     {#if !user}
     <div class={styles.btnsWrap}>
-      <Button label="Log in" onClick={onSignIn} />
-      <Button variant="primary" label="Sign Up" onClick={onSignUp} />
+      <div>
+        <Button label="Log In" bind:ref={loginBtnRef} />
+        <LoginPopup targetEl={loginBtnRef} />
+      </div>
+
+      <div>
+        <Button
+          variant="primary"
+          label="Sign Up"
+          bind:ref={signupBtnRef}
+        />
+        <SignupPopup targetEl={signupBtnRef} />
+      </div>
     </div>
     {:else }
       <ToolSelector />
