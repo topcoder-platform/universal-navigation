@@ -76,7 +76,7 @@
     {#if !user}
     <div class={styles.btnsWrap}>
       <div>
-        <Button label="Log in" bind:ref={loginBtnRef} />
+        <Button label="Log In" bind:ref={loginBtnRef} />
         <LoginPopup targetEl={loginBtnRef} />
       </div>
 
