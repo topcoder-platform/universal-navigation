@@ -6,10 +6,14 @@ export const mainNavigationItems: NavMenuItem[] = [
   {
     ...allNavItems.customer,
     children: [
+      allNavItems.product,
+      allNavItems.assistedWork,
+      allNavItems.innovationChallenges,
       {
         ...allNavItems.whyTopcoder,
         children: [
           allNavItems.theCommunity,
+          allNavItems.challengeModel,
           {
             ...allNavItems.expertise,
             children: [
@@ -36,24 +40,6 @@ export const mainNavigationItems: NavMenuItem[] = [
           allNavItems.successStories,
         ]
       },
-      allNavItems.challengeModel,
-      allNavItems.fullService,
-      {
-        ...allNavItems.selfService,
-        children: [
-          allNavItems.dataAdvisory,
-          allNavItems.findMeData,
-          allNavItems.dataExploration,
-          allNavItems.websiteDesign,
-        ]
-      },
-      {
-        ...allNavItems.topCrowd,
-        children: [
-          allNavItems.topCrowdPricing,
-          allNavItems.topCrowdUniversities,
-        ]
-      },
       allNavItems.talkToAnExpert,
       allNavItems.bookADemo,
     ]
@@ -76,33 +62,23 @@ export const mainNavigationItems: NavMenuItem[] = [
         ...allNavItems.earn,
         children: [
           allNavItems.challenges,
-          allNavItems.gigs,
         ]
       },
       {
         ...allNavItems.compete,
         children: [
-          allNavItems.innovationChallenges,
-          allNavItems.marathonMatches,
-          allNavItems.rapidDevMatches,
-          allNavItems.singleRoundMatches,
+          { ...allNavItems.challengesApp, label: 'All Challenges' },
+          allNavItems.browseInnovationChallenges,
+          allNavItems.experienceChallenges,
         ]
       },
       {
         ...allNavItems.connect,
         children: [
-          allNavItems.announcements,
           allNavItems.events,
           allNavItems.discord,
-          allNavItems.timeline,
         ]
       },
-      {
-        ...allNavItems.benefits,
-        children: [
-          allNavItems.careerGrowth,
-        ]
-      }
     ]
   }
 ]

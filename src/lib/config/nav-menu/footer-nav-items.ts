@@ -8,6 +8,7 @@ export const footerNavItems: NavMenuItem = {
         {
             ...allNavItems.expertise,
             children: [
+                { ...allNavItems.innovationChallenges, label: 'AI' },
                 allNavItems.dataScience,
                 allNavItems.design,
                 allNavItems.development,
@@ -19,9 +20,8 @@ export const footerNavItems: NavMenuItem = {
             children: [
                 allNavItems.whyTopcoder,
                 allNavItems.challengeModel,
-                allNavItems.fullService,
-                allNavItems.selfService,
-                allNavItems.topCrowd,
+                allNavItems.assistedWork,
+                allNavItems.product,
                 allNavItems.successStories,
                 allNavItems.partners,
                 allNavItems.security,
@@ -48,9 +48,9 @@ export const footerNavItems: NavMenuItem = {
                 allNavItems.earn,
                 allNavItems.compete,
                 allNavItems.connect,
-                allNavItems.benefits,
                 allNavItems.statistics,
                 allNavItems.gettingPaid,
+                allNavItems.gigs,
                 allNavItems.topcoderOpen,
                 allNavItems.faq,
             ]
@@ -67,7 +67,6 @@ export const footerNavItems: NavMenuItem = {
                 allNavItems.reportABug,
             ]
         },
-        allNavItems.careers,
         {
             label: "Legal",
             children: [
