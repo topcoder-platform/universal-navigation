@@ -6,6 +6,8 @@
   import { classnames } from 'lib/utils/classnames';
 
   export let targetEl: HTMLElement | undefined
+  export let hideTimeout = 200
+  export let increaseHitzone = false
   let exTargetEl: HTMLElement | undefined;
   const uuidTargetKey = `${Date.now()}-${Math.random()}`
 
@@ -46,7 +48,7 @@
       }
 
       // provide a delay before taking any action (better UX)
-      await delay(200)
+      await delay(hideTimeout)
 
       // if the user changed its actions and is now still hovering our target elements
       // ot if the targetElement is now different
@@ -87,7 +89,7 @@
    * @param el
    */
   function unBindEvents(el: HTMLElement = targetEl) {
-    
+
     if (!el) {
       return
     }
@@ -95,8 +97,8 @@
     el.dataset.targetKey = undefined
     el.removeEventListener('mouseenter', handleMouseover)
   }
-  
-  // each time the targetEl changes, 
+
+  // each time the targetEl changes,
   // call bindEvents to listen for mouse events
   $: !!targetEl && bindEvents()
 
@@ -106,7 +108,7 @@
 
 {#if isVisible}
   <div
-    class={classnames(styles.popupMenuWrap, $$props.class)}
+    class={classnames(styles.popupMenuWrap, $$props.class, increaseHitzone && styles.increaseHitzone)}
     data-target-key={uuidTargetKey}
     transition:fly={{y: 5, duration: 200}}
   >

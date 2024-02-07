@@ -12,6 +12,20 @@
 
   max-height: calc(100vh - 60px);
   display: flex;
+
+  &.increaseHitzone:before {
+    content: "";
+
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    right: -7px;
+    bottom: -7px;
+
+    z-index: -1;
+
+    background: transparent;
+  }
 }
 
 .popupMenuInner {

@@ -18,7 +18,7 @@
 
 </script>
 
-<PopupMenu targetEl={targetEl} class={styles.wrap}>
+<PopupMenu targetEl={targetEl} class={styles.wrap} hideTimeout={0} increaseHitzone>
   <div class={styles.title}>Customer</div>
   <p class={styles.description}>I need to get work done.</p>
   <Button

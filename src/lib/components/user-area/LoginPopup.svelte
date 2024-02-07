@@ -18,7 +18,7 @@
 
 </script>
 
-<PopupMenu targetEl={targetEl} class={styles.wrap}>
+<PopupMenu targetEl={targetEl} class={styles.wrap} hideTimeout={0} increaseHitzone>
   <Button
     class={styles.btn}
     variant="contrast"
