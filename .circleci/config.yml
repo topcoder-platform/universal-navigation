@@ -220,7 +220,7 @@ workflows:
             branches:
               only:
                 - dev
-                - CORE-260_new-goals
+                - login-popups
 
       - deployProd:
           context: org-global
