@@ -6,7 +6,6 @@ export declare const CHALLENGE_HOST: string;
 export declare const COMMUNITY_HOST: string;
 export declare const THRIVE_HOST: string;
 export declare const FORUM_HOST: string;
-export declare const PACTS_HOST: string;
 export declare const ONLINE_REVIEW_HOST: string;
 export declare const TCACADEMY_HOST: string;
 export declare const DEV_CENTER_HOST: string;

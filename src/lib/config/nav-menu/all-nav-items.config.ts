@@ -8,7 +8,6 @@ import {
     DEV_CENTER_HOST,
     FORUM_HOST,
     ONLINE_REVIEW_HOST,
-    PACTS_HOST,
     SELF_SERVICE_HOST,
     TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
@@ -285,8 +284,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: getWordpressUrl('/customer/partners'),
     },
     payments: {
-        label: 'Payments',
-        url: `${PACTS_HOST}/PactsMemberServlet?module=PaymentHistory`,
+        label: 'Wallet',
+        url: WALLETAPP_HOST,
         icon: 'payments',
         description: 'Get paid',
     },
