@@ -394,11 +394,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Find skilled talent for your next project',
         url: TALENT_SEARCH_HOST,
     },
-    talentTheCommunity: {
-      label: 'Talent Network',
-      description: 'Connect with like-minded peers.',
-      url: getWordpressUrl('/talent/the-community'),
-    },
     talkToAnExpert: {
         label: 'Talk to an Expert',
         description: 'Speak with a Topcoder expert to get started.',

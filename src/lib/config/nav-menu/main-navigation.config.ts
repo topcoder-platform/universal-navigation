@@ -42,41 +42,4 @@ export const mainNavigationItems: NavMenuItem[] = [
       allNavItems.bookADemo,
     ]
   },
-  // {
-  //   ...allNavItems.talent,
-  //   children: [
-  //     allNavItems.talentTheCommunity,
-  //     {
-  //       ...allNavItems.learn,
-  //       children: [
-  //         allNavItems.topcoderAcademyApp,
-  //         {
-  //           ...allNavItems.articles,
-  //           url: `${allNavItems.articles.url}?navTool=marketing`
-  //         },
-  //       ]
-  //     },
-  //     {
-  //       ...allNavItems.earn,
-  //       children: [
-  //         allNavItems.challenges,
-  //       ]
-  //     },
-  //     {
-  //       ...allNavItems.compete,
-  //       children: [
-  //         { ...allNavItems.challengesApp, label: 'All Challenges' },
-  //         allNavItems.browseInnovationChallenges,
-  //         allNavItems.experienceChallenges,
-  //       ]
-  //     },
-  //     {
-  //       ...allNavItems.connect,
-  //       children: [
-  //         allNavItems.events,
-  //         allNavItems.discord,
-  //       ]
-  //     },
-  //   ]
-  // }
 ]
