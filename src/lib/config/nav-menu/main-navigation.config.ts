@@ -4,10 +4,10 @@ import { allNavItems } from "./all-nav-items.config";
 
 export const mainNavigationItems: NavMenuItem[] = [
   {
-    ...allNavItems.customer,
+    ...allNavItems.product,
     children: [
-      allNavItems.product,
-      allNavItems.assistedWork,
+      allNavItems.webApp,
+      allNavItems.jiraApp,
       allNavItems.innovationChallenges,
       {
         ...allNavItems.whyTopcoder,
@@ -35,8 +35,6 @@ export const mainNavigationItems: NavMenuItem[] = [
               allNavItems.technology,
             ]
           },
-          allNavItems.partners,
-          allNavItems.security,
           allNavItems.successStories,
         ]
       },
@@ -44,41 +42,4 @@ export const mainNavigationItems: NavMenuItem[] = [
       allNavItems.bookADemo,
     ]
   },
-  {
-    ...allNavItems.talent,
-    children: [
-      allNavItems.talentTheCommunity,
-      {
-        ...allNavItems.learn,
-        children: [
-          allNavItems.topcoderAcademyApp,
-          {
-            ...allNavItems.articles,
-            url: `${allNavItems.articles.url}?navTool=marketing`
-          },
-        ]
-      },
-      {
-        ...allNavItems.earn,
-        children: [
-          allNavItems.challenges,
-        ]
-      },
-      {
-        ...allNavItems.compete,
-        children: [
-          { ...allNavItems.challengesApp, label: 'All Challenges' },
-          allNavItems.browseInnovationChallenges,
-          allNavItems.experienceChallenges,
-        ]
-      },
-      {
-        ...allNavItems.connect,
-        children: [
-          allNavItems.events,
-          allNavItems.discord,
-        ]
-      },
-    ]
-  }
 ]

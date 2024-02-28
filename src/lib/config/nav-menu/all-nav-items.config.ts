@@ -26,11 +26,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
             }
         ],
     },
-    aboutUs: {
-        label: 'About Us',
-        url: getWordpressUrl('/about-us'),
-        uiAttr: 'to-right',
-    },
     announcements: {
         label: 'Announcements',
         description: 'Important announcements to the Topcoder community.',
@@ -48,7 +43,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: getWordpressUrl('/customer/bfsi'),
     },
     bookADemo: {
-        label: 'Book a demo',
+        label: 'Book a Demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
         url: 'https://join.topcoder.com/book-a-demo',
@@ -339,7 +334,17 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     product: {
       label: 'Product',
       description: 'Launch your work in our platform or through tools you already use.',
-      url: getWordpressUrl('/customer/self-service'),
+      url: getWordpressUrl('/customer/product'),
+    },
+    webApp: {
+      label: 'Topcoder Web App',
+      description: 'Define work with AI. Launch to our Talent Network. Choose solutions.',
+      url: getWordpressUrl('/customer/product'),
+    },
+    jiraApp: {
+      label: 'Jira App',
+      description: 'Assign Jira tickets to Topcoder Experts.',
+      url: 'https://join.topcoder.com/jira-app',
     },
     selfServiceApp: {
         label: 'Self Service Challenges',
@@ -389,13 +394,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Find skilled talent for your next project',
         url: TALENT_SEARCH_HOST,
     },
-    talentTheCommunity: {
-      label: 'Talent Network',
-      description: 'Connect with like-minded peers.',
-      url: getWordpressUrl('/talent/the-community'),
-    },
     talkToAnExpert: {
-        label: 'Talk to an expert',
+        label: 'Talk to an Expert',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
         url: 'https://join.topcoder.com/lets-talk',
@@ -406,7 +406,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: getWordpressUrl('/customer/technology'),
     },
     theCommunity: {
-        label: 'Talent',
+        label: 'Talent Network',
         description: 'How the Topcoder community provides value to your business.',
         url: getWordpressUrl('/customer/the-community'),
     },

@@ -6,6 +6,5 @@ import { mainNavigationItems } from "./main-navigation.config";
 export const marketingNavItems: NavMenuItem = {
     children: [
         ...mainNavigationItems,
-        allNavItems.aboutUs,
     ]
 }

@@ -16,12 +16,16 @@ export const footerNavItems: NavMenuItem = {
             ]
         },
         {
-            ...allNavItems.customer,
+            ...allNavItems.product,
             children: [
+                {
+                ...allNavItems.product,
+                  label: 'Topcoder Plaform',
+                },
+                allNavItems.jiraApp,
+                allNavItems.innovationChallenges,
                 allNavItems.whyTopcoder,
                 allNavItems.challengeModel,
-                allNavItems.assistedWork,
-                allNavItems.product,
                 allNavItems.successStories,
                 allNavItems.partners,
                 allNavItems.security,
