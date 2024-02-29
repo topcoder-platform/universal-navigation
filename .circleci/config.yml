@@ -220,7 +220,7 @@ workflows:
             branches:
               only:
                 - dev
-                - CORE-260_new-goals
+                - CORE-304_uninav-updates
 
       - deployProd:
           context: org-global
