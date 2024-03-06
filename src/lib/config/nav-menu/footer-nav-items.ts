@@ -75,6 +75,7 @@ export const footerNavItems: NavMenuItem = {
             label: "Legal",
             children: [
                 allNavItems.privacyPolicy,
+                allNavItems.imagePolicy,
             ]
         }
     ]

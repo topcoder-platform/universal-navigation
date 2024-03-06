@@ -466,4 +466,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Connect App',
         url: `${CONNECT_HOST}`,
     },
+    imagePolicy: {
+      label: 'Image Policy',
+      url: 'http://join.topcoder.com/image-policy',
+    }
 }
