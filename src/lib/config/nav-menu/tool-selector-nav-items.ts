@@ -31,8 +31,8 @@ export const toolSelectorNavItems: NavMenuItem = {
           label: "Learn",
           groupOrder: 1,
           children: [
+            allNavItems.communityHome,
             allNavItems.topcoderAcademyApp,
-            allNavItems.devCenter,
             allNavItems.practice,
           ]
         },
@@ -41,7 +41,6 @@ export const toolSelectorNavItems: NavMenuItem = {
           groupOrder: 3,
           children: [
             allNavItems.marathonMatchesApp,
-            allNavItems.rapidDevMatchesApp,
             allNavItems.singleRoundMatchesApp,
           ]
         },
@@ -50,7 +49,6 @@ export const toolSelectorNavItems: NavMenuItem = {
           groupOrder: 2,
           children: [
             allNavItems.challengesApp,
-            allNavItems.gigsApp,
             allNavItems.review,
             allNavItems.payments
           ]
@@ -59,7 +57,6 @@ export const toolSelectorNavItems: NavMenuItem = {
           label: "Connect",
           groupOrder: 4,
           children: [
-            allNavItems.forums,
             {
               ...allNavItems.articles,
               url: `${allNavItems.articles.url}?navTool=tool`

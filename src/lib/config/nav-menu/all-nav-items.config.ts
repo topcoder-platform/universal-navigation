@@ -388,6 +388,13 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Learn how you can learn, earn, and connect with others in the Topcoder community.',
         url: getWordpressUrl('/talent'),
     },
+    communityHome: {
+        authenticatedUrl: getWordpressUrl('/home'),
+        label: 'Community Home',
+        description: 'Recent challenges and news.',
+        icon: 'topcrowd',
+        url: getWordpressUrl('/talent'),
+    },
     talentSearchApp: {
         label: 'Meet our Talent',
         icon: 'talent-search',
