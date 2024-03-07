@@ -20,7 +20,7 @@ export const footerNavItems: NavMenuItem = {
             children: [
                 {
                 ...allNavItems.product,
-                  label: 'Topcoder Plaform',
+                  label: 'Topcoder Platform',
                 },
                 allNavItems.jiraApp,
                 allNavItems.innovationChallenges,

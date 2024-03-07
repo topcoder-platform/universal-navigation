@@ -389,11 +389,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: getWordpressUrl('/talent'),
     },
     communityHome: {
-        authenticatedUrl: getWordpressUrl('/home'),
         label: 'Community Home',
         description: 'Recent challenges and news.',
         icon: 'topcrowd',
-        url: getWordpressUrl('/talent'),
+        url: getWordpressUrl('/home'),
     },
     talentSearchApp: {
         label: 'Meet our Talent',
