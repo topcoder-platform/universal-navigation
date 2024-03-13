@@ -172,6 +172,7 @@ Resources:
               - !Sub https://onboarding.${Domain}
               - !Sub https://manage.${Domain}
               - !Sub https://wallet.${Domain}
+              - !Sub https://wallet-admin.${Domain}
 
               # Platform UI Local
               - !If
