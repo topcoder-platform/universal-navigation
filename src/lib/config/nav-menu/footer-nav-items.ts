@@ -22,7 +22,6 @@ export const footerNavItems: NavMenuItem = {
                 ...allNavItems.product,
                   label: 'Topcoder Platform',
                 },
-                allNavItems.jiraApp,
                 allNavItems.innovationChallenges,
                 allNavItems.whyTopcoder,
                 allNavItems.challengeModel,
