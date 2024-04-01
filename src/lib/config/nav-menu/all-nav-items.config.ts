@@ -341,11 +341,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       description: 'Define work with AI. Launch to our Talent Network. Choose solutions.',
       url: getWordpressUrl('/customer/product'),
     },
-    jiraApp: {
-      label: 'Jira App',
-      description: 'Assign Jira tickets to Topcoder Experts.',
-      url: 'https://join.topcoder.com/jira-app',
-    },
     selfServiceApp: {
         label: 'Self Service Challenges',
         url: SELF_SERVICE_HOST,

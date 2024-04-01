@@ -7,7 +7,6 @@ export const mainNavigationItems: NavMenuItem[] = [
     ...allNavItems.product,
     children: [
       allNavItems.webApp,
-      allNavItems.jiraApp,
       allNavItems.innovationChallenges,
       {
         ...allNavItems.whyTopcoder,
