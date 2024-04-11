@@ -6,11 +6,11 @@ import { getEnvValue } from "./env-vars"
 
 export const CUSTOMER_LOGIN: string = getEnvValue(
   "VITE_CUSTOMER_LOGIN",
-  "https://topcrowd.net/login/email"
+  "https://app.topcoder.com"
 );
 export const CUSTOMER_SIGNUP: string = getEnvValue(
   "VITE_CUSTOMER_SIGNUP",
-  "https://topcrowd.net/login/email"
+  "https://app.topcoder.com"
 );
 export const DISABLE_USERFLOW: string = getEnvValue('VITE_DISABLE_USERFLOW', '')
 export const USERFLOW_ENVIRONMENT_TOKEN: string = getEnvValue('VITE_USERFLOW_ENVIRONMENT_TOKEN')
