@@ -6,7 +6,7 @@ import { getEnvValue } from "./env-vars"
 
 export const CUSTOMER_LOGIN: string = getEnvValue(
   "VITE_CUSTOMER_LOGIN",
-  "https://topcrowd.net/login/email"
+  "https://app.topcoder.com"
 );
 export const CUSTOMER_SIGNUP: string = getEnvValue(
   "VITE_CUSTOMER_SIGNUP",
