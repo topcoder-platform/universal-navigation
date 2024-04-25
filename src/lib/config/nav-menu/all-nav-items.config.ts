@@ -17,6 +17,19 @@ import {
 } from '..';
 
 export const allNavItems: {[key: string]: NavMenuItem} = {
+    demo: {
+      label: 'Demo',
+      url: getWordpressUrl('/customer/demo'),
+    },
+    pricing: {
+      label: 'Pricing',
+      url: getWordpressUrl('/pricing'),
+    },
+    product: {
+      label: 'Product',
+      url: getWordpressUrl('/customer/product'),
+    },
+
     aboutTopcoder: {
         label: 'About',
         children: [
@@ -330,11 +343,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Security',
         description: 'How your IP is protected at Topcoder.',
         url: getWordpressUrl('/customer/security'),
-    },
-    product: {
-      label: 'Product',
-      description: 'Launch your work in our platform or through tools you already use.',
-      url: getWordpressUrl('/customer/product'),
     },
     webApp: {
       label: 'Topcoder Web App',
