@@ -444,7 +444,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Engage and reward your workforce',
         icon: 'topcrowd',
         label: 'Topcoder Platform',
-        url: 'https://topcrowd.net',
+        url: 'https://app.topcoder.com',
     },
     websiteDesign: {
         label: 'Website Design',
