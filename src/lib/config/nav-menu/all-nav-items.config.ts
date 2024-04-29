@@ -277,12 +277,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
                 url: getWordpressUrl('/white-papers'),
             },
             {
-                label: 'Releases',
-                url: getWordpressUrl('/releases'),
-            },
-            {
-                label: 'Changelog',
-                url: getWordpressUrl('/changelog'),
+                label: 'Release Notes',
+                url: getWordpressUrl('/releasenotes'),
             },
         ]
     },
