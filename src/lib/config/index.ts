@@ -4,13 +4,8 @@
 
 import { getEnvValue } from "./env-vars"
 
-export const PLATFORM_APP_HOST: string = getEnvValue(
-  "VITE_PLATFORM_APP_HOST",
-  "https://app.topcoder.com"
-);
-
 export const CUSTOMER_LOGIN: string = getEnvValue(
-  "VITE_PLATFORM_APP_HOST",
+  "VITE_CUSTOMER_LOGIN",
   "https://app.topcoder.com"
 );
 export const CUSTOMER_SIGNUP: string = getEnvValue(

@@ -18,7 +18,7 @@
 <div class={styles.toolMenuWrap}>
   <InlineSvg src="/assets/tools/sprite.svg" />
   {#each navMenuItems as section, sectionIndex}
-    <div class={classnames(styles.toolSection, styles[section.label?.toLowerCase()])}>
+    <div class={styles.toolSection}>
       <div class={styles.toolSectionTitle}>
         {section.label}
       </div>
