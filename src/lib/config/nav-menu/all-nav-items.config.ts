@@ -12,7 +12,6 @@ import {
     TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
     THRIVE_HOST,
-    PLATFORM_APP_HOST,
     WALLETAPP_HOST,
     WORK_MANAGER_HOST,
 } from '..';
@@ -29,13 +28,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     product: {
       label: 'Product',
       url: getWordpressUrl('/customer/product'),
-    },
-
-    ai360Platform: {
-      label: 'Wipro ai360 Platform',
-      url: `${PLATFORM_APP_HOST}/ai-chat`,
-      description: 'FREE access',
-      icon: 'ai-chat',
     },
 
     aboutTopcoder: {

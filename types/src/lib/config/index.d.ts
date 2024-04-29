@@ -1,4 +1,3 @@
-export declare const PLATFORM_APP_HOST: string;
 export declare const CUSTOMER_LOGIN: string;
 export declare const CUSTOMER_SIGNUP: string;
 export declare const DISABLE_USERFLOW: string;
