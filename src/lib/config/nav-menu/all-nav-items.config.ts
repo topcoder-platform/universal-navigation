@@ -12,6 +12,7 @@ import {
     TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
     THRIVE_HOST,
+    PLATFORM_APP_HOST,
     WALLETAPP_HOST,
     WORK_MANAGER_HOST,
 } from '..';
@@ -28,6 +29,13 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     product: {
       label: 'Product',
       url: getWordpressUrl('/customer/product'),
+    },
+
+    ai360Platform: {
+      label: 'Wipro ai360 Platform',
+      url: `${PLATFORM_APP_HOST}/talent-routes/ai-chat`,
+      description: 'FREE access',
+      icon: 'ai-chat',
     },
 
     aboutTopcoder: {
@@ -277,12 +285,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
                 url: getWordpressUrl('/white-papers'),
             },
             {
-                label: 'Releases',
-                url: getWordpressUrl('/releases'),
-            },
-            {
-                label: 'Changelog',
-                url: getWordpressUrl('/changelog'),
+                label: 'Release Notes',
+                url: getWordpressUrl('/releasenotes'),
             },
         ]
     },

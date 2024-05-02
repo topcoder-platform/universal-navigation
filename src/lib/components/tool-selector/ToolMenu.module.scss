@@ -60,6 +60,11 @@
   gap: 24px;
   flex-wrap: wrap;
 
+  .toolSection.talent & {
+    flex-direction: column;
+    max-height: 380px;
+  }
+
   @include mobile {
     flex-direction: column;
     flex-wrap: nowrap;
