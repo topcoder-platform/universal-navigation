@@ -1,4 +1,4 @@
-export type NavigationHandler = (route: {
+export declare type NavigationHandler = (route: {
     label: string;
     path: string;
 }) => void;
