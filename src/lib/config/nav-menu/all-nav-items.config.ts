@@ -33,7 +33,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
 
     ai360Platform: {
       label: 'Wipro ai360 Platform',
-      url: `${PLATFORM_APP_HOST}/ai-chat`,
+      url: `${PLATFORM_APP_HOST}/talent-routes/ai-chat`,
       description: 'FREE access',
       icon: 'ai-chat',
     },
