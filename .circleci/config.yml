@@ -221,6 +221,7 @@ workflows:
               only:
                 - dev
                 - CORE-304_uninav-updates
+                - PS-267
 
       - deployProd:
           context: org-global
