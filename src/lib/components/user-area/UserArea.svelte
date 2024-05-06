@@ -59,7 +59,7 @@
         profileCompletionData: {
           completed: true,
           handle: user?.handle,
-          percentComplete: 100,
+          percentComplete: 0,
           showToast: "",
         },
       };
@@ -107,7 +107,7 @@
         onSignOut={onSignOut}
         profileCompletionPerc={profileCompletionData?.percentComplete}
       >
-        {#if profileCompletionData && !!DISABLE_NUDGES}
+        {#if profileCompletionData && !DISABLE_NUDGES}
         <Completedness />
         {/if}
       </UserAvatar>
