@@ -4,6 +4,7 @@
   import { checkUserAppRole, fetchUserProfile } from 'lib/functions/user-profile.provider';
   import { fetchUserProfileCompletedness, dismissNudgesBasedOnHost } from 'lib/functions/profile-nudges';
   import { AUTH_USER_ROLE } from 'lib/config/auth';
+  import { DISABLE_NUDGES } from "lib/config/profile-toasts.config";
 
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
   import Button from '../Button.svelte';
@@ -38,22 +39,32 @@
     }
 
     debounce = user.handle;
-    const completednessData = await fetchUserProfileCompletedness(user, true);
-
-    if (!completednessData) {
-      return;
+    if (!DISABLE_NUDGES) {
+      const completednessData = await fetchUserProfileCompletedness(user, true);
+      if (!completednessData) {
+        return;
+      }
+      $ctx.auth = {
+        ...$ctx.auth,
+        profileCompletionData: {
+          completed: completednessData.data?.percentComplete === 100,
+          handle: completednessData.handle,
+          percentComplete: completednessData.data?.percentComplete,
+          showToast: completednessData.showToast,
+        },
+      };
+    } else {
+      $ctx.auth = {
+        ...$ctx.auth,
+        profileCompletionData: {
+          completed: true,
+          handle: user?.handle,
+          percentComplete: 0,
+          showToast: "",
+        },
+      };
     }
-
-    $ctx.auth = {
-      ...$ctx.auth,
-      profileCompletionData: {
-        completed: completednessData.data?.percentComplete === 100,
-        handle: completednessData.handle,
-        percentComplete: completednessData.data?.percentComplete,
-        showToast: completednessData.showToast,
-      },
-    };
-
+    
     setTimeout(() => debounce = '', 100);
   }
 
@@ -96,7 +107,7 @@
         onSignOut={onSignOut}
         profileCompletionPerc={profileCompletionData?.percentComplete}
       >
-        {#if profileCompletionData}
+        {#if profileCompletionData && !DISABLE_NUDGES}
         <Completedness />
         {/if}
       </UserAvatar>

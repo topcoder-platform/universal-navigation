@@ -14,6 +14,8 @@ export const CUSTOMER_HOSTS = [
   WORK_MANAGER_HOST,
 ]
 
+export const DISABLE_NUDGES = true;
+
 export const NUDGES_DISABLED_HOSTS = [
   ...CUSTOMER_HOSTS,
   ONBOARDING_HOST,
