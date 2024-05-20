@@ -35,21 +35,21 @@
 
 .toolNavWrap {
   position: relative;
-  background: #0C0C0C;
+  background: #FFF;
   width: 100%;
   padding: 18px 48px;
   margin: -18px 0;
   max-height: 100%;
   display: flex;
   align-items: center;
-  color: #82EACF;
+  color: #16679A;
 }
 
 .toolName {
-  font-family: $barlowCondensed;
+  font-family: $roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
