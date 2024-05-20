@@ -29,7 +29,6 @@ export const FORUM_HOST: string = {
 
 export const ONLINE_REVIEW_HOST: string = `https://software.${TC_DOMAIN}`;
 export const TCACADEMY_HOST: string = `https://academy.${TC_DOMAIN}`;
-export const DEV_CENTER_HOST: string = `https://devcenter.${TC_DOMAIN}`;
 export const SELF_SERVICE_HOST: string = `https://work.${TC_DOMAIN}`;
 export const TC_API_V5_HOST: string = `https://api.${TC_DOMAIN}/v5`;
 export const CONNECT_HOST: string = `https://connect.${TC_DOMAIN}`;

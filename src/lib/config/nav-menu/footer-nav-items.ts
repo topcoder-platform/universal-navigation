@@ -1,81 +1,66 @@
+import { getWordpressUrl } from "lib/utils/paths";
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
 import { allNavItems } from "./all-nav-items.config";
 
 export const footerNavItems: NavMenuItem = {
     children: [
-        allNavItems.aboutTopcoder,
         {
-            ...allNavItems.expertise,
+            label: 'Info',
             children: [
-                { ...allNavItems.innovationChallenges, label: 'AI' },
-                allNavItems.dataScience,
-                allNavItems.design,
-                allNavItems.development,
-                allNavItems.qa,
+              {
+                label: 'About Topcoder',
+                url: getWordpressUrl('/about-us'),
+              },
+              {
+                label: 'Customer Stories',
+                url: getWordpressUrl('/customer/success-stories'),
+              },
+              {
+                label: 'Blog',
+                url: getWordpressUrl('/blog'),
+              },
+              {
+                label: 'Release Notes',
+                url: getWordpressUrl('/releasenotes'),
+              },
+              {
+                label: 'Privacy Policy',
+                url: getWordpressUrl('/policy'),
+              },
+              {
+                label: 'Terms & Conditions',
+                url: getWordpressUrl('/terms-conditions'),
+              },
             ]
         },
         {
-            ...allNavItems.product,
+            label: 'Solutions',
             children: [
-                {
-                ...allNavItems.product,
-                  label: 'Topcoder Platform',
-                },
-                allNavItems.innovationChallenges,
-                allNavItems.whyTopcoder,
-                allNavItems.challengeModel,
-                allNavItems.successStories,
-                allNavItems.partners,
-                allNavItems.security,
-                allNavItems.customerFaq,
+              {
+                label: 'Product',
+                url: getWordpressUrl('/customer/product'),
+              },
+              {
+                label: 'Innovation Challenges',
+                url: getWordpressUrl('/innovation-challenges'),
+              },
+              {
+                label: 'Expertise',
+                url: getWordpressUrl('/customer/expertise'),
+              },
+              {
+                label: 'Talent Spotlight',
+                url: getWordpressUrl('/releasenotes'),
+              },
             ]
         },
         {
-            ...allNavItems.industries,
+            label: 'Contact Us',
             children: [
-                allNavItems.bfsi,
-                allNavItems.communications,
-                allNavItems.energyUtilities,
-                allNavItems.healthPharma,
-                allNavItems.publicSector,
-                allNavItems.retail,
-                allNavItems.technology,
+              allNavItems.talkToAnExpert,
+              allNavItems.bookADemo,
             ]
         },
-        allNavItems.media,
-        {
-            ...allNavItems.talent,
-            children: [
-                allNavItems.learn,
-                allNavItems.earn,
-                allNavItems.compete,
-                allNavItems.connect,
-                allNavItems.statistics,
-                allNavItems.gettingPaid,
-                allNavItems.gigs,
-                allNavItems.topcoderOpen,
-                allNavItems.faq,
-            ]
-        },
-        {
-            label: "Contact",
-            children: [
-                {
-                  ...allNavItems.talkToAnExpert,
-                  label: 'Talk to Sales',
-                },
-                allNavItems.bookADemo,
-                allNavItems.support,
-                allNavItems.reportABug,
-            ]
-        },
-        {
-            label: "Legal",
-            children: [
-                allNavItems.privacyPolicy,
-                allNavItems.imagePolicy,
-            ]
-        }
     ]
 }
