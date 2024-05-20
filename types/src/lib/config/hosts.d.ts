@@ -8,7 +8,6 @@ export declare const THRIVE_HOST: string;
 export declare const FORUM_HOST: string;
 export declare const ONLINE_REVIEW_HOST: string;
 export declare const TCACADEMY_HOST: string;
-export declare const DEV_CENTER_HOST: string;
 export declare const SELF_SERVICE_HOST: string;
 export declare const TC_API_V5_HOST: string;
 export declare const CONNECT_HOST: string;
