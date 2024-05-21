@@ -19,9 +19,11 @@
 </script>
 
 <footer class={styles.footerWrap}>
-  <a class={styles.logo} href={allNavItems.home.url} target="_top">
-    <img src={logoUrl} class="full-logo" alt="Topcoder" />
-  </a>
+  <div class={styles.logo}>
+    <a href={allNavItems.home.url} target="_top">
+      <img src={logoUrl} class="full-logo" alt="Topcoder" />
+    </a>
+  </div>
   <div class={styles.footerInner}>
     <section class={styles.footerAbout}>
       <h5>About Topcoder</h5>

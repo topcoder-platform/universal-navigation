@@ -68,6 +68,10 @@
   padding: 0 0 48px;
   border-bottom: 1px solid #F7F9FF;
   margin-bottom: 48px;
+
+  > a {
+    display: inline-block;
+  }
 }
 
 .menuSections {
