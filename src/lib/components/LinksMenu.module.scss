@@ -42,15 +42,18 @@
     }
 
     &.primary {
-      font-family: $barlowCondensed;
-      font-size: 20px;
+      color: #2A2A2A;
+      font-family: $roboto;
+      font-weight: 500;
+      font-size: 16px;
       line-height: 24px;
 
       &:hover, &:global(.hover) {
-        color: #fff;
+        color: rgba(#2A2A2A, 0.6);
       }
+
       &:global(.active) {
-        color: #82EACF;
+        color: #16679A;
       }
     }
 
@@ -84,9 +87,12 @@
 
 
     &.cta {
-      background: #137D60;
-      border: #137D60;
+      background: #0D61BF;
+      border: #0D61BF;
       margin-right: -12px;
+      border-radius: 3px;
+      color: #fff;
+      font-weight: 500;
     }
   }
 }
