@@ -49,10 +49,10 @@ export const footerNavItems: NavMenuItem = {
                 label: 'Expertise',
                 url: getWordpressUrl('/customer/expertise'),
               },
-              {
-                label: 'Talent Spotlight',
-                url: getWordpressUrl('/releasenotes'),
-              },
+              // {
+              //   label: 'Talent Spotlight',
+              //   url: getWordpressUrl('/releasenotes'),
+              // },
             ]
         },
         {
