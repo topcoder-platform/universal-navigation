@@ -14,6 +14,7 @@
   import styles from './UserArea.module.scss'
   import Completedness from './Completedness.svelte';
   import SigninPopup from './SigninPopup.svelte';
+  import { appPubSub } from '../../../main';
 
   const ctx = getAppContext();
 
@@ -70,6 +71,9 @@
   $: isReady && user?.handle && fetchProfileDetails();
 
   onMount(async () => {
+    appPubSub.subscribe('signup', () => handleSignin('signup'))
+    appPubSub.subscribe('login', () => handleSignin('login'))
+
     if (autoFetchUser !== true) {
       return;
     }
