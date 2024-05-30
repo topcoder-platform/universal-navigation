@@ -4,10 +4,12 @@ import type { Writable } from 'svelte/store'
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import { initUserflow, triggerFlow } from 'lib/functions/integrations/userflow';
 import { loadNudgeApp } from './lib/functions/load-nudge-app'
+import { PubSub } from './lib/utils/pubsub';
 
 import 'lib/styles/main.scss';
 
 export * from './lib/app-context'
+export const appPubSub = new PubSub();
 
 export type NavigationType = (
   | 'footer'
@@ -157,6 +159,10 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
 
   else if (method === 'triggerFlow') {
     triggerFlow.call(null, ...args)
+  }
+
+  else if (method === 'trigger') {
+    appPubSub.publish.call(appPubSub, ...args);
   }
 
   else {
