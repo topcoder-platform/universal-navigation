@@ -13,6 +13,7 @@ import {
     PLATFORM_APP_HOST,
     WALLETAPP_HOST,
     WORK_MANAGER_HOST,
+    TALENT_TOP_NAV_URL,
 } from '..';
 
 export const allNavItems: {[key: string]: NavMenuItem} = {
@@ -27,6 +28,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     product: {
       label: 'Product',
       url: getWordpressUrl('/customer/product'),
+    },
+    talent: {
+      label: 'Talent',
+      url: TALENT_TOP_NAV_URL,
     },
 
     ai360Platform: {
