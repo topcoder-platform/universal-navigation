@@ -9,10 +9,6 @@ export const footerNavItems: NavMenuItem = {
             label: 'Info',
             children: [
               {
-                label: 'About Topcoder',
-                url: getWordpressUrl('/about-us'),
-              },
-              {
                 label: 'Customer Stories',
                 url: getWordpressUrl('/customer/success-stories'),
               },
@@ -47,12 +43,9 @@ export const footerNavItems: NavMenuItem = {
               },
               {
                 label: 'Expertise',
-                url: getWordpressUrl('/customer/expertise'),
+                url: getWordpressUrl('/ai'),
               },
-              // {
-              //   label: 'Talent Spotlight',
-              //   url: getWordpressUrl('/releasenotes'),
-              // },
+              allNavItems.talent,
             ]
         },
         {

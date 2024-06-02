@@ -6,4 +6,5 @@ export const mainNavigationItems: NavMenuItem[] = [
   allNavItems.product,
   allNavItems.pricing,
   allNavItems.demo,
+  allNavItems.talent,
 ]
