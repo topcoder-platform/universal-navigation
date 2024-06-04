@@ -32,4 +32,3 @@ export const ONBOARDING_HOST: string = `https://onboarding.${TC_DOMAIN}`;
 export const TALENT_SEARCH_HOST: string = `https://talent-search.${TC_DOMAIN}`;
 export const ACCOUNT_SETTINGS_HOST: string = `https://account-settings.${TC_DOMAIN}`;
 export const WALLETAPP_HOST: string = `https://wallet.${TC_DOMAIN}`;
-export const TALENT_TOP_NAV_URL: string = getEnvValue('VITE_TALENT_TOP_NAV_URL', 'https://www.topcoder.about-talent.com');

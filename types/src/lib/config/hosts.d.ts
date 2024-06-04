@@ -16,4 +16,3 @@ export declare const ONBOARDING_HOST: string;
 export declare const TALENT_SEARCH_HOST: string;
 export declare const ACCOUNT_SETTINGS_HOST: string;
 export declare const WALLETAPP_HOST: string;
-export declare const TALENT_TOP_NAV_URL: string;
