@@ -13,16 +13,16 @@
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
   import Completedness from './Completedness.svelte';
-  import SignupPopup from './SignupPopup.svelte';
-  import LoginPopup from './LoginPopup.svelte';
+  import SigninPopup from './SigninPopup.svelte';
+  import { appPubSub } from '../../../main';
 
   const ctx = getAppContext();
 
   // debounce updates to user if user.handle stays the same
   let debounce = '';
 
-  let signupBtnRef: HTMLElement;
-  let loginBtnRef: HTMLElement;
+  let signinPopupVisible = false;
+  let signinMethod: 'login'|'signup';
 
   $: ({
     signOut: onSignOut = () => {},
@@ -64,13 +64,16 @@
         },
       };
     }
-    
+
     setTimeout(() => debounce = '', 100);
   }
 
   $: isReady && user?.handle && fetchProfileDetails();
 
   onMount(async () => {
+    appPubSub.subscribe('signup', () => handleSignin('signup'))
+    appPubSub.subscribe('login', () => handleSignin('login'))
+
     if (autoFetchUser !== true) {
       return;
     }
@@ -79,6 +82,11 @@
     const authUser = await fetchUserProfile();
     $ctx.auth = {...$ctx.auth, ready: true, user: authUser};
   });
+
+  const handleSignin = (method) => {
+    signinPopupVisible = true;
+    signinMethod = method;
+  }
 </script>
 
 {#if isReady}
@@ -86,19 +94,18 @@
   <div class={styles.userAreaWrap}>
     {#if !user}
     <div class={styles.btnsWrap}>
-      <div>
-        <Button label="Log In" bind:ref={loginBtnRef} />
-        <LoginPopup targetEl={loginBtnRef} />
-      </div>
-
-      <div>
-        <Button
-          variant="primary"
-          label="Sign Up"
-          bind:ref={signupBtnRef}
+      <Button label="Log In" onClick={() => handleSignin('login')}/>
+      <Button
+        variant="primary"
+        label="Sign Up"
+        onClick={() => handleSignin('signup')}
+      />
+      {#if signinPopupVisible}
+        <SigninPopup
+          signinMethod={signinMethod}
+          onClose={() => signinPopupVisible = false}
         />
-        <SignupPopup targetEl={signupBtnRef} />
-      </div>
+      {/if}
     </div>
     {:else }
       <ToolSelector />

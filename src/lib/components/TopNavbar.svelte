@@ -14,7 +14,7 @@
 <nav class={classnames(styles.topNavbarWrap, className, styles[style], 'uni-topNavbar')}>
   <div class={styles.topNavbarInner}>
     {#if showLogo || style === 'primary'}
-      <TcLogo minVersion={minLogoVersion} />
+      <TcLogo minVersion />
     {/if}
     <slot />
 
