@@ -1,12 +1,16 @@
 <script lang="ts">
   import { useLocalStorage } from 'lib/utils/use-storage';
+  import { BANNER_DISMISS_PATHS } from 'lib/config/banners.config';
   import styles from './Banner.module.scss';
 
   const bannerName = 'lab45';
   let isDismissed = useLocalStorage<boolean>(`banner:${bannerName}:dismissed`, false);
+
+  const regex = new RegExp(`\\/(${BANNER_DISMISS_PATHS.join('|')})(\\/|\\?|$)`, 'i');
+  const isVisible = !window.location.pathname.match(regex);
 </script>
 
-{#if !$isDismissed}
+{#if isVisible && !$isDismissed}
 <div class={styles.banner}>
   <div class={styles.bannerContent}>
     <div class={styles.bannerText}>
