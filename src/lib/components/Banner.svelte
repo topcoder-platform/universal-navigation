@@ -11,7 +11,7 @@
 <div class={styles.banner}>
   <div class={styles.bannerContent}>
     <div class={styles.bannerText}>
-      🎉 Wipro's Lab45 AI Platform is now free with your Topcoder account!
+      &#127881; Wipro's Lab45 AI Platform is now free with your Topcoder account!
     </div>
     <div class={styles.bannerCta}>
       <a href="https://www.topcoder.com/lab45" target="_blank" rel="noreferrer">
