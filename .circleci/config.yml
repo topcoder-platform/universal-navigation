@@ -211,6 +211,7 @@ workflows:
             branches:
               only:
                 - master
+                - TOP-1669_add-lab45-banner_qa
 
       - deployDev:
           context: org-global
@@ -230,3 +231,4 @@ workflows:
             branches:
               only:
                 - master
+                - TOP-1669_add-lab45-banner_qa

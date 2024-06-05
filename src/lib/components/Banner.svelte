@@ -3,10 +3,11 @@
   import styles from './Banner.module.scss';
 
   const bannerName = 'lab45';
+  let show = useLocalStorage<boolean>(`banner:${bannerName}:show`, false);
   let isDismissed = useLocalStorage<boolean>(`banner:${bannerName}:dismissed`, false);
 </script>
 
-{#if !$isDismissed}
+{#if $show && !$isDismissed}
 <div class={styles.banner}>
   <div class={styles.bannerContent}>
     <div class={styles.bannerText}>
