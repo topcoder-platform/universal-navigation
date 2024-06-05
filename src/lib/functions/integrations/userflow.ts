@@ -49,7 +49,7 @@ const initAndIdentifyUser = async (user) => {
     return
   }
 
-  const userflow = loadUserflowScripts()
+  const userflow = loadUserflowScripts();
 
   userflow.init(USERFLOW_ENVIRONMENT_TOKEN);
 
