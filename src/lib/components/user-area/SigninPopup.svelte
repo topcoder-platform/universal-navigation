@@ -15,7 +15,6 @@
   export let signinMethod: 'login'|'signup';
 
   const closeMenuIcon = getPublicPath(`/assets/icon-close.svg`);
-  const bgImg = getPublicPath(`/assets/siginin-bg.svg`);
   const talentIcon = getPublicPath(`/assets/icon-algo.png`);
   const customerIcon = getPublicPath(`/assets/icon-tsunny.png`);
 </script>
@@ -23,7 +22,6 @@
 <div class={styles.modal}>
   <div class={styles.overlay} on:click={onClose}/>
   <div class={styles.modalBox}>
-    <img class={styles.bgImg} src={bgImg} alt="bg" />
     <h5>
       Which are you?
       <span class={styles.closeIcon} on:click={onClose}>
