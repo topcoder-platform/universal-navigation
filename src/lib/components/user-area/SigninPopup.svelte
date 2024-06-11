@@ -14,7 +14,7 @@
   export let onClose: () => void;
   export let signinMethod: 'login'|'signup';
 
-  const closeMenuIcon = getPublicPath(`/assets/icon-close.svg`);
+  const closeMenuIcon = getPublicPath(`/assets/icon-close-w.svg`);
   const talentIcon = getPublicPath(`/assets/icon-algo.png`);
   const customerIcon = getPublicPath(`/assets/icon-tsunny.png`);
 </script>
