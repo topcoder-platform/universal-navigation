@@ -220,7 +220,7 @@ workflows:
             branches:
               only:
                 - dev
-                - TOP-1669_add-lab45-banner
+                - TOP-1860_mobile-hotfix
 
       - deployProd:
           context: org-global
