@@ -32,6 +32,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Talent',
       url: getWordpressUrl('/about-talent'),
     },
+    support: {
+      label: 'Support',
+      url: 'https://help.topcoder.com/hc/en-us/requests/new',
+    },
 
     ai360Platform: {
       label: 'Wipro’s Lab45 AI Platform',

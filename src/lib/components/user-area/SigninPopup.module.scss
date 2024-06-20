@@ -43,6 +43,9 @@
     margin: 0;
   }
 
+  @include mobile {
+    padding: 22px;
+  }
 }
 
 .closeIcon {
@@ -101,6 +104,15 @@
     small {
       font-size: 16px;
       line-height: 24px;
+    }
+  }
+
+  @media (max-width: 790px) {
+    flex-direction: column;
+    gap: 26px;
+
+    a, .link {
+      padding: 30px 20px;
     }
   }
 }

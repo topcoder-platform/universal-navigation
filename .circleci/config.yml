@@ -220,8 +220,7 @@ workflows:
             branches:
               only:
                 - dev
-                - CORE-304_uninav-updates
-                - PS-267
+                - TOP-1860_mobile-hotfix
 
       - deployProd:
           context: org-global
