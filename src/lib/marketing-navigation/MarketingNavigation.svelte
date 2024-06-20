@@ -11,6 +11,7 @@
   import { isMobile } from 'lib/utils/window-size.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
+  import Banner from 'lib/components/Banner.svelte';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -33,6 +34,7 @@
 </script>
 
 <div class="tc-universal-nav-wrap">
+  <Banner />
   <NavigationBar
     activeRoutePath={activeRoute}
     activeRoute={primaryRoute}

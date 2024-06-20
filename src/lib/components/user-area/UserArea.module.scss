@@ -24,8 +24,6 @@
   }
 
   @include smallMobile {
-    > :first-child {
-      display: none;
-    }
+    gap: 16px;
   }
 }
