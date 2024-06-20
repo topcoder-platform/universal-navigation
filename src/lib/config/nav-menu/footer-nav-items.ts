@@ -53,6 +53,7 @@ export const footerNavItems: NavMenuItem = {
             children: [
               allNavItems.talkToAnExpert,
               allNavItems.bookADemo,
+              // allNavItems.support,
             ]
         },
     ]

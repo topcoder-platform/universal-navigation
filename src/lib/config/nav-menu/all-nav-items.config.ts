@@ -32,6 +32,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Talent',
       url: getWordpressUrl('/about-talent'),
     },
+    support: {
+      label: 'Support',
+      url: 'https://help.topcoder.com/hc/en-us/requests/new',
+    },
 
     ai360Platform: {
       label: 'Wipro’s Lab45 AI Platform',
@@ -53,7 +57,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: 'https://join.topcoder.com/book-a-demo',
     },
     challengesApp: {
-        label: 'Challenges',
+        label: 'Opportunities',
         url: `${COMMUNITY_HOST}/challenges?tracks%5BDS%5D=true&tracks%5BDes%5D=true&tracks%5BDev%5D=true&tracks%5BQA%5D=true&types%5B%5D=CH&types%5B%5D=F2F&types%5B%5D=TSK`,
         icon: 'challenges',
         description: 'Compete and earn money',
