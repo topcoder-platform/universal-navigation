@@ -5,6 +5,7 @@ export declare const WP_HOST_URL: string;
 export declare const CHALLENGE_HOST: string;
 export declare const COMMUNITY_HOST: string;
 export declare const THRIVE_HOST: string;
+export declare const APP_AUTH_CONNECTOR: string;
 export declare const ONLINE_REVIEW_HOST: string;
 export declare const TCACADEMY_HOST: string;
 export declare const SELF_SERVICE_HOST: string;
