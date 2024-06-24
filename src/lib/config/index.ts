@@ -15,7 +15,7 @@ export const CUSTOMER_LOGIN: string = getEnvValue(
 );
 export const CUSTOMER_SIGNUP: string = getEnvValue(
   "VITE_CUSTOMER_SIGNUP",
-  "https://app.topcoder.com/signup"
+  "https://app.topcoder.com"
 );
 export const DISABLE_USERFLOW: string = getEnvValue('VITE_DISABLE_USERFLOW', '')
 export const USERFLOW_ENVIRONMENT_TOKEN: string = getEnvValue('VITE_USERFLOW_ENVIRONMENT_TOKEN')

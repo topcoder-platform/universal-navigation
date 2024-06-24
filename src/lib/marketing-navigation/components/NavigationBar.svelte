@@ -17,7 +17,7 @@
     let hoveredMenuItem: NavMenuItem;
 </script>
 
-<TopNavbar style={style}>
+<TopNavbar style={style} minLogoVersion={isMobile}>
   {#if isMobile}
     <MobileNavigation
       menuItems={menuItems}

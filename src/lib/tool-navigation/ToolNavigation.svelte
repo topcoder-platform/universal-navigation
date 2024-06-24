@@ -52,7 +52,7 @@
   onMount(checkAndLoadFonts)
 </script>
 
-<TopNavbar class={classnames(styles.navbar, 'tc-universal-nav-wrap')} style="primary">
+<TopNavbar minLogoVersion class={classnames(styles.navbar, 'tc-universal-nav-wrap')} style="primary">
   {#if $isMobile}
     <MobileNavigation
       menuItems={menuItems}

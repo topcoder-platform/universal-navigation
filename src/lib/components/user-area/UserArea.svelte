@@ -23,7 +23,6 @@
 
   let signinPopupVisible = false;
   let signinMethod: 'login'|'signup';
-  let signInConfig: {talentURL: string, customerURL: string};
 
   $: ({
     signOut: onSignOut = () => {},
@@ -72,8 +71,8 @@
   $: isReady && user?.handle && fetchProfileDetails();
 
   onMount(async () => {
-    appPubSub.subscribe('signup', (data) => handleSignin('signup', data))
-    appPubSub.subscribe('login', (data) => handleSignin('login', data))
+    appPubSub.subscribe('signup', () => handleSignin('signup'))
+    appPubSub.subscribe('login', () => handleSignin('login'))
 
     if (autoFetchUser !== true) {
       return;
@@ -84,8 +83,7 @@
     $ctx.auth = {...$ctx.auth, ready: true, user: authUser};
   });
 
-  const handleSignin = (method, data?: any) => {
-    signInConfig = data;
+  const handleSignin = (method) => {
     signinPopupVisible = true;
     signinMethod = method;
   }
@@ -104,7 +102,6 @@
       />
       {#if signinPopupVisible}
         <SigninPopup
-          signInConfig={signInConfig}
           signinMethod={signinMethod}
           onClose={() => signinPopupVisible = false}
         />
