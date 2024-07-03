@@ -102,13 +102,6 @@
         label="Sign Up"
         onClick={() => handleSignin('signup')}
       />
-      {#if signinPopupVisible}
-        <SigninPopup
-          signInConfig={signInConfig}
-          signinMethod={signinMethod}
-          onClose={() => signinPopupVisible = false}
-        />
-      {/if}
     </div>
     {:else }
       <ToolSelector />
@@ -121,6 +114,13 @@
         <Completedness />
         {/if}
       </UserAvatar>
+    {/if}
+    {#if signinPopupVisible}
+      <SigninPopup
+        signInConfig={signInConfig}
+        signinMethod={signinMethod}
+        onClose={() => signinPopupVisible = false}
+      />
     {/if}
   </div>
 {/if}
