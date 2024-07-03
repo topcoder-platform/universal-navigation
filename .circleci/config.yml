@@ -220,7 +220,7 @@ workflows:
             branches:
               only:
                 - dev
-                - TOP-1860_mobile-hotfix
+                - TOP-2044_show-signin-modal
 
       - deployProd:
           context: org-global
