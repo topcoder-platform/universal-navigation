@@ -102,12 +102,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'self-service',
         description: 'Launch and manage work',
     },
-    singleRoundMatchesApp: {
-        label: 'SRMs (Arena)',
-        url: 'https://www.topcoder.com/community/arena?ref=nav',
-        icon: 'srm',
-        description: 'Start competitive programming',
-    },
     communityHome: {
         label: 'Community Home',
         description: 'Recent challenges and news.',
