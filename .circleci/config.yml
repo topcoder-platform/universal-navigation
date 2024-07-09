@@ -221,6 +221,7 @@ workflows:
               only:
                 - dev
                 - TOP-1860_mobile-hotfix
+                - TOP-1875
 
       - deployProd:
           context: org-global
