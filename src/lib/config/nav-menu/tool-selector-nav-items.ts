@@ -57,7 +57,6 @@ export const toolSelectorNavItems: NavMenuItem = {
           groupOrder: 3,
           children: [
             allNavItems.marathonMatchesApp,
-            allNavItems.singleRoundMatchesApp,
           ]
         },
         {
