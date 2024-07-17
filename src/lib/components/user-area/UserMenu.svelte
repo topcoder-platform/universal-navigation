@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { AuthUser } from "lib/app-context";
-  import { ACCOUNT_SETTINGS_HOST, CUSTOMER_LOGIN, PROFILE_HOST } from "lib/config";
+  import { ACCOUNT_SETTINGS_HOST, CUSTOMER_LOGIN, PROFILE_HOST, APP_AUTH_CONNECTOR } from "lib/config";
   import { routeMatchesUrl } from "lib/utils/routes";
   import styles from "./UserMenu.module.scss";
 
@@ -37,7 +37,7 @@
     </li>
     <li>
       <a
-        href={`${CUSTOMER_LOGIN}/login`}
+        href={`${CUSTOMER_LOGIN}/login?as=customer`}
       >Log in as Customer</a>
     </li>
     <li>
