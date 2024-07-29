@@ -2,7 +2,7 @@
   import styles from './SigninPopup.module.scss'
   import { getPublicPath } from 'lib/utils/paths';
   import { getAppContext } from 'lib/app-context';
-  import { CUSTOMER_LOGIN, CUSTOMER_SIGNUP, APP_AUTH_CONNECTOR } from "../../config";
+  import { CUSTOMER_LOGIN, CUSTOMER_SIGNUP } from "../../config";
 
   const ctx = getAppContext();
 
