@@ -2,15 +2,16 @@
   import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
   import styles from "./LinksMenu.module.scss";
   import { classnames } from "lib/utils/classnames";
+  import SubMenu from "./SubMenu.svelte";
 
   export let ref: Element | undefined = undefined;
 
   export let style: "primary" | "secondary" | "tertiary" | 'cta';
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
-  export let hoveredMenuItem: NavMenuItem = undefined;
-  export let hoveredElement: HTMLElement = undefined;
-  export let isPopupMenuActive: boolean = false;
+  let hoveredMenuItem: NavMenuItem = undefined;
+  let hoveredElement: HTMLElement = undefined;
+  let isPopupMenuActive: boolean = false;
 
   function isActiveMenu(menuItem: NavMenuItem) {
     return menuItem.url === activeRoute?.url
@@ -43,6 +44,7 @@
 <div class={styles.linksMenuWrap} bind:this={ref}>
   {#each menuItems as menuItem}
     {#if !!menuItem.label}
+    <div class={styles.menuItemWrap}>
       <a
         class={getNavItemClassNames(menuItem)}
         class:active={isActiveMenu(menuItem)}
@@ -56,6 +58,14 @@
         >
         {menuItem.label}
       </a>
+      {#if hoveredMenuItem === menuItem && hoveredMenuItem?.children}
+      <SubMenu
+        menuItems={hoveredMenuItem?.children}
+        bind:isHovering={isPopupMenuActive}
+        activeRoute={activeRoute}
+      />
+      {/if}
+    </div>
     {/if}
   {/each}
   <slot />
