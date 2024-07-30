@@ -54,7 +54,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Book a Demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
         type: 'cta',
-        url: 'https://join.topcoder.com/book-a-demo',
+        url: 'https://join.topcoder.com/lets-chat',
     },
     challengesApp: {
         label: 'Opportunities',
@@ -118,7 +118,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Talk to an Expert',
         description: 'Speak with a Topcoder expert to get started.',
         type: 'cta',
-        url: 'https://join.topcoder.com/lets-talk',
+        url: 'https://join.topcoder.com/lets-chat',
     },
     topcoderAcademyApp: {
         label: 'Topcoder Academy',
@@ -127,7 +127,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Learn new skills',
     },
     topCrowdApp: {
-        description: 'Engage and reward your workforce',
+        // description: 'Engage and reward your workforce',
         icon: 'topcrowd',
         label: 'Topcoder Platform',
         url: 'https://app.topcoder.com',
@@ -143,5 +143,13 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'connect',
         description: 'Connect App',
         url: `${CONNECT_HOST}`,
+    },
+    bugHunt: {
+        label: 'Bug Hunt',
+        url: getWordpressUrl('/customer/product/bughunt'),
+    },
+    platform: {
+        label: 'Platform',
+        url: getWordpressUrl('/customer/product'),
     },
 }

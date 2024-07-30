@@ -14,7 +14,6 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { useSessionStorage } from 'lib/utils/use-storage';
-  import { HoverMenu } from 'lib/components/hover-menu';
 
   import styles from './ToolNavigation.module.scss';
   import ToolNavSeparator from './tool-nav-separator/ToolNavSeparator.svelte';
@@ -41,10 +40,6 @@
   let isHiding = false;
   let mainMenuVisible = false;
 
-  let popupIsVisible: boolean;
-  let hoveredElement: HTMLElement | undefined;
-  let hoveredMenuItem: NavMenuItem;
-
   async function setMainMenuWidth() {
     $mainMenuWidth = linksMenuEl?.offsetWidth
   }
@@ -63,16 +58,7 @@
         menuItems={menuItems}
         bind:ref={linksMenuEl}
         style='primary'
-        bind:hoveredMenuItem={hoveredMenuItem}
-        bind:hoveredElement={hoveredElement}
-        isPopupMenuActive={popupIsVisible}
-      >
-        <HoverMenu
-          menuItems={hoveredMenuItem?.children}
-          mainDescription={hoveredMenuItem?.description}
-          bind:isHovering={popupIsVisible}
-        />
-      </LinksMenu>
+      />
     </div>
 
     <ToolNavSeparator
