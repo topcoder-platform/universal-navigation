@@ -1,0 +1,68 @@
+@import 'lib/styles/mixins.scss';
+@import 'lib/styles/fonts.scss';
+@import 'lib/styles/colors.scss';
+
+$transitionInDelay: 15ms;
+
+.hoverMenuWrap {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: #f4f4f4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2;
+  transform: translateY(5px);
+  pointer-events: none;
+
+  // transition out
+  transition: opacity 0.2s ease-out 0.15s,
+    visibility 0s linear .35s,
+    transform 0.15s ease-out 0.15s;
+
+  :global(.has-menu:not(.active)):hover ~ &, &:hover {
+    opacity: 1;
+    visibility: visible;
+    z-index: 19;
+    transform: translateY(0);
+    pointer-events: auto;
+
+    // transition in
+    transition: opacity 0.2s ease-in calc(0.15s + $transitionInDelay),
+      visibility 0s linear 0.35s,
+      transform 0.15s ease-in calc(0.15s + $transitionInDelay);
+  }
+}
+
+.hoverMenuInner {
+  position: relative;
+  padding: 16px;
+  margin: 0 auto;
+
+  min-width: 120px;
+}
+
+.hoverMenuInner > a.menuItem {
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  white-space: nowrap;
+
+  display: block;
+  color: #202020;
+
+  &:hover {
+    color: color(hoverMenuLink, hover);
+    font-weight: 700;
+  }
+
+  & + a.menuItem {
+    margin-top: 16px;
+  }
+}
