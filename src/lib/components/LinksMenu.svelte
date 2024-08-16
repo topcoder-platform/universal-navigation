@@ -9,6 +9,7 @@
   export let style: "primary" | "secondary" | "tertiary" | 'cta';
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
+  export let activeRoutePath: NavMenuItem[] = [];
   let hoveredMenuItem: NavMenuItem = undefined;
   let hoveredElement: HTMLElement = undefined;
   let isPopupMenuActive: boolean = false;
@@ -61,7 +62,7 @@
       <SubMenu
         menuItems={hoveredMenuItem?.children}
         bind:isHovering={isPopupMenuActive}
-        activeRoute={activeRoute}
+        activeRoute={activeRoutePath[1] ?? activeRoute}
       />
       {/if}
     </div>
