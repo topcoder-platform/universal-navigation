@@ -44,24 +44,4 @@
   >
     <UserArea slot="auth" />
   </NavigationBar>
-
-  {#if !$isMobile}
-    {#if primaryRoute?.children?.length}
-      <NavigationBar
-        activeRoutePath={activeRoute}
-        activeRoute={secondaryRoute}
-        style='secondary'
-        menuItems={primaryRoute.children}
-      />
-    {/if}
-
-    {#if secondaryRoute?.children?.length}
-      <NavigationBar
-        activeRoutePath={activeRoute}
-        activeRoute={tertiaryRoute}
-        style='tertiary'
-        menuItems={secondaryRoute.children}
-      />
-    {/if}
-  {/if}
 </div>

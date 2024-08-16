@@ -24,7 +24,7 @@ $transitionInDelay: 15ms;
     visibility 0s linear .35s,
     transform 0.15s ease-out 0.15s;
 
-  :global(.has-menu:not(.active)):hover ~ &, &:hover {
+  :global(.has-menu):hover ~ &, &:hover {
     opacity: 1;
     visibility: visible;
     z-index: 19;
@@ -43,7 +43,7 @@ $transitionInDelay: 15ms;
   padding: 16px;
   margin: 0 auto;
 
-  min-width: 120px;
+  min-width: 200px;
 }
 
 .hoverMenuInner > a.menuItem {

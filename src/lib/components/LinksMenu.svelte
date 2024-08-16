@@ -22,7 +22,7 @@
   }
 
   const handleMouseover = (menuItem: NavMenuItem) => async (ev) => {
-    if (!itemHasHoverMenu(menuItem) || isActiveMenu(menuItem)) {
+    if (!itemHasHoverMenu(menuItem)) {
       return;
     }
 
@@ -48,14 +48,13 @@
       <a
         class={getNavItemClassNames(menuItem)}
         class:active={isActiveMenu(menuItem)}
-        class:hover={isPopupMenuActive &&
-          hoveredMenuItem?.url === menuItem.url}
-          href={menuItem.url}
-          target={menuItem.target ?? '_top'}
-          data-key={menuItem.url}
-          on:mouseover={handleMouseover(menuItem)}
-          on:focus={handleMouseover(menuItem)}
-        >
+        class:hover={isPopupMenuActive || hoveredMenuItem?.url === menuItem.url}
+        href={menuItem.url}
+        target={menuItem.target ?? '_top'}
+        data-key={menuItem.url}
+        on:mouseover={handleMouseover(menuItem)}
+        on:focus={handleMouseover(menuItem)}
+      >
         {menuItem.label}
       </a>
       {#if hoveredMenuItem === menuItem && hoveredMenuItem?.children}
