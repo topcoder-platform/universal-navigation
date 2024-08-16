@@ -152,4 +152,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Platform',
         url: getWordpressUrl('/customer/product'),
     },
+    innovationChallenges: {
+      label: 'Innovation Challenges',
+      url: getWordpressUrl('/innovation-challenges'),
+    }
 }
