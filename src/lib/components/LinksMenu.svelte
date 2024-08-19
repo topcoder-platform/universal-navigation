@@ -39,7 +39,6 @@
       itemHasHoverMenu(menuItem) && 'has-menu',
     )
   }
-
 </script>
 
 <div class={styles.linksMenuWrap} bind:this={ref}>
@@ -49,7 +48,7 @@
       <a
         class={getNavItemClassNames(menuItem)}
         class:active={isActiveMenu(menuItem)}
-        class:hover={isPopupMenuActive || hoveredMenuItem?.url === menuItem.url}
+        class:hover={isPopupMenuActive && hoveredMenuItem?.url === menuItem.url}
         href={menuItem.url}
         target={menuItem.target ?? '_top'}
         data-key={menuItem.url}
