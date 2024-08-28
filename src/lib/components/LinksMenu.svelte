@@ -9,6 +9,7 @@
   export let style: "primary" | "secondary" | "tertiary" | 'cta';
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
+  export let activeRoutePath: NavMenuItem[] = [];
   let hoveredMenuItem: NavMenuItem = undefined;
   let hoveredElement: HTMLElement = undefined;
   let isPopupMenuActive: boolean = false;
@@ -22,7 +23,7 @@
   }
 
   const handleMouseover = (menuItem: NavMenuItem) => async (ev) => {
-    if (!itemHasHoverMenu(menuItem) || isActiveMenu(menuItem)) {
+    if (!itemHasHoverMenu(menuItem)) {
       return;
     }
 
@@ -38,7 +39,6 @@
       itemHasHoverMenu(menuItem) && 'has-menu',
     )
   }
-
 </script>
 
 <div class={styles.linksMenuWrap} bind:this={ref}>
@@ -48,21 +48,20 @@
       <a
         class={getNavItemClassNames(menuItem)}
         class:active={isActiveMenu(menuItem)}
-        class:hover={isPopupMenuActive &&
-          hoveredMenuItem?.url === menuItem.url}
-          href={menuItem.url}
-          target={menuItem.target ?? '_top'}
-          data-key={menuItem.url}
-          on:mouseover={handleMouseover(menuItem)}
-          on:focus={handleMouseover(menuItem)}
-        >
+        class:hover={isPopupMenuActive && hoveredMenuItem?.url === menuItem.url}
+        href={menuItem.url}
+        target={menuItem.target ?? '_top'}
+        data-key={menuItem.url}
+        on:mouseover={handleMouseover(menuItem)}
+        on:focus={handleMouseover(menuItem)}
+      >
         {menuItem.label}
       </a>
       {#if hoveredMenuItem === menuItem && hoveredMenuItem?.children}
       <SubMenu
         menuItems={hoveredMenuItem?.children}
         bind:isHovering={isPopupMenuActive}
-        activeRoute={activeRoute}
+        activeRoute={activeRoutePath[1] ?? activeRoute}
       />
       {/if}
     </div>

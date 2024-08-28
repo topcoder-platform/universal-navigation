@@ -8,6 +8,7 @@ export const mainNavigationItems: NavMenuItem[] = [
     children: [
       allNavItems.bugHunt,
       allNavItems.platform,
+      allNavItems.innovationChallenges,
     ],
   },
   allNavItems.pricing,

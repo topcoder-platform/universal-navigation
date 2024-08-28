@@ -22,6 +22,7 @@
       menuItems={menuItems}
       style={style}
       activeRoute={activeRoute}
+      activeRoutePath={activeRoutePath}
     />
   {/if}
 
