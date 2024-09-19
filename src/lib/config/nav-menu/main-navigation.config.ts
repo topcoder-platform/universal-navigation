@@ -11,7 +11,6 @@ export const mainNavigationItems: NavMenuItem[] = [
       allNavItems.innovationChallenges,
     ],
   },
-  allNavItems.pricing,
   allNavItems.demo,
   allNavItems.talent,
 ]

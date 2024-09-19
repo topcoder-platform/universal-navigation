@@ -20,10 +20,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Demo',
       url: getWordpressUrl('/customer/demo'),
     },
-    pricing: {
-      label: 'Pricing',
-      url: getWordpressUrl('/pricing'),
-    },
     product: {
       label: 'Product',
       url: getWordpressUrl('/customer/product'),
