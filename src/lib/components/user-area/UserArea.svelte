@@ -96,6 +96,12 @@
   <div class={styles.userAreaWrap}>
     {#if !user}
     <div class={styles.btnsWrap}>
+      <Button label="Log In" onClick={() => handleSignin('login')}/>
+      <Button
+        variant="primary"
+        label="Sign Up"
+        onClick={() => handleSignin('signup')}
+      />
     </div>
     {:else }
       <ToolSelector />
