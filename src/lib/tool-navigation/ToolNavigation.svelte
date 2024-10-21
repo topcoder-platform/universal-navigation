@@ -14,6 +14,7 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { useSessionStorage } from 'lib/utils/use-storage';
+  import Maintenance from 'lib/components/Maintenance.svelte';
 
   import styles from './ToolNavigation.module.scss';
   import ToolNavSeparator from './tool-nav-separator/ToolNavSeparator.svelte';
@@ -47,6 +48,7 @@
   onMount(checkAndLoadFonts)
 </script>
 
+<Maintenance />
 <TopNavbar class={classnames(styles.navbar, 'tc-universal-nav-wrap')} style="primary">
   {#if $isMobile}
     <MobileNavigation
