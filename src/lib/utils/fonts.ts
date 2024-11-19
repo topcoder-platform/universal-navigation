@@ -17,6 +17,12 @@ const fontsList = [
     q: 'family=Roboto:wght@400;500;700&display=swap'
   },
   {
+    query: '400 16px Nunito\ Sans',
+    family: 'Nunito+Sans',
+    weight: 400,
+    q: 'family=Nunito+Sans:opsz,wght@6..12,400'
+  },
+  {
     query: '700 16px Nunito\ Sans',
     family: 'Nunito+Sans',
     weight: 700,

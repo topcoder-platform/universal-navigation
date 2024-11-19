@@ -11,7 +11,8 @@ export const TC_DOMAIN: string = {
 }[HOST_ENV] || 'topcoder.com'
 
 
-export const WP_HOST_URL: string = `https://www.${TC_DOMAIN}`;
+export const WP_HOST_URL: string = `http://localhost:5173`;
+// export const WP_HOST_URL: string = `https://www.${TC_DOMAIN}`;
 export const CHALLENGE_HOST: string = `https://www.${TC_DOMAIN}`;
 export const COMMUNITY_HOST: string = `https://www.${TC_DOMAIN}`;
 
