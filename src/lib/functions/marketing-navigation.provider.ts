@@ -12,3 +12,5 @@ export function getMainNavItems(isAuthenticated: boolean): NavMenuItem[] {
 export function getActiveRoute(navItems: NavMenuItem[], index?: number): NavMenuItem[] {
   return getActiveRouteUtil(navItems, index);
 }
+
+export { marketingRightItems } from 'lib/config/nav-menu/marketing-nav-items'

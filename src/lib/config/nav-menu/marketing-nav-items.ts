@@ -8,3 +8,8 @@ export const marketingNavItems: NavMenuItem = {
         ...mainNavigationItems,
     ]
 }
+
+export const marketingRightItems: NavMenuItem[] = [
+  allNavItems.freelancer,
+  allNavItems.login,
+]
