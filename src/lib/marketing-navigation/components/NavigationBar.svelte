@@ -3,15 +3,17 @@
     import LinksMenu from '../../components/LinksMenu.svelte';
     import TopNavbar from 'lib/components/TopNavbar.svelte';
     import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
+    import { marketingRightItems } from 'lib/functions/marketing-navigation.provider'
 
     export let style: 'primary'|'secondary'|'tertiary';
     export let menuItems: NavMenuItem[] = [];
     export let activeRoutePath: NavMenuItem[] = [];
     export let activeRoute: NavMenuItem;
     export let isMobile: boolean = false;
+    export let minVersionLogo: boolean = false;
 </script>
 
-<TopNavbar style={style}>
+<TopNavbar style={style} minVersionLogo={minVersionLogo}>
   {#if isMobile}
     <MobileNavigation
       menuItems={menuItems}
@@ -27,6 +29,18 @@
   {/if}
 
   <svelte:fragment slot="right">
-    <slot name="auth"></slot>
+    {#if isMobile}
+      <MobileNavigation
+        menuItems={menuItems}
+        activeRoutes={activeRoutePath}
+      />
+    {:else}
+      <LinksMenu
+        menuItems={marketingRightItems}
+        style={style}
+        activeRoute={activeRoute}
+        activeRoutePath={activeRoutePath}
+      />
+    {/if}
   </svelte:fragment>
 </TopNavbar>

@@ -5,24 +5,28 @@ import { delay } from "./delay";
  */
 const fontsList = [
   {
-    query: '400 16px Barlow\ Condensed',
-    family: 'Barlow+Condensed',
-    weight: 400
-  },
-  {
-    query: '500 16px Barlow\ Condensed',
-    family: 'Barlow+Condensed',
-    weight: 500
-  },
-  {
     query: '700 16px Roboto',
     family: 'Roboto',
     weight: 700,
+    q: 'family=Roboto:wght@400;500;700&display=swap'
   },
   {
     query: '400 16px Roboto',
     family: 'Roboto',
     weight: 400,
+    q: 'family=Roboto:wght@400;500;700&display=swap'
+  },
+  {
+    query: '400 16px Nunito\ Sans',
+    family: 'Nunito+Sans',
+    weight: 400,
+    q: 'family=Nunito+Sans:opsz,wght@6..12,400'
+  },
+  {
+    query: '700 16px Nunito\ Sans',
+    family: 'Nunito+Sans',
+    weight: 700,
+    q: 'family=Nunito+Sans:opsz,wght@6..12,700'
   },
 ];
 
@@ -90,7 +94,8 @@ export const checkAndLoadFonts = async () => {
         resolve(void 0);
       });
       link.rel = 'stylesheet';
-      link.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500&family=Roboto:wght@400;500;700&display=swap';
+      const queries = [...new Set(notLoaded.map(d => d.q))].join('&');
+      link.href = `https://fonts.googleapis.com/css2?${queries}&display=swap`;
 
       // append it before the first <link" we foind in the document
       const firstLink = document.getElementsByTagName('link')[0];
