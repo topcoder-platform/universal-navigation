@@ -11,9 +11,6 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
   import Banner from 'lib/components/Banner.svelte';
-  import Button from 'lib/components/Button.svelte';
-  import { AUTH0_AUTHENTICATOR_URL } from 'lib/config';
-  import { allNavItems } from 'lib/config/nav-menu/all-nav-items.config';
 
   const ctx = getAppContext()
   $: ({auth} = $ctx)
@@ -31,11 +28,6 @@
   let secondaryRoute: NavMenuItem;
   let tertiaryRoute: NavMenuItem;
   $: [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
-
-  const handleLogin = () => {
-    window.location.href = `${AUTH0_AUTHENTICATOR_URL}?retUrl=${allNavItems.home.url}`
-  }
-
   onMount(checkAndLoadFonts)
 </script>
 
