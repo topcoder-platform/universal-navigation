@@ -13,14 +13,14 @@
   .min {
     margin-right: 48px;
     img {
-      height: 22px;
+      height: 26px;
     }
   }
 
   @include mobile {
-    margin-right: 20px;
+    margin-right: 24px;
     img {
-      height: 17px;
+      height: 26px;
     }
   }
 }

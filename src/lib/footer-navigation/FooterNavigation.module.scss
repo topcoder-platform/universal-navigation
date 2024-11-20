@@ -11,6 +11,9 @@
     margin-left: auto;
     margin-right: auto;
   }
+  @include tablet {
+    padding: 48px 15px;
+  }
 }
 
 .footerInner {
@@ -23,7 +26,6 @@
   }
   @include tablet {
     flex-direction: column;
-    gap: 32px;
   }
 }
 
@@ -38,7 +40,7 @@
   h5 {
     font-weight: 700;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 22px;
     margin-top: 0;
     margin-bottom: 16px;
   }
@@ -51,7 +53,6 @@
 
 .footerNavigation {
   position: relative;
-  max-height: 332px;
   box-sizing: border-box;
 
   @include maxViewWidth;
@@ -59,13 +60,13 @@
 
   @include tabletOnly {
     max-height: none;
-    padding: 16px;
     width: 100%;
   }
 
   @include mobile {
     padding: 0;
     max-height: none;
+    width: 100%;
   }
 }
 
@@ -77,6 +78,13 @@
 
   > a {
     display: inline-block;
+  }
+
+  @include tablet {
+    padding-bottom: 17px;
+    > a {
+      height: 48px;
+    }
   }
 }
 
@@ -95,7 +103,10 @@
   }
 
   @include mobile {
-    flex-direction: column;
+    flex-wrap: wrap;
+    .menuSection {
+      flex: 1 1 45%;
+    }
   }
 }
 
@@ -132,14 +143,6 @@
   @include mobile {
     padding: 0;
     padding-bottom: 16px;
-    &:not(:last-child) {
-      border-bottom: 1px solid #767676;
-    }
-
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-    }
 
     &Entry {
       flex: 1 1 50%;
@@ -204,6 +207,11 @@
   padding-top: 48px;
   border-top: 1px solid #F7F9FF;
   margin-top: 48px;
+
+  @include mobile {
+    margin-top: 18px;
+    padding-top: 34px;
+  }
 }
 
 .footerSocial {
@@ -214,13 +222,12 @@
     position: relative;
     bottom: auto;
     right: auto;
-    margin-top: 48px;
-    justify-content: center;
+    margin-top: 16px;
   }
 }
 
 .cta.cta {
-  display: flex;
+  display: inline-flex;
   border-radius: 4px;
   align-items: center;
   justify-content: center;
@@ -234,4 +241,9 @@
   font-weight: 700;
   margin-top: 16px;
   margin-bottom: 16px;
+  white-space: nowrap;
+
+  @include mobile {
+    width: 100%;
+  }
 }

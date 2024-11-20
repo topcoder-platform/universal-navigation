@@ -10,6 +10,7 @@
   export let menuItems: NavMenuItem[];
   export let activeRoute: NavMenuItem = undefined;
   export let activeRoutePath: NavMenuItem[] = [];
+  export let vertical: boolean = false;
   let hoveredMenuItem: NavMenuItem = undefined;
   let hoveredElement: HTMLElement = undefined;
   let isPopupMenuActive: boolean = false;
@@ -41,7 +42,7 @@
   }
 </script>
 
-<div class={styles.linksMenuWrap} bind:this={ref}>
+<div class={classnames(styles.linksMenuWrap, vertical && styles.vertical)} bind:this={ref}>
   {#each menuItems as menuItem}
     {#if !!menuItem.label}
     <div class={styles.menuItemWrap}>
