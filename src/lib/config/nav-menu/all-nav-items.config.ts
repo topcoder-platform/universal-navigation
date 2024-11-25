@@ -43,7 +43,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     talent: {
       label: 'The Talent',
-      url: getWordpressUrl('/about-talent'),
+      url: getWordpressUrl('/talent'),
     },
     support: {
       label: 'Support',
