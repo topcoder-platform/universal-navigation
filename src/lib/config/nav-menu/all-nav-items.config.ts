@@ -29,10 +29,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'How it works',
       url: getWordpressUrl('/how-it-works'),
     },
-    customerStories: {
-      label: 'Customer Stories',
-      url: getWordpressUrl('/customer/success-stories'),
-    },
     demo: {
       label: 'Demo',
       url: getWordpressUrl('/customer/demo'),

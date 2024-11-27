@@ -5,5 +5,4 @@ import { allNavItems } from "./all-nav-items.config";
 export const mainNavigationItems: NavMenuItem[] = [
   allNavItems.howItWorks,
   allNavItems.talent,
-  allNavItems.customerStories,
 ]
