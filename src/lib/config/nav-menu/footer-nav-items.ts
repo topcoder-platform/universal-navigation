@@ -16,10 +16,6 @@ export const footerNavItems: NavMenuItem = {
                 label: 'The Talent',
                 url: getWordpressUrl('/talent'),
               },
-              {
-                label: 'Customer Stories',
-                url: getWordpressUrl('/customer/success-stories'),
-              },
             ]
         },
         {
@@ -28,10 +24,6 @@ export const footerNavItems: NavMenuItem = {
               {
                 label: 'I\'m a Freelancer',
                 url: getWordpressUrl('/freelancer'),
-              },
-              {
-                label: 'Blogs',
-                url: getWordpressUrl('/blog'),
               },
             ]
         },
