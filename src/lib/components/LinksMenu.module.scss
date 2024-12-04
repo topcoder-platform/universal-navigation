@@ -3,7 +3,7 @@
 .linksMenuWrap {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 48px;
   flex: 1 0 auto;
 
   :global(.navLink) {
@@ -23,10 +23,11 @@
 
     & { // same as secondary styles
       color: #AAAAAA;
-      font-family: $roboto;
-      font-weight: 500;
+      font-family: $nunito;
+      font-weight: 700;
       font-size: 14px;
       line-height: 22px;
+      white-space: nowrap;
 
       &:hover, &:global(.hover) {
         color: #FFFFFF;
@@ -43,17 +44,17 @@
 
     &.primary {
       color: #2A2A2A;
-      font-family: $roboto;
-      font-weight: 500;
+      font-family: $nunito;
+      font-weight: 700;
       font-size: 16px;
       line-height: 24px;
 
       &:hover, &:global(.hover) {
-        color: rgba(#2A2A2A, 0.6);
+        color: #0d61bf;
       }
 
       &:global(.active) {
-        color: #16679A;
+        color: #0d61bf;
       }
     }
 
@@ -94,6 +95,13 @@
       color: #fff;
       font-weight: 500;
     }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 0 16px;
   }
 }
 

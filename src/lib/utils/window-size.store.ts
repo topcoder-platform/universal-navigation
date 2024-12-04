@@ -18,4 +18,4 @@ export const windowSize = readable<WindowSize>({} as WindowSize, (set) => {
   return () => window.removeEventListener('resize', updateSizes);
 });
 
-export const isMobile = derived(windowSize, ({width}: WindowSize) => width < 768);
+export const isMobile = derived(windowSize, ({width}: WindowSize) => width < 990);

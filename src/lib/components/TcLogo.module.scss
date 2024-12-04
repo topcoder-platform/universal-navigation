@@ -2,18 +2,25 @@
 
 .logo {
   display: flex;
-  margin-right: 48px;
+  margin-right: 40px;
   flex: 0 0 auto;
 
   img {
     display: block;
-    height: 22px;
+    height: 32px;
+  }
+
+  .min {
+    margin-right: 48px;
+    img {
+      height: 26px;
+    }
   }
 
   @include mobile {
-    margin-right: 20px;
+    margin-right: 24px;
     img {
-      height: 17px;
+      height: 26px;
     }
   }
 }

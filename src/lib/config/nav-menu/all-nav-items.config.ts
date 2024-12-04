@@ -13,9 +13,22 @@ import {
     PLATFORM_APP_HOST,
     WALLETAPP_HOST,
     WORK_MANAGER_HOST,
+    AUTH0_AUTHENTICATOR_URL,
 } from '..';
 
 export const allNavItems: {[key: string]: NavMenuItem} = {
+    login: {
+      label: 'Login',
+      url: `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(getWordpressUrl('/home'))}`
+    },
+    freelancer: {
+      label: 'I\'m a Freelancer',
+      url: getWordpressUrl('/freelancer'),
+    },
+    howItWorks: {
+      label: 'How it works',
+      url: getWordpressUrl('/how-it-works'),
+    },
     demo: {
       label: 'Demo',
       url: getWordpressUrl('/customer/demo'),
@@ -25,8 +38,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       url: getWordpressUrl('/customer/product'),
     },
     talent: {
-      label: 'Talent',
-      url: getWordpressUrl('/about-talent'),
+      label: 'The Talent',
+      url: getWordpressUrl('/talent'),
     },
     support: {
       label: 'Support',

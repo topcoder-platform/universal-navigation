@@ -7,7 +7,6 @@
   import { getAppContext } from 'lib/app-context';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { getActiveRoute, getMainNavItems } from 'lib/functions/marketing-navigation.provider'
-  import UserArea from 'lib/components/user-area/UserArea.svelte';
   import { isMobile } from 'lib/utils/window-size.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
@@ -29,7 +28,6 @@
   let secondaryRoute: NavMenuItem;
   let tertiaryRoute: NavMenuItem;
   $: [primaryRoute, secondaryRoute, tertiaryRoute] = activeRoute
-
   onMount(checkAndLoadFonts)
 </script>
 
@@ -41,7 +39,5 @@
     style='primary'
     menuItems={menuItems}
     isMobile={$isMobile}
-  >
-    <UserArea slot="auth" />
-  </NavigationBar>
+  />
 </div>

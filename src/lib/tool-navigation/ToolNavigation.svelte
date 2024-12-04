@@ -14,6 +14,7 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { useSessionStorage } from 'lib/utils/use-storage';
+  import { marketingRightItems } from 'lib/functions/marketing-navigation.provider'
 
   import styles from './ToolNavigation.module.scss';
   import ToolNavSeparator from './tool-nav-separator/ToolNavSeparator.svelte';
@@ -47,10 +48,10 @@
   onMount(checkAndLoadFonts)
 </script>
 
-<TopNavbar class={classnames(styles.navbar, 'tc-universal-nav-wrap')} style="primary">
+<TopNavbar class={classnames(styles.navbar, 'tc-universal-nav-wrap')} style="primary" minVersionLogo>
   {#if $isMobile}
     <MobileNavigation
-      menuItems={menuItems}
+      menuItems={[...menuItems, ...marketingRightItems.slice(0, -1)]}
     />
   {:else}
     <div class={classnames(styles.primaryMenu, mainMenuVisible && !isHiding && styles.visible, isHiding && styles.hiding)}>
@@ -76,9 +77,6 @@
   {/if}
 
   <svelte:fragment slot="right">
-    {#if !$isMobile && toolConfig.showSalesCta && auth.ready}
-      <SalesCtaButtons isAuthenticated={isAuthenticated} />
-    {/if}
     <UserArea />
   </svelte:fragment>
 </TopNavbar>

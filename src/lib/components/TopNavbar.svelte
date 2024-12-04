@@ -5,15 +5,15 @@
 
   let className = '';
   export {className as class};
-  export let showLogo = false;
+  export let showLogo = true;
   export let style: 'primary'|'secondary'|'tertiary';
-
+  export let minVersionLogo: boolean = false;
 </script>
 
 <nav class={classnames(styles.topNavbarWrap, className, styles[style], 'uni-topNavbar')}>
   <div class={styles.topNavbarInner}>
-    {#if showLogo || style === 'primary'}
-      <TcLogo minVersion />
+    {#if showLogo && style === 'primary'}
+      <TcLogo minVersion={minVersionLogo} />
     {/if}
     <slot />
 

@@ -6,54 +6,39 @@ import { allNavItems } from "./all-nav-items.config";
 export const footerNavItems: NavMenuItem = {
     children: [
         {
-            label: 'Info',
+            label: 'For Clients',
             children: [
               {
-                label: 'Customer Stories',
-                url: getWordpressUrl('/customer/success-stories'),
+                label: 'How it Works',
+                url: getWordpressUrl('/how-it-works'),
               },
               {
-                label: 'Blog',
-                url: getWordpressUrl('/blog'),
+                label: 'The Talent',
+                url: getWordpressUrl('/talent'),
               },
+            ]
+        },
+        {
+            label: 'For Freelancers',
+            children: [
               {
-                label: 'Release Notes',
-                url: getWordpressUrl('/releasenotes'),
+                label: 'I\'m a Freelancer',
+                url: getWordpressUrl('/freelancer'),
+              },
+            ]
+        },
+        {
+            label: 'Resources',
+            children: [
+              allNavItems.support,
+              {
+                label: 'Terms and Conditions',
+                url: getWordpressUrl('/community/how-it-works/terms')
               },
               {
                 label: 'Privacy Policy',
-                url: getWordpressUrl('/policy'),
+                url: getWordpressUrl('/privacy')
               },
-              {
-                label: 'Terms & Conditions',
-                url: getWordpressUrl('/terms-conditions'),
-              },
-            ]
-        },
-        {
-            label: 'Solutions',
-            children: [
-              {
-                label: 'Product',
-                url: getWordpressUrl('/customer/product'),
-              },
-              {
-                label: 'Innovation Challenges',
-                url: getWordpressUrl('/innovation-challenges'),
-              },
-              {
-                label: 'Expertise',
-                url: getWordpressUrl('/ai'),
-              },
-              allNavItems.talent,
-            ]
-        },
-        {
-            label: 'Contact Us',
-            children: [
-              allNavItems.talkToAnExpert,
-              allNavItems.bookADemo,
-              allNavItems.support,
             ]
         },
     ]

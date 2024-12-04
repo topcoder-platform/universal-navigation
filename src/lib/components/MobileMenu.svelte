@@ -42,7 +42,7 @@
 </script>
 
 <div class={styles.mobileMenuWrap} transition:fade={{duration: 200}}>
-  <TopNavbar style="primary">
+  <TopNavbar style="primary" showLogo={false}>
     <div class={styles.closeIcon} slot="right" on:click={handleClose} on:keydown={() => {}}>
       <img src={closeMenuIcon} alt="close" />
     </div>
