@@ -16,6 +16,10 @@ export const footerNavItems: NavMenuItem = {
                 label: 'The Talent',
                 url: getWordpressUrl('/talent'),
               },
+              {
+                label: 'Customer Stories',
+                url: getWordpressUrl('/customer-stories'),
+              },
             ]
         },
         {
