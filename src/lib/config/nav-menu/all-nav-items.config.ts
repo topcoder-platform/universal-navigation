@@ -25,6 +25,25 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'I\'m a Freelancer',
       url: getWordpressUrl('/freelancer'),
     },
+    community: {
+      label: 'Community',
+    },
+    opportunities: {
+      label: 'Opportunities',
+      url: getWordpressUrl('/challenges'),
+    },
+    mmTournament: {
+      label: 'Marathon Match Tournament',
+      icon: 'mm-tournament',
+      description: 'Join the Excitement',
+      url: getWordpressUrl('/marathon-match-tournament/overview'),
+    },
+    aiHub: {
+      label: 'AI Hub',
+      icon: 'ai-hub',
+      description: 'Collaborate, Compete, Create',
+      url: getWordpressUrl('/ai-hub'),
+    },
     howItWorks: {
       label: 'How it works',
       url: getWordpressUrl('/how-it-works'),
@@ -61,7 +80,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Articles',
         icon: 'articles',
         description: 'Get insights and tips about Topcoder',
-        url: `${THRIVE_HOST}/thrive`,
+        url: getWordpressUrl('/thrive'),
     },
     bookADemo: {
         label: 'Book a Demo',

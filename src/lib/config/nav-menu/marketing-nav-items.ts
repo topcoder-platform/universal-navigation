@@ -10,6 +10,5 @@ export const marketingNavItems: NavMenuItem = {
 }
 
 export const marketingRightItems: NavMenuItem[] = [
-  allNavItems.freelancer,
   allNavItems.login,
 ]

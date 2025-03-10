@@ -2,6 +2,10 @@ import type { NavMenuItem } from '../functions/nav-menu-item.model';
 import { escapeRegExp } from "./regex";
 
 export const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
+  if (route.url === undefined || route.url === null) {
+    return false;
+  }
+
   const urlObj = new URL(route.url);
   const routeUrl = `${urlObj.origin}${urlObj.pathname}`;
 
@@ -96,6 +100,7 @@ export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] =
  */
 export function getActiveRoute(navMenuItems: NavMenuItem[], trailLevel?: number): NavMenuItem[] {
   const locationHref = `${location.origin}${location.pathname}`
-  const activeRouteTrail = [].concat(matchRoutes({ children: navMenuItems } as NavMenuItem, locationHref))
+  const activeRouteTrail = [].concat(matchRoutes({ children: navMenuItems } as NavMenuItem, locationHref)).filter(Boolean)
+
   return typeof trailLevel === 'number' ? activeRouteTrail?.slice(trailLevel, 1) : activeRouteTrail
 }

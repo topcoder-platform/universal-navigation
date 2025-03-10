@@ -2,7 +2,9 @@
   import type { NavMenuItem } from "lib/functions/nav-menu-item.model";
   import styles from "./LinksMenu.module.scss";
   import { classnames } from "lib/utils/classnames";
+  import { getPublicPath } from 'lib/utils/paths';
   import SubMenu from "./SubMenu.svelte";
+  const chevronDownIconUrl = getPublicPath(`/assets/ic-chevron-down.svg`);
 
   export let ref: Element | undefined = undefined;
 
@@ -16,7 +18,7 @@
   let isPopupMenuActive: boolean = false;
 
   function isActiveMenu(menuItem: NavMenuItem) {
-    return menuItem.url === activeRoute?.url
+    return activeRoute?.url !== undefined && menuItem.url === activeRoute?.url
   }
 
   function itemHasHoverMenu(menuItem: NavMenuItem) {
@@ -57,6 +59,9 @@
         on:focus={handleMouseover(menuItem)}
       >
         {menuItem.label}
+        {#if itemHasHoverMenu(menuItem)}
+          <img src={chevronDownIconUrl} alt="" class={styles.ddIcon} />
+        {/if}
       </a>
       {#if hoveredMenuItem === menuItem && hoveredMenuItem?.children}
       <SubMenu
