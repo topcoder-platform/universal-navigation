@@ -36,7 +36,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Marathon Match Tournament',
       icon: 'mm-tournament',
       description: 'Join the Excitement',
-      url: getWordpressUrl('/marathon-match-tournament/overview'),
+      url: getWordpressUrl('/marathon-matches'),
     },
     aiHub: {
       label: 'AI Hub',
