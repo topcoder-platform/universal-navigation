@@ -49,7 +49,7 @@ export const toolSelectorNavItems: NavMenuItem = {
           label: "AI",
           groupOrder: 3,
           children: [
-            allNavItems.ai360Platform,
+            allNavItems.aiHub,
           ]
         },
         {
@@ -57,6 +57,7 @@ export const toolSelectorNavItems: NavMenuItem = {
           groupOrder: 3,
           children: [
             allNavItems.marathonMatchesApp,
+            allNavItems.mmTournament,
           ]
         },
         {

@@ -70,6 +70,10 @@
         color: #0D664E;
       }
     }
+
+    &:global(.has-menu) {
+      cursor: pointer;
+    }
   }
 
   :global(.navButton) {
@@ -107,4 +111,9 @@
 
 .menuItemWrap {
   position: relative;
+}
+
+.ddIcon {
+  width: 11px;
+  margin-left: 3px;
 }
