@@ -14,6 +14,7 @@ export const mainNavigationItems: NavMenuItem[] = [
       allNavItems.mmTournament,
       allNavItems.aiHub,
       allNavItems.articles,
+      allNavItems.statistics,
     ]
   },
 ]
