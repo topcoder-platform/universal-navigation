@@ -29,6 +29,11 @@ export const footerNavItems: NavMenuItem = {
                 label: 'I\'m a Freelancer',
                 url: getWordpressUrl('/freelancer'),
               },
+              allNavItems.opportunities,
+              allNavItems.mmTournament,
+              allNavItems.aiHub,
+              allNavItems.articles,
+              allNavItems.statistics,
             ]
         },
         {

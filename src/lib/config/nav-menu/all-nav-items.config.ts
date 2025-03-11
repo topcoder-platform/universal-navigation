@@ -48,6 +48,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'How it works',
       url: getWordpressUrl('/how-it-works'),
     },
+    statistics: {
+      label: 'Statistics',
+      url: getWordpressUrl('/community/statistics'),
+    },
     demo: {
       label: 'Demo',
       url: getWordpressUrl('/customer/demo'),
