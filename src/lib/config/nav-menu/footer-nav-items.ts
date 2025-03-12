@@ -31,7 +31,7 @@ export const footerNavItems: NavMenuItem = {
               },
               allNavItems.opportunities,
               allNavItems.mmTournament,
-              allNavItems.aiHub,
+              // allNavItems.aiHub,
               allNavItems.articles,
               allNavItems.statistics,
             ]
