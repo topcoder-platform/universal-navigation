@@ -45,13 +45,13 @@ export const toolSelectorNavItems: NavMenuItem = {
             allNavItems.payments
           ]
         },
-        {
-          label: "AI",
-          groupOrder: 3,
-          children: [
-            allNavItems.aiHub,
-          ]
-        },
+        // {
+        //   label: "AI",
+        //   groupOrder: 3,
+        //   children: [
+        //     allNavItems.aiHub,
+        //   ]
+        // },
         {
           label: "Compete",
           groupOrder: 3,
