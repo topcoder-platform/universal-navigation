@@ -45,18 +45,19 @@ export const toolSelectorNavItems: NavMenuItem = {
             allNavItems.payments
           ]
         },
-        {
-          label: "AI",
-          groupOrder: 3,
-          children: [
-            allNavItems.ai360Platform,
-          ]
-        },
+        // {
+        //   label: "AI",
+        //   groupOrder: 3,
+        //   children: [
+        //     allNavItems.aiHub,
+        //   ]
+        // },
         {
           label: "Compete",
           groupOrder: 3,
           children: [
             allNavItems.marathonMatchesApp,
+            allNavItems.mmTournament,
           ]
         },
         {
