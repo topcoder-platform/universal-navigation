@@ -10,8 +10,6 @@ export const toolSelectorNavItems: NavMenuItem = {
       children: [
         {
           children: [
-            allNavItems.topCrowdApp,
-            allNavItems.selfServiceApp,
             allNavItems.talentSearchApp,
           ]
         },
@@ -45,13 +43,6 @@ export const toolSelectorNavItems: NavMenuItem = {
             allNavItems.payments
           ]
         },
-        // {
-        //   label: "AI",
-        //   groupOrder: 3,
-        //   children: [
-        //     allNavItems.aiHub,
-        //   ]
-        // },
         {
           label: "Compete",
           groupOrder: 3,
