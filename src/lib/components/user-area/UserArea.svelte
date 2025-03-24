@@ -3,6 +3,7 @@
   import { getAppContext } from 'lib/app-context';
   import { checkUserAppRole, fetchUserProfile } from 'lib/functions/user-profile.provider';
   import { fetchUserProfileCompletedness } from 'lib/functions/profile-nudges';
+  import { AUTH0_AUTHENTICATOR_URL } from 'lib/config';
   import { AUTH_USER_ROLE } from 'lib/config/auth';
   import { DISABLE_NUDGES } from "lib/config/profile-toasts.config";
 
@@ -13,6 +14,7 @@
   import styles from './UserArea.module.scss'
   import Completedness from './Completedness.svelte';
   import AuthArea from './AuthArea.svelte';
+  import Button from '../Button.svelte';
 
   const ctx = getAppContext();
 
@@ -74,13 +76,25 @@
     const authUser = await fetchUserProfile();
     $ctx.auth = {...$ctx.auth, ready: true, user: authUser};
   });
+
+  function onSignIn(signup?: any) {
+    const locationHref = `${window.location.origin}${window.location.pathname}`
+    window.location.href = `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(locationHref)}${signup === true ? '&mode=signUp' : ''}`;
+  }
+
+  function onSignUp() {
+    onSignIn(true);
+  }
 </script>
 
 {#if isReady}
   <VerticalSeparator />
   <div class={styles.userAreaWrap}>
     {#if !user}
-      <AuthArea />
+      <div class={styles.btnsWrap}>
+        <Button label="Log in" onClick={onSignIn} />
+        <Button variant="primary" label="Sign Up" onClick={onSignUp} />
+      </div>
     {:else }
       <ToolSelector />
       <UserAvatar

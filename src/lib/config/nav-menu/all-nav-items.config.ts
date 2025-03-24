@@ -132,12 +132,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         icon: 'review',
         description: 'Review submissions',
     },
-    selfServiceApp: {
-        label: 'Self Service Challenges',
-        url: SELF_SERVICE_HOST,
-        icon: 'self-service',
-        description: 'Launch and manage work',
-    },
     communityHome: {
         label: 'Community Home',
         description: 'Recent challenges and news.',
@@ -161,12 +155,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         url: TCACADEMY_HOST,
         icon: 'tcacademy',
         description: 'Learn new skills',
-    },
-    topCrowdApp: {
-        // description: 'Engage and reward your workforce',
-        icon: 'topcrowd',
-        label: 'Topcoder Platform',
-        url: 'https://app.topcoder.com',
     },
     workManager: {
         label: 'Work Manager',
