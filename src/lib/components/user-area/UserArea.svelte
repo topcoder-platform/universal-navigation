@@ -13,7 +13,6 @@
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
   import Completedness from './Completedness.svelte';
-  import AuthArea from './AuthArea.svelte';
   import Button from '../Button.svelte';
 
   const ctx = getAppContext();
