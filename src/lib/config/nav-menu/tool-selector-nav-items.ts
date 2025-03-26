@@ -44,6 +44,13 @@ export const toolSelectorNavItems: NavMenuItem = {
           ]
         },
         {
+          label: "AI",
+          groupOrder: 3,
+          children: [
+            allNavItems.aiHub,
+          ]
+        },
+        {
           label: "Compete",
           groupOrder: 3,
           children: [
