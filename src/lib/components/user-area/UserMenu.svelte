@@ -37,11 +37,6 @@
     </li>
     <li>
       <a
-        href={`${CUSTOMER_LOGIN}/login?as=customer`}
-      >Log in as Customer</a>
-    </li>
-    <li>
-      <a
         href={"javascript:;"}
         on:click={onSignOut}
       >Log Out</a>

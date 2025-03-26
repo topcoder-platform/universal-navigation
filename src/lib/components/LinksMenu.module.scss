@@ -73,6 +73,9 @@
 
     &:global(.has-menu) {
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }
   }
 
