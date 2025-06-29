@@ -11,6 +11,7 @@ export interface NavMenuItem {
     icon?: string;
     label?: string;
     type?: 'cta';
+    marketingPathname?: string;
     pathname?: string;
     url?: string;
     target?: string;

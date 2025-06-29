@@ -1,6 +1,6 @@
 import { MARKETING_HOST_URL } from '../config'
 import * as pkg from '../../../package.json'
-import { NavMenuItem } from 'lib/functions/nav-menu-item.model'
+import type { NavMenuItem } from 'lib/functions/nav-menu-item.model'
 
 const isProdBuild: boolean = typeof BUILD_IS_PROD !== 'undefined' ? BUILD_IS_PROD : true
 
