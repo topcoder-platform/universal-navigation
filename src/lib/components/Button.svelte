@@ -2,7 +2,7 @@
   import { classnames } from 'lib/utils/classnames';
   import styles from './Button.module.scss'
 
-  type ButtonVariant = 'primary'|'outline'|'contrast'|''
+  type ButtonVariant = 'primary'|'primary-link'|'outline'|'contrast'|''
 
   let className = '';
   export {className as class};

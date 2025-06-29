@@ -87,12 +87,12 @@
 </script>
 
 {#if isReady}
-  <VerticalSeparator />
+  <!-- <VerticalSeparator /> -->
   <div class={styles.userAreaWrap}>
     {#if !user}
       <div class={styles.btnsWrap}>
-        <Button label="Log in" onClick={onSignIn} />
-        <Button variant="primary" label="Sign Up" onClick={onSignUp} />
+        <Button variant="primary-link" label="Sign Up" onClick={onSignUp} />
+        <Button variant="primary-link" label="Login" onClick={onSignIn} />
       </div>
     {:else }
       <ToolSelector />
