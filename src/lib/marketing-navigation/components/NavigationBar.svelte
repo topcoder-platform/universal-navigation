@@ -4,7 +4,6 @@
   import TopNavbar from 'lib/components/TopNavbar.svelte';
   import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
   import { marketingRightItems } from 'lib/functions/marketing-navigation.provider'
-  import { allNavItems } from 'lib/config/nav-menu/all-nav-items.config';
   import { NavigationHandler } from "../../app-context/navigation-handler.model";
 
   export let style: 'primary'|'secondary'|'tertiary';
@@ -33,22 +32,6 @@
   {/if}
 
   <svelte:fragment slot="right">
-    {#if !isMobile}
-      <LinksMenu
-        menuItems={marketingRightItems}
-        style={style}
-        activeRoute={activeRoute}
-        activeRoutePath={activeRoutePath}
-        navigationHandler={navigationHandler}
-      />
-    {:else}
-      <LinksMenu
-        menuItems={[allNavItems.login]}
-        style={style}
-        activeRoute={activeRoute}
-        activeRoutePath={activeRoutePath}
-        navigationHandler={navigationHandler}
-      />
-    {/if}
+    <slot name="auth"></slot>
   </svelte:fragment>
 </TopNavbar>

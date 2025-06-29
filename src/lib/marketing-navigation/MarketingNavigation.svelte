@@ -11,6 +11,7 @@
   import { windowLocation } from 'lib/utils/location.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
+  import UserArea from 'lib/components/user-area/UserArea.svelte';
 
   const ctx = getAppContext()
   $: ({auth, navigationHandler} = $ctx)
@@ -41,5 +42,7 @@
     menuItems={menuItems}
     isMobile={$isMobile}
     navigationHandler={navigationHandler}
-  />
+  >
+    <UserArea slot="auth" />
+  </NavigationBar>
 </div>
