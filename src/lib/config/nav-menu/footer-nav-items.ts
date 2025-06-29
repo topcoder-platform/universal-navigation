@@ -1,4 +1,4 @@
-import { getWordpressUrl } from "lib/utils/paths";
+import { getMarketingUrl } from "lib/utils/paths";
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
 import { allNavItems } from "./all-nav-items.config";
@@ -10,15 +10,15 @@ export const footerNavItems: NavMenuItem = {
             children: [
               {
                 label: 'How it Works',
-                url: getWordpressUrl('/how-it-works'),
+                url: getMarketingUrl('/how-it-works'),
               },
               {
                 label: 'The Talent',
-                url: getWordpressUrl('/talent'),
+                url: getMarketingUrl('/talent'),
               },
               {
                 label: 'Customer Stories',
-                url: getWordpressUrl('/customer-stories'),
+                url: getMarketingUrl('/customer-stories'),
               },
             ]
         },
@@ -27,7 +27,7 @@ export const footerNavItems: NavMenuItem = {
             children: [
               {
                 label: 'I\'m a Freelancer',
-                url: getWordpressUrl('/freelancer'),
+                url: getMarketingUrl('/freelancer'),
               },
               allNavItems.opportunities,
               allNavItems.mmTournament,
@@ -42,11 +42,11 @@ export const footerNavItems: NavMenuItem = {
               allNavItems.support,
               {
                 label: 'Terms and Conditions',
-                url: getWordpressUrl('/community/how-it-works/terms')
+                url: getMarketingUrl('/community/how-it-works/terms')
               },
               {
                 label: 'Privacy Policy',
-                url: getWordpressUrl('/privacy')
+                url: getMarketingUrl('/privacy')
               },
             ]
         },

@@ -1,7 +1,7 @@
 export declare type HOST_ENV_TYPE = 'dev' | 'prod' | 'qa';
 export declare const HOST_ENV: HOST_ENV_TYPE;
 export declare const TC_DOMAIN: string;
-export declare const WP_HOST_URL: string;
+export declare const MARKETING_HOST_URL: string;
 export declare const CHALLENGE_HOST: string;
 export declare const COMMUNITY_HOST: string;
 export declare const THRIVE_HOST: string;

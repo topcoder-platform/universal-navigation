@@ -6,7 +6,7 @@ export const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
     return false;
   }
 
-  const urlObj = new URL(route.url);
+  const urlObj = new URL(route.url, location.origin);
   const routeUrl = `${urlObj.origin}${urlObj.pathname}`;
 
   return !!url.match(new RegExp(`^${escapeRegExp(routeUrl)}\/?(\\?|#|$)`, 'i'));

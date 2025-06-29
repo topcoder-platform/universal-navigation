@@ -13,6 +13,8 @@ export interface NavMenuItem {
     icon?: string
     label?: string
     type?: 'cta'
+    marketingPathname?: string;
+    pathname?: string
     url?: string
     target?: string
     uiAttr?: string // allow to pass class names for ui alterations
