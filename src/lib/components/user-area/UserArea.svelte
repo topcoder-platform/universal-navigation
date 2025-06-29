@@ -8,7 +8,6 @@
   import { DISABLE_NUDGES } from "lib/config/profile-toasts.config";
 
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
-  import VerticalSeparator from '../VerticalSeparator.svelte';
 
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'

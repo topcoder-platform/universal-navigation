@@ -24,7 +24,7 @@
   $: menuItems = customMenuItems ?? getMainNavItems(isAuthenticated)
 
   let activeRoute: NavMenuItem[] = [];
-  $: activeRoute = getActiveRoute(menuItems, 0, $windowLocation)
+  $: activeRoute = getActiveRoute(menuItems, undefined, $windowLocation)
 
   let primaryRoute: NavMenuItem;
   let secondaryRoute: NavMenuItem;

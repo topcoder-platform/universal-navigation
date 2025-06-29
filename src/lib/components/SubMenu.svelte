@@ -24,10 +24,10 @@
     }
   })
 
-  function handleNavigation(ev: MouseEvent) {
+  function handleNavigation(ev: MouseEvent, menuItem: NavMenuItem) {
     if (typeof navigationHandler === 'function') {
       ev.preventDefault()
-      navigationHandler({label: '', path: (ev.target as HTMLAnchorElement).href});
+      navigationHandler({label: '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
     }
   }
 </script>
@@ -41,7 +41,7 @@
         class:active={activeRoute?.url === menuItem.url}
         target={menuItem.target ?? '_top'}
         href={menuItem.url}
-        on:click={handleNavigation}
+        on:click={(ev) => handleNavigation(ev, menuItem)}
       >
         {menuItem.label}
       </a>

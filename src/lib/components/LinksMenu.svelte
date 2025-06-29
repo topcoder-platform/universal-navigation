@@ -45,10 +45,10 @@
     )
   }
 
-  function handleNavigation(ev: MouseEvent) {
+  function handleNavigation(ev: MouseEvent, menuItem: NavMenuItem) {
     if (typeof navigationHandler === 'function') {
       ev.preventDefault()
-      navigationHandler({label: '', path: (ev.target as HTMLAnchorElement).href});
+      navigationHandler({label: '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
     }
   }
 </script>
@@ -60,13 +60,13 @@
       <a
         class={getNavItemClassNames(menuItem)}
         class:active={isActiveMenu(menuItem, activeRoute)}
-        class:hover={isPopupMenuActive && hoveredMenuItem?.url === menuItem.url}
+        class:hover={isPopupMenuActive && hoveredMenuItem?.label === menuItem.label}
         href={menuItem.url}
         target={menuItem.target ?? '_top'}
         data-key={menuItem.url}
         on:mouseover={handleMouseover(menuItem)}
         on:focus={handleMouseover(menuItem)}
-        on:click={handleNavigation}
+        on:click={(ev) => handleNavigation(ev, menuItem)}
       >
         {menuItem.label}
         {#if itemHasHoverMenu(menuItem)}
