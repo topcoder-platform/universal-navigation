@@ -4,17 +4,30 @@ import { allNavItems } from "./all-nav-items.config";
 
 export const mainNavigationItems: NavMenuItem[] = [
   allNavItems.howItWorks,
-  allNavItems.talent,
-  allNavItems.customerStories,
-  allNavItems.freelancer,
+  {
+    ...allNavItems.solutions,
+    children: [
+      allNavItems.tcSolutions,
+      allNavItems.projectLifecycle,
+      allNavItems.customerStories,
+      allNavItems.talent,
+    ],
+  },
   {
     ...allNavItems.community,
     children: [
+      allNavItems.freelancer,
       allNavItems.opportunities,
       allNavItems.mmTournament,
       allNavItems.aiHub,
-      allNavItems.articles,
       allNavItems.statistics,
     ]
+  },
+  {
+    ...allNavItems.resources,
+    children: [
+      // allNavItems.blog,
+      allNavItems.articles,
+    ],
   },
 ]

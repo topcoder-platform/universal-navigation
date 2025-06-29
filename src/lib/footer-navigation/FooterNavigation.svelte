@@ -6,7 +6,7 @@
   import { handleNavItemAction } from 'lib/utils/nav-item-action.handler';
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import styles from './FooterNavigation.module.scss'
-  import { getPublicPath, getWordpressUrl } from 'lib/utils/paths';
+  import { getPublicPath, getMarketingUrl } from 'lib/utils/paths';
   import SocialIcon from './SocialIcon.svelte';
 
   $: logoUrl = getPublicPath(`/assets/inverted-logo.svg`);
@@ -45,7 +45,7 @@
               </div>
             {/if}
             {#if i === 2}
-            <a target="_blank" href={getWordpressUrl('/lets-talk')} rel="noopener noreferrer" class={styles.cta}>
+            <a target="_blank" href={getMarketingUrl('/lets-talk')} rel="noopener noreferrer" class={styles.cta}>
               Talk to an expert
             </a>
             <div class={styles.footerSocial}>

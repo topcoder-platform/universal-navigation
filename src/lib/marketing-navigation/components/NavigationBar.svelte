@@ -5,12 +5,14 @@
   import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
   import { marketingRightItems } from 'lib/functions/marketing-navigation.provider'
   import { allNavItems } from 'lib/config/nav-menu/all-nav-items.config';
+  import { NavigationHandler } from "../../app-context/navigation-handler.model";
 
   export let style: 'primary'|'secondary'|'tertiary';
   export let menuItems: NavMenuItem[] = [];
   export let activeRoutePath: NavMenuItem[] = [];
   export let activeRoute: NavMenuItem;
   export let isMobile: boolean = false;
+  export let navigationHandler: NavigationHandler | undefined;
 </script>
 
 <TopNavbar style={style} minVersionLogo={isMobile}>
@@ -26,6 +28,7 @@
       style={style}
       activeRoute={activeRoute}
       activeRoutePath={activeRoutePath}
+      navigationHandler={navigationHandler}
     />
   {/if}
 
@@ -36,6 +39,7 @@
         style={style}
         activeRoute={activeRoute}
         activeRoutePath={activeRoutePath}
+        navigationHandler={navigationHandler}
       />
     {:else}
       <LinksMenu
@@ -43,6 +47,7 @@
         style={style}
         activeRoute={activeRoute}
         activeRoutePath={activeRoutePath}
+        navigationHandler={navigationHandler}
       />
     {/if}
   </svelte:fragment>
