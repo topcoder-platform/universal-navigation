@@ -58,8 +58,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     statistics: {
       label: 'Statistics',
-      marketingPathname: '/community/statistics',
-      url: getMarketingUrl('/community/statistics'),
+      url: `${COMMUNITY_HOST}/community/statistics`,
     },
     demo: {
       label: 'Demo',
@@ -87,8 +86,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Articles',
         icon: 'articles',
         description: 'Get insights and tips about Topcoder',
-        marketingPathname: '/thrive',
-        url: getMarketingUrl('/thrive'),
+        url: `${COMMUNITY_HOST}/thrive`,
     },
     bookADemo: {
         label: 'Book a Demo',
@@ -190,13 +188,13 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     tcSolutions: {
       label: 'Topcoder Solutions',
-      marketingPathname: '/topcoder-solutions',
-      url: getMarketingUrl('/topcoder-solutions'),
+      marketingPathname: '/customer-stories/topcoder-offering',
+      url: getMarketingUrl('/customer-stories/topcoder-offering'),
     },
     projectLifecycle: {
       label: 'Project Lifecycle',
-      marketingPathname: '/project-lifecycle',
-      url: getMarketingUrl('/project-lifecycle'),
+      marketingPathname: '/customer-stories/project-lifecycle',
+      url: getMarketingUrl('/customer-stories/project-lifecycle'),
     },
     customerStories: {
       label: 'Customer Stories',
