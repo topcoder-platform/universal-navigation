@@ -17,7 +17,7 @@
 <TopNavbar style={style} minVersionLogo={isMobile}>
   {#if isMobile}
     <MobileNavigation
-      menuItems={[...menuItems,...marketingRightItems]}
+      menuItems={[...menuItems]}
       activeRoute={activeRoute}
       activeRoutePath={activeRoutePath}
     />

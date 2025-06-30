@@ -46,6 +46,11 @@
   }
 
   function handleNavigation(ev: MouseEvent, menuItem: NavMenuItem) {
+    if (menuItem.url === undefined) {
+      ev.preventDefault();
+      return;
+    }
+
     if (typeof navigationHandler === 'function') {
       ev.preventDefault()
       navigationHandler({label: '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
