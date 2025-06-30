@@ -8,21 +8,23 @@
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import { getActiveRoute, getMainNavItems } from 'lib/functions/marketing-navigation.provider'
   import { isMobile } from 'lib/utils/window-size.store';
+  import { windowLocation } from 'lib/utils/location.store';
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
-  import Banner from 'lib/components/Banner.svelte';
+  import UserArea from 'lib/components/user-area/UserArea.svelte';
 
   const ctx = getAppContext()
-  $: ({auth} = $ctx)
+  $: ({auth, navigationHandler} = $ctx)
 
   let isAuthenticated: boolean;
   $: isAuthenticated = auth.ready && !!auth.user;
 
+  export let customMenuItems: NavMenuItem[];
   let menuItems: NavMenuItem[];
-  $: menuItems = getMainNavItems(isAuthenticated)
+  $: menuItems = customMenuItems ?? getMainNavItems(isAuthenticated)
 
   let activeRoute: NavMenuItem[] = [];
-  $: activeRoute = getActiveRoute(menuItems)
+  $: activeRoute = getActiveRoute(menuItems, undefined, $windowLocation)
 
   let primaryRoute: NavMenuItem;
   let secondaryRoute: NavMenuItem;
@@ -32,12 +34,15 @@
 </script>
 
 <div class="tc-universal-nav-wrap">
-  <Banner />
+  <!-- <Banner /> -->
   <NavigationBar
     activeRoutePath={activeRoute}
     activeRoute={primaryRoute}
     style='primary'
     menuItems={menuItems}
     isMobile={$isMobile}
-  />
+    navigationHandler={navigationHandler}
+  >
+    <UserArea slot="auth" />
+  </NavigationBar>
 </div>

@@ -1,4 +1,4 @@
-import { getWordpressUrl } from "../../utils/paths";
+import { getMarketingUrl } from "../../utils/paths";
 import type { NavMenuItem } from "../../functions/nav-menu-item.model";
 
 import {
@@ -6,10 +6,8 @@ import {
     COMMUNITY_HOST,
     CONNECT_HOST,
     ONLINE_REVIEW_HOST,
-    SELF_SERVICE_HOST,
     TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
-    THRIVE_HOST,
     PLATFORM_APP_HOST,
     WALLETAPP_HOST,
     WORK_MANAGER_HOST,
@@ -19,54 +17,58 @@ import {
 export const allNavItems: {[key: string]: NavMenuItem} = {
     login: {
       label: 'Login',
-      url: `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(getWordpressUrl('/home'))}`
+      url: `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(getMarketingUrl('/home'))}`
     },
     freelancer: {
       label: 'I\'m a Freelancer',
-      url: getWordpressUrl('/freelancer'),
+      marketingPathname: '/freelancer',
+      url: getMarketingUrl('/freelancer'),
     },
     community: {
       label: 'Community',
     },
+    solutions: {
+      label: 'Solutions',
+    },
+    resources: {
+      label: 'Resources',
+    },
     opportunities: {
       label: 'Opportunities',
-      url: getWordpressUrl('/challenges'),
+      url: `${CHALLENGE_HOST}/challenges`,
     },
     mmTournament: {
       label: 'Marathon Match Tournament',
       icon: 'mm-tournament',
       description: 'Join the Excitement',
-      url: getWordpressUrl('/marathon-match-tournament'),
+      marketingPathname: '/marathon-match-tournament',
+      url: getMarketingUrl('/marathon-match-tournament'),
     },
     aiHub: {
       label: 'AI Hub',
       icon: 'ai-hub',
       description: 'Collaborate, Compete, Create',
-      url: getWordpressUrl('/ai-hub'),
+      marketingPathname: '/ai-hub',
+      url: getMarketingUrl('/ai-hub'),
     },
     howItWorks: {
       label: 'How it works',
-      url: getWordpressUrl('/how-it-works'),
+      marketingPathname: '/how-it-works',
+      url: getMarketingUrl('/how-it-works'),
     },
     statistics: {
       label: 'Statistics',
-      url: getWordpressUrl('/community/statistics'),
+      url: `${COMMUNITY_HOST}/community/statistics`,
     },
     demo: {
       label: 'Demo',
-      url: getWordpressUrl('/customer/demo'),
+      marketingPathname: '/customer/demo',
+      url: getMarketingUrl('/customer/demo'),
     },
     product: {
       label: 'Product',
-      url: getWordpressUrl('/customer/product'),
-    },
-    customerStories: {
-      label: 'Customer Stories',
-      url: getWordpressUrl('/customer-stories'),
-    },
-    talent: {
-      label: 'The Talent',
-      url: getWordpressUrl('/talent'),
+      marketingPathname: '/customer/product',
+      url: getMarketingUrl('/customer/product'),
     },
     support: {
       label: 'Support',
@@ -84,7 +86,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Articles',
         icon: 'articles',
         description: 'Get insights and tips about Topcoder',
-        url: getWordpressUrl('/thrive'),
+        url: `${COMMUNITY_HOST}/thrive`,
     },
     bookADemo: {
         label: 'Book a Demo',
@@ -106,7 +108,8 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     home: {
         label: 'Home',
-        url: getWordpressUrl(''),
+        marketingPathname: '/',
+        url: getMarketingUrl('/'),
     },
     marathonMatchesApp: {
         label: 'Marathon Matches',
@@ -136,7 +139,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         label: 'Community Home',
         description: 'Recent challenges and news.',
         icon: 'topcrowd',
-        url: getWordpressUrl('/home'),
+        url: `${COMMUNITY_HOST}/home`,
     },
     talentSearchApp: {
         label: 'Meet our Talent',
@@ -170,14 +173,37 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     bugHunt: {
         label: 'Bug Hunt',
-        url: getWordpressUrl('/customer/product/bughunt'),
+        marketingPathname: '/customer/product/bughunt',
+        url: getMarketingUrl('/customer/product/bughunt'),
     },
     platform: {
         label: 'Platform',
-        url: getWordpressUrl('/customer/product'),
+        marketingPathname: '/customer/product',
+        url: getMarketingUrl('/customer/product'),
     },
     innovationChallenges: {
       label: 'Innovation Challenges',
-      url: getWordpressUrl('/innovation-challenges'),
-    }
+      marketingPathname: '/innovation-challenges',
+      url: getMarketingUrl('/innovation-challenges'),
+    },
+    tcSolutions: {
+      label: 'Topcoder Solutions',
+      marketingPathname: '/customer-stories/topcoder-offering',
+      url: getMarketingUrl('/customer-stories/topcoder-offering'),
+    },
+    projectLifecycle: {
+      label: 'Project Lifecycle',
+      marketingPathname: '/customer-stories/project-lifecycle',
+      url: getMarketingUrl('/customer-stories/project-lifecycle'),
+    },
+    customerStories: {
+      label: 'Customer Stories',
+      marketingPathname: '/customer-stories',
+      url: getMarketingUrl('/customer-stories'),
+    },
+    talent: {
+      label: 'The Talent',
+      marketingPathname: '/talent',
+      url: getMarketingUrl('/talent'),
+    },
 }

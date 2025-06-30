@@ -4,6 +4,7 @@
   import { classnames } from "lib/utils/classnames";
   import { getPublicPath } from 'lib/utils/paths';
   import SubMenu from "./SubMenu.svelte";
+  import { NavigationHandler } from "../app-context/navigation-handler.model";
   const chevronDownIconUrl = getPublicPath(`/assets/ic-chevron-down.svg`);
 
   export let ref: Element | undefined = undefined;
@@ -13,12 +14,13 @@
   export let activeRoute: NavMenuItem = undefined;
   export let activeRoutePath: NavMenuItem[] = [];
   export let vertical: boolean = false;
+  export let navigationHandler: NavigationHandler | undefined = undefined;
   let hoveredMenuItem: NavMenuItem = undefined;
   let hoveredElement: HTMLElement = undefined;
   let isPopupMenuActive: boolean = false;
 
-  function isActiveMenu(menuItem: NavMenuItem) {
-    return activeRoute?.url !== undefined && menuItem.url === activeRoute?.url
+  function isActiveMenu(menuItem: NavMenuItem, activeMenuItem: NavMenuItem) {
+    return activeMenuItem?.url !== undefined && menuItem.url === activeMenuItem?.url
   }
 
   function itemHasHoverMenu(menuItem: NavMenuItem) {
@@ -42,6 +44,18 @@
       itemHasHoverMenu(menuItem) && 'has-menu',
     )
   }
+
+  function handleNavigation(ev: MouseEvent, menuItem: NavMenuItem) {
+    if (menuItem.url === undefined) {
+      ev.preventDefault();
+      return;
+    }
+
+    if (typeof navigationHandler === 'function') {
+      ev.preventDefault()
+      navigationHandler({label: '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
+    }
+  }
 </script>
 
 <div class={classnames(styles.linksMenuWrap, vertical && styles.vertical)} bind:this={ref}>
@@ -50,13 +64,14 @@
     <div class={styles.menuItemWrap}>
       <a
         class={getNavItemClassNames(menuItem)}
-        class:active={isActiveMenu(menuItem)}
-        class:hover={isPopupMenuActive && hoveredMenuItem?.url === menuItem.url}
+        class:active={isActiveMenu(menuItem, activeRoute)}
+        class:hover={isPopupMenuActive && hoveredMenuItem?.label === menuItem.label}
         href={menuItem.url}
         target={menuItem.target ?? '_top'}
         data-key={menuItem.url}
         on:mouseover={handleMouseover(menuItem)}
         on:focus={handleMouseover(menuItem)}
+        on:click={(ev) => handleNavigation(ev, menuItem)}
       >
         {menuItem.label}
         {#if itemHasHoverMenu(menuItem)}
@@ -68,6 +83,7 @@
         menuItems={hoveredMenuItem?.children}
         bind:isHovering={isPopupMenuActive}
         activeRoute={activeRoutePath[1] ?? activeRoute}
+        navigationHandler={navigationHandler}
       />
       {/if}
     </div>

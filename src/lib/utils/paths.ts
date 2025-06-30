@@ -1,5 +1,6 @@
-import { WP_HOST_URL } from '../config'
+import { MARKETING_HOST_URL } from '../config'
 import * as pkg from '../../../package.json'
+import type { NavMenuItem } from 'lib/functions/nav-menu-item.model'
 
 const isProdBuild: boolean = typeof BUILD_IS_PROD !== 'undefined' ? BUILD_IS_PROD : true
 
@@ -22,12 +23,36 @@ export function getPublicPath(assetPath: string): string {
  * @params path
  * @returns string
  */
-export function getWordpressUrl(path: string): string {
-
+export function getMarketingUrl(path: string): string {
     const locationPathname = typeof window === 'undefined' ? '' : window.location.pathname;
     // if the current host is a staging site, go to the staging site
     const pathPrefix: string = ['staging', 'universal-naviga']
         .find(prefix => locationPathname.match(new RegExp(`\/${prefix}(\/|\\?|$)`)))
 
-    return `${WP_HOST_URL}${!!pathPrefix ? `/${pathPrefix}` : ''}${path}`
+    return `${MARKETING_HOST_URL}${!!pathPrefix ? `/${pathPrefix}` : ''}${path}`
+}
+
+/**
+ * Parses the passed nav menu items and
+ * based on the `isAuthenticated` param
+ * activates the `authenticatedPath` for a nav menu item
+ * @param isAuthenticated
+ * @param navigationItem
+ * @returns NavMenuItem.children
+ */
+export const toMarketingHostUrls = ({ children = [] }: NavMenuItem, depth?: number) => {
+  // safe escape if things get out of control
+  if (depth >= 9) {
+    return
+  }
+
+  for (let child of children) {
+    if (child.marketingPathname) {
+      child.url = child.marketingPathname;
+    }
+
+    toMarketingHostUrls(child, depth + 1);
+  }
+
+  return children;
 }

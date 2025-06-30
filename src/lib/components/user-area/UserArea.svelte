@@ -8,7 +8,6 @@
   import { DISABLE_NUDGES } from "lib/config/profile-toasts.config";
 
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
-  import VerticalSeparator from '../VerticalSeparator.svelte';
 
   import UserAvatar from './UserAvatar.svelte';
   import styles from './UserArea.module.scss'
@@ -87,12 +86,12 @@
 </script>
 
 {#if isReady}
-  <VerticalSeparator />
+  <!-- <VerticalSeparator /> -->
   <div class={styles.userAreaWrap}>
     {#if !user}
       <div class={styles.btnsWrap}>
-        <Button label="Log in" onClick={onSignIn} />
-        <Button variant="primary" label="Sign Up" onClick={onSignUp} />
+        <Button variant="primary-link" label="Sign Up" onClick={onSignUp} />
+        <Button variant="primary-link" label="Login" onClick={onSignIn} />
       </div>
     {:else }
       <ToolSelector />

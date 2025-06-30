@@ -7,10 +7,10 @@
 
   img {
     display: block;
-    height: 32px;
+    height: 64px;
   }
 
-  .min {
+  &:global(.min) {
     margin-right: 48px;
     img {
       height: 26px;
