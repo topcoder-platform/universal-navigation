@@ -13,9 +13,13 @@ export const windowLocation = readable<Location>({} as Location, (set) => {
     set(window.location);
   };
 
+  window.addEventListener('popstate', updateLocation);
   window.addEventListener('pushstate', updateLocation);
   updateLocation();
-  return () => window.removeEventListener('pushstate', updateLocation);
+  return () => {
+    window.removeEventListener('pushstate', updateLocation);
+    window.removeEventListener('popstate', updateLocation);
+  };
 });
 
 export const pathname = derived(windowLocation, ({pathname}) => pathname);
