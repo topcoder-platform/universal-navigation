@@ -20,7 +20,10 @@
   let debounce = '';
 
   $: ({
-    signOut: onSignOut = () => {},
+    signOut: onSignOut = function onSignOut() {
+      const locationHref = `${window.location.origin}`
+      window.location.href = `${AUTH0_AUTHENTICATOR_URL}?logout=true&retUrl=${encodeURIComponent(locationHref)}`;
+    },
     ready: isReady,
     autoFetchUser,
     user,
