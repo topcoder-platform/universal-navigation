@@ -22,7 +22,7 @@
   $: ({
     signOut: onSignOut = function onSignOut() {
       const locationHref = `${window.location.origin}${window.location.pathname}`
-      window.location.href = `${AUTH0_AUTHENTICATOR_URL}?logout=true&?retUrl=${encodeURIComponent(locationHref)}`;
+      window.location.href = `${AUTH0_AUTHENTICATOR_URL}?logout=true&retUrl=${encodeURIComponent(locationHref)}`;
     },
     ready: isReady,
     autoFetchUser,
