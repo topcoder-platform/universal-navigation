@@ -5,6 +5,7 @@ import {
     CHALLENGE_HOST,
     COMMUNITY_HOST,
     CONNECT_HOST,
+    COPILOT_PORTAL_HOST,
     ONLINE_REVIEW_HOST,
     TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
@@ -50,6 +51,13 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       description: 'Collaborate, Compete, Create',
       marketingPathname: '/ai-hub',
       url: getMarketingUrl('/ai-hub'),
+    },
+    copilotPortal: {
+      label: 'Copilot Portal',
+      // Icon will be changed later once the actual icon is 
+      // is provided by design team
+      icon: 'connect',
+      url: COPILOT_PORTAL_HOST,
     },
     howItWorks: {
       label: 'How it works',
