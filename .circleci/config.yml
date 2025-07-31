@@ -221,6 +221,7 @@ workflows:
               only:
                 - dev
                 - TOP-2044_show-signin-modal
+                - pm-1512
 
       - deployProd:
           context: org-global
