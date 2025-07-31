@@ -54,9 +54,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     copilotPortal: {
       label: 'Copilot Portal',
-      // Icon will be changed later once the actual icon is 
-      // is provided by design team
-      icon: 'connect',
+      icon: 'copilot-portal',
       url: COPILOT_PORTAL_HOST,
     },
     howItWorks: {
