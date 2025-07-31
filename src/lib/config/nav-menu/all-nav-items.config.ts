@@ -55,6 +55,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     copilotPortal: {
       label: 'Copilot Portal',
       icon: 'copilot-portal',
+      description: 'Copilot Opportunities',
       url: COPILOT_PORTAL_HOST,
     },
     howItWorks: {
