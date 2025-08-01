@@ -2,21 +2,20 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: node:16.14
+    - image: node:18.20.8
 
 # DEFINE INDIVIDUAL STEPS
 
 deploy_defaults: &deploy_defaults
   docker:
-    - image: cimg/python:3.10.2
+    - image: cimg/python:3.12.1-browsers
 
 install_build_dependency: &install_build_dependency
   name: Installation of build and deployment dependencies.
   command: |
-    apt-get update -y && apt-get install -qq -y python-pip libpython-dev
-    curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py
+    apt-get update -y
     #installing awscli
-    pip install awscli --upgrade
+    apt install awscli -y
     apt install jq -y
 
 install_dependency: &install_dependency
