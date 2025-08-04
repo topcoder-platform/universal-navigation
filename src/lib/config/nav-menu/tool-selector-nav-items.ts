@@ -40,7 +40,8 @@ export const toolSelectorNavItems: NavMenuItem = {
           children: [
             allNavItems.challengesApp,
             allNavItems.review,
-            allNavItems.payments
+            allNavItems.payments,
+            allNavItems.copilotPortal,
           ]
         },
         {
