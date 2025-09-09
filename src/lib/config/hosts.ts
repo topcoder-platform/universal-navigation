@@ -27,6 +27,7 @@ export const ONLINE_REVIEW_HOST: string = `https://software.${TC_DOMAIN}`;
 export const TCACADEMY_HOST: string = `https://academy.${TC_DOMAIN}`;
 export const SELF_SERVICE_HOST: string = `https://work.${TC_DOMAIN}`;
 export const TC_API_V5_HOST: string = `https://api.${TC_DOMAIN}/v5`;
+export const TC_API_V6_HOST: string = `https://api.${TC_DOMAIN}/v6`;
 export const CONNECT_HOST: string = `https://connect.${TC_DOMAIN}`;
 export const WORK_MANAGER_HOST: string = `https://challenges.${TC_DOMAIN}`;
 export const PROFILE_HOST: string = `https://profiles.${TC_DOMAIN}`;

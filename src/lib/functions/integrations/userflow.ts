@@ -1,6 +1,6 @@
 import {
   DISABLE_USERFLOW,
-  TC_API_V5_HOST,
+  TC_API_V6_HOST,
   USERFLOW_DEFAULT_SURVEY_DELAY,
   USERFLOW_ENVIRONMENT_TOKEN,
   USERFLOW_TC_SIGNATURE,
@@ -22,7 +22,7 @@ const toIsoString = (createdAt: Date | number | string) => {
  */
 const getUserIdHash = (() => {
   const fetchFn = async () => {
-    const requestUrl: string = `${TC_API_V5_HOST}/members/uid-signature?type=userflow`;
+    const requestUrl: string = `${TC_API_V6_HOST}/members/uid-signature?type=userflow`;
     const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
     const response = await (await request).json();
 
