@@ -26,7 +26,7 @@ export const mainNavigationItems: NavMenuItem[] = [
   {
     ...allNavItems.resources,
     children: [
-      // allNavItems.blog,
+      allNavItems.blog,
       allNavItems.articles,
     ],
   },
