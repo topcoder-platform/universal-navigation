@@ -57,6 +57,10 @@ const instancesContextStore: { [key: string]: Map<string, Writable<any>> } = {}
 async function destroy(
   targetId: string,
 ) {
+  if (Object.prototype.hasOwnProperty.call(instancesContextStore, targetId)) {
+    delete instancesContextStore[targetId];
+  }
+
   if (typeof targetId !== 'string') {
     throw new Error(`'targetId' should be a string`);
   }
@@ -68,7 +72,6 @@ async function destroy(
   }
 
   targetEl.innerHTML = '';
-  delete instancesContextStore[targetId];
 }
 
 /**
