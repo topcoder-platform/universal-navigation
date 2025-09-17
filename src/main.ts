@@ -38,7 +38,7 @@ export type NavigationAppProps = {
   integrations?: {[key: string]: 'disable'}
 }
 
-export type TcUniNavMethods = 'init' | 'update' | 'triggerFlow'
+export type TcUniNavMethods = 'init' | 'update' | 'destroy' | 'triggerFlow'
 
 export type TcUniNavFn = (
   method: TcUniNavMethods,
@@ -53,6 +53,23 @@ const NavigationLoadersMap = {
 }
 
 const instancesContextStore: { [key: string]: Map<string, Writable<any>> } = {}
+
+async function destroy(
+  targetId: string,
+) {
+  if (typeof targetId !== 'string') {
+    throw new Error(`'targetId' should be a string`);
+  }
+
+  const targetEl: Element | null = document.getElementById(targetId);
+
+  if (targetEl?.nodeType !== Node.ELEMENT_NODE) {
+    throw new Error(`[TcUnivNav] 'target' must be a valid dom element with an id of #${targetId}!`);
+  }
+
+  targetEl.innerHTML = '';
+  delete instancesContextStore[targetId];
+}
 
 /**
  * Initialize the navigation component
@@ -159,6 +176,10 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
 
   else if (method === 'triggerFlow') {
     triggerFlow.call(null, ...args)
+  }
+
+  else if (method === 'destroy') {
+    destroy.call(null, ...args);
   }
 
   else if (method === 'trigger') {
