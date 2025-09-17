@@ -97,7 +97,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     blog: {
         label: 'Blog',
-        url: getMarketingUrl('/blog/all-posts'),
+        url: getMarketingUrl('/blogs'),
     },
     bookADemo: {
         label: 'Book a Demo',
