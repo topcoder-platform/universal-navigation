@@ -95,6 +95,10 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
         description: 'Get insights and tips about Topcoder',
         url: `${COMMUNITY_HOST}/thrive`,
     },
+    blog: {
+        label: 'Blog',
+        url: getMarketingUrl('/blog'),
+    },
     bookADemo: {
         label: 'Book a Demo',
         description: 'See a demo of how Topcoder can best provide for your business.',
