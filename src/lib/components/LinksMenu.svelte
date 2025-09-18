@@ -4,7 +4,7 @@
   import { classnames } from "lib/utils/classnames";
   import { getPublicPath } from 'lib/utils/paths';
   import SubMenu from "./SubMenu.svelte";
-  import { NavigationHandler } from "../app-context/navigation-handler.model";
+  import type { NavigationHandler } from "../app-context/navigation-handler.model";
   const chevronDownIconUrl = getPublicPath(`/assets/ic-chevron-down.svg`);
 
   export let ref: Element | undefined = undefined;

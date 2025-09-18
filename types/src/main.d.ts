@@ -21,5 +21,5 @@ export declare type NavigationAppProps = {
         [key: string]: 'disable';
     };
 };
-export declare type TcUniNavMethods = 'init' | 'update' | 'destroy' | 'triggerFlow';
+export declare type TcUniNavMethods = 'init' | 'update' | 'destroy';
 export declare type TcUniNavFn = (method: TcUniNavMethods, targetId: string, config: NavigationAppProps) => void;
