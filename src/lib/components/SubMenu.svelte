@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
-  import { NavigationHandler } from "../app-context/navigation-handler.model";
+  import type { NavigationHandler } from "../app-context/navigation-handler.model";
   import { onMount } from 'svelte';
   import styles from './SubMenu.module.scss';
 
