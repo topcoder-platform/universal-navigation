@@ -3,8 +3,7 @@
   import LinksMenu from '../../components/LinksMenu.svelte';
   import TopNavbar from 'lib/components/TopNavbar.svelte';
   import MobileNavigation from 'lib/mobile-navigation/MobileNavigation.svelte';
-  import { marketingRightItems } from 'lib/functions/marketing-navigation.provider'
-  import { NavigationHandler } from "../../app-context/navigation-handler.model";
+  import type { NavigationHandler } from "../../app-context/navigation-handler.model";
 
   export let style: 'primary'|'secondary'|'tertiary';
   export let menuItems: NavMenuItem[] = [];
