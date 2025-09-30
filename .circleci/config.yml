@@ -220,6 +220,7 @@ workflows:
               only:
                 - dev
                 - TOP-2044_show-signin-modal
+                - pm-2075_1
 
       - deployProd:
           context: org-global
