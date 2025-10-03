@@ -281,7 +281,7 @@ Information regarding the changes will be disseminated to the owners of all prop
 
 | Parameter               | Type                                         | Required                | Description                                                                              | Default value |
 |-------------------------|----------------------------------------------|-------------------------|------------------------------------------------------------------------------------------|---------------|
-| method                  | Enum: 'init' \| 'update' \| 'triggerFlow'    | yes                     | The method to be called                                                                  |               |
+| method                  | Enum: 'init' \| 'update'          | yes                     | The method to be called                                                                  |               |
 | targetId                | string(html element id)                      | yes                     | target element for the navigation to be rendered on                                      | none          |
 | config                  | object                                       | no                      | The config object for the specific navigation type                                       | {}            |
 | config.handleNavigation | (route: {path, label}) => void               | no                      | Allow for external handling of route navigation (eg. via react-router-dom)               | none          |
