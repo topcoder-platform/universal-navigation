@@ -20,7 +20,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Login',
       url: `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(getMarketingUrl('/home'))}`
     },
-    freelancer: {
+    freelanceor: {
       label: 'I\'m a Freelancer',
       marketingPathname: '/freelancer',
       url: getMarketingUrl('/freelancer'),
