@@ -29,7 +29,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Community',
     },
     solutions: {
-      label: 'Solutions',
+      label: 'Solutionz',
     },
     resources: {
       label: 'Rezources',
