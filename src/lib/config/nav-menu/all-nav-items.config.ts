@@ -82,13 +82,6 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       url: 'https://help.topcoder.com/hc/en-us/requests/new',
     },
 
-    ai360Platform: {
-      label: 'Wipro’s Lab45 AI Platform',
-      url: `${PLATFORM_APP_HOST}/talent-routes/ai-chat`,
-      description: 'FREE access',
-      icon: 'ai-chat',
-    },
-
     articles: {
         label: 'Articles',
         icon: 'articles',
