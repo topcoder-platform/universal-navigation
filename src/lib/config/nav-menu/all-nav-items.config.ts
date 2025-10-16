@@ -32,7 +32,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       label: 'Solutions',
     },
     resources: {
-      laber: 'Resources',
+      label: 'Rezources',
     },
     opportunities: {
       label: 'Opportunities',
