@@ -281,7 +281,7 @@ Information regarding the changes will be disseminated to the owners of all prop
 
 | Parameter               | Type                                         | Required                | Description                                                                              | Default value |
 |-------------------------|----------------------------------------------|-------------------------|------------------------------------------------------------------------------------------|---------------|
-| method                  | Enum: 'init' \| 'update' \| 'triggerFlow'    | yes                     | The method to be called                                                                  |               |
+| method                  | Enum: 'init' \| 'update'          | yes                     | The method to be called                                                                  |               |
 | targetId                | string(html element id)                      | yes                     | target element for the navigation to be rendered on                                      | none          |
 | config                  | object                                       | no                      | The config object for the specific navigation type                                       | {}            |
 | config.handleNavigation | (route: {path, label}) => void               | no                      | Allow for external handling of route navigation (eg. via react-router-dom)               | none          |
@@ -296,7 +296,6 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.user             | 'auto'                                       | no                      | Instruct the uni-nav to auto-fetch user profile info based on the `tcjwt` cookie value   | {}            |
 | config.user             | {photoURL, userId, initials, handle}         | no                      | The logged in user                                                                       | {}            |
 | config.supportMeta      | {challengeId, isSelfService}                 | no                      | Additional meta data to be sent along with any support ticket created by the user        |               |
-| config.integrations     | {userflow?: 'disable'}                       | no                      | Disable userflow integration                                                             |               |
 
 ### User Model
 You can either pass user's details as described by the `AuthUser` interface, or pass a value of `auto` and uni-nav will automatically fetch user's details from the api based on the tcjwt auth cookie.
@@ -325,13 +324,6 @@ The `update` needs to be called only after `init` was already called. If it's ca
 After `init` is called, you should call only `update` for further updates.
 
 >**NOTE** Both methods accept the same config object as mentioned in the previous section [API for tcUniNav](#api-for-tcuninav).
-
-### Custom Integrations
-
-#### Userflow
-Userflow is used to display surveys and tips for the user.
-You can manually trigger a predefined userflow content item by calling the method `triggerFlow` via uninav. Eg. `tcUniNav('triggerFlow', 'userflow-content-id', ...userflowArgs)`.
-
 
 ### Typescript Support
 

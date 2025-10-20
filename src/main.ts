@@ -2,7 +2,6 @@ import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { initUserflow, triggerFlow } from 'lib/functions/integrations/userflow';
 import { loadNudgeApp } from './lib/functions/load-nudge-app'
 import { PubSub } from './lib/utils/pubsub';
 
@@ -38,7 +37,7 @@ export type NavigationAppProps = {
   integrations?: {[key: string]: 'disable'}
 }
 
-export type TcUniNavMethods = 'init' | 'update' | 'destroy' | 'triggerFlow'
+export type TcUniNavMethods = 'init' | 'update' | 'destroy'
 
 export type TcUniNavFn = (
   method: TcUniNavMethods,
@@ -138,7 +137,6 @@ async function init(
   }
 
   if (navType === 'tool' || navType === 'marketing') {
-    initUserflow(ctx.get('appContext'));
     loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'));
   }
 }
@@ -175,10 +173,6 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
 
   else if (method === 'update') {
     update.call(null, ...args)
-  }
-
-  else if (method === 'triggerFlow') {
-    triggerFlow.call(null, ...args)
   }
 
   else if (method === 'destroy') {
