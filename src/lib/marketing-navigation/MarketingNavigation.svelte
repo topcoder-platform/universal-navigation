@@ -12,6 +12,7 @@
   import { checkAndLoadFonts } from 'lib/utils/fonts';
   import NavigationBar from './components/NavigationBar.svelte';
   import UserArea from 'lib/components/user-area/UserArea.svelte';
+  import Maintenance from 'lib/components/Maintenance.svelte';
 
   const ctx = getAppContext()
   $: ({auth, navigationHandler} = $ctx)
@@ -35,6 +36,7 @@
 
 <div class="tc-universal-nav-wrap">
   <!-- <Banner /> -->
+  <Maintenance />
   <NavigationBar
     activeRoutePath={activeRoute}
     activeRoute={primaryRoute}
