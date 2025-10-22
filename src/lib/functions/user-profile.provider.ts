@@ -1,6 +1,6 @@
 import type { AuthUser } from '../../main';
 import { AUTH_USER_ROLE, AUTH_USER_ROLE_VALUES } from '../config/auth';
-import { TC_API_V5_HOST } from '../config';
+import { TC_API_HOST } from '../config';
 import { getAuthJwtDomainProp, getRequestAuthHeaders } from './auth-jwt';
 
 export type fetchUserProfileFn = () => AuthUser | null;
@@ -46,7 +46,7 @@ export const fetchUserProfile = async (): Promise<AuthUser> => {
   let resolve: (value: AuthUser) => void;
   localCache[userHandle] = new Promise((r) => {resolve = r});
 
-  const requestUrl: string = `${TC_API_V5_HOST}/members/${userHandle}`;
+  const requestUrl: string = `${TC_API_HOST}/members/${userHandle}`;
   const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
 
   const response = await (await request).json();
