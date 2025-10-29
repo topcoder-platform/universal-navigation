@@ -221,6 +221,7 @@ workflows:
                 - dev
                 - TOP-2044_show-signin-modal
                 - maintenance
+                - review-app
 
       - deployProd:
           context: org-global

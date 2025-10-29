@@ -23,7 +23,7 @@ export const THRIVE_HOST: string = {
 }[HOST_ENV] || `https://www.${TC_DOMAIN}`;
 
 export const APP_AUTH_CONNECTOR: string = `https://accounts-auth0.${TC_DOMAIN}`;
-export const ONLINE_REVIEW_HOST: string = `https://software.${TC_DOMAIN}`;
+export const REVIEW_APP_HOST: string = `https://review.${TC_DOMAIN}`;
 export const TCACADEMY_HOST: string = `https://academy.${TC_DOMAIN}`;
 export const SELF_SERVICE_HOST: string = `https://work.${TC_DOMAIN}`;
 export const TC_API_HOST: string = `https://api.${TC_DOMAIN}/v6`;

@@ -6,7 +6,7 @@ import {
     COMMUNITY_HOST,
     CONNECT_HOST,
     COPILOT_PORTAL_HOST,
-    ONLINE_REVIEW_HOST,
+    REVIEW_APP_HOST,
     TALENT_SEARCH_HOST,
     TCACADEMY_HOST,
     PLATFORM_APP_HOST,
@@ -142,7 +142,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     review: {
         label: 'Review',
-        url: ONLINE_REVIEW_HOST,
+        url: REVIEW_APP_HOST,
         icon: 'review',
         description: 'Review submissions',
     },
