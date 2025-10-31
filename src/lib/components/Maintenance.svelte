@@ -1,12 +1,11 @@
 <script lang="ts">
   import styles from './Maintenance.module.scss';
-  const bannerName = 'maintenance';
 </script>
 
 <div class={styles.banner}>
   <div class={styles.bannerContent}>
     <div class={styles.bannerText}>
-      Wallet application will be under maintenance on Tuesday, October 21, 2025
+      The Topcoder platform will undergo scheduled maintenance on November 2, 2025. We apologize for any inconvenience this may cause.
     </div>
   </div>
 </div>

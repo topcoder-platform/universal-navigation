@@ -49,7 +49,7 @@
   onMount(checkAndLoadFonts)
 </script>
 
-<!-- <Maintenance /> -->
+<Maintenance />
 <TopNavbar class={classnames(styles.navbar, 'tc-universal-nav-wrap')} style="primary" minVersionLogo>
   {#if $isMobile}
     <MobileNavigation
