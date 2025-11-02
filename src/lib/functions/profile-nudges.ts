@@ -1,4 +1,4 @@
-import { TC_API_V5_HOST } from "lib/config";
+import { TC_API_HOST } from "lib/config";
 import type { AuthUser } from "lib/app-context";
 import { DISABLE_NUDGES, NUDGES_DISABLED_HOSTS } from "lib/config/profile-toasts.config";
 
@@ -51,7 +51,7 @@ export const fetchUserProfileCompletedness = async (user: AuthUser, force = fals
   // for QA purpose only
   const toastOverrideFlagParam = (window?.location.search.match(/[?&]+toast=(\w+)/i) ?? [])[1];
   const toastOverrideFlag = toastOverrideFlagParam ? `?toast=${toastOverrideFlagParam}` : '';
-  const requestUrl: string = `${TC_API_V5_HOST}/members/${userHandle}/profileCompleteness${toastOverrideFlag}`;
+  const requestUrl: string = `${TC_API_HOST}/members/${userHandle}/profileCompleteness${toastOverrideFlag}`;
   const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
 
   const response = await (await request).json();
