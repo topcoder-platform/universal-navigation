@@ -11,23 +11,26 @@
   export let activeRoute: NavMenuItem;
   export let isMobile: boolean = false;
   export let navigationHandler: NavigationHandler | undefined;
+  export let simplifiedNav: boolean = false;
 </script>
 
 <TopNavbar style={style} minVersionLogo={isMobile}>
-  {#if isMobile}
-    <MobileNavigation
-      menuItems={[...menuItems]}
-      activeRoute={activeRoute}
-      activeRoutePath={activeRoutePath}
-    />
-  {:else}
-    <LinksMenu
-      menuItems={menuItems}
-      style={style}
-      activeRoute={activeRoute}
-      activeRoutePath={activeRoutePath}
-      navigationHandler={navigationHandler}
-    />
+  {#if !simplifiedNav}
+    {#if isMobile}
+      <MobileNavigation
+        menuItems={[...menuItems]}
+        activeRoute={activeRoute}
+        activeRoutePath={activeRoutePath}
+      />
+    {:else}
+      <LinksMenu
+        menuItems={menuItems}
+        style={style}
+        activeRoute={activeRoute}
+        activeRoutePath={activeRoutePath}
+        navigationHandler={navigationHandler}
+      />
+    {/if}
   {/if}
 
   <svelte:fragment slot="right">

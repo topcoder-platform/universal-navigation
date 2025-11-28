@@ -18,6 +18,8 @@ export declare const buildContext: (newConfig: Partial<NavigationAppProps>, prev
         fullFooter: any;
         showSalesCta: any;
     };
+    signupUtmCodes: any;
+    simplifiedNav: any;
     supportMeta: any;
     integrations: any;
 };
