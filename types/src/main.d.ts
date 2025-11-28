@@ -20,6 +20,8 @@ export declare type NavigationAppProps = {
     integrations?: {
         [key: string]: 'disable';
     };
+    signupUtmCodes?: string;
+    simplifiedNav?: boolean;
 };
 export declare type TcUniNavMethods = 'init' | 'update' | 'destroy';
 export declare type TcUniNavFn = (method: TcUniNavMethods, targetId: string, config: NavigationAppProps) => void;

@@ -44,6 +44,7 @@
     menuItems={menuItems}
     isMobile={$isMobile}
     navigationHandler={navigationHandler}
+    simplifiedNav={$ctx.simplifiedNav}
   >
     <UserArea slot="auth" />
   </NavigationBar>
