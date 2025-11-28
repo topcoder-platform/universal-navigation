@@ -80,7 +80,14 @@
 
   function onSignIn(signup?: any) {
     const locationHref = `${window.location.origin}${window.location.pathname}`
-    window.location.href = `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(locationHref)}${signup === true ? '&mode=signUp' : ''}`;
+
+    const signupUrl = [
+      `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(locationHref)}`,
+      signup === true ? '&mode=signUp' : '',
+      $ctx.signupUtmCodes,
+    ].filter(Boolean).join('&')
+
+    window.location.href = signupUrl;
   }
 
   function onSignUp() {

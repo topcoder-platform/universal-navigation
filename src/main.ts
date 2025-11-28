@@ -35,6 +35,8 @@ export type NavigationAppProps = {
   supportMeta?: SupportMeta
 
   integrations?: {[key: string]: 'disable'}
+  signupUtmCodes?: string
+  simplifiedNav?: boolean
 }
 
 export type TcUniNavMethods = 'init' | 'update' | 'destroy'

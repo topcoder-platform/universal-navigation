@@ -7,4 +7,6 @@ export interface AppContext {
     toolConfig: ToolConfig;
     navigationHandler: NavigationHandler;
     supportMeta?: SupportMeta;
+    signupUtmCodes?: string;
+    simplifiedNav?: boolean;
 }
