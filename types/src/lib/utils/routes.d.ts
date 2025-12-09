@@ -9,7 +9,7 @@ export declare const routeMatchesUrl: (url: string, route: NavMenuItem) => boole
  *
  * @returns NavMenuItem
  */
-export declare const filterRoutes: (navMenuItem: NavMenuItem, filter: (n: NavMenuItem) => boolean, depth?: number) => any;
+export declare const filterRoutes: (navMenuItem: NavMenuItem, filter: (n: NavMenuItem) => boolean, depth?: number) => NavMenuItem | undefined;
 /**
  * Parses the passed nav menu items and
  * based on the `isAuthenticated` param

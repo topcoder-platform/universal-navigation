@@ -6,7 +6,7 @@ import { getAuthJwtDomainProp, getRequestAuthHeaders } from './auth-jwt';
 export type fetchUserProfileFn = () => AuthUser | null;
 
 // store fetched data in a local cache (de-duplicate immediate api calls)
-const localCache = {};
+const localCache: any = {};
 
 // get the user's handle from the jwt data
 export const getJwtUserhandle = (): AuthUser['handle'] | undefined => {
@@ -19,7 +19,7 @@ export const getJwtUserRoles = (): AuthUser['roles'] | undefined => {
 }
 
 // get the user roles that match the config/auth's user roles definitions
-export const getUserAppRoles = (): AuthUser['roles'] | undefined => {
+export const getUserAppRoles = (): AuthUser['roles'] => {
   return (getJwtUserRoles() ?? []).filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
 }
 
@@ -31,11 +31,11 @@ export const checkUserAppRole = (role: AUTH_USER_ROLE): boolean => (
  * Fetches the user profile based on the handle that's stored in the jwt cookie
  * @returns Promise<AuthUser>
  */
-export const fetchUserProfile = async (): Promise<AuthUser> => {
+export const fetchUserProfile = async (): Promise<AuthUser | undefined> => {
   const userHandle = getJwtUserhandle();
 
   if (!userHandle) {
-    return
+    return undefined
   }
 
   if (localCache[userHandle]) {
@@ -43,7 +43,7 @@ export const fetchUserProfile = async (): Promise<AuthUser> => {
   }
 
 
-  let resolve: (value: AuthUser) => void;
+  let resolve: (value: AuthUser) => void = () => {};
   localCache[userHandle] = new Promise((r) => {resolve = r});
 
   const requestUrl: string = `${TC_API_HOST}/members/${userHandle}`;

@@ -5,4 +5,4 @@ import type { NavMenuItem } from './nav-menu-item.model';
  * @param {NavMenuItem} routes - The routes to filter
  * @return {NavMenuItem} The filtered menu items based on the user roles
  */
-export declare const filterRoutesByUserRole: (routes: NavMenuItem) => any;
+export declare const filterRoutesByUserRole: (routes: NavMenuItem) => NavMenuItem | undefined;

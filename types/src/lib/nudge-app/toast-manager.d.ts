@@ -8,5 +8,5 @@ import type { ProfileCompletionData } from 'lib/app-context/profile-completion.m
  * @param completednessData
  * @returns
  */
-export declare const getToast: (completednessData: ProfileCompletionData) => import("lib/config/profile-toasts.config").ToastType;
+export declare const getToast: (completednessData: ProfileCompletionData) => import("lib/config/profile-toasts.config").ToastType | undefined;
 export declare const hideToast: () => void;

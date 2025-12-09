@@ -1,4 +1,4 @@
-export declare type EventHandler<T = any> = (data: T) => void;
+export type EventHandler<T = any> = (data: T) => void;
 export declare class PubSub {
     private events;
     publish<T = any>(name: string, data: T): void;

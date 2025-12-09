@@ -1,6 +1,6 @@
-@import 'lib/styles/mixins.scss';
-@import 'lib/styles/fonts.scss';
-@import 'lib/styles/colors.scss';
+@use 'lib/styles/mixins.scss' as *;
+@use 'lib/styles/fonts.scss' as *;
+@use 'lib/styles/colors.scss' as *;
 
 .userMenu {
   li {

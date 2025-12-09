@@ -1,3 +1,2 @@
-/// <reference types="svelte/types/runtime/ambient" />
-declare const _default: Promise<typeof import("*.svelte").default>;
+declare const _default: Promise<typeof import("svelte").SvelteComponent>;
 export default _default;

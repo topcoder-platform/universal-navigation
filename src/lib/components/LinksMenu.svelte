@@ -10,29 +10,29 @@
   export let ref: Element | undefined = undefined;
 
   export let style: "primary" | "secondary" | "tertiary" | 'cta';
-  export let menuItems: NavMenuItem[];
-  export let activeRoute: NavMenuItem = undefined;
+  export let menuItems: NavMenuItem[] = [];
+  export let activeRoute: NavMenuItem | undefined = undefined;
   export let activeRoutePath: NavMenuItem[] = [];
   export let vertical: boolean = false;
   export let navigationHandler: NavigationHandler | undefined = undefined;
-  let hoveredMenuItem: NavMenuItem = undefined;
-  let hoveredElement: HTMLElement = undefined;
+  let hoveredMenuItem: NavMenuItem | undefined = undefined;
+  let hoveredElement: HTMLElement | undefined = undefined;
   let isPopupMenuActive: boolean = false;
 
-  function isActiveMenu(menuItem: NavMenuItem, activeMenuItem: NavMenuItem) {
+  function isActiveMenu(menuItem: NavMenuItem, activeMenuItem?: NavMenuItem) {
     return activeMenuItem?.url !== undefined && menuItem.url === activeMenuItem?.url
   }
 
   function itemHasHoverMenu(menuItem: NavMenuItem) {
-    return menuItem.children?.length || menuItem.description;
+    return !!(menuItem.children?.length) || !!menuItem.description;
   }
 
-  const handleMouseover = (menuItem: NavMenuItem) => async (ev) => {
+  const handleMouseover = (menuItem: NavMenuItem) => async (ev: Event) => {
     if (!itemHasHoverMenu(menuItem)) {
       return;
     }
 
-    hoveredElement = ev.target;
+    hoveredElement = ev.currentTarget as HTMLElement ?? undefined;
     hoveredMenuItem = menuItem;
   };
 
@@ -53,7 +53,7 @@
 
     if (typeof navigationHandler === 'function') {
       ev.preventDefault()
-      navigationHandler({label: '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
+      navigationHandler({label: menuItem.label ?? '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
     }
   }
 </script>

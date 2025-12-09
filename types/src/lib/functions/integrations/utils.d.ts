@@ -5,4 +5,4 @@ import type { NavigationAppProps } from '../../../main';
  * @param integrationName The name of the integration to be checked
  * @returns
  */
-export declare const integrationIsDisabled: (config: NavigationAppProps['integrations'], integrationName: string) => boolean;
+export declare const integrationIsDisabled: (config: NavigationAppProps["integrations"], integrationName: string) => boolean;

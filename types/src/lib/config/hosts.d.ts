@@ -1,4 +1,4 @@
-export declare type HOST_ENV_TYPE = 'dev' | 'prod' | 'qa';
+export type HOST_ENV_TYPE = 'dev' | 'prod' | 'qa';
 export declare const HOST_ENV: HOST_ENV_TYPE;
 export declare const TC_DOMAIN: string;
 export declare const MARKETING_HOST_URL: string;

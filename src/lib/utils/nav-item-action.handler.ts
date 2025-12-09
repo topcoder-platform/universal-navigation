@@ -14,6 +14,8 @@ export function handleNavItemAction(el: HTMLElement, item: NavMenuItem) {
 
   el.addEventListener('click', (ev: MouseEvent) => {
     ev.preventDefault();
-    el.dispatchEvent(new Event(item.action, {bubbles: true}));
+    if (item.action) {
+      el.dispatchEvent(new Event(item.action, {bubbles: true}));
+    }
   });
 }

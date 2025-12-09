@@ -26,8 +26,10 @@ export function getPublicPath(assetPath: string): string {
 export function getMarketingUrl(path: string): string {
     const locationPathname = typeof window === 'undefined' ? '' : window.location.pathname;
     // if the current host is a staging site, go to the staging site
-    const pathPrefix: string = ['staging', 'universal-naviga']
-        .find(prefix => locationPathname.match(new RegExp(`\/${prefix}(\/|\\?|$)`)))
+    const pathPrefix: string = (
+      ['staging', 'universal-naviga']
+        .find(prefix => locationPathname.match(new RegExp(`\/${prefix}(\/|\\?|$)`))) ?? ''
+    )
 
     return `${MARKETING_HOST_URL}${!!pathPrefix ? `/${pathPrefix}` : ''}${path}`
 }
@@ -40,10 +42,10 @@ export function getMarketingUrl(path: string): string {
  * @param navigationItem
  * @returns NavMenuItem.children
  */
-export const toMarketingHostUrls = ({ children = [] }: NavMenuItem, depth?: number) => {
+export const toMarketingHostUrls = ({ children = [] }: NavMenuItem, depth: number = 0) => {
   // safe escape if things get out of control
   if (depth >= 9) {
-    return
+    return children
   }
 
   for (let child of children) {

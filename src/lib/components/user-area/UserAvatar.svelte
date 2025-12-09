@@ -9,13 +9,14 @@
 
   export let user: AuthUser;
   export let onSignOut: () => void;
-  export let profileCompletionPerc: number;
+  export let profileCompletionPerc: number | undefined;
 
   let elRef: HTMLElement;
   let popupIsVisible: boolean;
 
   let initials: string = '';
-  $: initials = user['initials'] ?? (
+  $: initials = (
+    (('initials' in user ? (user as any).initials : undefined) as string | undefined) ??
     `${user.firstName?.charAt(0) ?? ''}${user.lastName?.charAt(0) ?? ''}`
   );
 
@@ -23,6 +24,8 @@
 
 <div
   class={classnames(styles.userAvatarWrap, popupIsVisible && styles.popupVisible)}
+  role="button"
+  tabindex="0"
   bind:this={elRef}
   on:click={() => popupIsVisible = true}
   on:keydown={() => {}}

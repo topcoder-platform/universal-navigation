@@ -10,6 +10,9 @@
   let elYOffset = 0;
 
   function handleScroll() {
+    if (!elRef) {
+      return;
+    }
     const { scrollY } = window;
 
     const isFixed = (scrollY + yOffset - elYOffset) >= 0;
@@ -17,6 +20,9 @@
   }
 
   onMount(() => {
+    if (!elRef) {
+      return;
+    }
     elYOffset = elRef.offsetTop;
 
     handleScroll();

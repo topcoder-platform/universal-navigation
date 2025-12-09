@@ -86,13 +86,13 @@
    * Remove the targetKey & mouse event listeners
    * @param el
    */
-  function unBindEvents(el: HTMLElement = targetEl) {
+  function unBindEvents(el: HTMLElement | undefined = targetEl) {
     
     if (!el) {
       return
     }
 
-    el.dataset.targetKey = undefined
+    delete el.dataset.targetKey
     el.removeEventListener('mouseenter', handleMouseover)
   }
   

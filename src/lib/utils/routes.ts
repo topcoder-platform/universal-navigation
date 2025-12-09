@@ -21,21 +21,27 @@ export const routeMatchesUrl = (url: string, route: NavMenuItem): boolean => {
  *
  * @returns NavMenuItem
  */
-export const filterRoutes = (navMenuItem: NavMenuItem, filter: (n: NavMenuItem) => boolean, depth?: number) => {
+export const filterRoutes = (
+  navMenuItem: NavMenuItem,
+  filter: (n: NavMenuItem) => boolean,
+  depth: number = 0
+): NavMenuItem | undefined => {
   // safe escape if things get out of control
   if (depth >= 9) {
-    return
+    return;
   }
 
   if (!filter(navMenuItem)) {
-    return
+    return;
   }
+
+  const children = navMenuItem.children?.map((childNavMenuItem) => (
+    filterRoutes(childNavMenuItem, filter, depth + 1)
+  )).filter((child): child is NavMenuItem => Boolean(child));
 
   return {
     ...navMenuItem,
-    children: navMenuItem.children?.map((childNavMenuItem) => (
-      filterRoutes(childNavMenuItem, filter, depth + 1)
-    )).filter(Boolean)
+    children,
   };
 }
 
@@ -47,10 +53,10 @@ export const filterRoutes = (navMenuItem: NavMenuItem, filter: (n: NavMenuItem) 
  * @param navigationItem
  * @returns NavMenuItem.children
  */
-export const activateAuthenticatedRoutes = (isAuthenticated: boolean, { children = [] }: NavMenuItem, depth?: number) => {
+export const activateAuthenticatedRoutes = (isAuthenticated: boolean, { children = [] }: NavMenuItem, depth: number = 0): NavMenuItem[] => {
   // safe escape if things get out of control
   if (depth >= 9) {
-    return
+    return children;
   }
 
   for (let child of children) {
@@ -73,23 +79,24 @@ export const activateAuthenticatedRoutes = (isAuthenticated: boolean, { children
  */
 export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] => {
 
-  return (function parseNavMenu(l, { children = [] }) {
+  return (function parseNavMenu(l: number, { children = [] }: NavMenuItem): NavMenuItem[] | undefined {
     // safe escape if things get out of control
     if (l >= 9) {
-      return
+      return;
     }
 
     for (let child of children) {
       if (routeMatchesUrl(path, child)) {
-        return child;
+        return [child];
       }
 
       const trail = parseNavMenu(l + 1, child);
       if (trail) {
-        return [].concat(child, trail);
+        return [child, ...trail];
       }
     }
-  })(0, navMenu)
+    return undefined;
+  })(0, navMenu) ?? [];
 }
 
 /**
@@ -100,7 +107,7 @@ export const matchRoutes = (navMenu: NavMenuItem, path: string): NavMenuItem[] =
  */
 export function getActiveRoute(navMenuItems: NavMenuItem[], trailLevel?: number): NavMenuItem[] {
   const locationHref = `${location.origin}${location.pathname}`
-  const activeRouteTrail = [].concat(matchRoutes({ children: navMenuItems } as NavMenuItem, locationHref)).filter(Boolean)
+  const activeRouteTrail = matchRoutes({ children: navMenuItems } as NavMenuItem, locationHref).filter(Boolean)
 
-  return typeof trailLevel === 'number' ? activeRouteTrail?.slice(trailLevel, 1) : activeRouteTrail
+  return typeof trailLevel === 'number' ? activeRouteTrail.slice(trailLevel, trailLevel + 1) : activeRouteTrail
 }

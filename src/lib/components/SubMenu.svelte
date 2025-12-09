@@ -6,7 +6,7 @@
 
   export let menuItems: NavMenuItem[] = [];
   export let isHovering: boolean = false;
-  export let activeRoute: NavMenuItem = undefined;
+  export let activeRoute: NavMenuItem | undefined = undefined;
   export let navigationHandler: NavigationHandler | undefined = undefined;
 
   let elWrap: HTMLElement | undefined;
@@ -25,9 +25,9 @@
   })
 
   function handleNavigation(ev: MouseEvent, menuItem: NavMenuItem) {
-    if (typeof navigationHandler === 'function') {
+    if (typeof navigationHandler === 'function' && menuItem.url) {
       ev.preventDefault()
-      navigationHandler({label: '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
+      navigationHandler({label: menuItem.label ?? '', path: menuItem.url, isMarketingUrl: !!menuItem.marketingPathname});
     }
   }
 </script>

@@ -34,9 +34,9 @@ export function getAuthJwtDomainProp<T = string|undefined>(prop: string): T {
   const propRegex = new RegExp(`^https?:\/\/.*\/${prop}$`, 'i');
   const valueEntry = Object.entries((getAuthJwtData() ?? {})).find((entry) => (
     entry[0].match(propRegex)
-  )) as T;
+  ));
 
-  return valueEntry?.[1]
+  return valueEntry?.[1] as T
 }
 
 /**
@@ -44,7 +44,7 @@ export function getAuthJwtDomainProp<T = string|undefined>(prop: string): T {
  *
  * @returns {Authorization: 'Bearer'} or {}
  */
-export function getRequestAuthHeaders() {
+export function getRequestAuthHeaders(): Partial<{ Authorization : string }> {
   const jwtCookie = getAuthJwtCookie();
   return jwtCookie ? {'Authorization': `Bearer ${jwtCookie}`} : {};
 }

@@ -1,4 +1,5 @@
-@import './palette';
+@use "sass:map";
+@use './palette' as *;
 
 $colors: (
   hoverMenuLink: (
@@ -9,6 +10,6 @@ $colors: (
 );
 
 @function color($base, $shade: default) {
-  $color: map-get(map-get($colors, $base), $shade);
+  $color: map.get(map.get($colors, $base), $shade);
   @return $color;
 }
