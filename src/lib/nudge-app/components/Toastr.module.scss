@@ -1,6 +1,6 @@
-@import 'lib/styles/fonts.scss';
-@import 'lib/styles/palette.scss';
-@import 'lib/styles/mixins.scss';
+@use 'lib/styles/fonts.scss' as *;
+@use 'lib/styles/palette.scss' as *;
+@use 'lib/styles/mixins.scss' as *;
 
 .toastr {
   display: flex;

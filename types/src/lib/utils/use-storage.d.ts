@@ -1,5 +1,5 @@
 import { type Writable } from "svelte/store";
-declare type StorageType = 'localStorage' | 'sessionStorage';
+type StorageType = 'localStorage' | 'sessionStorage';
 /**
  * Creates a writable storage that will automatically
  * write and read the value to and from local/session storage

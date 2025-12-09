@@ -2,7 +2,6 @@ import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { loadNudgeApp } from './lib/functions/load-nudge-app'
 import { PubSub } from './lib/utils/pubsub';
 
 import 'lib/styles/main.scss';
@@ -136,10 +135,6 @@ async function init(
 
   if (typeof readyCallback === 'function') {
     readyCallback();
-  }
-
-  if (navType === 'tool' || navType === 'marketing') {
-    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'));
   }
 }
 

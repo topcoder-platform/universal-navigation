@@ -1,4 +1,4 @@
-@import 'lib/styles/fonts.scss';
+@use 'lib/styles/fonts.scss' as *;
 
 .primaryMenu {
   position: relative;
