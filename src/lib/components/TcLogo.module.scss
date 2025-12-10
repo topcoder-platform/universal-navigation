@@ -1,4 +1,4 @@
-@import 'lib/styles/mixins.scss';
+@use 'lib/styles/mixins.scss' as *;
 
 .logo {
   display: flex;

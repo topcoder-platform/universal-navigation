@@ -8,7 +8,7 @@
   const closeMenuIcon = getPublicPath(`/assets/icon-close.svg`);
 
   export let direction: 'x'|'y';
-  export let handleClose = () => {};
+  export let handleClose: () => void = () => {};
 
   let animParams: FlyParams = {duration: 200};
   $: animParams[direction] = direction === 'x' ? -320 : 50;
@@ -29,7 +29,7 @@
     return () => window.removeEventListener('resize', updateVh);
   })
 
-  function toggleOverflow(toggle) {
+  function toggleOverflow(toggle: boolean) {
     Object.assign(document.body.style, {overflow: toggle ? 'hidden' : ''});
     window.scrollTo(0, 0);
   }
@@ -43,7 +43,7 @@
 
 <div class={styles.mobileMenuWrap} transition:fade={{duration: 200}}>
   <TopNavbar style="primary" showLogo={false}>
-    <div class={styles.closeIcon} slot="right" on:click={handleClose} on:keydown={() => {}}>
+    <div class={styles.closeIcon} role="button" tabindex="0" slot="right" on:click={handleClose} on:keydown={() => {}}>
       <img src={closeMenuIcon} alt="close" />
     </div>
   </TopNavbar>

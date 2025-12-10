@@ -8,5 +8,5 @@ export function getToolSelectorItems(): NavMenuItem[] {
   const menu = JSON.parse(JSON.stringify(navMenu));
 
   const filtered = filterRoutesByUserRole(menu);
-  return filtered?.children
+  return filtered?.children ?? [];
 }

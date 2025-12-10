@@ -7,7 +7,7 @@
   import InlineSvg from '../InlineSvg.svelte';
   import styles from './ToolMenu.module.scss';
 
-  let navMenuItems = getToolSelectorItems();
+  let navMenuItems: NavMenuItem[] = getToolSelectorItems() ?? [];
   const toolIcon = getPublicPath('/assets/icon-tool.svg');
 
   function hasCtas(item: NavMenuItem) {
@@ -18,13 +18,14 @@
 <div class={styles.toolMenuWrap}>
   <InlineSvg src="/assets/tools/sprite.svg" />
   {#each navMenuItems as section, sectionIndex}
-    <div class={classnames(styles.toolSection, styles[section.label?.toLowerCase()])}>
+    {#if section}
+    <div class={classnames(styles.toolSection, section.label ? styles[section.label.toLowerCase()] : undefined)}>
       <div class={styles.toolSectionTitle}>
         {section.label}
       </div>
 
       <div class={styles.toolGroups}>
-        {#each section.children as group}
+        {#each section.children ?? [] as group}
           <div
             class={classnames(styles.toolGroup, hasCtas(group) && styles.hasCtas)}
             style:--order={group.groupOrder ?? ''}
@@ -36,7 +37,7 @@
             {/if}
 
             <div class={styles.toolNavItems}>
-              {#each group.children as navItem}
+              {#each group.children ?? [] as navItem}
                 <a
                     href={navItem.url}
                     class={classnames(styles.toolNavItem, navItem.type === 'cta' && 'navButton')}
@@ -73,6 +74,7 @@
     </div>
     {#if sectionIndex < navMenuItems.length-1}
       <hr class={styles.toolMenuSpacer} />
+    {/if}
     {/if}
   {/each}
 </div>

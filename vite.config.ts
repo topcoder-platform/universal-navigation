@@ -31,6 +31,13 @@ export default defineConfig((props) => {
                 lib: resolve(__dirname, './src/lib'),
             }
         },
+        css: {
+          preprocessorOptions: {
+            scss: {
+              silenceDeprecations: ["legacy-js-api"],
+            }
+          }
+        },
         build: {
 
             // there are 3 separate build processes

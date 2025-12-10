@@ -10,7 +10,7 @@ import { getUserAppRoles } from './user-profile.provider';
  * @return {NavMenuItem} The filtered menu items based on the user roles
  */
 export const filterRoutesByUserRole = (routes: NavMenuItem) => {
-  const userRoles = getUserAppRoles();
+  const userRoles = getUserAppRoles() ?? [];
 
   // if no specific app role is assigned to the user,
   // assign `noRole`, to allow the rendering of the basic view

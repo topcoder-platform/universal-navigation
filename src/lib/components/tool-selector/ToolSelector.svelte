@@ -10,13 +10,15 @@
   const imgUrl = getPublicPath('/assets/tool-trigger.svg');
   const toolsIcons = getPublicPath('/assets/tools/sprite.svg');
 
-  let elRef: HTMLElement;
+  let elRef: HTMLElement | undefined;
   let popupIsVisible: boolean;
 
 </script>
 
 <div
   class={styles.wrap}
+  role="button"
+  tabindex="0"
   bind:this={elRef}
   on:click={() => popupIsVisible = true}
   on:keydown={() => {}}

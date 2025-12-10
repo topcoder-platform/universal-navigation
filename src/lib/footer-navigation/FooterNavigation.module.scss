@@ -1,5 +1,5 @@
-@import 'lib/styles/mixins.scss';
-@import 'lib/styles/fonts.scss';
+@use 'lib/styles/mixins.scss' as *;
+@use 'lib/styles/fonts.scss' as *;
 
 .footerWrap {
   position: relative;

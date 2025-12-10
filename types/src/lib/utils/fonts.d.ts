@@ -1,1 +1,1 @@
-export declare const checkAndLoadFonts: () => Promise<any>;
+export declare const checkAndLoadFonts: () => Promise<void>;

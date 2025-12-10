@@ -8,15 +8,15 @@
   import styles from './MobileNavigation.module.scss';
   import LinksMenu from 'lib/components/LinksMenu.svelte';
 
-  export let menuItems: NavMenuItem[];
+  export let menuItems: NavMenuItem[] = [];
   export let activeRoutePath: NavMenuItem[] = [];
-  export let activeRoute: NavMenuItem = null;
+  export let activeRoute: NavMenuItem | undefined = undefined;
   const toggleMenuIcon = getPublicPath(`/assets/icon-menu.svg`);
 
   let menuIsVisible = false;
 </script>
 
-<div class={styles.menuBtn} on:click={() => menuIsVisible = true} on:keydown={() => {}}>
+<div class={styles.menuBtn} role="button" tabindex="0" on:click={() => menuIsVisible = true} on:keydown={() => {}}>
   <img src={toggleMenuIcon} alt='' />
 </div>
 

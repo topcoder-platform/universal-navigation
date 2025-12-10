@@ -2,7 +2,6 @@ import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
-import { loadNudgeApp } from './lib/functions/load-nudge-app'
 import { PubSub } from './lib/utils/pubsub';
 
 import 'lib/styles/main.scss';
@@ -47,7 +46,7 @@ export type TcUniNavFn = (
   config: NavigationAppProps,
 ) => void
 
-const NavigationLoadersMap = {
+const NavigationLoadersMap: Record<NavigationType, () => Promise<any>> = {
   marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
   footer: () => import('./lib/footer-navigation/FooterNavigation.svelte').then(d => d.default),
   tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
@@ -101,7 +100,7 @@ async function init(
     toolRoot,
     handleNavigation,
     supportMeta,
-    type: navType,
+    type: navType = 'tool',
     ...navProps
   } = props
 
@@ -137,10 +136,6 @@ async function init(
   if (typeof readyCallback === 'function') {
     readyCallback();
   }
-
-  if (navType === 'tool' || navType === 'marketing') {
-    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'));
-  }
 }
 
 /**
@@ -165,24 +160,31 @@ function update(
   }
 
   const appContext = ctx.get('appContext');
+  if (!appContext) {
+    throw new Error(`Navigation #${targetId} is missing context!`);
+  }
   appContext.update(buildContext.bind(null, config))
 }
 
-function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
+function execQueueCall(method: TcUniNavMethods, ...args: unknown[]) {
   if (method === 'init') {
-    init.call(null, ...args)
+    const [targetId, cfg] = args as [string, NavigationAppProps?];
+    init(targetId, cfg ?? {} as NavigationAppProps)
   }
 
   else if (method === 'update') {
-    update.call(null, ...args)
+    const [targetId, cfg] = args as [string, NavigationAppProps?];
+    update(targetId, cfg ?? {} as NavigationAppProps)
   }
 
   else if (method === 'destroy') {
-    destroy.call(null, ...args);
+    const [targetId] = args as [string];
+    destroy(targetId);
   }
 
   else if (method === 'trigger') {
-    appPubSub.publish.call(appPubSub, ...args);
+    const [name, data] = args as [string, unknown];
+    appPubSub.publish(name, data);
   }
 
   else {
@@ -191,17 +193,18 @@ function execQueueCall(method: TcUniNavMethods, ...args: any[]) {
 }
 
 (function resolveGlobalQueue() {
-  const globalName = window['TcUnivNavConfig'] ?? 'tcUniNav';
-  const tcUnivNavConfig = (window[globalName] ?? {}) as any;
-  const queue = tcUnivNavConfig.q ?? [];
+  const globalName = (('TcUnivNavConfig' in window && (window as any).TcUnivNavConfig) || 'tcUniNav') as string;
+  const tcUnivNavConfig = ((globalName in window && (window as any)[globalName]) ?? {}) as { q?: unknown[] };
+  const queue = Array.isArray(tcUnivNavConfig.q) ? tcUnivNavConfig.q : [];
 
   // execute all the calls in the queue
   for (let qi of queue) {
-    const args = [].slice.call(qi);
-    execQueueCall(args[0], ...args.slice(1))
+    const args = Array.from(qi as any) as [TcUniNavMethods, ...unknown[]];
+    const [method, ...rest] = args;
+    execQueueCall(method, ...rest)
   }
 
   // replace the method that adds the calls to the queue
   // with a direct exec call
-  window[globalName] = execQueueCall.bind(null)
+  Object.assign(window as any, {[globalName]: execQueueCall.bind(null)});
 })()
