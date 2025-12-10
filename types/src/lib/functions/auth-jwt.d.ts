@@ -11,8 +11,6 @@ export declare function getAuthJwtDomainProp<T = string | undefined>(prop: strin
  *
  * @returns {Authorization: 'Bearer'} or {}
  */
-export declare function getRequestAuthHeaders(): {
+export declare function getRequestAuthHeaders(): Partial<{
     Authorization: string;
-} | {
-    Authorization?: undefined;
-};
+}>;

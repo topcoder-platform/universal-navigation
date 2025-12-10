@@ -30,7 +30,7 @@ const fontsList = [
   },
 ];
 
-let previousLoadPromise;
+let previousLoadPromise: Promise<void> | undefined;
 
 /**
  * Checks if font is loaded by checking the differences in width
@@ -99,7 +99,8 @@ export const checkAndLoadFonts = async () => {
 
       // append it before the first <link" we foind in the document
       const firstLink = document.getElementsByTagName('link')[0];
-      firstLink.parentNode.insertBefore(link, firstLink);
+      const parent = firstLink?.parentNode ?? document.head;
+      parent.insertBefore(link, firstLink ?? null);
     });
   }
 }

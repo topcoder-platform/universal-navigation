@@ -33,7 +33,13 @@
   class={classnames('togle-separator', styles.togglerSeparator, isToggled && styles.toggled)}
   style="--margin-left: {offsetLeft}px"
 >
-  <span class={styles.toggleBtn} on:click={toggleMainMenu} on:keydown={() => {}}>
+  <span
+    class={styles.toggleBtn}
+    role="button"
+    tabindex="0"
+    on:click={toggleMainMenu}
+    on:keydown={() => {}}
+  >
     <svg width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M0.334413
         8.26569C0.0219931 7.95327 0.0219931 7.44673 0.334413 7.13432L2.96873

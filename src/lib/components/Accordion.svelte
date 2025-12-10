@@ -4,8 +4,8 @@
   import { getPublicPath } from 'lib/utils/paths';
   import styles from './Accordion.module.scss';
 
-  export let activeRoute: NavMenuItem = undefined;
-  export let items: NavMenuItem[];
+  export let activeRoute: NavMenuItem | undefined = undefined;
+  export let items: NavMenuItem[] = [];
   export let style: 'primary'|'secondary'|undefined = undefined;
 
   const toggledItems: {[key: string]: boolean} = {};
@@ -42,7 +42,13 @@
             {item.label}
           </a>
           {#if item.children?.length}
-            <span class={styles.itemTrigger} on:click={() => toggleItem(item)} on:keydown={() => {}}>
+            <span
+              class={styles.itemTrigger}
+              role="button"
+              tabindex="0"
+              on:click={() => toggleItem(item)}
+              on:keydown={(ev) => ev.key === 'Enter' && toggleItem(item)}
+            >
               <img src={iconUrl} alt="^" />
             </span>
           {/if}

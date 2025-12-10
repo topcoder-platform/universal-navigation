@@ -3,12 +3,12 @@
   import { classnames } from 'lib/utils/classnames';
   import styles from './Modal.module.scss';
 
-  export let isVisible: string = '';
+  export let isVisible: boolean = false;
 
   export let title: string = '';
-  export let size: 'sm' = undefined;
+  export let size: 'sm' | undefined = undefined;
 
-  function toggleOverflow(toggle) {
+  function toggleOverflow(toggle: boolean) {
     Object.assign(document.body.style, {overflow: toggle ? 'hidden' : ''});
   }
 
@@ -18,7 +18,7 @@
 {#if isVisible}
   <div class={classnames(styles.modalWrap, $$props.class, size && `size-${size}`)}>
     <div class={styles.modalContainer}>
-      <div class={styles.modalOverlay} transition:fade={{duration: 200}} on:click={() => isVisible = false} on:keydown={() => {}} />
+      <div class={styles.modalOverlay} role="button" tabindex="0" transition:fade={{duration: 200}} on:click={() => isVisible = false} on:keydown={() => {}} />
       <div class={styles.modalWindow} transition:fly={{y: 45, duration: 300}}>
         <div class={styles.modalHeader}>
           <h3 class={styles.modalTitle}>
@@ -26,7 +26,7 @@
           </h3>
           <button
             class={styles.closeBtn}
-            on:click={() => isVisible = ''}
+            on:click={() => isVisible = false}
             on:keydown={() => {}}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"

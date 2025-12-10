@@ -11,7 +11,7 @@
   export let variant: ButtonVariant = ''
   export let disabled: boolean = false;
   export let size: 'sm'|'md'|'md-0' = 'sm';
-  export let ref: HTMLElement = null;
+  export let ref: HTMLElement | null = null;
 
 </script>
 

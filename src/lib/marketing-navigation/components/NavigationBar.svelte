@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import type { NavMenuItem } from 'lib/functions/nav-menu-item.model';
   import LinksMenu from '../../components/LinksMenu.svelte';
   import TopNavbar from 'lib/components/TopNavbar.svelte';

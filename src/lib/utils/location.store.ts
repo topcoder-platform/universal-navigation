@@ -1,7 +1,7 @@
 import { derived, readable } from "svelte/store";
 
 window.history.pushState = new Proxy(window.history.pushState, {
-  apply: (target, thisArg, argArray) => {
+  apply: (target, thisArg, argArray: Parameters<History['pushState']>) => {
     const r = target.apply(thisArg, argArray);
     window.dispatchEvent(new Event('pushstate'));
     return r;
