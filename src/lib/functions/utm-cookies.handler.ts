@@ -199,3 +199,40 @@ export function getUtmCookie(): UtmParams | null {
     return null;
   }
 }
+
+/**
+ * Appends UTM parameters from the tc_utm cookie to a given URL
+ * Only appends parameters that exist in the cookie
+ * @param url - The base URL to append parameters to
+ * @returns URL with UTM parameters appended, or original URL if no cookie exists
+ */
+export function appendUtmParamsToUrl(url: string): string {
+  if (!url) {
+    return url;
+  }
+
+  const utmParams = getUtmCookie();
+  if (!utmParams || Object.keys(utmParams).length === 0) {
+    return url;
+  }
+
+  try {
+    const urlObj = new URL(url, window.location.origin);
+    
+    // Append only the UTM parameters that exist in the cookie
+    if (utmParams.utm_source) {
+      urlObj.searchParams.set('utm_source', utmParams.utm_source);
+    }
+    if (utmParams.utm_medium) {
+      urlObj.searchParams.set('utm_medium', utmParams.utm_medium);
+    }
+    if (utmParams.utm_campaign) {
+      urlObj.searchParams.set('utm_campaign', utmParams.utm_campaign);
+    }
+    
+    return urlObj.toString();
+  } catch (error) {
+    console.warn('Error appending UTM parameters to URL:', error);
+    return url;
+  }
+}

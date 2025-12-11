@@ -5,6 +5,7 @@
   import { AUTH0_AUTHENTICATOR_URL } from 'lib/config';
   import { AUTH_USER_ROLE } from 'lib/config/auth';
   import { DISABLE_NUDGES } from "lib/config/profile-toasts.config";
+  import { appendUtmParamsToUrl } from 'lib/functions/utm-cookies.handler';
 
   import ToolSelector from '../tool-selector/ToolSelector.svelte';
 
@@ -65,11 +66,14 @@
   function onSignIn(signup?: any) {
     const locationHref = `${window.location.origin}${window.location.pathname}`
 
-    const signupUrl = [
+    let signupUrl = [
       `${AUTH0_AUTHENTICATOR_URL}?retUrl=${encodeURIComponent(locationHref)}`,
       signup === true ? '&mode=signUp' : '',
       $ctx.signupUtmCodes,
     ].filter(Boolean).join('&')
+
+    // Append UTM parameters from cookie if they exist
+    signupUrl = appendUtmParamsToUrl(signupUrl);
 
     window.location.href = signupUrl;
   }
