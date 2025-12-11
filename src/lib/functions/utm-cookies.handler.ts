@@ -1,18 +1,18 @@
-import { TC_DOMAIN } from '../config/hosts'
-import { getEnvValue } from '../config/env-vars'
+import { TC_DOMAIN } from '../config/hosts';
+import { getEnvValue } from '../config/env-vars';
 
 // UTM cookie configuration types
 interface UtmParams {
-  utm_source?: string
-  utm_medium?: string
-  utm_campaign?: string
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
 }
 
 // Cookie configuration constants
-const TC_UTM_COOKIE_NAME = 'tc_utm'
-const DEFAULT_COOKIE_LIFETIME_DAYS = 3
-const COOKIE_PATH = '/'
-const COOKIE_SAMESITE = 'Lax'
+const TC_UTM_COOKIE_NAME = 'tc_utm';
+const DEFAULT_COOKIE_LIFETIME_DAYS = 3;
+const COOKIE_PATH = '/';
+const COOKIE_SAMESITE = 'Lax';
 
 /**
  * Sanitizes a string to remove all characters except A-Z, a-z, 0-9, hyphen (-), underscore (_)
@@ -21,10 +21,10 @@ const COOKIE_SAMESITE = 'Lax'
  */
 export function sanitize(input: string): string {
   if (!input || typeof input !== 'string') {
-    return ''
+    return '';
   }
   // Remove all characters except A-Z, a-z, 0-9, hyphen (-), underscore (_)
-  return input.replace(/[^A-Za-z0-9\-_]/g, '')
+  return input.replace(/[^A-Za-z0-9\-_]/g, '');
 }
 
 /**
@@ -32,29 +32,29 @@ export function sanitize(input: string): string {
  * @returns Object containing sanitized utm_source, utm_medium, utm_campaign
  */
 function extractUtmParams(): UtmParams {
-  const params: UtmParams = {}
+  const params: UtmParams = {};
 
   try {
-    const searchParams = new URLSearchParams(window.location.search)
+    const searchParams = new URLSearchParams(window.location.search);
 
-    const utm_source = searchParams.get('utm_source')
-    const utm_medium = searchParams.get('utm_medium')
-    const utm_campaign = searchParams.get('utm_campaign')
+    const utm_source = searchParams.get('utm_source');
+    const utm_medium = searchParams.get('utm_medium');
+    const utm_campaign = searchParams.get('utm_campaign');
 
     if (utm_source) {
-      params.utm_source = sanitize(utm_source)
+      params.utm_source = sanitize(utm_source);
     }
     if (utm_medium) {
-      params.utm_medium = sanitize(utm_medium)
+      params.utm_medium = sanitize(utm_medium);
     }
     if (utm_campaign) {
-      params.utm_campaign = sanitize(utm_campaign)
+      params.utm_campaign = sanitize(utm_campaign);
     }
   } catch (error) {
-    console.warn('Error extracting UTM parameters:', error)
+    console.warn('Error extracting UTM parameters:', error);
   }
 
-  return params
+  return params;
 }
 
 /**
@@ -63,11 +63,11 @@ function extractUtmParams(): UtmParams {
  */
 function getCookieLifetimeDays(): number {
   try {
-    const envValue = getEnvValue<string>('VITE_UTM_COOKIE_LIFETIME_DAYS', String(DEFAULT_COOKIE_LIFETIME_DAYS))
-    const days = parseInt(envValue, 10)
-    return isNaN(days) ? DEFAULT_COOKIE_LIFETIME_DAYS : days
+    const envValue = getEnvValue<string>('VITE_UTM_COOKIE_LIFETIME_DAYS', String(DEFAULT_COOKIE_LIFETIME_DAYS));
+    const days = parseInt(envValue, 10);
+    return isNaN(days) ? DEFAULT_COOKIE_LIFETIME_DAYS : days;
   } catch {
-    return DEFAULT_COOKIE_LIFETIME_DAYS
+    return DEFAULT_COOKIE_LIFETIME_DAYS;
   }
 }
 
@@ -76,7 +76,7 @@ function getCookieLifetimeDays(): number {
  * @returns Cookie domain (e.g., .topcoder.com)
  */
 function getCookieDomain(): string {
-  return `.${TC_DOMAIN}`
+  return `.${TC_DOMAIN}`;
 }
 
 /**
@@ -85,8 +85,8 @@ function getCookieDomain(): string {
  * @returns true if cookie exists, false otherwise
  */
 function cookieExists(name: string): boolean {
-  const cookies = document.cookie.split(';')
-  return cookies.some(cookie => cookie.trim().startsWith(`${name}=`))
+  const cookies = document.cookie.split(';');
+  return cookies.some(cookie => cookie.trim().startsWith(`${name}=`));
 }
 
 /**
@@ -99,11 +99,11 @@ function setCookie(
   name: string,
   value: string,
   options: {
-    domain?: string
-    path?: string
-    sameSite?: string
-    secure?: boolean
-    maxAge?: number
+    domain?: string;
+    path?: string;
+    sameSite?: string;
+    secure?: boolean;
+    maxAge?: number;
   } = {}
 ): void {
   const {
@@ -112,27 +112,27 @@ function setCookie(
     sameSite = COOKIE_SAMESITE,
     secure = true,
     maxAge = DEFAULT_COOKIE_LIFETIME_DAYS * 24 * 60 * 60, // Convert days to seconds
-  } = options
+  } = options;
 
-  let cookieString = `${name}=${encodeURIComponent(value)}`
+  let cookieString = `${name}=${encodeURIComponent(value)}`;
 
   if (domain) {
-    cookieString += `; domain=${domain}`
+    cookieString += `; domain=${domain}`;
   }
   if (path) {
-    cookieString += `; path=${path}`
+    cookieString += `; path=${path}`;
   }
   if (maxAge) {
-    cookieString += `; max-age=${maxAge}`
+    cookieString += `; max-age=${maxAge}`;
   }
   if (sameSite) {
-    cookieString += `; SameSite=${sameSite}`
+    cookieString += `; SameSite=${sameSite}`;
   }
   if (secure) {
-    cookieString += '; Secure'
+    cookieString += '; Secure';
   }
 
-  document.cookie = cookieString
+  document.cookie = cookieString;
 }
 
 /**
@@ -144,25 +144,25 @@ export function initializeUtmCookieHandler(): void {
   try {
     // Check if cookie already exists
     if (cookieExists(TC_UTM_COOKIE_NAME)) {
-      console.debug('UTM cookie already exists, skipping initialization')
-      return
+      console.debug('UTM cookie already exists, skipping initialization');
+      return;
     }
 
     // Extract and sanitize UTM parameters
-    const utmParams = extractUtmParams()
+    const utmParams = extractUtmParams();
 
     // Only set cookie if we have at least one UTM parameter
     if (Object.keys(utmParams).length === 0) {
-      console.debug('No UTM parameters found in URL')
-      return
+      console.debug('No UTM parameters found in URL');
+      return;
     }
 
     // Create JSON value with all UTM parameters
-    const cookieValue = JSON.stringify(utmParams)
+    const cookieValue = JSON.stringify(utmParams);
 
     // Get cookie lifetime in seconds
-    const lifetimeDays = getCookieLifetimeDays()
-    const maxAgeSecs = lifetimeDays * 24 * 60 * 60
+    const lifetimeDays = getCookieLifetimeDays();
+    const maxAgeSecs = lifetimeDays * 24 * 60 * 60;
 
     // Set the cookie with proper attributes
     setCookie(TC_UTM_COOKIE_NAME, cookieValue, {
@@ -171,11 +171,11 @@ export function initializeUtmCookieHandler(): void {
       sameSite: COOKIE_SAMESITE,
       secure: true,
       maxAge: maxAgeSecs,
-    })
+    });
 
-    console.debug(`UTM cookie set successfully:`, utmParams)
+    console.debug(`UTM cookie set successfully:`, utmParams);
   } catch (error) {
-    console.error('Error initializing UTM cookie handler:', error)
+    console.error('Error initializing UTM cookie handler:', error);
   }
 }
 
@@ -185,17 +185,17 @@ export function initializeUtmCookieHandler(): void {
  */
 export function getUtmCookie(): UtmParams | null {
   try {
-    const cookies = document.cookie.split(';')
-    const cookieStr = cookies.find(cookie => cookie.trim().startsWith(`${TC_UTM_COOKIE_NAME}=`))
+    const cookies = document.cookie.split(';');
+    const cookieStr = cookies.find(cookie => cookie.trim().startsWith(`${TC_UTM_COOKIE_NAME}=`));
 
     if (!cookieStr) {
-      return null
+      return null;
     }
 
-    const cookieValue = decodeURIComponent(cookieStr.split('=')[1])
-    return JSON.parse(cookieValue) as UtmParams
+    const cookieValue = decodeURIComponent(cookieStr.split('=')[1]);
+    return JSON.parse(cookieValue) as UtmParams;
   } catch (error) {
-    console.warn('Error retrieving UTM cookie:', error)
-    return null
+    console.warn('Error retrieving UTM cookie:', error);
+    return null;
   }
 }
