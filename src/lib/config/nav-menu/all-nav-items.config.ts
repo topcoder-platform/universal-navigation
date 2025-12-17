@@ -217,9 +217,4 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
       marketingPathname: '/talent',
       url: getMarketingUrl('/talent'),
     },
-    referralProgram: {
-      label: 'Referral Programme',
-      marketingPathname: '/nasa-referral',
-      url: getMarketingUrl('/nasa-referral'),
-    },
 }
