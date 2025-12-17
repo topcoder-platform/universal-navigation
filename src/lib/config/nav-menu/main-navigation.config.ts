@@ -22,6 +22,7 @@ export const mainNavigationItems: NavMenuItem[] = [
       allNavItems.aiHub,
       allNavItems.statistics,
       allNavItems.discordApp,
+      allNavItems.referralProgram,
     ]
   },
   {
