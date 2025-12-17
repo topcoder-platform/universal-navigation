@@ -3,6 +3,7 @@ import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
 import { PubSub } from './lib/utils/pubsub';
+import { initializeUtmCookieHandler } from './lib/functions/utm-cookies.handler';
 
 import 'lib/styles/main.scss';
 
@@ -207,4 +208,7 @@ function execQueueCall(method: TcUniNavMethods, ...args: unknown[]) {
   // replace the method that adds the calls to the queue
   // with a direct exec call
   Object.assign(window as any, {[globalName]: execQueueCall.bind(null)});
+
+  // Initialize UTM cookie handler on module load
+  initializeUtmCookieHandler();
 })()
