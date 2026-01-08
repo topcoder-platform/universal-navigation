@@ -14,14 +14,14 @@
     profileCompletionData,
   } = $ctx.auth)
 
-  let toast: ToastType;
+  let toast: ToastType | undefined;
 
   function dismissToast() {
     toast = undefined;
     hideToast();
   }
 
-  $: toast = isReady && getToast(profileCompletionData);
+  $: toast = isReady ? getToast(profileCompletionData) : undefined;
 </script>
 
 {#if toast}
