@@ -5,6 +5,7 @@
   import type { ToastType } from 'lib/config/profile-toasts.config';
   import { getToast, hideToast } from './toast-manager';
   import Sticky from 'lib/components/sticky/Sticky.svelte';
+  import type { ProfileCompletionData } from 'lib/app-context/profile-completion.model';
 
   const ctx = getAppContext();
 
@@ -21,7 +22,7 @@
     hideToast();
   }
 
-  $: toast = isReady ? getToast(profileCompletionData) : undefined;
+  $: toast = isReady ? getToast(profileCompletionData as ProfileCompletionData) : undefined;
 </script>
 
 {#if toast}

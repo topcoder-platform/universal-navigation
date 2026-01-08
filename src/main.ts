@@ -140,7 +140,7 @@ async function init(
   }
 
   if (navType === 'tool' || navType === 'marketing') {
-    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap'));
+    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap') as Element);
   }
 }
 
