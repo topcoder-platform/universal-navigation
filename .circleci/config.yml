@@ -222,6 +222,7 @@ workflows:
                 - TOP-2044_show-signin-modal
                 - maintenance
                 - review-app
+                - re-enable-nudges
 
       - deployProd:
           context: org-global
