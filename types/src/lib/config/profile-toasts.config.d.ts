@@ -1,5 +1,5 @@
 export declare const CUSTOMER_HOSTS: string[];
-export declare const DISABLE_NUDGES = true;
+export declare const DISABLE_NUDGES = false;
 export declare const NUDGES_DISABLED_HOSTS: string[];
 export interface ToastType {
     theme: 'bio' | 'education' | 'gigAvailability' | 'profilePicture' | 'skills' | 'verified' | 'workHistory';

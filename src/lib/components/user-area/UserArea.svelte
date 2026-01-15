@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { getAppContext } from 'lib/app-context';
   import { checkUserAppRole, fetchUserProfile } from 'lib/functions/user-profile.provider';
+  import { fetchUserProfileCompletedness } from 'lib/functions/profile-nudges';
   import { AUTH0_AUTHENTICATOR_URL } from 'lib/config';
   import { AUTH_USER_ROLE } from 'lib/config/auth';
   import { DISABLE_NUDGES } from "lib/config/profile-toasts.config";
@@ -38,15 +39,31 @@
 
     debounce = user.handle;
 
-    $ctx.auth = {
-      ...$ctx.auth,
-      profileCompletionData: {
-        completed: true,
-        handle: user?.handle,
-        percentComplete: 0,
-        showToast: "",
-      },
-    };
+    if (!DISABLE_NUDGES) {
+      const completednessData = await fetchUserProfileCompletedness(user, true);
+      if (!completednessData) {
+        return;
+      }
+      $ctx.auth = {
+        ...$ctx.auth,
+        profileCompletionData: {
+          completed: completednessData.data?.percentComplete === 100,
+          handle: completednessData.handle,
+          percentComplete: completednessData.data?.percentComplete,
+          showToast: completednessData.showToast,
+        },
+      };
+    } else {
+      $ctx.auth = {
+        ...$ctx.auth,
+        profileCompletionData: {
+          completed: true,
+          handle: user?.handle,
+          percentComplete: 0,
+          showToast: "",
+        },
+      };
+    }
 
     setTimeout(() => debounce = '', 100);
   }
