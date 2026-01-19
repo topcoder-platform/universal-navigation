@@ -5,7 +5,7 @@ import { PROFILE_HOST } from 'lib/config';
 
 const COOKIE_NAME = 'uni-profilereminder-banner-shown';
 const COOKIE_ACTIVE_PERIOD_DAYS = 3;
-const PROFILE_UPDATE_REMINDER_PERIOD_DAYS = 30;
+const PROFILE_UPDATE_REMINDER_PERIOD_DAYS = 3*30;
 
 const DAY = 24 * 3600 * 1000;
 const _30DAYS = 30 * DAY;
