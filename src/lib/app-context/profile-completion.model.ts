@@ -3,4 +3,5 @@ export interface ProfileCompletionData {
   handle: string
   percentComplete: number
   showToast: string
+  dateFields?: [string, Date][]
 }

@@ -2,7 +2,7 @@
   position: relative;
   background: #D4D4D4;
   width: 1px;
-  height: 60px;
+  height: var(--uninav-header-height);
   margin: -18px 0;
   margin-left: 0;
   z-index: 1;

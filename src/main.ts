@@ -129,6 +129,9 @@ async function init(
 
   instancesContextStore[targetId] = ctx;
 
+  if (navType === 'tool' || navType === 'marketing') {
+    await loadNudgeApp(ctx, targetEl as Element);
+  }
   // load the navigation component
   const Navigation = await loadNavigationFn();
   // instantiate the navigation component
@@ -137,10 +140,6 @@ async function init(
 
   if (typeof readyCallback === 'function') {
     readyCallback();
-  }
-
-  if (navType === 'tool' || navType === 'marketing') {
-    loadNudgeApp(ctx, targetEl.querySelector('.tc-universal-nav-wrap') as Element);
   }
 }
 
