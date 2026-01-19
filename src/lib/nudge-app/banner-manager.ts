@@ -42,13 +42,11 @@ export const getBanner = (completednessData: ProfileCompletionData) => {
     .sort((a, b) => +a[1] - +b[1]);
 
 
-  const lastUpdate = +sorted[0]?.[1];
+  const lastUpdate = +sorted[sorted.length - 1][1];
   if (!lastUpdate) {
     return;
   }
 
-  // Correct:
-  // const lastUpdate = +sorted[sorted.length - 1][1];
   const lastUpdateOrCofirmDate = lastProfileConfirmationDate ? Math.max(lastUpdate, +lastProfileConfirmationDate) : lastUpdate;
   if (!lastUpdateOrCofirmDate || !isOlderThanTreshold(lastUpdateOrCofirmDate, PROFILE_UPDATE_REMINDER_PERIOD_DAYS)) {
     setCookie(COOKIE_NAME, '', 0);
