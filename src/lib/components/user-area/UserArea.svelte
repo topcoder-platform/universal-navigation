@@ -39,31 +39,20 @@
 
     debounce = user.handle;
 
-    if (!DISABLE_NUDGES) {
-      const completednessData = await fetchUserProfileCompletedness(user, true);
-      if (!completednessData) {
-        return;
-      }
-      $ctx.auth = {
-        ...$ctx.auth,
-        profileCompletionData: {
-          completed: completednessData.data?.percentComplete === 100,
-          handle: completednessData.handle,
-          percentComplete: completednessData.data?.percentComplete,
-          showToast: completednessData.showToast,
-        },
-      };
-    } else {
-      $ctx.auth = {
-        ...$ctx.auth,
-        profileCompletionData: {
-          completed: true,
-          handle: user?.handle,
-          percentComplete: 0,
-          showToast: "",
-        },
-      };
+    const completednessData = await fetchUserProfileCompletedness(user, true);
+    if (!completednessData) {
+      return;
     }
+    $ctx.auth = {
+      ...$ctx.auth,
+      profileCompletionData: {
+        completed: completednessData.data?.percentComplete === 100,
+        handle: completednessData.handle,
+        percentComplete: completednessData.data?.percentComplete,
+        showToast: DISABLE_NUDGES ? '' : completednessData.showToast,
+        dateFields: completednessData.data?.dateFields,
+      },
+    };
 
     setTimeout(() => debounce = '', 100);
   }

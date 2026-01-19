@@ -1,0 +1,126 @@
+@use 'lib/styles/fonts.scss' as *;
+@use 'lib/styles/palette.scss' as *;
+@use 'lib/styles/mixins.scss' as *;
+$btnSize: 20px;
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $nunito;
+  font-size: 14px;
+  line-height: 20px;
+
+  &:global(.hidden) {
+    opacity: 0;
+    // visibility: hidden;
+    pointer-events: none;
+    // move up and fade in when shown
+    transform: translate(0, -30px);
+    transition: transform 0.3s ease-in-out, opacity 0.18s ease-in-out 0.1s, visibility 0.01ms 0.3s;
+  }
+
+  &:not(:global(.hidden)) {
+    opacity: 1;
+    // visibility: visible;
+    pointer-events: all;
+    // move down and fade out when hidden
+    transform: translate(0, 0);
+    transition: transform 0.3s ease-in-out, opacity 0.18s ease-in-out, visibility 0.01ms;
+  }
+
+  @include tablet {
+    flex-wrap: wrap;
+    padding: 4px 12px 8px;
+    .spacer {
+      width: 100%;
+      height: 0;
+      margin-top: 6px;
+    }
+  }
+}
+
+.contents {
+  flex: 1 1 auto;
+  text-align: center;
+  justify-content: center;
+
+  &, a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  a {
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+}
+
+.close {
+  flex: 0 0 16px;
+  cursor: pointer;
+}
+
+.externalIcon {
+  margin-top: -2px;
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+
+.inlineBtn {
+  height: $btnSize;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: $roboto;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+  padding: 0;
+  border-radius: 0.25rem;
+
+  transition: background 0.15s ease;
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover {
+    background: rgb(122 74 146);
+  }
+  &:active {
+    background: rgb(69 27 90);
+  }
+}
+
+.confirmBtn {
+  cursor: pointer;
+  font-family: $roboto;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #fff;
+  background: transparent;
+  padding: 2px 8px;
+  margin: -2px 0;
+  margin-right: 8px;
+  border-radius: 0.25rem;
+
+  transition: background 0.15s ease;
+  &:hover {
+    background: rgb(122 74 146);
+  }
+  &:active {
+    background: rgb(69 27 90);
+  }
+}
+
+.modalBtns {
+  margin-top: 24px;
+}
