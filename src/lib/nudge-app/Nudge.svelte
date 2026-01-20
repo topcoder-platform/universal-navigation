@@ -41,7 +41,6 @@
       <Banner
         userHandle={user?.handle ?? ''}
         banner={banner}
-        redirect={toastsMeta[banner.key].ctaLink(user?.handle ?? '')}
         on:dismiss={dismissBanner}
       />
     </div>
