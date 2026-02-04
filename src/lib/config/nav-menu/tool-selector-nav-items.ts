@@ -39,7 +39,7 @@ export const toolSelectorNavItems: NavMenuItem = {
           groupOrder: 2,
           children: [
             allNavItems.challengesApp,
-            allNavItems.engagementsApp,
+            // allNavItems.engagementsApp,
             allNavItems.review,
             allNavItems.payments,
             allNavItems.copilotPortal,
