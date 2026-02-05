@@ -5,8 +5,10 @@
   let className = '';
   export { className as class };
   export let yOffset = 0;
+  export let delayYOffset = 0;
 
   let elRef: HTMLElement | undefined;
+  let placeholderRef: HTMLElement | undefined;
   let elYOffset = 0;
 
   function handleScroll() {
@@ -15,7 +17,10 @@
     }
     const { scrollY } = window;
 
-    const isFixed = (scrollY + yOffset - elYOffset) >= 0;
+    const isFixed = (scrollY + yOffset - elYOffset - delayYOffset) >= 0;
+    if (placeholderRef) {
+      Object.assign(placeholderRef.style, {height: isFixed ? `${elRef.offsetHeight}px` : 0});
+    }
     elRef.classList.toggle(styles.sticky, isFixed);
   }
 
@@ -31,6 +36,7 @@
   })
 </script>
 
+<div bind:this={placeholderRef}></div>
 <div bind:this={elRef} class={className} style="--top-offset: {yOffset}px">
   <slot />
 </div>

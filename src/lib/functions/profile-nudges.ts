@@ -4,17 +4,18 @@ import { DISABLE_NUDGES, NUDGES_DISABLED_HOSTS } from "lib/config/profile-toasts
 
 import { getRequestAuthHeaders } from "./auth-jwt";
 
+export function isOnHost(host: string): boolean {
+  const locationHostname = window?.location.hostname ?? ''
+  return !!host.match(new RegExp(`^https?:\/\/${locationHostname}`, 'i'));
+}
+
 /**
  * Check if we're on a domain that should not show the profile nudges
  * @returns Boolean
  */
-export function dismissNudgesBasedOnHost(): boolean {
+export function dismissNudgesBasedOnHost(exceptHost?: string): boolean {
   // Ue the new flag to disable the profile nudges completely (PS-267)
-  const locationHostname = window?.location.hostname ?? ''
-  return DISABLE_NUDGES ||
-    (!!NUDGES_DISABLED_HOSTS.find(host => (
-      host.match(new RegExp(`^https?:\/\/${locationHostname}`, 'i'))
-    )));
+  return DISABLE_NUDGES || NUDGES_DISABLED_HOSTS.filter(h => !exceptHost || h !== exceptHost).some(isOnHost);
 }
 
 // store fetched data in a local cache (de-duplicate immediate api calls)
@@ -25,7 +26,7 @@ export interface ProfileCompletednessResponse {
   showToast: string
   data: {
     percentComplete: number
-  }
+  } & {[key: string]: any}
 }
 
 /**
@@ -55,13 +56,29 @@ export const fetchUserProfileCompletedness = async (user: AuthUser, force = fals
   const request = fetch(requestUrl, {headers: {...getRequestAuthHeaders()}});
 
   const response = await (await request).json();
+
+  const responseData = response.data ?? {};
+  const dateFields = Object.keys(responseData)
+    .filter(k => k.endsWith('LastUpdateDate') || k === 'lastProfileConfirmationDate')
+    .map((key) => [key, new Date(responseData[key])]);
+
   resolve({
     ...response,
     data: {
-      ...response.data,
+      ...responseData,
+      dateFields,
       percentComplete: (response?.data?.percentComplete ?? 0) * 100,
     },
   });
 
   return localCache[cacheKey];
+}
+
+export const confirmProfileData = async (userHandle: string) => {
+  const requestUrl: string = `${TC_API_HOST}/members/${userHandle}/confirmProfile`;
+  const request = fetch(requestUrl, {method: 'POST', headers: {...getRequestAuthHeaders()}});
+
+  const response = await (await request).json();
+
+  return response.data;
 }
