@@ -37,7 +37,7 @@ export const allNavItems: {[key: string]: NavMenuItem} = {
     },
     opportunities: {
       label: 'Opportunities',
-      url: `${CHALLENGE_HOST}/challenges`,
+      url: getMarketingUrl('/opportunities'),
     },
     mmTournament: {
       label: 'Marathon Match Tournament',
