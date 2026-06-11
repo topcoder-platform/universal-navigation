@@ -13,11 +13,11 @@ export const mainNavigationItems: NavMenuItem[] = [
       allNavItems.talent,
     ],
   },
+  allNavItems.opportunities,
   {
     ...allNavItems.community,
     children: [
       allNavItems.freelancer,
-      allNavItems.opportunities,
       allNavItems.mmTournament,
       allNavItems.aiHub,
       allNavItems.statistics,
