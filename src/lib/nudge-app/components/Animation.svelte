@@ -4,7 +4,15 @@
   import styles from './Animation.module.scss';
 
   export let animation: string;
-  export let cover: string;
+  export let cover = '';
+
+  interface BodymovinAnimation {
+    addEventListener: (event: 'data_ready', listener: () => void) => void;
+  }
+
+  interface Bodymovin {
+    loadAnimation: (configuration: Record<string, unknown>) => BodymovinAnimation;
+  }
 
   let ref: Element | undefined = undefined;
   let coverRef: HTMLDivElement | undefined = undefined;
@@ -14,8 +22,14 @@
     dispatch('loaded', {animation: animation === true});
   }
 
-  const loadAnimation = (path) => {
-    var animData = {
+  /**
+   * Loads the requested nudge animation and reveals it after its data is ready.
+   * @param path - Animation asset basename
+   * @returns void after registering the bodymovin ready listener
+   * @throws If the previously loaded bodymovin bundle does not expose its expected browser API
+   */
+  const loadAnimation = (path: string): void => {
+    const animData = {
       container: ref,
       renderer: 'svg',
       loop: true,
@@ -25,7 +39,8 @@
         progressiveLoad: true
       },
     };
-    const bmAnim = window['bodymovin'].loadAnimation(animData);
+    const bodymovin = (window as unknown as Window & { bodymovin: Bodymovin }).bodymovin;
+    const bmAnim = bodymovin.loadAnimation(animData);
     bmAnim.addEventListener('data_ready', () => {
       if (coverRef) {
         Object.assign(coverRef.style, {display: 'none'});
