@@ -20,6 +20,7 @@ For information on how to develop/maintain the UniNav component itself, please s
     - [3. Update tcUniNav](#3-update-tcuninav)
 - [Futher Reading](#further-reading)
     - [Environment Files](#environment-files)
+    - [UTM Attribution](#utm-attribution)
     - [Versioning](#versioning)
     - [API for tcUniNav](#api-for-tcuninav)
     - [tcUniNav Methods](#tcuninav-methods)
@@ -253,6 +254,26 @@ Easiest way to create your local environment file is to copy one of the uni-nav.
 `.env.local` files will be ignored by git and so you don't need to worry about versioning.
 
 `uni-nav.env.dev` and `uni-nav.env.prod` are used on the CI/CD process and copied to `S3: tc-uninav-[dev|prod]/securitymanage`.
+
+### UTM Attribution
+
+Universal Navigation preserves first-touch campaign attribution for the host
+applications. On initialization, it reads utm_source, utm_medium, utm_campaign,
+utm_id, utm_term, and utm_content from the current URL. If at least one is valid
+and tc_utm does not already exist, it stores the sanitized values in that
+first-party cookie on the shared Topcoder domain.
+
+The default lifetime is 30 days. Set VITE_UTM_COOKIE_LIFETIME_DAYS to a positive
+day count when an environment needs a different attribution window. Values are
+limited to 100 characters and alphanumerics, period, underscore, tilde, and
+hyphen. Invalid JSON and unsupported properties are ignored when the cookie is
+read.
+
+The stored values are appended to the sign-up URL and are read by the AWS
+Clickstream clients in topcoder-website and platform-ui. The cookie is
+first-touch: later campaign visits do not overwrite it until it expires or is
+cleared. Universal Navigation does not initialize the analytics SDK itself,
+which prevents a host page from reporting duplicate page views and clicks.
 
 ### Versioning
 
