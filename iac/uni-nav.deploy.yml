@@ -161,6 +161,9 @@ Resources:
               # Platform UI Prod & Dev
               - !Sub https://platform-ui.${Domain}
 
+              # Topgear community on Platform UI
+              - !Sub https://topgear.${Domain}
+
               # Platform UI sub apps for Prod & Dev
               - !Sub https://academy.${Domain}
               - !Sub https://work.${Domain}

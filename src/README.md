@@ -105,3 +105,9 @@ Both the types commit and the version patch commit will be authored by the user 
 For non-master branches, there is a build job in the CI that will check to see if there are any updates to the types required and exit with an error code 1 with message `WARNING: Types need updating`.
 
 The error will not prevent merging a PR or deploying to an environment but will just be a flag for the PR owner and reviewers.
+
+## Validation
+
+Run `npm run lint` (Svelte/TypeScript diagnostics), `npm test` (hostname
+selection regressions), and `npm run build` before proposing a change.
+Tests use the Node version in `.nvmrc` and its TypeScript stripping support.

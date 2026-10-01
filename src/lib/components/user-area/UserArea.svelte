@@ -15,6 +15,9 @@
   import Completedness from './Completedness.svelte';
   import Button from '../Button.svelte';
 
+  /** Whether to offer the cross-application tool selector; hidden in community headers. */
+  export let showToolSelector = true;
+
   const ctx = getAppContext();
 
   // debounce updates to user if user.handle stays the same
@@ -98,7 +101,7 @@
         <Button variant="primary-link" label="Login" onClick={onSignIn} />
       </div>
     {:else }
-      <ToolSelector />
+      {#if showToolSelector}<ToolSelector />{/if}
       <UserAvatar
         user={user}
         onSignOut={onSignOut}

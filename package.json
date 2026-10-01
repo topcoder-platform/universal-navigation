@@ -10,6 +10,8 @@
         "build:nudge": "APP_BUILD_TARGET=nudge vite build --mode=production",
         "build:base": "vite build --mode=production && npx rimraf ./types && npm run types",
         "build": "npm run build:base && npm run build:nudge",
+        "lint": "npm run check",
+        "test": "node --experimental-strip-types --test tests/*.test.mjs",
         "check": "svelte-check --tsconfig ./tsconfig.json",
         "demo:dist": "npx http-server --cors --host local.topcoder-dev.com --port 8083 ./dist",
         "demo:marketing": "npx http-server --host local.topcoder-dev.com --port 8081 ./demo/marketing -P http://local.topcoder-dev.com:8081? -o /",
