@@ -16,7 +16,7 @@
   align-items: center;
   gap: 30px;
 
-  a { display: flex; }
+  a { display: flex; flex-shrink: 0; }
 }
 
 .wipro { width: 90px; }
@@ -68,7 +68,9 @@
 
 @media (max-width: 767px) {
   .header { flex-wrap: wrap; gap: 16px; }
-  .branding { flex: 1; }
+  .branding { flex: 1 0 calc(100% - 106px); gap: 12px; }
+  .wipro { width: 64px; }
+  .topcoder { width: 100px; }
   .topgear { order: 1; width: 90px; }
   .links { order: 2; font-size: 16px; }
   .user { order: 3; }
