@@ -2,6 +2,7 @@ import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 import { buildContext, type AuthUser, type NavigationHandler, type SupportMeta } from './lib/app-context'
+import { resolveNavigationType } from './lib/utils/navigation-type'
 import { loadNudgeApp } from './lib/functions/load-nudge-app'
 import { PubSub } from './lib/utils/pubsub';
 import { initializeUtmCookieHandler } from './lib/functions/utm-cookies.handler';
@@ -15,6 +16,7 @@ export type NavigationType = (
   | 'footer'
   | 'marketing'
   | 'tool'
+  | 'topgear'
 )
 
 export type NavigationAppProps = {
@@ -52,6 +54,7 @@ const NavigationLoadersMap: Record<NavigationType, () => Promise<any>> = {
   marketing: () => import('./lib/marketing-navigation/MarketingNavigation.svelte').then(d => d.default),
   footer: () => import('./lib/footer-navigation/FooterNavigation.svelte').then(d => d.default),
   tool: () => import('./lib/tool-navigation/ToolNavigation.svelte').then(d => d.default),
+  topgear: () => import('./lib/topgear-navigation/TopgearNavigation.svelte').then(d => d.default),
 }
 
 const instancesContextStore: { [key: string]: Map<string, Writable<any>> } = {}
@@ -102,10 +105,11 @@ async function init(
     toolRoot,
     handleNavigation,
     supportMeta,
-    type: navType = 'tool',
+    type: requestedType = 'tool',
     ...navProps
   } = props
 
+  const navType = resolveNavigationType(requestedType, window.location.hostname);
   const loadNavigationFn = NavigationLoadersMap[navType];
 
   if (!loadNavigationFn) {

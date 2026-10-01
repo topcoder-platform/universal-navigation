@@ -4,7 +4,7 @@
   import styles from './Animation.module.scss';
 
   export let animation: string;
-  export let cover: string;
+  export let cover: string | undefined;
 
   let ref: Element | undefined = undefined;
   let coverRef: HTMLDivElement | undefined = undefined;
@@ -14,7 +14,7 @@
     dispatch('loaded', {animation: animation === true});
   }
 
-  const loadAnimation = (path) => {
+  const loadAnimation = (path: string) => {
     var animData = {
       container: ref,
       renderer: 'svg',
@@ -25,7 +25,7 @@
         progressiveLoad: true
       },
     };
-    const bmAnim = window['bodymovin'].loadAnimation(animData);
+    const bmAnim = (window as any).bodymovin.loadAnimation(animData);
     bmAnim.addEventListener('data_ready', () => {
       if (coverRef) {
         Object.assign(coverRef.style, {display: 'none'});
