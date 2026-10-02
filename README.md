@@ -66,6 +66,11 @@ The responsive header reuses community-app's Wipro, Topcoder, and Topgear logos.
 Home links to `https://topgear-app.wipro.com`; Challenges links to
 `/opportunities/challenge` on the current Topgear origin. It retains account
 controls, without the tool selector, Leaderboard, or the community hero banner.
+For signed-in members, the avatar menu links My Profile to
+`https://topgear-app.wipro.com/user-details` and Payments to
+`https://topgear-app.wipro.com/my_payments` (a new tab), matching community-app.
+Account Settings and Log Out remain available. The Wipro destinations apply only
+to the two Topgear hosts; other hosts retain their Topcoder profile link.
 Deploy the navigation bundle before the Platform UI migration. Its CloudFront
 CORS policy must allow the matching Topgear origin (included in the IAC template).
 This change does not redirect production community-app URLs.
