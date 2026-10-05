@@ -41,7 +41,7 @@ The following properties use the UniNav for the MVP:
 
 ### Navigation Types
 
-The UniNav comprises 3 parts, `'marketing' | 'tool' | 'footer'`, which are described here.
+The UniNav comprises 4 variants, `'marketing' | 'tool' | 'topgear' | 'footer'`, which are described here.
 
 #### Marketing Navigation
 
@@ -54,6 +54,26 @@ The configuration is static and is defined in [marketing-nav-items.ts](./src/lib
 This navigation is rendered for all non-marketing web properites (e.g https://platform-ui.topcoder.com/learn, https://platform-ui.topcoder.com/work).
 
 The navigation configuration is supplied upon initialization by the tool itself. See [2. Initialize tcUnNav](#2-initialize-tcuninav) for more info.
+
+#### Topgear Navigation
+
+Tool navigation automatically uses the Topgear header on exactly
+`topgear.topcoder.com` and `topgear.topcoder-dev.com`. Integrations can also
+request `type: 'topgear'`; it falls back to the tool header on any other host.
+Marketing and footer navigation are unaffected.
+
+The responsive header reuses community-app's Wipro, Topcoder, and Topgear logos.
+Home links to `https://topgear-app.wipro.com`; Challenges links to
+`/opportunities/challenge` on the current Topgear origin. It retains account
+controls, without the tool selector, Leaderboard, or the community hero banner.
+For signed-in members, the avatar menu links My Profile to
+`https://topgear-app.wipro.com/user-details` and Payments to
+`https://topgear-app.wipro.com/my_payments` (a new tab), matching community-app.
+Account Settings and Log Out remain available. The Wipro destinations apply only
+to the two Topgear hosts; other hosts retain their Topcoder profile link.
+Deploy the navigation bundle before the Platform UI migration. Its CloudFront
+CORS policy must allow the matching Topgear origin (included in the IAC template).
+This change does not redirect production community-app URLs.
 
 #### Footer Navigation
 
@@ -292,7 +312,7 @@ Information regarding the changes will be disseminated to the owners of all prop
 | config.toolName         | string                                       | yes (tool nav only)     | The name of the tool as it should appear in the header                                   | none          |
 | config.toolRoot         | string                                       | yes (tool nav only)     | The route to the tool as it should appear in the header                                  | none          |
 | config.fullFooter       | boolean                                      | no                      | Shows the full footer navigation when it is true                                         | false         |
-| config.type             | Enum: 'marketing' \| 'tool' \| 'footer'      | yes                     | The type of navigation to render                                                         |               |
+| config.type             | Enum: 'marketing' \| 'tool' \| 'topgear' \| 'footer'      | yes                     | The type of navigation to render                                                         |               |
 | config.user             | 'auto'                                       | no                      | Instruct the uni-nav to auto-fetch user profile info based on the `tcjwt` cookie value   | {}            |
 | config.user             | {photoURL, userId, initials, handle}         | no                      | The logged in user                                                                       | {}            |
 | config.supportMeta      | {challengeId, isSelfService}                 | no                      | Additional meta data to be sent along with any support ticket created by the user        |               |

@@ -1,0 +1,77 @@
+@use 'lib/styles/fonts.scss' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 110px;
+  padding: 20px 40px;
+  background: #fff;
+  color: #00a2e0;
+  font-family: $roboto;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  a { display: flex; flex-shrink: 0; }
+}
+
+.wipro { width: 90px; }
+.topcoder { width: 135px; }
+.topgear { width: 132px; }
+
+.header img { height: auto; }
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-right: auto;
+  font-size: 18px;
+  font-weight: 700;
+
+  a {
+    position: relative;
+    padding: 12px 0;
+  }
+
+  a[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 4px);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+.header a:focus-visible {
+  outline: 2px solid #16679a;
+  outline-offset: 4px;
+}
+
+.user { flex-shrink: 0; }
+
+@media (max-width: 1023px) {
+  .header { gap: 24px; padding: 16px; }
+  .branding { gap: 16px; }
+  .links { gap: 24px; }
+  .wipro { width: 70px; }
+  .topcoder { width: 110px; }
+  .topgear { width: 100px; }
+}
+
+@media (max-width: 767px) {
+  .header { flex-wrap: wrap; gap: 16px; }
+  .branding { flex: 1 0 calc(100% - 106px); gap: 12px; }
+  .wipro { width: 64px; }
+  .topcoder { width: 100px; }
+  .topgear { order: 1; width: 90px; }
+  .links { order: 2; font-size: 16px; }
+  .user { order: 3; }
+}

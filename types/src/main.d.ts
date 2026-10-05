@@ -3,7 +3,7 @@ import { PubSub } from './lib/utils/pubsub';
 import 'lib/styles/main.scss';
 export * from './lib/app-context';
 export declare const appPubSub: PubSub;
-export type NavigationType = ('footer' | 'marketing' | 'tool');
+export type NavigationType = ('footer' | 'marketing' | 'tool' | 'topgear');
 export type NavigationAppProps = {
     type?: NavigationType;
     toolName?: string;
