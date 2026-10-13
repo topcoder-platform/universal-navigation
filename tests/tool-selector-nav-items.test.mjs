@@ -75,16 +75,34 @@ test('staff see the Talent and Staff sections laid out as in the design', () => 
   assert.deepEqual(toLayout(getToolSelectorItems()), [TALENT, STAFF]);
 });
 
+for (const roles of [
+  ['administrator'],
+  ['Topcoder User', 'administrator', 'Topcoder Customer'],
+  ['administrator', 'Topcoder Talent'],
+  ['Administrator', 'Topcoder Customer'],
+]) {
+  test(`administrators see Talent and Staff with roles: ${roles.join(', ')}`, () => {
+    signIn(roles);
+    assert.deepEqual(toLayout(getToolSelectorItems()), [TALENT, STAFF]);
+  });
+}
+
 test('members only see the Talent section', () => {
-  for (const roles of [['Topcoder User'], ['Topcoder User', 'Topcoder Talent']]) {
+  for (const roles of [[], ['Topcoder User'], ['Topcoder User', 'Topcoder Talent'], ['Payment Admin']]) {
     signIn(roles);
     assert.deepEqual(toLayout(getToolSelectorItems()), [TALENT]);
   }
 });
 
-test('customers without talent or staff roles get no drawer items', () => {
-  signIn(['Topcoder Customer']);
-  assert.deepEqual(getToolSelectorItems(), []);
+test('customers without talent, staff or administrator roles get no drawer items', () => {
+  for (const roles of [
+    ['Topcoder Customer'],
+    ['Topcoder Customer', 'Payment Admin'],
+    ['Topcoder Customer', 'not-administrator'],
+  ]) {
+    signIn(roles);
+    assert.deepEqual(getToolSelectorItems(), []);
+  }
 });
 
 test('every drawer tool has a description, a sprite icon and its production url', async () => {

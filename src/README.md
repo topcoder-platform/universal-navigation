@@ -11,6 +11,7 @@ For information re how to integrate the UniNav into a web property, see the main
     - [Serve the local app](#serve-the-local-app)
     - [Demo Apps](#demo-apps)
         - [Instructions for using the Demo Apps](#instructions-for-using-the-demo-apps)
+- [App Drawer Roles](#app-drawer-roles)
 - [Production Distribution](#production-distribution)
 - [Recommended IDE Setup](#recommended-ide-setup)
 - [Typescript Type Declaration Generation](#typescript-type-declaration-generation)
@@ -81,6 +82,20 @@ There are 2 sample integrations in the [/demo](./demo/) folder:
 3. Navigate to the specific nav:
     - Marketing Nav: http://local.topcoder-dev.com:8081
     - Tool Nav: http://local.topcoder-dev.com:8082
+
+## App Drawer Roles
+
+The signed-in user's app drawer is filtered using the roles in the `tcjwt`
+cookie by `getUserAppRoles` and the guards in `src/lib/config/auth.ts`.
+`Topcoder Staff` and `administrator` users see both Talent and Staff sections,
+including administrators who also have `Topcoder Customer` or `Topcoder Talent`.
+The administrator role is matched case-insensitively, so legacy `Administrator`
+claims receive the same navigation. Other role names retain their exact matching.
+
+Members with `Topcoder Talent`, or without a recognized navigation role, see
+Talent only. Customer-only users have no drawer items, so the drawer trigger is
+hidden. Application-specific roles such as `Payment Admin` do not grant the Staff
+section. Each linked application still enforces its own access permissions.
 
 ## Production Distribution
 
