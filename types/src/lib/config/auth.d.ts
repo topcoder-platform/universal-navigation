@@ -2,6 +2,7 @@ export declare enum AUTH_USER_ROLE {
     talent = "Topcoder Talent",
     customer = "Topcoder Customer",
     staff = "Topcoder Staff",
+    administrator = "administrator",
     noRole = "no-role"
 }
 export declare const AUTH_USER_ROLE_VALUES: AUTH_USER_ROLE[];

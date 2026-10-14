@@ -36,3 +36,21 @@ export const ACCOUNT_SETTINGS_HOST: string = `https://account-settings.${TC_DOMA
 export const WALLETAPP_HOST: string = `https://wallet.${TC_DOMAIN}`;
 export const COPILOT_PORTAL_HOST: string = `https://copilots.${TC_DOMAIN}`;
 export const ENGAGEMENT_PORTAL_HOST: string = `https://engagements.${TC_DOMAIN}`;
+
+// App drawer (tool selector) hosts
+export const ARCHIVE_HOST: string = `https://archive.${TC_DOMAIN}`;
+export const FORUMS_HOST: string = `https://forums.${TC_DOMAIN}`;
+export const WORK_APP_HOST: string = `https://work.${TC_DOMAIN}`;
+export const WALLET_ADMIN_HOST: string = `https://wallet-admin.${TC_DOMAIN}`;
+export const CUSTOMER_PORTAL_HOST: string = `https://customer.${TC_DOMAIN}`;
+export const SALES_HOST: string = `https://sales.${TC_DOMAIN}`;
+export const PROCUREMENT_HOST: string = `https://procurement.${TC_DOMAIN}`;
+export const ANALYTICS_HOST: string = `https://analytics.${TC_DOMAIN}`;
+export const REPORTS_HOST: string = `https://reports.${TC_DOMAIN}`;
+export const SUPPORT_HOST: string = `https://support.${TC_DOMAIN}`;
+export const PAYLOAD_CMS_HOST: string = `https://cms.${TC_DOMAIN}`;
+export const CONTACT_HOST: string = `https://contact.${TC_DOMAIN}`;
+export const CAMPUS_HOST: string = `https://campus.${TC_DOMAIN}`;
+export const CALENDAR_HOST: string = `https://calendar.${TC_DOMAIN}`;
+export const SYSTEM_ADMIN_HOST: string = `https://system-admin.${TC_DOMAIN}`;
+export const SALESFORCE_URL: string = 'https://topcoder.my.salesforce.com';

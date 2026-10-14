@@ -18,9 +18,17 @@ export const getJwtUserRoles = (): AuthUser['roles'] | undefined => {
   return getAuthJwtDomainProp<AuthUser['roles'] | undefined>('roles')
 }
 
-// get the user roles that match the config/auth's user roles definitions
+/**
+ * Reads the current tcjwt cookie and returns the roles recognized by navigation guards.
+ * Administrator roles are matched case-insensitively and returned in their canonical form.
+ * Takes no parameters; unrelated roles are omitted from the returned array.
+ * @returns Recognized navigation roles, or an empty array when no roles are present.
+ * @throws If the tcjwt cookie cannot be decoded or contains invalid JSON.
+ */
 export const getUserAppRoles = (): AuthUser['roles'] => {
-  return (getJwtUserRoles() ?? []).filter(d => AUTH_USER_ROLE_VALUES.includes(d as AUTH_USER_ROLE))
+  return (getJwtUserRoles() ?? [])
+    .map(role => role.toLowerCase() === AUTH_USER_ROLE.administrator ? AUTH_USER_ROLE.administrator : role)
+    .filter(role => AUTH_USER_ROLE_VALUES.includes(role as AUTH_USER_ROLE))
 }
 
 export const checkUserAppRole = (role: AUTH_USER_ROLE): boolean => (

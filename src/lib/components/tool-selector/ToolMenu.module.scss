@@ -1,17 +1,19 @@
 @use 'lib/styles/mixins.scss' as *;
 @use 'lib/styles/fonts.scss' as *;
-@use 'lib/styles/colors.scss' as *;
 
 .toolMenuWrap {
-  width: 472px;
+  width: 496px;
+  // completes the popup's vertical padding to 32px
+  padding: 8px 0;
 
-  font-family: $roboto;
+  font-family: $nunito;
   font-style: normal;
   font-size: 14px;
-  color: #767676;
+  color: #6F6F6F;
 
   @include mobile {
     width: auto;
+    padding: 0;
   }
 
   > svg {
@@ -20,19 +22,20 @@
 }
 
 .title {
-  font-family: $roboto;
+  font-family: $nunito;
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 20px;
   text-transform: uppercase;
+  color: #161616;
 }
 
 .toolSection {
   &Title {
     @extend .title;
-    margin-bottom: 16px;
+    line-height: 24px;
+    margin-bottom: 12px;
   }
 
   // hides the menu title when the section is alone in the whole menu
@@ -55,19 +58,24 @@
   }
 }
 
-.toolGroups {
+.toolColumns {
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-
-  .toolSection.talent & {
-    flex-direction: column;
-    max-height: 420px;
-  }
+  gap: 48px;
 
   @include mobile {
     flex-direction: column;
-    flex-wrap: nowrap;
+    gap: 0;
+  }
+}
+
+.toolGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1 1 0;
+  min-width: 0;
+
+  @include mobile {
     gap: 0;
   }
 }
@@ -77,34 +85,26 @@
   flex-direction: column;
   align-items: flex-start;
 
-  flex: 1 1 calc(50% - 24px);
-
   &Title {
     @extend .title;
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6F6F6F;
 
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   @include mobile {
     padding: 16px;
-    order: var(--order);
-
-    &.hasCtas {
-      border-top: 1px solid #D4D4D4;
-    }
   }
 }
 
 .toolNavItems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   width: 100%;
-  line-height: 1;
-
-  @include mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 .toolNavItem {
@@ -112,57 +112,21 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  overflow: hidden;
-  &.toolNavItem {
-    font-weight: 500;
-    color: color(hoverMenuLink);
-  }
+  height: 32px;
 
-  & + & {
-    margin-top: 12px;
-  }
-
-  &:global(.navButton) {
-    display: inline-flex;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 24px;
-    letter-spacing: 0.008em;
-    text-transform: uppercase;
-
-    color: #16679A;
-    border: 2px solid #16679A;
-    border-radius: 24px;
-
-    padding: 0 16px;
-    width: auto;
-
-    &:hover {
-      color: #219174;
-      border-color: #219174;
-    }
-
-    .navItemLabel {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &:hover {
-    font-weight: 700;
-    color: #0c0c0c;
-    color: color(hoverMenuLink, hover);
-
+  // the description is revealed for the hovered (or keyboard focused) tool only
+  &:hover,
+  &:focus-visible {
     .navItemDescription {
+      max-height: 14px;
       opacity: 1;
-      pointer-events:unset;
-      font-weight: 400;
-      color: #767676;
     }
   }
 }
 
 .toolIcon {
+  flex: 0 0 auto;
+
   img, svg {
     display: block;
     width: 32px;
@@ -173,23 +137,32 @@
 .navItemContent {
   display: flex;
   flex-direction: column;
-  margin: -3px 0 -4px;
+  min-width: 0;
 }
 
 .navItemLabel {
   display: block;
-  line-height: 22px;
-  margin-bottom: -4px;
-  margin-top: 4px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #161616;
+  white-space: nowrap;
 }
 
 .navItemDescription {
+  display: block;
   font-style: italic;
-  font-size: 10px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #6F6F6F;
+  white-space: nowrap;
+
+  max-height: 0;
+  // collapse vertically only, long descriptions may run into the columns gap
+  overflow-x: visible;
+  overflow-y: clip;
   opacity: 0;
   pointer-events: none;
-  transition: 0.2s ease-in-out;
+  transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .toolMenuSpacer {
