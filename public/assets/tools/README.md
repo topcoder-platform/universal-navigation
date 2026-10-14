@@ -17,7 +17,7 @@ eg:
 ```
 
 ## App drawer icons
-The app drawer icons are 32x32 tiles: a tinted rounded square (`rx="4"`) with a 24x24 glyph centered on it, colored per drawer group:
+The app drawer icons are 32x32 tiles: a tinted rounded square (`rx="4"`) with a centered glyph, colored per drawer group. Most glyphs use a 24x24 canvas; the Figma exports listed below use their original 20x20 canvas, centered with `translate(6 6)`:
 
 | Groups | Tile | Glyph |
 | --- | --- | --- |
@@ -29,5 +29,13 @@ The app drawer icons are 32x32 tiles: a tinted rounded square (`rx="4"`) with a 
 | Sales & Customers | `#FCF4D6` | `#8E6A00` |
 | Team & Platform | `#D9FBFB` | `#007D79` |
 
-Glyphs come from [Material Symbols Rounded](https://github.com/google/material-design-icons) (weight 600, Apache-2.0), except `copilot-portal`, `mm`, `sales-pipeline` and `discord`, which use [Tabler Icons](https://tabler.io/icons) (MIT).
+`mm`, `archive` and `work-app` use the exact glyph paths and colors exported from the [PM-6555 Figma design](https://www.figma.com/design/AMGGzlrbi8PaMw6aQbbxuL/Marketing-Design-System?node-id=270-7650):
+
+| Icon | Figma item node | Glyph |
+| --- | --- | --- |
+| `mm` | `270:7703` | `icon/shoe` |
+| `archive` | `270:7715` | `icon/files` |
+| `work-app` | `270:7729` | `icon/tools` |
+
+The remaining glyphs come from [Material Symbols Rounded](https://github.com/google/material-design-icons) (weight 600, Apache-2.0), except `copilot-portal`, `sales-pipeline` and `discord`, which use [Tabler Icons](https://tabler.io/icons) (MIT).
 Each icon also exists as `./{file-name}.svg`; keep its `<symbol>` in `./sprite.svg` in sync, and avoid inner `id`s so symbols don't clash inside the shared sprite.
