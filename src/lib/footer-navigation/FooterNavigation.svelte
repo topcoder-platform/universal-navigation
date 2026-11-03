@@ -8,6 +8,9 @@
   import styles from './FooterNavigation.module.scss'
   import { getPublicPath, getMarketingUrl } from 'lib/utils/paths';
   import SocialIcon from './SocialIcon.svelte';
+  import { getAppContext } from 'lib/app-context';
+
+  const ctx = getAppContext()
 
   $: logoUrl = getPublicPath(`/assets/inverted-logo.svg`);
 
@@ -18,6 +21,17 @@
   onMount(checkAndLoadFonts)
 </script>
 
+{#if $ctx.simplifiedNav}
+<!-- Simplified footer for focused landing pages: logo and copyright only. -->
+<footer class={styles.simplifiedFooter}>
+  <div class={styles.simplifiedFooterInner}>
+    <a href={allNavItems.home.url} target="_top">
+      <img src={logoUrl} class={styles.simplifiedLogo} alt="Topcoder, a Wipro company" />
+    </a>
+    <p class={styles.simplifiedCopyright}>Copyright © {year} Topcoder. All Rights Reserved.</p>
+  </div>
+</footer>
+{:else}
 <footer class={styles.footerWrap}>
   <div class={styles.logo}>
     <a href={allNavItems.home.url} target="_top">
@@ -99,3 +113,4 @@
     Copyright © {year} Topcoder. All Rights Reserved.
   </div>
 </footer>
+{/if}
