@@ -251,3 +251,48 @@
     width: 100%;
   }
 }
+
+// Simplified footer (simplifiedNav): a single 1200px row with the logo and the copyright.
+.simplifiedFooter {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #001E2E;
+  padding: 36px 40px;
+
+  @include mobile {
+    padding: 32px 16px;
+  }
+}
+
+.simplifiedFooterInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  > a {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.simplifiedLogo {
+  display: block;
+  width: 218px;
+  height: auto;
+}
+
+.simplifiedCopyright {
+  margin: 0;
+  font-family: $nunito;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+}
